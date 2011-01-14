@@ -1,0 +1,273 @@
+/** Add css rules here for your application. */
+* {
+	font-size: 14px;
+	margin: 0px 0px 0px 0px;
+}
+
+html, body {
+	height:100%;
+	overflow:hidden;
+	margin:0px;
+	padding:0px;
+	background: #242a30;
+}
+
+/********************* Head ****************/
+
+.Head {
+	height:40px;
+	-webkit-box-shadow: 0px 0px 8px black;
+	border-radius: 0;
+	/*background:#b8c7ab;	*/
+	background:#B5B38C;
+	margin-top: 0px;
+	margin-bottom: -2px;
+	width:100%;
+	text-align:center;
+}
+
+.Head td {
+	border-bottom:1px solid black;
+	border-top:1px solid #eee;
+	height:30px;
+	padding: 0px 5px 0px 5px;
+	vertical-align:middle !important;
+}
+
+.Head, .Head * {
+	font-weight:bold;
+	font-size: 18px;
+	text-shadow: gray 1px 1px 2px;
+} 
+
+.Fill {
+	width:100%;
+	height:100%;
+}
+
+.LayoutTable {
+	width: 100%;
+	height: 100%;
+	border-spacing: 0px 0px;
+	border-width: 0px;
+	margin: -1px 0 0 0;
+	padding: 0px;
+	table-layout: fixed;
+}
+
+/************** Button **************/
+.Button {
+	font-size: 14px !important;
+	font-weight: bold !important;
+	border: 0.1em solid #A6A6A6;
+	display: -webkit-box;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	text-shadow: white 0px 1px 0px;
+	min-height: 2.8em;
+	border-radius: 0.4em;
+	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(white), color-stop(0.02, #E6E6E6), to(#BABABA));	
+}
+
+.Button.Pressed {
+	text-shadow: white 0px -1px 0px;
+	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#BABABA), color-stop(0.98, #E6E6E6), to(white));	
+}
+
+.Button.Back {
+	max-width:60px;
+	margin-left:auto;
+	margin-right:10px;
+}
+
+.Button.Disabled {
+	color: gray;
+}
+
+/******************* Radio Button *************/
+.Radio {
+	font-weight: bold;
+	display: inline-block;
+	text-align: center;
+	text-shadow: white 0px 0.08em 0px;
+	padding: 5px 0px;
+	min-width:20%;
+	border: 0.1em solid #A6A6A6;
+	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(white), color-stop(0.02, #E6E6E6), to(#BABABA));	
+}
+
+.Radio.Selected {
+	border: 1px solid #FFBC19;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFDC52), to(#FFBC19));	
+}
+
+.RadioButtonGroup > .Radio:first-child {
+	border-bottom-left-radius: 0.6em 0.6em;
+	border-top-left-radius: 0.6em 0.6em;
+}
+
+.RadioButtonGroup > .Radio:last-child {
+	border-bottom-right-radius: 0.6em 0.6em;
+	border-top-right-radius: 0.6em 0.6em;
+}
+
+/********** Rounded Panel **********/
+.Rounded {
+	-webkit-box-shadow: 0px 0px 12px black;
+	border-radius: 10px;
+	/*background:#b8c7ab;*/
+	background:#B5B38C;
+	width:100%;
+}
+
+.Rounded td {
+	border-bottom:1px solid #888;
+	border-top:1px solid #eee;
+	height:30px;
+	padding: 0px 5px 0px 5px;
+	vertical-align:middle !important;
+} 
+
+.Rounded tbody tr:first-child td {
+	border-top:0px;
+} 
+
+.Rounded tbody tr:last-child td {
+	border-bottom:0px;
+} 
+
+/** Tab **/
+
+.Tab {
+	width:100%;
+	height:100%;
+}
+
+.Tab .Table{
+	width:100%;
+	height:100%;
+	border-spacing: 0px 0px;
+	border-width:0px;
+	margin:0px;
+	padding:0px;
+	table-layout:fixed;
+}
+
+.Tab td.Header {
+	text-align:center;
+	border-left: 1px solid gray;
+	border-right: 5px solid black;
+	color: #7E8D9B;
+	background-image: 
+	-webkit-gradient(linear, 0% 0, 0% 100%, from(#21272C), color-stop(0.1, #2D343A), 
+					color-stop(0.65, #384148), to(#39424A));
+}
+
+.Tab td.Header.Selected {
+	color:black;
+/*	background-image: 
+	-webkit-gradient(linear, 0% 0, 0% 100%, from(blue), to(#242a30));
+*/	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#BDBDBD));
+}
+
+.Tab td.Header.Selected .gwt-Image {
+	opacity: 1;
+}
+
+.Tab td.Header .gwt-Image {
+	opacity: 0.5;
+}
+
+.Tab td.Header div {
+	font-size: 12px;	
+}
+
+.Tab td.Content {
+	border-top: 2px solid #BDBDBD;
+	background: #242a30; /*need this*/
+}
+
+.Tab td.Content > div {	
+	width:100%;
+	height:100%; 
+	overflow:auto;
+   }
+
+.Tab > table > tbody > tr:last-child {
+	height:100%;
+} 
+
+
+/* Accordion */
+
+
+.Accordion .Stack {
+    -webkit-transition-property: height;
+    -webkit-transition-duration: 50ms;
+    -webkit-transition-timing-function: ease;
+	overflow: hidden;
+}
+
+.Accordion .Stack > .Header {
+	cursor: pointer;
+	width:100%; 
+	height:48px;
+	line-height:48px;
+	white-space:no-wrap;
+	padding:0 10px 0 40px;
+	border-bottom:1px solid #888;
+	border-top:1px solid #eee;
+	font-weight:bold;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);	
+}
+
+
+.Accordion .Stack:first-child > .Header {
+	border-top:0px;
+}
+
+.Accordion .Stack:last-child > .Header {
+	border-bottom:0px;
+}
+
+.Accordion > .Stack > .Content {
+	width:100%;
+	padding:10px;
+	background:#e3e3e3;
+}
+
+/**************** Toast ****************/
+.Toast {
+	color:white;
+	font:bold;
+	background: #444;
+	height:40px;
+	width:300px;
+	margin:auto;
+	top:50%;
+	border: 1px solid #555;
+	-webkit-box-shadow: 0px 0px 15px black;
+	display: -webkit-box;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	border-radius: 0.2em;
+	position:relative;
+}
+
+/**************** Progress Dialog ****************/
+.ProgressDialog {
+	color:white;
+	font:bold;
+	background: #444;
+	height:80px;
+	width:300px;
+	margin:auto;
+	top:50%;
+	border: 1px solid #555;
+	-webkit-box-shadow: 0px 0px 15px black;
+	display: -webkit-box;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	border-radius: 0.2em;
+	position:relative;
+}

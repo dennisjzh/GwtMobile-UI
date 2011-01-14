@@ -1,0 +1,100 @@
+/*
+ * Copyright (c) 2010 Zhihua (Dennis) Jiang
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+.fade {
+    -webkit-transition-property: opacity;
+    -webkit-transition-duration: 5s;
+    -webkit-transition-timing-function: ease-out;
+    position: absolute;
+}
+
+.top {
+	-webkit-transform: translate3d(0, 0, 0);
+}
+
+.scroll {
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-timing-function: cubic-bezier(0,0,0.25,1);
+}
+
+
+/* Slide */
+
+.slide {
+/*    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 100ms;
+    -webkit-transition-timing-function: linear;
+*/    position: absolute;
+}
+
+/*.slide.in, .slide.out.reverse.start {
+    -webkit-transform: translate3d(320px, 0, 0);
+}
+
+.slide.out.start, .slide.in.reverse {
+    -webkit-transform: translate3d(-320px, 0, 0);
+}
+
+.slide.out, .slide.out.reverse, .slide.in.start, .slide.in.reverse.start {
+    -webkit-transform: translate3d(0, 0, 0);
+}
+*/
+
+/*
+.in, .out {
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-duration: 200ms;
+    position: absolute;
+}
+
+.slide.in {
+	-webkit-animation-name: slideinfromright;
+	z-index: 1;
+}
+
+.slide.out {
+	-webkit-animation-name: slideouttoleft;
+}
+
+.slide.in.reverse {
+	-webkit-animation-name: slideinfromleft;
+	z-index: 1;
+}
+
+.slide.out.reverse {
+	-webkit-animation-name: slideouttoright;
+}
+
+@-webkit-keyframes slideinfromright {
+    from { -webkit-transform: translate3d(100%, 0, 0); }
+    to { -webkit-transform: translate3d(0, 0, 0); }
+}
+
+@-webkit-keyframes slideinfromleft {
+    from { -webkit-transform: translate3d(-100%, 0, 0); }
+    to { -webkit-transform: translate3d(0, 0, 0); }
+}
+
+@-webkit-keyframes slideouttoleft {
+    from { -webkit-transform: translate3d(0, 0, 0); }
+    to { -webkit-transform: translate3d(-100%, 0, 0); }
+}
+
+@-webkit-keyframes slideouttoright {
+    from { -webkit-transform: translate3d(0, 0, 0); }
+    to { -webkit-transform: translate3d(100%, 0, 0); }
+}
+*/
