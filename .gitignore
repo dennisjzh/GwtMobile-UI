@@ -1,4 +1,5 @@
 lib
 classes
 *~
+war/KitchenSink
 .gwt-tmp
