@@ -1,10 +1,15 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
 	<ui:style>
 		
 	</ui:style>
 	<g:HTMLPanel>
-	Hellow GWT Mobile UI!
+		<m:HeaderPanel>
+			<m:BackButton/>
+			<g:Label>Hello GWT Mobile UI!</g:Label>			
+			<m:Button>Next</m:Button>
+		</m:HeaderPanel>	
 	</g:HTMLPanel>
 </ui:UiBinder> 

@@ -31,6 +31,7 @@ public class Button extends HTML implements DragEventsHandler{
         setStyleName("Button");
     }
     
+  //TODO: is this method used?
     public Button(String caption, ClickHandler handler) {
         this();
         setHTML(caption);
