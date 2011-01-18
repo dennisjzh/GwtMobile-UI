@@ -16,6 +16,8 @@
 
 package com.gwtmobile.ui.client.page;
 
+import com.google.gwt.dom.client.Style;
+import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
@@ -55,6 +57,9 @@ public abstract class Page extends SimplePanel implements EventListener {
 	private void fillScreen(Widget w) {
 		w.setWidth("100%");
 		w.setHeight("100%");
+		Style style = w.getElement().getStyle();
+		style.setPosition(Position.RELATIVE);
+		style.setZIndex(0);
 	}
 
 	protected void registerTransitionEndEvent() {
