@@ -33,6 +33,11 @@ html {
 	z-index: 1;	
 }
 
+/* needed to get around the android browser bug when scrolling, causing controls to disapear.*/
+.Header * {
+	z-index: 1;
+}
+
 /* TODO: fix me! */
 .Header > div.gwt-Label {
 	font-weight: bold;
