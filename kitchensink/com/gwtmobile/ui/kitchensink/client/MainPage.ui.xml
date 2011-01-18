@@ -11,7 +11,7 @@
 			<m:Button>Next</m:Button>
 		</m:HeaderPanel>
 		<m:Scroller>
-			<m:ListPanel styleName="Rounded">
+			<m:ListPanel ui:field="list" styleName="Rounded">
 				<g:Label>Hello GWT Mobile UI!</g:Label>			
 				<g:Label>Hello GWT Mobile UI!</g:Label>			
 				<g:Label>Hello GWT Mobile UI!</g:Label>			
