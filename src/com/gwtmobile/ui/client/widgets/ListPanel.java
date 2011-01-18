@@ -23,7 +23,6 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.event.SelectionChangedHandler;
 import com.gwtmobile.ui.client.utils.Utils;
@@ -40,21 +39,17 @@ public class ListPanel extends FlowPanel implements ClickHandler{
 
 
     @Override
-    //TODO: click event needs rework, base class changed.
     public void onClick(ClickEvent e) {
         EventTarget target = e.getNativeEvent().getEventTarget();
-        Element tr = Element.as(target);
-        Utils.Console(tr.getNodeName());
-        while (!tr.getNodeName().toUpperCase().equals("TR") || 
-                tr.getParentElement().getParentElement() != this.getElement()) {
-            tr = tr.getParentElement();
-            if (tr == null) {
-                Utils.Console("ListPanel onClick: tr not found");
-                return;
-            }
+        Element div = Element.as(target);
+        if (div == this.getElement()) {
+        	Utils.Console("Click on working? " + target.toString());
+        	return;
         }
-        Element tbody = tr.getParentElement();
-        int index = DOM.getChildIndex((com.google.gwt.user.client.Element)tbody, (com.google.gwt.user.client.Element)tr);
+        while (div.getParentElement() != this.getElement()) {
+            div = div.getParentElement();
+        }
+        int index = DOM.getChildIndex((com.google.gwt.user.client.Element)this.getElement(), (com.google.gwt.user.client.Element)div);
         Utils.Console(index + "");
         SelectionChangedEvent selectionChangedEvent = new SelectionChangedEvent(index, target);
         this.fireEvent(selectionChangedEvent);
