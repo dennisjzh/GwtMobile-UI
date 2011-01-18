@@ -3,13 +3,22 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
 	<ui:style>
-		
 	</ui:style>
 	<g:HTMLPanel>
 		<m:HeaderPanel>
 			<m:BackButton/>
 			<g:Label>Hello GWT Mobile UI!</g:Label>			
 			<m:Button>Next</m:Button>
-		</m:HeaderPanel>	
-	</g:HTMLPanel>
+		</m:HeaderPanel>
+		<m:Scroller>
+			<m:ListPanel styleName="Rounded">
+				<g:Label>Hello GWT Mobile UI!</g:Label>			
+				<g:Label>Hello GWT Mobile UI!</g:Label>			
+				<g:Label>Hello GWT Mobile UI!</g:Label>			
+				<g:Label>Hello GWT Mobile UI!</g:Label>			
+				<g:Label>Hello GWT Mobile UI!</g:Label>							
+			</m:ListPanel>
+		</m:Scroller>
+		
+	</g:HTMLPanel>	
 </ui:UiBinder> 

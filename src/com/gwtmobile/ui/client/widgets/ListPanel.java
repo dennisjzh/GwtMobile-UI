@@ -22,12 +22,13 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.event.SelectionChangedHandler;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public class ListPanel extends VerticalPanel implements ClickHandler{
+public class ListPanel extends FlowPanel implements ClickHandler{
 
     public ListPanel() { 
         addDomHandler(this, ClickEvent.getType());
@@ -39,6 +40,7 @@ public class ListPanel extends VerticalPanel implements ClickHandler{
 
 
     @Override
+    //TODO: click event needs rework, base class changed.
     public void onClick(ClickEvent e) {
         EventTarget target = e.getNativeEvent().getEventTarget();
         Element tr = Element.as(target);
