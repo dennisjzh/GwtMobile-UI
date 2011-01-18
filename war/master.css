@@ -21,7 +21,6 @@ html {
 
 .Header {
 	position:relative;
-	z-index: 0;
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
 	-webkit-box-align: center;
@@ -30,7 +29,8 @@ html {
 	margin-bottom: 0.5em;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1e1f21), color-stop(0.98, #272729), color-stop(0.98, black), to(black));
 	-webkit-box-shadow: 0px 0px 12px black;
-	text-shadow: black 0.1em 0.1em 0.1em;	
+	text-shadow: black 0.1em 0.1em 0.1em;
+	z-index: 1;	
 }
 
 /* TODO: fix me! */
@@ -52,28 +52,31 @@ html {
 	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0.1em 0.1em 0.1em;
 }
 
-.Button.Pressed {
+.Button.Pressed, .BackButton.Pressed > span.Button {
 	text-shadow: darkgreen 0 -0.1em 0.1em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
 }
 
-.Button.Back {
+.BackButton {
 	position: relative;
-	padding-left: 0;
 	margin-left: 0.8em;
+}
+
+.BackButton > span.Button {
+	padding-left: 0;
 	-webkit-border-top-left-radius: 0;
 	-webkit-border-bottom-left-radius: 0;
 	border-left: 0 !important;
 }
 
-.Button.Back > span.Pointer {
+.BackButton > span.Pointer {
+	position: absolute;
 	display: block;
 	height: 1.3em;
 	width: 1.3em;
-	position: absolute;
 	left: -0.7em;
-	top: 0.24em;
+	top: 0.28em;
 	border-top: 0;
 	border-right: 0;
 	background-image: -webkit-gradient(linear, left top, right bottom, from(gray), color-stop(0.5, #1d1d1d), color-stop(0.51, #000), to(#000));
@@ -83,7 +86,7 @@ html {
 	z-index: -1;
 }
 
-.Button.Back.Pressed > span.Pointer {
+.BackButton.Pressed > span.Pointer {
 	background: -webkit-gradient(linear, left top, right bottom, 
 		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
 }
@@ -101,7 +104,6 @@ html {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
 	width:100%;
 	position:relative;
-	z-index: -1;
 }
 
 .Rounded > div {

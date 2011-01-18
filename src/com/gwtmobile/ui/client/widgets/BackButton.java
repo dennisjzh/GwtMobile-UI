@@ -27,12 +27,12 @@ public class BackButton extends Button implements ClickHandler {
     public BackButton() {
         setHTML("Back");
         this.addClickHandler(this);
-        addStyleName("Back");
+        setStyleName("BackButton");
     }
     
     @Override
     public void setHTML(String html) {
-    	super.setHTML("<span class=\"Pointer\"></span>" + html);
+    	super.setHTML("<span class=\"Pointer\"></span>" + "<span class=\"Button\">" + html + "</span>");
     }
     
     public void setReturnParameter(Object parameter) {
