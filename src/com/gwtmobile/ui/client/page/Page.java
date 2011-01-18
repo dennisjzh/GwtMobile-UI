@@ -23,6 +23,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.CSS;
 import com.gwtmobile.ui.client.utils.Utils;
 
@@ -30,8 +31,7 @@ public abstract class Page extends SimplePanel implements EventListener {
 
     private boolean isInitialLoad = true;
     public Page() {
-//        setWidth("100%");
-//        setHeight("100%");
+    	//TODO: fixed animation?
         setStyleName(CSS.Transitions.slide());
     }
     
@@ -43,7 +43,19 @@ public abstract class Page extends SimplePanel implements EventListener {
         }
     }
     
-	protected void onInitialLoad() {}
+	protected void onInitialLoad() {
+	}
+	
+	@Override
+	public void setWidget(Widget w) {
+		super.setWidget(w);
+		fillScreen(w);
+	}
+	
+	private void fillScreen(Widget w) {
+		w.setWidth("100%");
+		w.setHeight("100%");
+	}
 
 	protected void registerTransitionEndEvent() {
 	    Utils.Console("******** T event registered for " + this.getClass().toString());
