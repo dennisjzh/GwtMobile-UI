@@ -17,6 +17,8 @@
 package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.CSS;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
@@ -25,7 +27,7 @@ import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 
 //TODO: change base to WidgetBase?
-public class Scroller extends com.google.gwt.user.client.ui.ScrollPanel 
+public class Scroller extends FlowPanel 
 implements  DragEventsHandler, SwipeEventsHandler {
 
     private boolean _isInitialLoad = true;
@@ -34,12 +36,17 @@ implements  DragEventsHandler, SwipeEventsHandler {
 	public void onLoad() {
 	    if (_isInitialLoad) {
 	        _isInitialLoad = false;
-	        getWidget().addStyleName(CSS.Transitions.scroll());     
+	        getWidget().addStyleName(CSS.Transitions.scroll());
+	        setHeight("100%");
+	        setWidth("100%");
 	    }
         DragController.get().addDragEventsHandler(this);
         DragController.get().addSwipeEventHandler(this);
 	}
 	
+    private Widget getWidget() {
+    	return getWidget(0);
+    }
 	@Override
 	public void onUnload() {
         DragController.get().removeDragEventsHandler(this);
