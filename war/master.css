@@ -50,7 +50,7 @@ html {
 	display: inline-block;
 	padding: 0.3em 0.5em 0.5em 0.5em;
 	-webkit-border-radius: 0.4em;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(gray), color-stop(0.5, #1d1d1d), color-stop(0.51, #000), to(#000));
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#838383), color-stop(0.5, #444), color-stop(0.5, #303030), to(#333));
 	border: solid 1px rgba(79, 79, 79, 0.75);
 	height:1em;	
 	text-shadow: rgba(0, 0, 0, 1) 0 -0.1em 0.1em;
@@ -84,7 +84,7 @@ html {
 	top: 0.28em;
 	border-top: 0;
 	border-right: 0;
-	background-image: -webkit-gradient(linear, left top, right bottom, from(gray), color-stop(0.5, #1d1d1d), color-stop(0.51, #000), to(#000));
+	background-image: -webkit-gradient(linear, left top, right bottom, from(#838383), color-stop(0.5, #444), color-stop(0.5, #303030), to(#333));
 	border-left: solid 1px rgba(79, 79, 79, 0.75);
 	border-bottom: solid 1px rgba(79, 79, 79, 0.75);
 	-webkit-transform: rotate(45deg);
