@@ -33,7 +33,7 @@ html {
 	z-index: 1;	
 }
 
-/* needed to get around the android browser bug when scrolling, causing controls to disapear.*/
+/* needed this to get around the android browser bug when scroll, causing controls to disapear.*/
 .Header * {
 	z-index: 1;
 }
@@ -100,28 +100,60 @@ html {
 	color: gray;
 }
 
-/********** Rounded Panel **********/
-.Rounded {
+/********** List Panel **********/
+.List {
+	position:relative;
 	display: -webkit-box;
 	-webkit-box-orient: vertical; 
-	-webkit-box-shadow: rgba(0, 0, 0, 1) 0em 0em 0.5em;
-	border-radius: 0.6em;
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
 	width:100%;
-	position:relative;
 }
 
-.Rounded > div {
+.List > div {
 	border-bottom:1px solid #333333;
 	border-top:1px solid #666666;
 	padding: 0.5em 0.5em 0.5em 0.5em;
 	vertical-align:middle !important;
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-pack: justify;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
 } 
 
-.Rounded > div:first-child {
+.List > div:first-child {
 	border-top:0px;
+	border-radius: 0.6em 0.6em 0 0;
+	-webkit-box-shadow: rgba(0, 0, 0, 1) 0em 0em 0.5em;
 } 
 
-.Rounded > div:last-child {
+.List > div:last-child {
 	border-bottom:0px;
+	border-radius: 0 0 0.6em 0.6em;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0em 0.2em 0.2em;
 } 
+
+.List > div.Pressed {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
+		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
+}
+/********** Chevron (arrow) **********/
+.Chevron {
+	position: relative;
+	margin-right: 0.5em;
+}
+
+.Chevron > span {
+	position: absolute;
+	width: 0.3em;
+	height: 0.8em;
+	background: gray;	
+}
+
+.Chevron > span:first-child {
+	-webkit-transform: rotate(-45deg);
+}
+
+.Chevron > span:last-child {
+	-webkit-transform: rotate(45deg);
+	top: 0.4em;	
+}
+
