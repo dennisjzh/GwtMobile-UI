@@ -26,7 +26,7 @@ public class MainPage extends Page {
 
     @UiHandler("list")
 	void onListSelectionChanged(SelectionChangedEvent e) {
-    	Window.alert(e.getSelection() + "");
+    	//Window.alert(e.getSelection() + "");
     }
 
 }

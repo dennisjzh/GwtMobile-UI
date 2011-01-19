@@ -9,7 +9,7 @@ public class KitchenSink implements EntryPoint {
 	MainPage mainPage = new MainPage();
 	
 	@Override
-	public void onModuleLoad() {		
+	public void onModuleLoad() {
         RootLayoutPanel.get().add(mainPage);
         PageHistory.add(mainPage);
 	}
