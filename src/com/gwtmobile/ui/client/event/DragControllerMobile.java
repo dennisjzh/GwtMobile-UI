@@ -69,6 +69,7 @@ public class DragControllerMobile extends DragController {
         }
         _touchMoving = false;
         Utils.Console("TouchStart" + count++);
+        //FIXME: for multi-touch platforms.
 		onStart(e, new Point(e.touches().get(0).getClientX(), e.touches().get(0).getClientY()));
 	}
 
