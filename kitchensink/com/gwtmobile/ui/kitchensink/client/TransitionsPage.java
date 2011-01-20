@@ -9,17 +9,17 @@ import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.widgets.ListPanel;
 
-public class TransactionsPage extends Page {
+public class TransitionsPage extends Page {
 
 	@UiField ListPanel list;
 	
 	private static AnimationPageUiBinder uiBinder = GWT
 			.create(AnimationPageUiBinder.class);
 
-	interface AnimationPageUiBinder extends UiBinder<Widget, TransactionsPage> {
+	interface AnimationPageUiBinder extends UiBinder<Widget, TransitionsPage> {
 	}
 
-	public TransactionsPage() {
+	public TransitionsPage() {
 		setWidget(uiBinder.createAndBindUi(this));
 	}
 

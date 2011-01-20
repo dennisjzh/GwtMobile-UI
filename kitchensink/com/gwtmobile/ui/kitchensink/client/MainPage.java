@@ -27,8 +27,8 @@ public class MainPage extends Page {
 	void onListSelectionChanged(SelectionChangedEvent e) {
     	switch (e.getSelection()) {
     	case 0:
-    		TransactionsPage animations = new TransactionsPage();
-    		this.goTo(animations);
+    		TransitionsPage transitions = new TransitionsPage();
+    		this.goTo(transitions);
     	}
     }
 
