@@ -9,27 +9,23 @@ import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.widgets.ListPanel;
 
-public class MainPage extends Page {
+public class TransactionsPage extends Page {
 
 	@UiField ListPanel list;
 	
-	private static MainPageUiBinder uiBinder = GWT
-			.create(MainPageUiBinder.class);
+	private static AnimationPageUiBinder uiBinder = GWT
+			.create(AnimationPageUiBinder.class);
 
-	interface MainPageUiBinder extends UiBinder<Widget, MainPage> {
+	interface AnimationPageUiBinder extends UiBinder<Widget, TransactionsPage> {
 	}
 
-	public MainPage() {
+	public TransactionsPage() {
 		setWidget(uiBinder.createAndBindUi(this));
 	}
 
     @UiHandler("list")
 	void onListSelectionChanged(SelectionChangedEvent e) {
-    	switch (e.getSelection()) {
-    	case 0:
-    		TransactionsPage animations = new TransactionsPage();
-    		this.goTo(animations);
-    	}
+    	//Window.alert(e.getSelection() + "");
     }
 
 }

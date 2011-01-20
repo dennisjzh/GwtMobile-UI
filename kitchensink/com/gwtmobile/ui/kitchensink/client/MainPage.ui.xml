@@ -5,10 +5,8 @@
 	<ui:style>
 	</ui:style>
 	<g:HTMLPanel>
-		<m:HeaderPanel>
-			<m:BackButton/>
+		<m:HeaderPanel rightButton="menu">
 			<g:Label>Hello GWT Mobile UI!</g:Label>			
-			<m:Button>Next</m:Button>
 		</m:HeaderPanel>
 		<m:Scroller>
 			<m:ListPanel ui:field="list" showArrow="true">
