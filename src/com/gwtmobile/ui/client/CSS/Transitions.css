@@ -34,10 +34,10 @@
 /* Slide */
 
 .slide {
-/*    -webkit-transition-property: -webkit-transform;
-    -webkit-transition-duration: 100ms;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 200ms;
     -webkit-transition-timing-function: linear;
-*/    position: absolute;
+    position: absolute;
 }
 
 /*.slide.in, .slide.out.reverse.start {

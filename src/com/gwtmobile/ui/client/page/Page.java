@@ -16,8 +16,6 @@
 
 package com.gwtmobile.ui.client.page;
 
-import com.google.gwt.dom.client.Style;
-import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
@@ -83,7 +81,7 @@ public abstract class Page extends SimplePanel implements EventListener {
                     to.onNavigateTo();
                 }
             };
-            timer.schedule(10);
+            timer.schedule(1);
 	    }
 	    else {             //goback
 	        from = PageHistory.current();
@@ -96,7 +94,7 @@ public abstract class Page extends SimplePanel implements EventListener {
                     to.onNavigateBack(from, PageHistory.getParameter());
                 }
             };
-            timer.schedule(10);
+            timer.schedule(1);
 	    }       
 	}
 		
@@ -111,17 +109,16 @@ public abstract class Page extends SimplePanel implements EventListener {
 	    toPage.setTranslateX(toPage.getElement(), Window.getClientWidth());
 		RootLayoutPanel.get().add(toPage);
 		PageHistory.add(toPage);
-        //toPage.registerTransitionEndEvent();
+        toPage.registerTransitionEndEvent();
         Utils.Console(Window.getClientWidth() + " screen width.");
-//		Timer timer = new Timer() {
-//            @Override
-//            public void run() {
+		new Timer() {
+            @Override
+            public void run() {
                 fromPage.setTranslateX(fromPage.getElement(), 0 - Window.getClientWidth());
                 toPage.setTranslateX(toPage.getElement(), 0);
-                toPage.onTransitionEnd();
-//            }
-//		};
-//		timer.schedule(1);
+                //toPage.onTransitionEnd();
+            }
+		}.schedule(1);
 	}
 
 	public void goBack(Object parameter) {
@@ -134,16 +131,15 @@ public abstract class Page extends SimplePanel implements EventListener {
 		}
         toPage.setTranslateX(toPage.getElement(), 0 - Window.getClientWidth());
 		RootLayoutPanel.get().add(toPage);
-//        toPage.registerTransitionEndEvent();
-//        Timer timer = new Timer() {
-//            @Override
-//            public void run() {
+        toPage.registerTransitionEndEvent();
+        new Timer() {
+            @Override
+            public void run() {
                 fromPage.setTranslateX(fromPage.getElement(), Window.getClientWidth());
                 toPage.setTranslateX(toPage.getElement(), 0);
-                toPage.onTransitionEnd();
-//            }
-//        };
-//        timer.schedule(1);
+                //toPage.onTransitionEnd();
+            }
+        }.schedule(1);
 	}
 	
 	private native void setTranslateX(Element ele, double value) /*-{
