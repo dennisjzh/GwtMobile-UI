@@ -22,7 +22,6 @@ import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
 
-//TODO: base should be WidgeBase?
 public class Button extends HTML implements DragEventsHandler{
 
 	private boolean _isDisabled = false;
@@ -31,7 +30,6 @@ public class Button extends HTML implements DragEventsHandler{
         setStyleName("Button");
     }
     
-  //TODO: is this method used?
     public Button(String caption, ClickHandler handler) {
         this();
         setHTML(caption);
