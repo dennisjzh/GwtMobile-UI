@@ -14,9 +14,18 @@ body {
 
 html {
 	color: white;
-	font: normal 1.6em Helvetica, Arial, sans-serif; /* desktop:1.6em; androidwvga:2.4em */
+	font: normal 2.4em Helvetica, Arial, sans-serif; /* desktop:1.6em; androidwvga:2.4em */
 }
 
+/********************* Page ****************/
+.Page {
+	position:relative;
+	z-index: 0;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	height: 100%;
+	width: 100%;
+}
 /********************* Header ****************/
 
 .Header {
@@ -98,6 +107,11 @@ html {
 
 .Button.Disabled {
 	color: gray;
+}
+
+/********** Scroller **********/
+.Scroller {
+	-webkit-box-flex: 10;
 }
 
 /********** List Panel **********/

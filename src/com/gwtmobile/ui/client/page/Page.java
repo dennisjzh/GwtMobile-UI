@@ -55,11 +55,7 @@ public abstract class Page extends SimplePanel implements EventListener {
 	}
 	
 	private void fillScreen(Widget w) {
-		w.setWidth("100%");
-		w.setHeight("100%");
-		Style style = w.getElement().getStyle();
-		style.setPosition(Position.RELATIVE);
-		style.setZIndex(0);
+		w.addStyleName("Page");
 	}
 
 	protected void registerTransitionEndEvent() {
