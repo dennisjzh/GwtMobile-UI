@@ -13,10 +13,10 @@ public class TransitionsPage extends Page {
 
 	@UiField ListPanel list;
 	
-	private static AnimationPageUiBinder uiBinder = GWT
-			.create(AnimationPageUiBinder.class);
+	private static TransitionPageUiBinder uiBinder = GWT
+			.create(TransitionPageUiBinder.class);
 
-	interface AnimationPageUiBinder extends UiBinder<Widget, TransitionsPage> {
+	interface TransitionPageUiBinder extends UiBinder<Widget, TransitionsPage> {
 	}
 
 	public TransitionsPage() {
