@@ -21,6 +21,7 @@ import java.util.Iterator;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -44,6 +45,12 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
     
     @Override
     protected void onInitialLoad() {
+    }
+    
+    public void setCaption(String caption) {
+    	FlowPanel contents = ((FlowPanel)((FlowPanel)getWidget()).getWidget(1));
+    	contents.clear();
+    	contents.add(new HTML(caption));
     }
     
     public void setLeftButton(String buttonName) {

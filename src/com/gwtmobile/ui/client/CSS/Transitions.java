@@ -21,13 +21,11 @@ import com.google.gwt.resources.client.CssResource;
 public interface Transitions extends CssResource {
 
 	String slide();
-
+	String slideup();
+	String slidedown();
+	String fade();
 	String in();
-
 	String out();
-
 	String reverse();
-
 	String start();
-	
 }

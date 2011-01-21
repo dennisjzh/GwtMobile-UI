@@ -16,7 +16,6 @@
 
 package com.gwtmobile.ui.client.page;
 
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.Timer;
@@ -61,9 +60,10 @@ public abstract class Page extends Composite implements EventListener {
 	
 	protected void onTransitionEnd() {
 	    final Page to, from;
-	    if (PageHistory.current() == Page.this) {  //goto
-	        from = PageHistory.from();
-	        to = PageHistory.current();
+	    if (PageHistory.current() != Page.this) {  //goto
+	        from = PageHistory.current();
+	        to = this;
+	        PageHistory.add(to);
 	        RootLayoutPanel.get().remove(from);
 	        to.getTransition().remove(from, to);
 	        //TODO: change to use scheduler deferred command.
@@ -102,7 +102,7 @@ public abstract class Page extends Composite implements EventListener {
     	toPage.setTransition(transition);
     	transition.prepare(fromPage, toPage, false);
 		RootLayoutPanel.get().add(toPage);
-		PageHistory.add(toPage);
+		//PageHistory.add(toPage);
         toPage.registerTransitionEndEvent();
 		new Timer() {
             @Override
@@ -123,7 +123,7 @@ public abstract class Page extends Composite implements EventListener {
 		final Transition transition = fromPage.getTransition();
     	transition.prepare(fromPage, toPage, true);
 		RootLayoutPanel.get().add(toPage);
-        toPage.registerTransitionEndEvent();
+        fromPage.registerTransitionEndEvent();
         new Timer() {
             @Override
             public void run() {

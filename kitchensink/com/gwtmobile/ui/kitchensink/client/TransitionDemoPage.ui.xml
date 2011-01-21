@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
+	<ui:style>
+	</ui:style>
+	<g:HTMLPanel>
+		<m:HeaderPanel leftButton="Back" ui:field="header">
+			<g:Label>Transition</g:Label>			
+		</m:HeaderPanel>
+		<m:Scroller>
+			<m:ListPanel ui:field="list" showArrow="false">
+				<g:Label>Hope it is smooth</g:Label>			
+				<g:Label>Hope it is smooth</g:Label>			
+				<g:Label>Hope it is smooth</g:Label>			
+				<g:Label>Hope it is smooth</g:Label>			
+				<g:Label>Hope it is smooth</g:Label>			
+				<g:Label>Hope it is smooth</g:Label>			
+				<g:Label>Hope it is smooth</g:Label>			
+				<g:Label>Hope it is smooth</g:Label>			
+				<g:Label>Hope it is smooth</g:Label>			
+				<g:Label>Hope it is smooth</g:Label>			
+				<g:Label>Hope it is smooth</g:Label>			
+				<g:Label>Hope it is smooth</g:Label>			
+			</m:ListPanel>
+		</m:Scroller>
+		
+	</g:HTMLPanel>	
+</ui:UiBinder> 

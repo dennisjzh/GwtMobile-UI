@@ -14,11 +14,9 @@
  * the License.
  */
 
-/* Slide */
-
-.slide {
+.slide, .slideup, .slidedown {
     -webkit-transition-property: -webkit-transform;
-    -webkit-transition-duration: 200ms;
+    -webkit-transition-duration: 250ms;
     -webkit-transition-timing-function: linear;
     position: absolute;
 }
@@ -33,4 +31,49 @@
 
 .slide.out, .slide.out.reverse, .slide.in.start, .slide.in.reverse.start {
     -webkit-transform: translate3d(0, 0, 0);
+}
+
+.slideup.in, .slideup.out.reverse.start {
+    -webkit-transform: translate3d(0, 100%, 0);
+	z-index: 1;
+}
+
+.slideup.out, .slideup.out.start, .slideup.in.reverse, .slideup.in.reverse.start {
+    -webkit-transform: translate3d(0, 0, 0);
+	z-index: 0;
+}
+
+.slideup.out.reverse, .slideup.in.start {
+    -webkit-transform: translate3d(0, 0, 0);
+	z-index: 1;
+}
+
+.slidedown.in, .slidedown.out.reverse.start {
+    -webkit-transform: translate3d(0, -100%, 0);
+	z-index: 1;
+}
+
+.slidedown.out, .slidedown.out.start, .slidedown.in.reverse, .slidedown.in.reverse.start {
+    -webkit-transform: translate3d(0, 0, 0);
+	z-index: 0;
+}
+
+.slidedown.out.reverse, .slidedown.in.start {
+    -webkit-transform: translate3d(0, 0, 0);
+	z-index: 1;
+}
+
+.fade {
+    -webkit-transition-property: opacity;
+    -webkit-transition-duration: 250ms;
+    -webkit-transition-timing-function: ease-out;
+    position: absolute;
+}
+
+.fade.in, .fade.in.reverse, .fade.out.start, .fade.out.reverse.start {
+    opacity: 0;
+}
+
+.fade.out, .fade.out.reverse, .fade.in.start, .fade.in.reverse.start {
+    opacity: 1;
 }

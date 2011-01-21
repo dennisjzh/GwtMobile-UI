@@ -6,6 +6,9 @@ public class Transition {
 	
 	String _transitionStyleName;
 	public static Transition SLIDE = new Transition(CSS.T.slide());
+	public static Transition SLIDEUP = new Transition(CSS.T.slideup());
+	public static Transition SLIDEDOWN = new Transition(CSS.T.slidedown());
+	public static Transition FADE = new Transition(CSS.T.fade());
 	
 	Transition(String transitionStyleName) {
 		_transitionStyleName = transitionStyleName;
