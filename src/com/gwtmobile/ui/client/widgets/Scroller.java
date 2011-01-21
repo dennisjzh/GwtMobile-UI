@@ -37,7 +37,6 @@ implements  DragEventsHandler, SwipeEventsHandler {
 	    if (_isInitialLoad) {
 	        _isInitialLoad = false;
 	        setStyleName("Scroller");
-	        getWidget().addStyleName(CSS.Transitions.scroll());
 	    }
         DragController.get().addDragEventsHandler(this);
         DragController.get().addSwipeEventHandler(this);

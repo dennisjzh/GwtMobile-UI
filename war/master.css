@@ -14,7 +14,7 @@ body {
 
 html {
 	color: white;
-	font: normal 2.4em Helvetica, Arial, sans-serif; /* desktop:1.6em; androidwvga:2.4em */
+	font: normal 1.6em Helvetica, Arial, sans-serif; /* desktop:1.6em; androidwvga:2.4em */
 }
 
 /********************* Page ****************/
@@ -26,6 +26,7 @@ html {
 	height: 100%;
 	width: 100%;
 }
+
 /********************* Header ****************/
 
 .Header {
@@ -50,6 +51,10 @@ html {
 /* TODO: fix me! */
 .Header > div.gwt-Label {
 	font-weight: bold;
+}
+
+.Header > div:first-child, .Header > div:last-child {
+	min-width:3em;
 }
 
 /************** Button **************/
@@ -111,6 +116,8 @@ html {
 
 /********** Scroller **********/
 .Scroller {
+	-webkit-transition-property: -webkit-transform;
+    -webkit-transition-timing-function: cubic-bezier(0,0,0.25,1);
 	-webkit-box-flex: 10;
 }
 
