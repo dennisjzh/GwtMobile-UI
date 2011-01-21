@@ -19,17 +19,21 @@ package com.gwtmobile.ui.client.page;
 import java.util.Stack;
 
 public class PageHistory {
+
 	private static Stack<Page> _history = new Stack<Page>();
-	private static Object _parameter; 
+	private static Object _returnValue; 
+	
 	public static void add(Page page) {
 		_history.push(page);
 	}
+	
 	public static Page current() {
 		if (_history.isEmpty()) {
 			return null;
 		}
 		return _history.peek();
 	}
+	
 	public static Page from() {
 		int size =_history.size();
 		if (size < 2) {
@@ -37,20 +41,24 @@ public class PageHistory {
 		}
 		return _history.elementAt(size - 2);
 	}
-    public static Page back(Object parameter) {
-        _parameter = parameter;
+    
+	public static Page back(Object returnValue) {
+        _returnValue = returnValue;
         return back();
     }
-    public static Page back() {
+    
+	public static Page back() {
         if (_history.isEmpty()) {
             return null;
         }
         return _history.pop();
     }
-    public static void setParameter(Object parameter) {
-        _parameter = parameter;
+    
+	public static void setReturnValue(Object returnValue) {
+        _returnValue = returnValue;
     }
-    public static Object getParameter() {
-        return _parameter;
+    
+	public static Object getReturnValue() {
+        return _returnValue;
     }
 }
