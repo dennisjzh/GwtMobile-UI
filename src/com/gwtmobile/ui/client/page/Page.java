@@ -20,44 +20,34 @@ import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtmobile.ui.client.CSS.CSS;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public abstract class Page extends SimplePanel implements EventListener {
+public abstract class Page extends Composite implements EventListener {
 
-    private boolean isInitialLoad = true;
-    public Page() {
-    	//TODO: fixed animation?
-        setStyleName(CSS.Transitions.slide());
+    private boolean _isInitialLoad = true;
+    private Transition _transition;
+    
+    @Override
+    protected void initWidget(Widget widget) {
+    	super.initWidget(widget);    	
+		setStyleName("Page");    
     }
     
     @Override
     public void onLoad() {
-        if (isInitialLoad) {
+        if (_isInitialLoad) {
             onInitialLoad();
-            isInitialLoad = false;
+            _isInitialLoad = false;
         }
     }
     
 	protected void onInitialLoad() {
 	}
 	
-	@Override
-	public void setWidget(Widget w) {
-		super.setWidget(w);
-		fillScreen(w);
-	}
-	
-	private void fillScreen(Widget w) {
-		w.addStyleName("Page");
-	}
-
 	protected void registerTransitionEndEvent() {
-	    Utils.Console("******** T event registered for " + this.getClass().toString());
 		Utils.addEventListenerOnce(this.getElement(), "webkitTransitionEnd", false, this);
 	}
 	
@@ -75,6 +65,8 @@ public abstract class Page extends SimplePanel implements EventListener {
 	        from = PageHistory.from();
 	        to = PageHistory.current();
 	        RootLayoutPanel.get().remove(from);
+	        to.getTransition().remove(from, to);
+	        //TODO: change to use scheduler deferred command.
 	        Timer timer = new Timer() {                
                 @Override
                 public void run() {
@@ -88,10 +80,11 @@ public abstract class Page extends SimplePanel implements EventListener {
 	        PageHistory.back();
 	        to = PageHistory.current();
 	        RootLayoutPanel.get().remove(from);
+	        from.getTransition().remove(from, to);
             Timer timer = new Timer() {                
                 @Override
                 public void run() {
-                    to.onNavigateBack(from, PageHistory.getParameter());
+                    to.onNavigateBack(from, PageHistory.getReturnValue());
                 }
             };
             timer.schedule(1);
@@ -104,47 +97,47 @@ public abstract class Page extends SimplePanel implements EventListener {
     protected void onNavigateBack(Page from, Object object) {
     }
 
-    public void goTo(final Page toPage) {
+    public void goTo(final Page toPage, final Transition transition) {
 	    final Page fromPage = this;
-	    toPage.setTranslateX(toPage.getElement(), Window.getClientWidth());
+    	toPage.setTransition(transition);
+    	transition.prepare(fromPage, toPage, false);
 		RootLayoutPanel.get().add(toPage);
 		PageHistory.add(toPage);
         toPage.registerTransitionEndEvent();
-        Utils.Console(Window.getClientWidth() + " screen width.");
 		new Timer() {
             @Override
             public void run() {
-                fromPage.setTranslateX(fromPage.getElement(), 0 - Window.getClientWidth());
-                toPage.setTranslateX(toPage.getElement(), 0);
-                //toPage.onTransitionEnd();
+            	transition.start(fromPage, toPage);
             }
-		}.schedule(1);
+		}.schedule(10);	//10ms instead of 1ms, to give iOS enough time to set the starting state.
 	}
 
-	public void goBack(Object parameter) {
+	public void goBack(Object returnValue) {
         final Page fromPage = this;
-        PageHistory.setParameter(parameter);
+        PageHistory.setReturnValue(returnValue);
         final Page toPage = PageHistory.from();
 		if (toPage == null) {
 			// exit app here.
 		    return;
 		}
-        toPage.setTranslateX(toPage.getElement(), 0 - Window.getClientWidth());
+		final Transition transition = fromPage.getTransition();
+    	transition.prepare(fromPage, toPage, true);
 		RootLayoutPanel.get().add(toPage);
         toPage.registerTransitionEndEvent();
         new Timer() {
             @Override
             public void run() {
-                fromPage.setTranslateX(fromPage.getElement(), Window.getClientWidth());
-                toPage.setTranslateX(toPage.getElement(), 0);
-                //toPage.onTransitionEnd();
+            	transition.start(fromPage, toPage);
             }
-        }.schedule(1);
+        }.schedule(10);
 	}
 	
-	private native void setTranslateX(Element ele, double value) /*-{
-       ele.style.webkitTransform = "translate3d(" + value + "px ,0px, 0px)";
-    }-*/;
-
+	void setTransition(Transition transition) {
+		_transition = transition;
+	}
+	
+	Transition getTransition() {
+		return _transition;
+	}
 	
 }

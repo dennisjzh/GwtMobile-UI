@@ -20,20 +20,14 @@ import com.google.gwt.resources.client.CssResource;
 
 public interface Transitions extends CssResource {
 
-//	String reverse();
-
-	String fade();
-
 	String slide();
 
-//	String in();
+	String in();
 
-//	String out();
-	
-	String scroll();
-	
-	String top();
-	
-//	String start();
+	String out();
+
+	String reverse();
+
+	String start();
 	
 }
