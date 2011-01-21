@@ -7,6 +7,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.page.Page;
+import com.gwtmobile.ui.client.page.Transition;
 import com.gwtmobile.ui.client.widgets.ListPanel;
 
 public class MainPage extends Page {
@@ -20,7 +21,7 @@ public class MainPage extends Page {
 	}
 
 	public MainPage() {
-		setWidget(uiBinder.createAndBindUi(this));
+		initWidget(uiBinder.createAndBindUi(this));
 	}
 
     @UiHandler("list")
@@ -28,7 +29,7 @@ public class MainPage extends Page {
     	switch (e.getSelection()) {
     	case 0:
     		TransitionsPage transitions = new TransitionsPage();
-    		this.goTo(transitions);
+    		this.goTo(transitions, Transition.SLIDE);
     	}
     }
 

@@ -20,7 +20,7 @@ public class TransitionsPage extends Page {
 	}
 
 	public TransitionsPage() {
-		setWidget(uiBinder.createAndBindUi(this));
+		initWidget(uiBinder.createAndBindUi(this));
 	}
 
     @UiHandler("list")
