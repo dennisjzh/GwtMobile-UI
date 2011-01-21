@@ -29,7 +29,7 @@ public class AccordionHeader extends HTML implements ClickHandler {
 	    
 	    //TODO: need to figure out how to deal with internal style vs external theme.
 	    setStyleName("Header");
-        addStyleName(CSS.Styles.Close());
+        addStyleName(CSS.S.Close());
 	}
 
     @Override

@@ -38,7 +38,7 @@ public class AccordionStack extends WidgetBase implements HasWidgets {
 	
 	@Override
     protected void onInitialLoad( ) {
-        if (_header.getStyleName().indexOf(CSS.Styles.Close()) > -1) {
+        if (_header.getStyleName().indexOf(CSS.S.Close()) > -1) {
             setHeight(_header.getOffsetHeight() + "px");
         }
         else {
@@ -85,8 +85,8 @@ public class AccordionStack extends WidgetBase implements HasWidgets {
     
     public void close() {
         setHeight(_header.getOffsetHeight() + "px");
-        _header.removeStyleName(CSS.Styles.Open());
-        _header.addStyleName(CSS.Styles.Close());
+        _header.removeStyleName(CSS.S.Open());
+        _header.addStyleName(CSS.S.Close());
     }
     
 //    public void open() {
@@ -97,15 +97,15 @@ public class AccordionStack extends WidgetBase implements HasWidgets {
 //    }
 
     public void toggle() {
-        if (_header.getStyleName().indexOf(CSS.Styles.Close()) > -1) {
+        if (_header.getStyleName().indexOf(CSS.S.Close()) > -1) {
             setHeight(_header.getOffsetHeight() + _content.getOffsetHeight() + "px");
-            _header.removeStyleName(CSS.Styles.Close());
-            _header.addStyleName(CSS.Styles.Open());
+            _header.removeStyleName(CSS.S.Close());
+            _header.addStyleName(CSS.S.Open());
         }
         else {
             setHeight(_header.getOffsetHeight() + "px");
-            _header.removeStyleName(CSS.Styles.Open());
-            _header.addStyleName(CSS.Styles.Close());
+            _header.removeStyleName(CSS.S.Open());
+            _header.addStyleName(CSS.S.Close());
         }        
     }
     

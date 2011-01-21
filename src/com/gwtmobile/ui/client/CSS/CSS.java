@@ -23,9 +23,9 @@ import com.google.gwt.resources.client.ImageResource;
 public interface CSS extends ClientBundle {
 	
 	public static final CSS Instance = GWT.create(CSS.class);
-    public static final Transitions Transitions = Instance.transitions();
-    public static final Styles Styles = Instance.styles();
-    public static boolean injected = Transitions.ensureInjected() && Styles.ensureInjected();
+    public static final Transitions T = Instance.transitions();
+    public static final Styles S = Instance.styles();
+    public static boolean injected = T.ensureInjected() && S.ensureInjected();
 
     @Source("Transitions.css")
     Transitions transitions();
