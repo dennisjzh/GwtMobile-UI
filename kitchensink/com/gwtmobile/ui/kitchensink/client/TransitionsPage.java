@@ -13,6 +13,7 @@ import com.gwtmobile.ui.client.widgets.ListPanel;
 public class TransitionsPage extends Page {
 
 	@UiField ListPanel list;
+	TransitionDemoPage demo = new TransitionDemoPage();
 	
 	private static TransitionPageUiBinder uiBinder = GWT
 			.create(TransitionPageUiBinder.class);
@@ -26,23 +27,26 @@ public class TransitionsPage extends Page {
 
     @UiHandler("list")
     void onListSelectionChanged(SelectionChangedEvent e) {
-    	TransitionDemoPage demo;
     	switch (e.getSelection()) {
     	case 0:
-    		demo = new TransitionDemoPage("Slide");
+    		demo.header.setCaption("Slide");
     		this.goTo(demo, Transition.SLIDE);
     		break;
     	case 1:
-    		demo = new TransitionDemoPage("Slide Up");
+    		demo.header.setCaption("Slide Up");
     		this.goTo(demo, Transition.SLIDEUP);
     		break;
     	case 2:
-    		demo = new TransitionDemoPage("Slide Down");
+    		demo.header.setCaption("Slide Down");
     		this.goTo(demo, Transition.SLIDEDOWN);
     		break;
     	case 3:
-    		demo = new TransitionDemoPage("Fade");
+    		demo.header.setCaption("Fade");
     		this.goTo(demo, Transition.FADE);
+    		break;
+    	case 4:
+    		demo.header.setCaption("Flip");
+    		this.goTo(demo, Transition.FLIP);
     		break;
     	}
     }

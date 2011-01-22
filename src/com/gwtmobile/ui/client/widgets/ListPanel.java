@@ -59,7 +59,6 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
 
     @Override
     public void add(Widget w) {
-    	Utils.Console("adding " + w.getClass().toString());
     	if (w.getClass().toString().endsWith(".ListItem")) {
     		super.add(w);
     	}
@@ -86,7 +85,6 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
     }
     
     public void setShowArrow(boolean show) {
-    	Utils.Console("ListPanel setShowArrow");
     	_showArrow = show;
     	for (Widget listItem : this.getChildren()) {
 			((ListItem)listItem).setShowArrowFromParent(show);

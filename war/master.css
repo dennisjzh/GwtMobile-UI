@@ -25,6 +25,8 @@ html {
 	-webkit-box-orient: vertical;
 	height: 100%;
 	width: 100%;
+	overflow:hidden;
+	background: #333;
 }
 
 /********************* Header ****************/

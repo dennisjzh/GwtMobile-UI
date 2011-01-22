@@ -21,9 +21,8 @@ public class TransitionDemoPage extends Page {
 	interface TransitionPageUiBinder extends UiBinder<Widget, TransitionDemoPage> {
 	}
 
-	public TransitionDemoPage(String caption) {
+	public TransitionDemoPage() {
 		initWidget(uiBinder.createAndBindUi(this));
-		header.setCaption(caption);
 	}
 	
     @UiHandler("list")
