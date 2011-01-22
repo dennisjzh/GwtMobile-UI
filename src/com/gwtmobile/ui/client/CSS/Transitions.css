@@ -16,8 +16,8 @@
 
 .slide, .slideup, .slidedown {
     -webkit-transition-property: -webkit-transform;
-    -webkit-transition-duration: 250ms;
-    -webkit-transition-timing-function: linear;
+    -webkit-transition-duration: 300ms;
+    -webkit-transition-timing-function: ease-in-out;
     position: absolute;
 }
 
@@ -65,8 +65,8 @@
 
 .fade {
     -webkit-transition-property: opacity;
-    -webkit-transition-duration: 250ms;
-    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 1000ms;
+    -webkit-transition-timing-function: ease-in-out;
     position: absolute;
 }
 
@@ -77,3 +77,28 @@
 .fade.out, .fade.out.reverse, .fade.in.start, .fade.in.reverse.start {
     opacity: 1;
 }
+
+.flip0, .flip1 {
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 250ms;
+    -webkit-transition-timing-function: ease-in-out;
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+}
+
+.flip0.out, .flip0.out.reverse {
+	-webkit-transform: rotateY(0deg) scale(1);
+}
+
+.flip0.out.start, .flip0.out.reverse.start {
+	-webkit-transform: rotateY(-90deg) scale(.9);
+}
+
+.flip1.in, .flip1.in.reverse {
+	-webkit-transform: rotateY(-90deg) scale(.9);
+}
+
+.flip1.in.start, .flip1.in.reverse.start {
+	-webkit-transform: rotateY(0deg) scale(1);
+}
+

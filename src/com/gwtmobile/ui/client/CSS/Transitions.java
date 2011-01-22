@@ -24,6 +24,8 @@ public interface Transitions extends CssResource {
 	String slideup();
 	String slidedown();
 	String fade();
+	String flip0();
+	String flip1();
 	String in();
 	String out();
 	String reverse();

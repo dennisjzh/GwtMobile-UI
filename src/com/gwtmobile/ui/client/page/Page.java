@@ -16,15 +16,13 @@
 
 package com.gwtmobile.ui.client.page;
 
-import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.EventListener;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public abstract class Page extends Composite implements EventListener {
+public abstract class Page extends Composite {
 
     private boolean _isInitialLoad = true;
     private Transition _transition;
@@ -46,26 +44,13 @@ public abstract class Page extends Composite implements EventListener {
 	protected void onInitialLoad() {
 	}
 	
-	protected void registerTransitionEndEvent() {
-		Utils.addEventListenerOnce(this.getElement(), "webkitTransitionEnd", false, this);
-	}
-	
-	@Override
-	public void onBrowserEvent(Event e) {
-		String type = e.getType();
-		if (type.equals("webkitTransitionEnd")) {
-		    onTransitionEnd();
-		}		
-	}
-	
 	protected void onTransitionEnd() {
 	    final Page to, from;
-	    if (PageHistory.current() != Page.this) {  //goto
+	    if (PageHistory.from() == null || PageHistory.from() != Page.this) {  //goto
+	    	Utils.Console("goto");
 	        from = PageHistory.current();
 	        to = this;
 	        PageHistory.add(to);
-	        RootLayoutPanel.get().remove(from);
-	        to.getTransition().remove(from, to);
 	        //TODO: change to use scheduler deferred command.
 	        Timer timer = new Timer() {                
                 @Override
@@ -76,11 +61,10 @@ public abstract class Page extends Composite implements EventListener {
             timer.schedule(1);
 	    }
 	    else {             //goback
+	    	Utils.Console("goback");
 	        from = PageHistory.current();
 	        PageHistory.back();
 	        to = PageHistory.current();
-	        RootLayoutPanel.get().remove(from);
-	        from.getTransition().remove(from, to);
             Timer timer = new Timer() {                
                 @Override
                 public void run() {
@@ -100,16 +84,7 @@ public abstract class Page extends Composite implements EventListener {
     public void goTo(final Page toPage, final Transition transition) {
 	    final Page fromPage = this;
     	toPage.setTransition(transition);
-    	transition.prepare(fromPage, toPage, false);
-		RootLayoutPanel.get().add(toPage);
-		//PageHistory.add(toPage);
-        toPage.registerTransitionEndEvent();
-		new Timer() {
-            @Override
-            public void run() {
-            	transition.start(fromPage, toPage);
-            }
-		}.schedule(10);	//10ms instead of 1ms, to give iOS enough time to set the starting state.
+    	transition.start(fromPage, toPage, false);
 	}
 
 	public void goBack(Object returnValue) {
@@ -121,15 +96,7 @@ public abstract class Page extends Composite implements EventListener {
 		    return;
 		}
 		final Transition transition = fromPage.getTransition();
-    	transition.prepare(fromPage, toPage, true);
-		RootLayoutPanel.get().add(toPage);
-        fromPage.registerTransitionEndEvent();
-        new Timer() {
-            @Override
-            public void run() {
-            	transition.start(fromPage, toPage);
-            }
-        }.schedule(10);
+    	transition.start(fromPage, toPage, true);
 	}
 	
 	void setTransition(Transition transition) {
