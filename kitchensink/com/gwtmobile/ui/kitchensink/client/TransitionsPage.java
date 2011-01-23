@@ -45,8 +45,16 @@ public class TransitionsPage extends Page {
     		this.goTo(demo, Transition.FADE);
     		break;
     	case 4:
+    		demo.header.setCaption("Pop");
+    		this.goTo(demo, Transition.POP);
+    		break;
+    	case 5:
     		demo.header.setCaption("Flip");
     		this.goTo(demo, Transition.FLIP);
+    		break;
+    	case 6:
+    		demo.header.setCaption("Swap");
+    		this.goTo(demo, Transition.SWAP);
     		break;
     	}
     }

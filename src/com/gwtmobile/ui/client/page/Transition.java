@@ -17,7 +17,9 @@ public class Transition implements EventListener {
 	public static Transition SLIDEUP = new Transition(CSS.T.slideup());
 	public static Transition SLIDEDOWN = new Transition(CSS.T.slidedown());
 	public static Transition FADE = new Transition(CSS.T.fade());
+	public static Transition POP = new Transition(CSS.T.pop());
 	public static Transition FLIP = new FlipTransition();
+	public static Transition SWAP = new SwapTransition();
 	
 	Transition(String transitionStyleName) {
 		_transitionStyleName = transitionStyleName;
@@ -67,7 +69,7 @@ public class Transition implements EventListener {
 	@Override
 	public void onBrowserEvent(Event e) {
 		String type = e.getType();
-		if (type.equals("webkitTransitionEnd")) {
+		if (type.equals("webkitTransitionEnd") || type.equals("webkitAnimationEnd")) {
 		    onTransitionEnd();
 		}		
 	}
@@ -83,10 +85,16 @@ public class Transition implements EventListener {
 	}
 
 	protected void registerTransitionEndEvent() {
-		Utils.addEventListenerOnce(_from.getElement(), "webkitTransitionEnd", false, this);
-		Utils.addEventListenerOnce(_to.getElement(), "webkitTransitionEnd", false, this);
+		if (!_reverse) {
+			Utils.addEventListenerOnce(_to.getElement(), "webkitTransitionEnd", false, this);
+		}
+		else {
+			Utils.addEventListenerOnce(_from.getElement(), "webkitTransitionEnd", false, this);
+		}
 	}
 
+	//Flip
+	
 	private static class FlipTransition extends Transition {
 
 		private int _phase = 0;
@@ -137,4 +145,17 @@ public class Transition implements EventListener {
 		
 	}
 
+	// Swap
+	
+	private static class SwapTransition extends Transition {
+
+		SwapTransition() {
+			super(CSS.T.swap());
+		}
+
+		@Override
+		protected void registerTransitionEndEvent() {
+			Utils.addEventListenerOnce(_to.getElement(), "webkitAnimationEnd", false, this);
+		}
+	}
 }
