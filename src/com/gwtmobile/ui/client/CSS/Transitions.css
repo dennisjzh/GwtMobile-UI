@@ -88,19 +88,19 @@
 }
 
 .flip0.out, .flip0.out.reverse {
-	-webkit-transform: perspective(500) rotateY(0deg) scale(1);
+	-webkit-transform: perspective(4000) rotateY(0deg) scale(1);
 }
 
 .flip0.out.start, .flip1.in.reverse {
-	-webkit-transform: perspective(500) rotateY(-90deg) scale(.9);
+	-webkit-transform: perspective(4000) rotateY(-90deg) scale(.8);
 }
 
 .flip1.in, .flip0.out.reverse.start {
-	-webkit-transform: perspective(500) rotateY(90deg) scale(.9);
+	-webkit-transform: perspective(4000) rotateY(90deg) scale(.8);
 }
 
 .flip1.in.start, .flip1.in.reverse.start {
-	-webkit-transform: perspective(500) rotateY(0deg) scale(1);
+	-webkit-transform: perspective(4000) rotateY(0deg) scale(1);
 }
 
 .pop {
@@ -122,83 +122,37 @@
 	z-index: -1;
 }
 
-.swap {
-	-webkit-transform: perspective(800);
-	-webkit-animation-duration: 700ms;
-	-webkit-animation-timing-function: ease-out;
-}
-.swap.out.start {
-	-webkit-animation-name: swapouttoleft;
-}
-.swap.in.start {
-	-webkit-animation-name: swapinfromright;
-}
-.swap.out.reverse.start {
-	-webkit-animation-name: swapouttoright;
-}
-.swap.in.reverse.start {
-	-webkit-animation-name: swapinfromleft;
+.swap0, .swap1 {
+    -webkit-transition-property: -webkit-transform;
+	-webkit-transition-duration: 200ms;
+	-webkit-transition-timing-function: linear;
 }
 
-@-webkit-keyframes swapouttoright {
-    0% {
-        -webkit-transform: translate3d(0, 0, 0) scale(1);
-		z-index: 10;
-    }
-    35% {
-        -webkit-transform: translate3d(50%, 0, 0) scale(.8);
-		z-index: 0;
-    }
-    100% {
-        -webkit-transform:  translate3d(0, 0, 0) scale(.4);
-		z-index: -10;
-    }
+.swap0.out, .swap1.in {
+	z-index: 10;
 }
 
-@-webkit-keyframes swapouttoleft {
-    0% {
-        -webkit-transform: translate3d(0, 0, 0) scale(1);
-		z-index: 10;
-    }
-    35% {
-        -webkit-transform:  translate3d(-50%, 0, 0) scale(.8);
-		z-index: 0;
-    }
-    100% {
-        -webkit-transform: translate3d(0, 0, 0) scale(.4);
-		z-index: -10;
-    }
+.swap0.in, .swap1.out {
+	z-index: 0;
 }
 
-@-webkit-keyframes swapinfromright {
-    0% {
-        -webkit-transform: translate3d(0, 0, 0) scale(.4);
-		z-index: -10;
-    }
-    35% {
-        -webkit-transform: translate3d(50%, 0, 0) scale(.8);
-		z-index: 0;
-    }
-    100% {
-        -webkit-transform: translate3d(0, 0, 0) scale(1);
-		z-index: 10;
-    }
+.swap0.out, .swap1.in.start, .swap0.out.reverse, .swap1.in.reverse.start {
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+	 opacity: 1;
+}
+.swap0.out.start, .swap1.out, .swap0.in.reverse.start, .swap1.in.reverse {
+    -webkit-transform: translate3d(-50%, 0, 0) scale(.8);
+	 opacity: 1;
+}
+.swap0.in, .swap1.out.start, .swap0.in.reverse, .swap1.out.reverse.start {
+    -webkit-transform: translate3d(0, 0, 0) scale(.4);
+	 opacity: .4;
+}
+.swap0.in.start, .swap1.in, .swap0.out.reverse.start, .swap1.out.reverse {
+    -webkit-transform: translate3d(50%, 0, 0) scale(.8);
+	 opacity: 1;
 }
 
-@-webkit-keyframes swapinfromleft {
-    0% {
-        -webkit-transform: translate3d(0, 0, 0) scale(.4);
-		z-index: -10;
-    }
-    35% {
-        -webkit-transform: translate3d(-50%, 0, 0) scale(.8);
-		z-index: 0;
-    }
-    100% {
-        -webkit-transform: translate3d(0, 0, 0) scale(1);
-		z-index: 10;
-    }
-}
 
 .cube {
     -webkit-animation-duration: .55s;

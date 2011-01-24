@@ -15,8 +15,8 @@
 				<g:Label>Slide Down</g:Label>			
 				<g:Label>Fade</g:Label>			
 				<g:Label>Pop</g:Label>			
+				<g:Label>Swap</g:Label>			
 				<g:Label>Flip (iPhone only)</g:Label>			
-				<g:Label>Swap (iPhone only)</g:Label>			
 				<g:Label>Cube (iPhone only)</g:Label>			
 			</m:ListPanel>
 		</m:Scroller>

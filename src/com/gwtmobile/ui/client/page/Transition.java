@@ -51,7 +51,7 @@ public class Transition implements EventListener {
         		_from.addStyleName(CSS.T.start());
         		_to.addStyleName(CSS.T.start());
             }
-		}.schedule(10);	//10ms instead of 1ms, to give iOS enough time to set the starting state.
+		}.schedule(5);	//5ms instead of 1ms, to give iOS enough time to set the starting state.
 
 	}
 	
@@ -148,14 +148,44 @@ public class Transition implements EventListener {
 	// Swap
 	
 	private static class SwapTransition extends Transition {
+		
+		private int _phase = 0;
 
 		SwapTransition() {
-			super(CSS.T.swap());
+			super(CSS.T.swap0());
 		}
 
 		@Override
-		protected void registerTransitionEndEvent() {
-			Utils.addEventListenerOnce(_to.getElement(), "webkitAnimationEnd", false, this);
+		protected void onTransitionEnd() {
+			removeTransitionStyles();
+			if (_phase == 0) {
+				_phase++;
+				_transitionStyleName = CSS.T.swap1();
+				prepare();
+				start();
+			}
+			else {
+				RootLayoutPanel.get().remove(_from);
+				_to.onTransitionEnd();
+				_from = null;
+				_to = null;
+				_phase = 0;
+				_transitionStyleName = CSS.T.swap0();
+			}
 		}
+
+		@Override
+		protected void prepare() {
+			_from.addStyleName(_transitionStyleName + " " + CSS.T.out());
+			_to.addStyleName(_transitionStyleName + " " + CSS.T.in());
+			if (_reverse) {
+				_from.addStyleName(CSS.T.reverse());
+				_to.addStyleName(CSS.T.reverse());
+			}
+			if (_phase == 0) {
+				RootLayoutPanel.get().add(_to);
+			}
+		}
+		
 	}
 }

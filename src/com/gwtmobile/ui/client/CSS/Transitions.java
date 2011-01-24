@@ -27,7 +27,8 @@ public interface Transitions extends CssResource {
 	String pop();
 	String flip0();
 	String flip1();
-	String swap();
+	String swap0();
+	String swap1();
 	String cube();
 	String in();
 	String out();
