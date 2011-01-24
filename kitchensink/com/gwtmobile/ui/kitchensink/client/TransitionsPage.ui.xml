@@ -17,7 +17,7 @@
 				<g:Label>Pop</g:Label>			
 				<g:Label>Swap</g:Label>			
 				<g:Label>Flip (iPhone only)</g:Label>			
-				<g:Label>Cube (iPhone only)</g:Label>			
+				<!--g:Label>Cube (iPhone only)</g:Label-->			
 			</m:ListPanel>
 		</m:Scroller>
 		

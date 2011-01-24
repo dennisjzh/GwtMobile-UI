@@ -20,6 +20,7 @@ public class Transition implements EventListener {
 	public static Transition POP = new Transition(CSS.T.pop());
 	public static Transition FLIP = new FlipTransition();
 	public static Transition SWAP = new SwapTransition();
+//	public static Transition CUBE = new CubeTransition();
 	
 	Transition(String transitionStyleName) {
 		_transitionStyleName = transitionStyleName;
@@ -186,6 +187,24 @@ public class Transition implements EventListener {
 				RootLayoutPanel.get().add(_to);
 			}
 		}
-		
 	}
+	
+	// Cube
+	
+//	private static class CubeTransition extends Transition {
+//
+//		CubeTransition() {
+//			super(CSS.T.cube());
+//		}
+//		
+//		protected void registerTransitionEndEvent() {
+//			if (!_reverse) {
+//				Utils.addEventListenerOnce(_to.getElement(), "webkitAnimationEnd", false, this);
+//			}
+//			else {
+//				Utils.addEventListenerOnce(_from.getElement(), "webkitAnimationEnd", false, this);
+//			}
+//		}		
+//	}
+
 }

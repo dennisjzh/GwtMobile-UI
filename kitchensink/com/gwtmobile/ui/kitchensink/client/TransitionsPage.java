@@ -56,6 +56,10 @@ public class TransitionsPage extends Page {
     		demo.header.setCaption("Flip");
     		this.goTo(demo, Transition.FLIP);
     		break;
+//    	case 7:
+//    		demo.header.setCaption("Cube");
+//    		this.goTo(demo, Transition.CUBE);
+//    		break;
     	}
     }
 
