@@ -16,11 +16,12 @@
 
 package com.gwtmobile.ui.client.page;
 
-import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.utils.Utils;
+import com.gwtmobile.ui.kitchensink.client.MainPage;
 
 public abstract class Page extends Composite {
 
@@ -105,6 +106,11 @@ public abstract class Page extends Composite {
 	
 	Transition getTransition() {
 		return _transition;
+	}
+
+	public static void load(Page mainPage) {
+        RootLayoutPanel.get().add(mainPage);
+        PageHistory.add(mainPage);
 	}
 	
 }
