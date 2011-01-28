@@ -21,12 +21,12 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.utils.Utils;
-import com.gwtmobile.ui.kitchensink.client.MainPage;
 
 public abstract class Page extends Composite {
 
     private boolean _isInitialLoad = true;
     private Transition _transition;
+    private static Transition _defaultTransition = Transition.SLIDE;
     
     @Override
     protected void initWidget(Widget widget) {
@@ -85,7 +85,12 @@ public abstract class Page extends Composite {
     public void goTo(final Page toPage, final Transition transition) {
 	    final Page fromPage = this;
     	toPage.setTransition(transition);
-    	transition.start(fromPage, toPage, false);
+    	if (transition != null) {
+        	transition.start(fromPage, toPage, false);
+    	}
+    	else {
+    		Transition.start(fromPage, toPage);
+    	}
 	}
 
 	public void goBack(Object returnValue) {
@@ -97,7 +102,12 @@ public abstract class Page extends Composite {
 		    return;
 		}
 		final Transition transition = fromPage.getTransition();
-    	transition.start(fromPage, toPage, true);
+    	if (transition != null) {
+    		transition.start(fromPage, toPage, true);
+    	}
+    	else {
+    		Transition.start(fromPage, toPage);
+    	}
 	}
 	
 	void setTransition(Transition transition) {
@@ -113,4 +123,12 @@ public abstract class Page extends Composite {
         PageHistory.add(mainPage);
 	}
 	
+	public static void setDefaultTransition(Transition transition) {
+		_defaultTransition = transition;
+	}
+
+    public void goTo(final Page toPage) {
+    	goTo(toPage, _defaultTransition);
+	}
+
 }

@@ -26,6 +26,13 @@ public class Transition implements EventListener {
 		_transitionStyleName = transitionStyleName;
 	}
 	
+	// No transition
+	public static void start(Page fromPage, Page toPage) {
+		RootLayoutPanel.get().remove(fromPage);
+		RootLayoutPanel.get().add(toPage);
+		toPage.onTransitionEnd();
+	}
+	
 	public void start(Page fromPage, Page toPage, boolean reverse) {
 		_from = fromPage;
 		_to = toPage;
