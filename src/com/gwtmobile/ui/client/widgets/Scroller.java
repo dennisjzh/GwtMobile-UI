@@ -31,11 +31,14 @@ implements  DragEventsHandler, SwipeEventsHandler {
 
     private boolean _isInitialLoad = true;
     
+    public Scroller() {
+        setStyleName("Scroller");
+    }
+    
     @Override
 	public void onLoad() {
 	    if (_isInitialLoad) {
 	        _isInitialLoad = false;
-	        setStyleName("Scroller");
 	    }
         DragController.get().addDragEventsHandler(this);
         DragController.get().addSwipeEventHandler(this);
