@@ -14,7 +14,7 @@ body {
 
 html {
 	color: white;
-	font: normal 1.6em Helvetica, Arial, sans-serif; /* desktop:1.6em; androidwvga:2.4em */
+	font: normal 2.4em Helvetica, Arial, sans-serif; /* desktop:1.6em; androidwvga:2.4em */
 }
 
 /********************* Page ****************/
@@ -121,6 +121,8 @@ html {
 	-webkit-transition-property: -webkit-transform;
     -webkit-transition-timing-function: cubic-bezier(0,0,0.25,1);
 	-webkit-box-flex: 10;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
 }
 
 /********** List Panel **********/
