@@ -14,7 +14,7 @@ body {
 
 html {
 	color: white;
-	font: normal 2.4em Helvetica, Arial, sans-serif; /* desktop:1.6em; androidwvga:2.4em */
+	font: normal 1.6em Helvetica, Arial, sans-serif; /* desktop:1.6em; androidwvga:2.4em */
 }
 
 /********************* Page ****************/
@@ -130,7 +130,6 @@ html {
 	position:relative;
 	display: -webkit-box;
 	-webkit-box-orient: vertical; 
-	width:100%;
 }
 
 .List > div {
