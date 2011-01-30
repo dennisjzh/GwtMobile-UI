@@ -16,6 +16,7 @@
 
 package com.gwtmobile.ui.client.page;
 
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -119,6 +120,7 @@ public abstract class Page extends Composite {
 	}
 
 	public static void load(Page mainPage) {
+		setPageResolution();
         RootLayoutPanel.get().add(mainPage);
         PageHistory.add(mainPage);
 	}
@@ -130,5 +132,23 @@ public abstract class Page extends Composite {
     public void goTo(final Page toPage) {
     	goTo(toPage, _defaultTransition);
 	}
+    
+	private static void setPageResolution() {
+		String ratio = getDevicePixelRatio();
+		Utils.Console("Device Pixel Ratio: " + ratio);
+		if (ratio.equals("1.5")) {
+	    	Document.get().getDocumentElement().setClassName("WVGA");
+		}
+		else if (ratio.equals("0.75")) {
+	    	Document.get().getDocumentElement().setClassName("QVGA");
+		}
+		else {
+	    	Document.get().getDocumentElement().setClassName("HVGA");
+		}
+	}
+
+    public static native String getDevicePixelRatio() /*-{
+		return $wnd.devicePixelRatio + "";
+	}-*/;
 
 }

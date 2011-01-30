@@ -17,6 +17,19 @@ html {
 	font: normal 1.6em Helvetica, Arial, sans-serif; /* desktop:1.6em; androidwvga:2.4em */
 }
 
+/********************* Page Zoom ****************/
+.WVGA {
+	font-size: 2.4em;
+}
+
+.HVGA {
+	font-size: 1.6em;
+}
+
+.QVGA {
+	font-size: 1em;
+}
+
 /********************* Page ****************/
 .Page {
 	position:relative;
