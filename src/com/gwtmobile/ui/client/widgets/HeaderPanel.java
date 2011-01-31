@@ -86,6 +86,17 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
     	}
     }
     
+    public Button getLeftButton() {
+    	SimplePanel leftButton = ((SimplePanel)((FlowPanel)getWidget()).getWidget(0));
+    	return (Button) leftButton.getWidget();
+    }
+    
+    public Button getRightButton() {
+    	SimplePanel rightButton = ((SimplePanel)((FlowPanel)getWidget()).getWidget(2));
+    	return (Button) rightButton.getWidget();
+    }
+    
+    //FIXME: these on.. events are not working
     public void onLeftButtonClick(ClickEvent event) {    	
     }
     
