@@ -28,6 +28,9 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class HeaderPanel extends WidgetBase implements HasWidgets {
    
+	ClickHandler _leftButtonClickHandler;
+	ClickHandler _rightButtonClickHandler;
+	
     public HeaderPanel() {
     	FlowPanel container = new FlowPanel();
     	container.add(new SimplePanel());	//left button placeholder
@@ -51,6 +54,15 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
     	FlowPanel contents = ((FlowPanel)((FlowPanel)getWidget()).getWidget(1));
     	contents.clear();
     	contents.add(new HTML(caption));
+    }
+    
+    public String getCaption() {
+    	FlowPanel contents = ((FlowPanel)((FlowPanel)getWidget()).getWidget(1));
+    	if (contents.getWidgetCount() > 0) {
+        	HTML w = (HTML) contents.getWidget(0);
+        	return w.getHTML();
+    	}
+    	return "";
     }
     
     public void setLeftButton(String buttonName) {
@@ -96,11 +108,24 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
     	return (Button) rightButton.getWidget();
     }
     
-    //FIXME: these on.. events are not working
-    public void onLeftButtonClick(ClickEvent event) {    	
+    void onLeftButtonClick(ClickEvent event) {
+    	if (_leftButtonClickHandler != null) {
+        	_leftButtonClickHandler.onClick(event);
+    	}
     }
     
-    public void onRightButtonClick(ClickEvent event) {    	
+    void onRightButtonClick(ClickEvent event) {    	
+    	if (_rightButtonClickHandler != null) {
+        	_rightButtonClickHandler.onClick(event);
+    	}
+    }
+    
+    public void setLeftButtonClickHandler(ClickHandler handler) {
+    	_leftButtonClickHandler = handler;
+    }
+    
+    public void setRightButtonClickHandler(ClickHandler handler) {
+    	_rightButtonClickHandler = handler;
     }
     
     @Override
