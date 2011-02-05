@@ -17,9 +17,13 @@
 package com.gwtmobile.ui.client.utils;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.EventListener;
+import com.google.gwt.user.client.ui.Anchor;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 public class Utils {
 
@@ -86,4 +90,15 @@ public class Utils {
         htmlNode.setInnerHTML(html);
         return htmlNode.getInnerText(); 
     }
+    
+    //The url loaded by this method can be intercepted by 
+    //WebViewClient.shouldOverrideUrlLoading
+    public static void loadUrl(String url) {
+		Anchor a = new Anchor("", url);
+		RootLayoutPanel.get().add(a);
+		NativeEvent event = Document.get().createClickEvent(1, 1, 1, 1, 1, false, false, false, false);
+		a.getElement().dispatchEvent(event);
+		RootLayoutPanel.get().remove(a);
+	}
+
 }
