@@ -133,6 +133,10 @@ public abstract class Page extends Composite {
     	goTo(toPage, _defaultTransition);
 	}
     
+    public Widget getWidget() {
+    	return super.getWidget();
+    }
+    
 	private static void setPageResolution() {
 		String ratio = getDevicePixelRatio();
 		Utils.Console("Device Pixel Ratio: " + ratio);
