@@ -11,7 +11,7 @@
 		<m:Scroller>
 			<m:ListPanel ui:field="list" showArrow="true">
 				<g:Label>Animations</g:Label>			
-				<m:ListItem showArrow="false"><g:Label>Hello GWT Mobile UI!</g:Label></m:ListItem>			
+				<g:Label>Panels</g:Label>			
 				<m:ListItem showArrow="false"><g:Label>Hello GWT Mobile UI!</g:Label></m:ListItem>			
 				<m:ListItem showArrow="false"><g:Label>Hello GWT Mobile UI!</g:Label></m:ListItem>			
 				<m:ListItem showArrow="false"><g:Label>Hello GWT Mobile UI!</g:Label></m:ListItem>			
