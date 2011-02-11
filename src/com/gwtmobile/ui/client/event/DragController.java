@@ -199,7 +199,7 @@ public abstract class DragController implements EventListener {
         }
     }
 
-    public void suppressClickEvent() {
+    public void suppressNextClick() {
         _suppressNextClick = true;
     }
 

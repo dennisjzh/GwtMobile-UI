@@ -94,17 +94,15 @@ implements  DragEventsHandler, SwipeEventsHandler {
 
 	@Override
     public void onDragStart(DragEvent e) {
-		int matrix = getMatrixY(getWidget().getElement());
-		int current = getTranslateY(getWidget().getElement());
+		Element element = getWidget().getElement();
+		int matrix = getMatrixY(element);
+		int current = getTranslateY(element);
+		setTransitionDuration(element, 0);
 		if (current != matrix) {  //scroll on going
-			setTransitionDuration(getWidget().getElement(), 0);
 			int diff = current - matrix;
 			int offset = diff > 2 ? 2 : diff > -2 ? diff : -2;
-			setTranslateY(getWidget().getElement(), matrix + offset);
-			DragController.get().suppressClickEvent();
-		}
-		else {
-            setTransitionDuration(getWidget().getElement(), 0);
+			setTranslateY(element, matrix + offset);
+			DragController.get().suppressNextClick();
 		}
 	}
 
@@ -181,25 +179,4 @@ implements  DragEventsHandler, SwipeEventsHandler {
     public void onSwipeHorizontal(SwipeEvent e) {
     }
 	
-//	private native void setupTransition(Element element) /*-{
-//		element.style.webkitTransitionProperty = '-webkit-transform';
-//		element.style.webkitTransitionTimingFunction = 'cubic-bezier(0,0,0.25,1)';
-//		element.style.webkitTransitionDuration = '250ms';
-//	}-*/;
-
-//	@Override
-//	public void onBrowserEvent(Event e) {
-//		String type = e.getType();
-//		if (type.equals("webkitTransitionEnd")) {
-//		    e.preventDefault();
-//		    e.stopPropagation();
-//			onTransitionEnd(e);
-//		}
-//	}
-//
-//	private void onTransitionEnd(Event e) {
-//	    DragController.get().resume();
-//        setTransitionDuration(getWidget().getElement(), 0);
-//		Utils.Console("transitionended" + _count++);
-//	}
 }
