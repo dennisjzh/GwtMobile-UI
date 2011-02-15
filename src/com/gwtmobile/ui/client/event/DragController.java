@@ -132,20 +132,30 @@ public abstract class DragController implements EventListener {
         }
     }
     
-    //TODO: fire horizontal swipe event.
     protected void onEnd(Event e, Point p) {
         if (_isDown) {
             _isDown = false;
             DragEvent dragEvent = new DragEvent(e, DragEvent.Type.End, 
                     p.X(), p.Y(), p.X() - _currDragPos.X(), p.Y() - _currDragPos.Y());          
             fireDragEvent(dragEvent);
-            double distance = p.X() + p.Y() - _lastDragPos.X() - _lastDragPos.Y() ;
+            double distanceX = p.X() - _lastDragPos.X();
+            double distanceY = p.Y() - _lastDragPos.Y();
+            double distance;
+            SwipeEvent.Type swipeType; 
+            if (Math.abs(distanceX) > Math.abs(distanceY)) {
+            	distance = distanceX;
+            	swipeType = SwipeEvent.Type.Horizontal;
+            }
+            else {
+            	distance = distanceY;
+            	swipeType = SwipeEvent.Type.Vertical;
+            }
             Date currentDateTime = new Date();
             long time = currentDateTime.getTime() - _lastDragTimeStamp;
             double speed = distance / time;
             if (Math.abs(speed) > 0.2)
             {
-                SwipeEvent swipeEvent = new SwipeEvent(e, SwipeEvent.Type.Vertical, speed);
+                SwipeEvent swipeEvent = new SwipeEvent(e, swipeType, speed);
                 fireSwipeEvent(swipeEvent);
             }
         }
