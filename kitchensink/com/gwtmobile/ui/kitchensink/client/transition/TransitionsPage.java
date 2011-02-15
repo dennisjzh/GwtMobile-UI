@@ -1,4 +1,4 @@
-package com.gwtmobile.ui.kitchensink.client;
+package com.gwtmobile.ui.kitchensink.client.transition;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

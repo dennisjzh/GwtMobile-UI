@@ -1,4 +1,4 @@
-package com.gwtmobile.ui.kitchensink.client;
+package com.gwtmobile.ui.kitchensink.client.transition;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -7,27 +7,26 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.page.Page;
+import com.gwtmobile.ui.client.widgets.HeaderPanel;
 import com.gwtmobile.ui.client.widgets.ListPanel;
 
-public class PanelsPage extends Page {
+public class TransitionDemoPage extends Page {
 
+	@UiField HeaderPanel header;
 	@UiField ListPanel list;
 	
-	private static PanelsPageUiBinder uiBinder = GWT
-			.create(PanelsPageUiBinder.class);
+	private static TransitionPageUiBinder uiBinder = GWT
+			.create(TransitionPageUiBinder.class);
 
-	interface PanelsPageUiBinder extends UiBinder<Widget, PanelsPage> {
+	interface TransitionPageUiBinder extends UiBinder<Widget, TransitionDemoPage> {
 	}
 
-	public PanelsPage() {
+	public TransitionDemoPage() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-
+	
     @UiHandler("list")
-    void onListSelectionChanged(SelectionChangedEvent e) {
-    	switch (e.getSelection()) {
-    	case 0:
-    	}
+	void onListSelectionChanged(SelectionChangedEvent e) {
     }
 
 }

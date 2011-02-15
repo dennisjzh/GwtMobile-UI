@@ -8,6 +8,8 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.widgets.ListPanel;
+import com.gwtmobile.ui.kitchensink.client.panel.PanelsPage;
+import com.gwtmobile.ui.kitchensink.client.transition.TransitionsPage;
 
 public class MainPage extends Page {
 
