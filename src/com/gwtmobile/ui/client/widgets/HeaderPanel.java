@@ -74,7 +74,7 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
 			}
 		};
     	if (buttonName.toUpperCase().equals("BACK")) {
-    		leftButton.setWidget(new BackButton());
+    		leftButton.setWidget(new BackButton(buttonName, clickHandler));
     	}
     	else {
     		leftButton.setWidget(new Button(buttonName, clickHandler));
@@ -90,8 +90,7 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
 			}
 		};
     	if (buttonName.toUpperCase().equals("NEXT")) {
-    		//FIXME
-    		rightButton.setWidget(new Button(buttonName, clickHandler));
+    		rightButton.setWidget(new NextButton(buttonName, clickHandler));
     	}
     	else {
     		rightButton.setWidget(new Button(buttonName, clickHandler));
@@ -111,6 +110,12 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
     void onLeftButtonClick(ClickEvent event) {
     	if (_leftButtonClickHandler != null) {
         	_leftButtonClickHandler.onClick(event);
+    	}
+    	else {
+    		Button leftButton = getLeftButton();
+    		if (leftButton != null && leftButton.getClass() == BackButton.class) {
+    			((BackButton)leftButton).onClick(event);
+    		}
     	}
     }
     
