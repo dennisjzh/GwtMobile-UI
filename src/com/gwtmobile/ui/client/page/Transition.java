@@ -3,15 +3,17 @@ package com.gwtmobile.ui.client.page;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.google.gwt.user.client.ui.HasWidgets;
 import com.gwtmobile.ui.client.CSS.CSS;
 import com.gwtmobile.ui.client.utils.Utils;
+import com.gwtmobile.ui.client.widgets.WidgetBase;
 
 public class Transition implements EventListener {
 	
 	String _transitionStyleName;
-	Page _from, _to;
+	WidgetBase _from, _to;
 	boolean _reverse;
+	HasWidgets _parent;
 	
 	public static Transition SLIDE = new Transition(CSS.T.slide());
 	public static Transition SLIDEUP = new Transition(CSS.T.slideup());
@@ -22,20 +24,21 @@ public class Transition implements EventListener {
 	public static Transition SWAP = new SwapTransition();
 //	public static Transition CUBE = new CubeTransition();
 	
-	Transition(String transitionStyleName) {
+	public Transition(String transitionStyleName) {
 		_transitionStyleName = transitionStyleName;
 	}
 	
 	// No transition
-	public static void start(Page fromPage, Page toPage) {
-		RootLayoutPanel.get().remove(fromPage);
-		RootLayoutPanel.get().add(toPage);
-		toPage.onTransitionEnd();
+	public static void start(WidgetBase from, WidgetBase to, HasWidgets parent) {
+		parent.remove(from);
+		parent.add(to);
+		to.onTransitionEnd();
 	}
 	
-	public void start(Page fromPage, Page toPage, boolean reverse) {
-		_from = fromPage;
-		_to = toPage;
+	public void start(WidgetBase from, WidgetBase to, HasWidgets parent, boolean reverse) {
+		_from = from;
+		_to = to;
+		_parent = parent;
 		_reverse = reverse;
 		prepare();
 		start();
@@ -48,7 +51,7 @@ public class Transition implements EventListener {
 			_from.addStyleName(CSS.T.reverse());
 			_to.addStyleName(CSS.T.reverse());
 		}
-		RootLayoutPanel.get().add(_to);
+		_parent.add(_to);
 	}
 
 	protected void start() {
@@ -84,11 +87,12 @@ public class Transition implements EventListener {
 	
 	protected void onTransitionEnd() {
 		if (_from != null && _to != null) {
-			RootLayoutPanel.get().remove(_from);
+			_parent.remove(_from);
 			removeTransitionStyles();
 			_to.onTransitionEnd();
 			_from = null;
-			_to = null;			
+			_to = null;
+			_parent = null;
 		}
 	}
 
@@ -125,8 +129,8 @@ public class Transition implements EventListener {
 		protected void onTransitionEnd() {
 			removeTransitionStyles();
 			if (_phase == 0) {
-				RootLayoutPanel.get().remove(_from);
-				RootLayoutPanel.get().add(_to);
+				_parent.remove(_from);
+				_parent.add(_to);
 				_phase++;
 				_transitionStyleName = CSS.T.flip1();
 				prepare();
@@ -173,7 +177,7 @@ public class Transition implements EventListener {
 				start();
 			}
 			else {
-				RootLayoutPanel.get().remove(_from);
+				_parent.remove(_from);
 				_to.onTransitionEnd();
 				_from = null;
 				_to = null;
@@ -191,7 +195,7 @@ public class Transition implements EventListener {
 				_to.addStyleName(CSS.T.reverse());
 			}
 			if (_phase == 0) {
-				RootLayoutPanel.get().add(_to);
+				_parent.add(_to);
 			}
 		}
 	}

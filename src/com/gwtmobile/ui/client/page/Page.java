@@ -18,12 +18,12 @@ package com.gwtmobile.ui.client.page;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.utils.Utils;
+import com.gwtmobile.ui.client.widgets.WidgetBase;
 
-public abstract class Page extends Composite {
+public abstract class Page extends WidgetBase {
 
     private boolean _isInitialLoad = true;
     private Transition _transition;
@@ -46,7 +46,8 @@ public abstract class Page extends Composite {
 	protected void onInitialLoad() {
 	}
 	
-	protected void onTransitionEnd() {
+	@Override
+	public void onTransitionEnd() {
 	    final Page to, from;
 	    if (PageHistory.from() == null || PageHistory.from() != Page.this) {  //goto
 	    	Utils.Console("goto");
@@ -87,10 +88,10 @@ public abstract class Page extends Composite {
 	    final Page fromPage = this;
     	toPage.setTransition(transition);
     	if (transition != null) {
-        	transition.start(fromPage, toPage, false);
+        	transition.start(fromPage, toPage, RootLayoutPanel.get(), false);
     	}
     	else {
-    		Transition.start(fromPage, toPage);
+    		Transition.start(fromPage, toPage, RootLayoutPanel.get());
     	}
 	}
 
@@ -104,10 +105,10 @@ public abstract class Page extends Composite {
 		}
 		final Transition transition = fromPage.getTransition();
     	if (transition != null) {
-    		transition.start(fromPage, toPage, true);
+    		transition.start(fromPage, toPage, RootLayoutPanel.get(), true);
     	}
     	else {
-    		Transition.start(fromPage, toPage);
+    		Transition.start(fromPage, toPage, RootLayoutPanel.get());
     	}
 	}
 	
