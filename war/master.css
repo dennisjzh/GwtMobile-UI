@@ -86,7 +86,7 @@ html {
 	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0.1em 0.1em 0.1em;
 }
 
-.Button.Pressed, .BackButton.Pressed > span.Button {
+.Button.Pressed, .BackButton.Pressed > span.Button, .NextButton.Pressed > span.Button {
 	text-shadow: darkgreen 0 -0.1em 0.1em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
@@ -121,6 +121,40 @@ html {
 }
 
 .BackButton.Pressed > span.Pointer {
+	background: -webkit-gradient(linear, left top, right bottom, 
+		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
+}
+
+.NextButton {
+	position: relative;
+	margin-right: 0.8em;
+}
+
+.NextButton > span.Button {
+	padding-right: 0;
+	-webkit-border-top-right-radius: 0;
+	-webkit-border-bottom-right-radius: 0;
+	border-right: 0 !important;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0.0em 0.1em 0em;
+}
+
+.NextButton > span.Pointer {
+	position: absolute;
+	display: block;
+	height: 1.3em;
+	width: 1.3em;
+	right: -0.7em;
+	top: 0.30em;
+	border-top: 0;
+	border-left: 0;
+	background-image: -webkit-gradient(linear, left top, right bottom, from(#838383), color-stop(0.5, #444), color-stop(0.5, #303030), to(#333));
+	border-right: solid 1px rgba(79, 79, 79, 0.75);
+	border-top: solid 1px rgba(79, 79, 79, 0.75);
+	-webkit-transform: rotate(45deg);
+	z-index: -1;
+}
+
+.NextButton.Pressed > span.Pointer {
 	background: -webkit-gradient(linear, left top, right bottom, 
 		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
 }
@@ -173,6 +207,17 @@ html {
 .List > div.Pressed {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
+}
+
+/********** Slide Panel **********/
+.SlidePanel {
+}
+
+.Slide {
+	position:absolute;
+	display: -webkit-box;
+	height: 100%;
+	width: 100%;
 }
 
 /********** Chevron (arrow) **********/
