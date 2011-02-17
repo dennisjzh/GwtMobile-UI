@@ -211,6 +211,9 @@ html {
 
 /********** Slide Panel **********/
 .SlidePanel {
+	-webkit-box-flex: 1;
+	position: relative;
+	margin: .5em;
 }
 
 .Slide {

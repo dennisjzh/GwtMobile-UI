@@ -69,6 +69,8 @@ public class SlidePanelPage extends Page implements SlideProvider{
 	@Override
 	public Slide loadSlide(int index) {
 		Slide slide = new SlidePanel.Slide();
+		slide.addStyleName("Slide-Content");
+		slide.add(new HTML("Slide Me!"));
 		slide.add(new HTML("Slide " + index));
 		return slide;		
 	}
