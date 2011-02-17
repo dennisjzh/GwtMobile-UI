@@ -62,7 +62,7 @@ public class Transition implements EventListener {
         		_from.addStyleName(CSS.T.start());
         		_to.addStyleName(CSS.T.start());
             }
-		}.schedule(5);	//5ms instead of 1ms, to give iOS enough time to set the starting state.
+		}.schedule(10);	//xxms instead of 1ms, to give iOS/Android enough time to set the starting state.
 
 	}
 	
