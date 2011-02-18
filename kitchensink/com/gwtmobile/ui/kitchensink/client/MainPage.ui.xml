@@ -8,7 +8,7 @@
 		<m:HeaderPanel rightButton="menu">
 			<g:Label>Hello GWT Mobile UI!</g:Label>			
 		</m:HeaderPanel>
-		<m:Scroller>
+		<m:ScrollPanel>
 			<m:ListPanel ui:field="list" showArrow="true">
 				<g:Label>Animations</g:Label>			
 				<g:Label>Panels</g:Label>			
@@ -18,7 +18,7 @@
 				<m:ListItem showArrow="false"><g:Label>Hello GWT Mobile UI!</g:Label></m:ListItem>			
 				<m:ListItem showArrow="false"><g:Label>Hello GWT Mobile UI!</g:Label></m:ListItem>			
 			</m:ListPanel>
-		</m:Scroller>
+		</m:ScrollPanel>
 		
 	</g:HTMLPanel>	
 </ui:UiBinder> 

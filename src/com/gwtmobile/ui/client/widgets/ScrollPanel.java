@@ -28,12 +28,12 @@ import com.gwtmobile.ui.client.event.DragEventsHandler;
 import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 
-public class Scroller extends WidgetBase 
+public class ScrollPanel extends WidgetBase 
 implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 
 	protected SimplePanel _panel = new SimplePanel();
 	
-    public Scroller() {
+    public ScrollPanel() {
     	initWidget(_panel);
         setStyleName("Scroller");
     }

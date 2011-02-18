@@ -8,7 +8,7 @@
 		<m:HeaderPanel leftButton="Back">
 			<g:Label>Panels</g:Label>			
 		</m:HeaderPanel>
-		<m:Scroller>
+		<m:ScrollPanel>
 			<m:ListPanel ui:field="list" showArrow="false">
 				<g:Label>Accordion Panel</g:Label>			
 				<g:Label>Tab Panel</g:Label>			
@@ -17,7 +17,7 @@
 				<g:Label>Header Panel</g:Label>
 				<g:Label>List Panel</g:Label>
 			</m:ListPanel>
-		</m:Scroller>
+		</m:ScrollPanel>
 		
 	</g:HTMLPanel>	
 </ui:UiBinder> 
