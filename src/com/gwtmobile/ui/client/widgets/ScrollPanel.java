@@ -110,7 +110,8 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 
 	@Override
     public void onDragMove(DragEvent e) {
-		int current = getTranslateY(getWidget().getElement());
+		Element widgetEle = getWidget().getElement();
+		int current = getTranslateY(widgetEle);
 		if (current > 0) {//exceed top boundary
 			if (e.OffsetY > 0) { 	//resist scroll down.
 				current += e.OffsetY / 2;
@@ -119,7 +120,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 				current += e.OffsetY * 2;				
 			}
 		}
-		else if (-current + this.getElement().getClientHeight() > this.getElement().getScrollHeight()) { //exceed bottom boundary
+		else if (-current + this.getElement().getClientHeight() > widgetEle.getScrollHeight()) { //exceed bottom boundary
 			if (e.OffsetY < 0) { 	//resist scroll up.
 				current += e.OffsetY / 2;
 			}
@@ -130,29 +131,33 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		else {
 			current += e.OffsetY;
 		}
-		setTranslateY(getWidget().getElement(), current);		
+		setTranslateY(widgetEle, current);		
 	}
 
 	@Override
     public void onDragEnd(DragEvent e) {
-		int current = getTranslateY(getWidget().getElement());
-		if (current > 0) {//exceed top boundary
-			setTransitionDuration(getWidget().getElement(), 500);
-			setTranslateY(getWidget().getElement(), 0);
+		Element widgetEle = getWidget().getElement();
+		int current = getTranslateY(widgetEle);
+		if (current == 0) {
+			return;
 		}
-		else if (-current + this.getElement().getClientHeight() > this.getElement().getScrollHeight()) { //exceed bottom boundary
-			setTransitionDuration(getWidget().getElement(), 500);
-			setTranslateY(getWidget().getElement(), this.getElement().getClientHeight() - this.getElement().getScrollHeight());
+		if (current > 0 //exceed top boundary
+				|| getElement().getClientHeight() > widgetEle.getScrollHeight()) {
+			setTransitionDuration(widgetEle, 500);
+			setTranslateY(widgetEle, 0);
+		}
+		else if (-current + this.getElement().getClientHeight() > widgetEle.getScrollHeight()) { //exceed bottom boundary
+			setTransitionDuration(widgetEle, 500);
+			setTranslateY(widgetEle, this.getElement().getClientHeight() - widgetEle.getScrollHeight());
 		}
 	}
 
 	@Override
     public void onSwipeVertical(SwipeEvent e) {
-		long current = getTranslateY(getWidget().getElement());
+		Element widgetEle = getWidget().getElement();
+		long current = getTranslateY(widgetEle);
 		if ((current >= 0) // exceed top boundary
-				|| (-current + this.getElement().getClientHeight() >= this
-						.getElement().getScrollHeight())) { // exceed bottom
-															// boundary
+			|| (-current + this.getElement().getClientHeight() >= widgetEle.getScrollHeight())) { // exceed bottom boundary
 			return;
 		}
 		
@@ -167,14 +172,14 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 			time = (long) (time * timeAdj * timeAdj);
 			current = 0;
 		}
-		else if (-current + this.getElement().getClientHeight() > this.getElement().getScrollHeight()) { //exceed bottom boundary
-			long bottom = this.getElement().getClientHeight() - this.getElement().getScrollHeight();
+		else if (-current + this.getElement().getClientHeight() > widgetEle.getScrollHeight()) { //exceed bottom boundary
+			long bottom = this.getElement().getClientHeight() - widgetEle.getScrollHeight();
 			double timeAdj = 1 - (double)(current - bottom) / distance;
 			time = (long) (time * timeAdj * timeAdj);
 			current = bottom;
 		}
-		setTransitionDuration(getWidget().getElement(), time);
-		setTranslateY(getWidget().getElement(), current);
+		setTransitionDuration(widgetEle, time);
+		setTranslateY(widgetEle, current);
 	}
 
     @Override
