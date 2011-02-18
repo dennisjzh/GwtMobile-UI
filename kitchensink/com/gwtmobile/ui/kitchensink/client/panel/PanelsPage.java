@@ -43,8 +43,13 @@ public class PanelsPage extends Page {
     void onListSelectionChanged(SelectionChangedEvent e) {
     	switch (e.getSelection()) {
     	case 3:
+    		ScrollPanelPage scrollPanelPage = new ScrollPanelPage();
+    		goTo(scrollPanelPage);
+    		break;
+    	case 4:
     		SlidePanelPage slidePanelPage = new SlidePanelPage();
     		goTo(slidePanelPage);
+    		break;
     	}
     }
 

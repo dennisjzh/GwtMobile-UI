@@ -9,13 +9,13 @@
 			<g:Label>Panels</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel>
-			<m:ListPanel ui:field="list" showArrow="false">
-				<g:Label>Accordion Panel</g:Label>			
-				<g:Label>Tab Panel</g:Label>			
+			<m:ListPanel ui:field="list" showArrow="true">
+				<m:ListItem showArrow="false"><g:Label>Accordion Panel</g:Label></m:ListItem>
+				<m:ListItem showArrow="false"><g:Label>Header Panel</g:Label></m:ListItem>
+				<m:ListItem showArrow="false"><g:Label>List Panel</g:Label></m:ListItem>
 				<g:Label>Scroll Panel</g:Label>
-				<m:ListItem showArrow="true"><g:Label>Slide Panel</g:Label></m:ListItem>
-				<g:Label>Header Panel</g:Label>
-				<g:Label>List Panel</g:Label>
+				<g:Label>Slide Panel</g:Label>
+				<m:ListItem showArrow="false"><g:Label>Tab Panel</g:Label></m:ListItem>
 			</m:ListPanel>
 		</m:ScrollPanel>
 		
