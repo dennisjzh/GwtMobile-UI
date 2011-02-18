@@ -117,6 +117,7 @@ html {
 	border-left: solid 1px rgba(79, 79, 79, 0.75);
 	border-bottom: solid 1px rgba(79, 79, 79, 0.75);
 	-webkit-transform: rotate(45deg);
+	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0.1em 0.1em 0.1em;
 	z-index: -1;
 }
 
@@ -135,7 +136,7 @@ html {
 	-webkit-border-top-right-radius: 0;
 	-webkit-border-bottom-right-radius: 0;
 	border-right: 0 !important;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0.0em 0.1em 0em;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.4) -0.1em 0.1em 0.1em;
 }
 
 .NextButton > span.Pointer {
@@ -151,6 +152,7 @@ html {
 	border-right: solid 1px rgba(79, 79, 79, 0.75);
 	border-top: solid 1px rgba(79, 79, 79, 0.75);
 	-webkit-transform: rotate(45deg);
+	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0.1em 0.1em 0.1em;
 	z-index: -1;
 }
 
