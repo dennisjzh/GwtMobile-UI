@@ -16,8 +16,11 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import java.util.Iterator;
+
 import com.google.gwt.user.client.Element;
-import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
@@ -25,34 +28,33 @@ import com.gwtmobile.ui.client.event.DragEventsHandler;
 import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 
-//TODO: change base to WidgetBase?
-public class Scroller extends FlowPanel 
-implements  DragEventsHandler, SwipeEventsHandler {
+public class Scroller extends WidgetBase 
+implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 
-    private boolean _isInitialLoad = true;
-    
+	protected SimplePanel _panel = new SimplePanel();
+	
     public Scroller() {
+    	initWidget(_panel);
         setStyleName("Scroller");
     }
     
     @Override
 	public void onLoad() {
-	    if (_isInitialLoad) {
-	        _isInitialLoad = false;
-	    }
         DragController.get().addDragEventsHandler(this);
         DragController.get().addSwipeEventHandler(this);
 	}
 	
-    private Widget getWidget() {
-    	return getWidget(0);
-    }
 	@Override
 	public void onUnload() {
         DragController.get().removeDragEventsHandler(this);
         DragController.get().removeSwipeEventHandler(this);
 	}
 	
+	@Override
+    public Widget getWidget() {
+    	return _panel.getWidget();
+    }
+    
 	public void reset() {
         setTransitionDuration(getWidget().getElement(), 0);
         setTranslateY(getWidget().getElement(), 0);
@@ -178,5 +180,26 @@ implements  DragEventsHandler, SwipeEventsHandler {
     @Override
     public void onSwipeHorizontal(SwipeEvent e) {
     }
+
+	@Override
+	public void add(Widget w) {
+		assert _panel.getWidget() == null : "Can only add one widget to Scroller.";
+		_panel.setWidget(w);
+	}
+
+	@Override
+	public void clear() {
+		_panel.clear();
+	}
+
+	@Override
+	public Iterator<Widget> iterator() {
+		return _panel.iterator();
+	}
+
+	@Override
+	public boolean remove(Widget w) {
+		return _panel.remove(w);
+	}
 	
 }
