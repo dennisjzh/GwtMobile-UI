@@ -5,8 +5,8 @@
 	<ui:style>
 	</ui:style>
 	<g:HTMLPanel>
-		<m:HeaderPanel ui:field="header" leftButton="Back" rightButton="Next">
-			<g:Label>Slide Panel</g:Label>			
+		<m:HeaderPanel ui:field="header" leftButton="Back">
+			<g:Label>Scroll Panel</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel>
 			<m:ListPanel ui:field="list" showArrow="false">
