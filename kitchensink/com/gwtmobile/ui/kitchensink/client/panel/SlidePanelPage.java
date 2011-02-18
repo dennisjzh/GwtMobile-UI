@@ -26,7 +26,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.widgets.HeaderPanel;
 import com.gwtmobile.ui.client.widgets.SlidePanel;
-import com.gwtmobile.ui.client.widgets.SlidePanel.Slide;
+import com.gwtmobile.ui.client.widgets.Slide;
 import com.gwtmobile.ui.client.widgets.SlidePanel.SlideProvider;
 
 public class SlidePanelPage extends Page implements SlideProvider{
@@ -49,7 +49,7 @@ public class SlidePanelPage extends Page implements SlideProvider{
 		header.setLeftButtonClickHandler(new ClickHandler() {			
 			@Override
 			public void onClick(ClickEvent event) {
-				if (slider.getCurrentSlide() > 0) {
+				if (slider.getCurrentSlideIndex() > 0) {
 					slider.previous();
 				}
 				else {
@@ -68,10 +68,13 @@ public class SlidePanelPage extends Page implements SlideProvider{
 
 	@Override
 	public Slide loadSlide(int index) {
-		Slide slide = new SlidePanel.Slide();
+		if (index < 2) {
+			return null;
+		}
+		Slide slide = new Slide();
 		slide.addStyleName("Slide-Content");
 		slide.add(new HTML("Slide Me!"));
-		slide.add(new HTML("Slide " + index));
+		slide.add(new HTML("Dynamic Slide " + index));
 		return slide;		
 	}
 

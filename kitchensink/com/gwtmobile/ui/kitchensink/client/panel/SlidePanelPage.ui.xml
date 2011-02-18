@@ -9,6 +9,14 @@
 			<g:Label>Slide Panel</g:Label>			
 		</m:HeaderPanel>
 		<m:SlidePanel ui:field="slider">
+			<m:Slide styleName="Slide Slide-Content">
+				<g:HTML>Slide Me!</g:HTML>
+				<g:HTML>Static Slide 0</g:HTML>
+			</m:Slide>	
+			<m:Slide styleName="Slide Slide-Content">
+				<g:HTML>Slide Me!</g:HTML>
+				<g:HTML>Static Slide 1</g:HTML>
+			</m:Slide>	
 		</m:SlidePanel>
 		
 	</g:HTMLPanel>	

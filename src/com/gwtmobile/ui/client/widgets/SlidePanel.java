@@ -16,6 +16,7 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -32,6 +33,7 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
     protected int _count = 0;
     protected int _current = 0;
     protected SlideProvider _slideProvider = null;
+    protected ArrayList<Widget> _slides = new ArrayList<Widget>();
 
 
     public SlidePanel() {
@@ -44,7 +46,7 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
     }
     
     public int getSlideCount() {
-    	return _count;
+    	return _count > 0 ? _count : _slides.size();
     }
     
     public void setSlideProvider(SlideProvider provider) {
@@ -58,12 +60,23 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
 	@Override
     protected void onInitialLoad() {
     	super.onInitialLoad();
-    	if (_slideProvider != null) {
-    		_current = 0;
-        	Slide slide = _slideProvider.loadSlide(_current);
-        	_panel.add(slide);
-    	}
+		_current = 0;
+    	Slide slide = getSlide(_current);
+		if (slide != null) {
+			_panel.add(slide);
+		}
     }
+
+	public Slide getSlide(int index) {
+		Slide slide = null;
+    	if (_slideProvider != null) {
+    		slide = _slideProvider.loadSlide(index);
+    	}
+		if (slide == null && index < _slides.size() ) {
+			slide = (Slide) _slides.get(index);
+		}
+		return slide;
+	}
     
 	@Override
 	public void onLoad() {
@@ -92,14 +105,14 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
 	}
 	
 	public void next() {
-		if (_current >= _count - 1) {
+		if (_current >= getSlideCount() - 1) {
 			return;
 		}
 		_current++;
-    	Slide to = _slideProvider.loadSlide(_current);
+    	Slide to = getSlide(_current);
     	Slide from = (Slide) _panel.getWidget(0);
     	Transition transition = Transition.SLIDE;
-    	transition.start(from, to, this, false);
+    	transition.start(from, to, _panel, false);
 	}
 
 	public void previous() {
@@ -107,10 +120,10 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
 			return;
 		}
 		_current--;
-		Slide to = _slideProvider.loadSlide(_current);
+		Slide to = getSlide(_current);
     	Slide from = (Slide) _panel.getWidget(0);
     	Transition transition = Transition.SLIDE;
-    	transition.start(from, to, this, true);
+    	transition.start(from, to, _panel, true);
 	}
 
 	@Override
@@ -119,63 +132,30 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
 		_panel.remove(0);
 	}
 	
-	public int getCurrentSlide() {
+	public int getCurrentSlideIndex() {
 		return _current;
 	}
 	
 	@Override
 	public void add(Widget w) {
-		_panel.add(w);
+		assert (w instanceof Slide) : "Can only add Slide widgets to SlidePanel.";
+		_slides.add(w);
 	}
 
 	@Override
 	public void clear() {
-		_panel.clear();
+		_slides.clear();
 		
 	}
 
 	@Override
 	public Iterator<Widget> iterator() {
-		return _panel.iterator();
+		return _slides.iterator();
 	}
 
 	@Override
 	public boolean remove(Widget w) {
-		return _panel.remove(w);
-	}
-
-	/********************* sub class Slide *******************/
-	
-	public static class Slide extends WidgetBase implements HasWidgets {
-
-		protected FlowPanel _panel = new FlowPanel();
-		
-		public Slide() {
-			initWidget(_panel);
-			setStyleName("Slide");
-		}
-		
-		@Override
-		public void add(Widget w) {
-			_panel.add(w);
-		}
-
-		@Override
-		public void clear() {
-			_panel.clear();
-			
-		}
-
-		@Override
-		public Iterator<Widget> iterator() {
-			return _panel.iterator();
-		}
-
-		@Override
-		public boolean remove(Widget w) {
-			return _panel.remove(w);
-		}
-		
+		return _slides.remove(w);
 	}
 	
 	/********************* interface SlideProvider *******************/
