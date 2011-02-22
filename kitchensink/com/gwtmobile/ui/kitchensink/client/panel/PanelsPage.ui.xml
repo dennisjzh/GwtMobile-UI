@@ -15,7 +15,7 @@
 				<m:ListItem showArrow="false"><g:Label>List Panel</g:Label></m:ListItem>
 				<g:Label>Scroll Panel</g:Label>
 				<g:Label>Slide Panel</g:Label>
-				<m:ListItem showArrow="false"><g:Label>Tab Panel</g:Label></m:ListItem>
+				<g:Label>Tab Panel</g:Label>
 			</m:ListPanel>
 		</m:ScrollPanel>
 		

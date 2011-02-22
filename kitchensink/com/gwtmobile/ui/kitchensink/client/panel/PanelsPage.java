@@ -50,6 +50,10 @@ public class PanelsPage extends Page {
     		SlidePanelPage slidePanelPage = new SlidePanelPage();
     		goTo(slidePanelPage);
     		break;
+    	case 5:
+    		TabPanelPage tabPanelPage = new TabPanelPage();
+    		goTo(tabPanelPage);
+    		break;
     	}
     }
 

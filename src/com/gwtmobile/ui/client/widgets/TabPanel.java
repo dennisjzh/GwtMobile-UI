@@ -35,18 +35,18 @@ public class TabPanel extends WidgetBase implements HasWidgets {
         _tabs.insertRow(1);
         _tabs.insertCell(1, 0);
         _tabs.addStyleName("Table");
-        _tabs.getCellFormatter().setStyleName(1, 0, "Content");
-        setStyleName("Tab");
+        _tabs.getCellFormatter().setStyleName(1, 0, "TabContent");
+        setStyleName("TabPanel");
     }
     
     @Override
     public void add(Widget w) {
-        // TODO: Check widget is a tab.
+        assert w instanceof Tab : "Can only place Tab widgets inside a Tab Panel.";
         int index = _tabs.getCellCount(0);
         Tab tab = (Tab) w;
         tab.initTab(this, index);
         _tabs.setWidget(0, index, tab);
-        _tabs.getCellFormatter().setStyleName(0, index, "Header");
+        _tabs.getCellFormatter().setStyleName(0, index, "TabHeader");
         _tabs.getFlexCellFormatter().setColSpan(1, 0, _tabs.getCellCount(0));
     }
     

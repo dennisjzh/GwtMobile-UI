@@ -37,7 +37,7 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
     	container.add(new FlowPanel());		//contents
     	container.add(new SimplePanel());	//right button placeholder
         initWidget(container);
-        setStyleName("Header");
+        setStyleName("HeaderPanel");
     }
     
     @Override

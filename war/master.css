@@ -42,9 +42,9 @@ html {
 	background: #333;
 }
 
-/********************* Header ****************/
+/********************* Header Panel ****************/
 
-.Header {
+.HeaderPanel {
 	position:relative;
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
@@ -59,16 +59,16 @@ html {
 }
 
 /* needed this to get around the android browser bug when scroll, causing controls to disapear.*/
-.Header * {
+.HeaderPanel * {
 	z-index: 1;
 }
 
 /* TODO: fix me! */
-.Header > div > div.gwt-Label {
+.HeaderPanel > div > div.gwt-Label {
 	font-weight: bold;
 }
 
-.Header > div:first-child, .Header > div:last-child {
+.HeaderPanel > div:first-child, .HeaderPanel > div:last-child {
 	min-width:3em;
 }
 
@@ -246,3 +246,57 @@ html {
 	-webkit-transform: rotate(45deg);
 	top: 0.4em;	
 }
+
+
+/********** Tab Panel **********/
+
+.TabPanel {
+	width:100%;
+	-webkit-box-flex: 1;
+}
+
+.TabPanel .Table{
+	width:100%;
+	border-spacing: 0 0;
+	border-width:0;
+	margin:0;
+	padding:0;
+	table-layout:fixed;
+}
+
+.TabPanel td.TabHeader {
+	height: 2em;
+	text-align:center;
+	border-left: 0.1em solid gray;
+	border-right: 0.3em solid black;
+	color: gray;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
+}
+
+.TabPanel td.TabHeader.Selected {
+	color:black;
+	text-shadow: white 0 0.1em 0;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#BDBDBD));
+}
+
+.TabPanel td.TabHeader.Selected .gwt-Image {
+	opacity: 1;
+}
+
+.TabPanel td.TabHeader .gwt-Image {
+	opacity: 0.5;
+}
+
+.TabPanel td.TabContent {
+	border-top: 0.3em solid #BDBDBD;
+}
+
+.TabPanel td.TabContent > div {	
+	width:100%;
+	height:100%; 
+	overflow:auto;
+   }
+
+.TabPanel > table > tbody > tr:last-child {
+	height:100%;
+} 
