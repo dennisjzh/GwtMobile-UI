@@ -18,23 +18,17 @@ package com.gwtmobile.ui.client.widgets;
 
 import java.util.Iterator;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
-public class Tab extends WidgetBase implements HasWidgets, ClickHandler {
+public class Tab extends WidgetBase implements HasWidgets {
     
-    private TabPanel _tabPanel;
     private TabHeader _header;
     private TabContent _content;
 
     public Tab() {
     }
     
-    public TabPanel getTabMenu() {
-        return _tabPanel;
-    }
     public TabHeader getHeader() {
         return _header;
     }    
@@ -42,47 +36,31 @@ public class Tab extends WidgetBase implements HasWidgets, ClickHandler {
         return _content;
     } 
     
-    protected void initTab(TabPanel tabPanel) {
-        _tabPanel = tabPanel;
-    }
-    
     @Override
     public void add(Widget w) {    	
         if (this.getWidget() == null) {
         	assert w instanceof TabHeader : "Expected a TabHeader widget in a Tab";
             _header = (TabHeader)w;
             initWidget(_header);
-            _header.initHeader(this);
-            _header.addDomHandler(this, ClickEvent.getType());
         }
         else {
         	assert w instanceof TabContent : "Expected a TabContent widget in a Tab";
             _content = (TabContent) w;
-            _content.initContent(this);
         }
     }
 
     @Override
     public void clear() {
-        // TODO Auto-generated method stub
-        
     }
 
     @Override
     public Iterator<Widget> iterator() {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public boolean remove(Widget w) {
-        // TODO Auto-generated method stub
         return false;
     }
-
-	@Override
-	public void onClick(ClickEvent event) {
-		_tabPanel.onClickHeader(_header);
-	}
 
 }

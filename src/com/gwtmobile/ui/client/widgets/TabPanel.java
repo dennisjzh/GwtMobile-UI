@@ -18,65 +18,86 @@ package com.gwtmobile.ui.client.widgets;
 
 import java.util.Iterator;
 
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.utils.Utils;
 
-public class TabPanel extends WidgetBase implements HasWidgets {
+public class TabPanel extends WidgetBase implements HasWidgets, ClickHandler {
 
     private FlowPanel _panel = new FlowPanel();
     private FlowPanel _tabHeaderPanel = new FlowPanel();
+    private int _selectedTabIndex = -1;
     
     public TabPanel() {
         initWidget(_panel);
         setStyleName("TabPanel");
         _panel.add(_tabHeaderPanel);
+        _tabHeaderPanel.addDomHandler(this, ClickEvent.getType());
     }
     
     @Override
     public void add(Widget w) {
         assert w instanceof Tab : "Can only place Tab widgets inside a Tab Panel.";
-        Tab tab = (Tab) w;
-        tab.initTab(this);
         _tabHeaderPanel.add(w);
     }
     
     @Override
     protected void onInitialLoad() {
     	if (_tabHeaderPanel.getWidgetCount() > 0) {
-    		Tab tab = (Tab) _tabHeaderPanel.getWidget(0);
-            selectTab(tab);
+            selectTab(0);
     	}
     }
     
-    public void selectTab(Tab tab) {
-        Tab selected = getSelectedTab();
-        if (selected == tab) {
+    public void selectTab(int index) {
+        if (_selectedTabIndex == index) {
+        	Utils.Console("same tab");
         	return;
         }
-        if (selected != null) {
-            unselectTab(selected);
-        }
+        unselectCurrentTab();
+  		Tab tab = (Tab) _tabHeaderPanel.getWidget(index);
         tab.addStyleName("Selected");
         _panel.add(tab.getContent());
+        _selectedTabIndex = index;
     }
 
-    public void unselectTab(Tab tab) {
-        tab.removeStyleName("Selected");
-        tab.getContent().removeFromParent();
-    }
-
-    public Tab getSelectedTab() {
-    	if (_panel.getWidgetCount() != 2) {
-    		return null;
+    public void unselectCurrentTab() {
+    	if (_selectedTabIndex == -1) {
+    		return;
     	}
-    	TabContent tabContent = (TabContent) _panel.getWidget(1);
-        return tabContent.getTab();
+		Tab tab = (Tab) _tabHeaderPanel.getWidget(_selectedTabIndex);
+    	tab.removeStyleName("Selected");
+        tab.getContent().removeFromParent();
+        _selectedTabIndex = -1;
     }
-    
-    public void onClickHeader(TabHeader header) {
-        selectTab(header.getTab());
+
+	@Override
+	public void onClick(ClickEvent event) {
+		int index = getClickedTabHeaderIndex(event);
+		if (index != -1) {
+            selectTab(index);
+		}
+	}
+	
+    private int getClickedTabHeaderIndex(ClickEvent e) {
+        Element div = Element.as(e.getNativeEvent().getEventTarget());
+        if (div == _tabHeaderPanel.getElement()) {
+        	Utils.Console("Is click on tab header working? " + e.toString());
+        	return -1;
+        }
+        while (div.getParentElement() != _tabHeaderPanel.getElement()) {
+            div = div.getParentElement();
+        }
+        int index = DOM.getChildIndex(
+        		(com.google.gwt.user.client.Element)_tabHeaderPanel.getElement(), 
+        		(com.google.gwt.user.client.Element)div);
+        return index;
     }
+
 
     @Override
     public void clear() {
@@ -92,4 +113,5 @@ public class TabPanel extends WidgetBase implements HasWidgets {
     public boolean remove(Widget w) {
         return _panel.remove(w);
     }
+
 }

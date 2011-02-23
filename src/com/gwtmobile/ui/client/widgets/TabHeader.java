@@ -19,18 +19,4 @@ package com.gwtmobile.ui.client.widgets;
 import com.google.gwt.user.client.ui.FlowPanel;
 
 public class TabHeader extends FlowPanel {
-
-    private Tab _tab;
-    
-    public TabHeader() {
-    }
-    
-    protected void initHeader(Tab tab) {
-        _tab = tab;
-    }
-    
-    public Tab getTab() {
-        return _tab;
-    }
-    
 }
