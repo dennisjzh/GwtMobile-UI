@@ -18,7 +18,6 @@ package com.gwtmobile.ui.client.widgets;
 
 import java.util.Iterator;
 
-import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -26,78 +25,71 @@ import com.google.gwt.user.client.ui.Widget;
 public class TabPanel extends WidgetBase implements HasWidgets {
 
     private FlowPanel _panel = new FlowPanel();
-    private FlexTable _tabs = new FlexTable();
+    private FlowPanel _tabHeaderPanel = new FlowPanel();
     
     public TabPanel() {
         initWidget(_panel);
-        _panel.add(_tabs);
-        _tabs.insertRow(0);
-        _tabs.insertRow(1);
-        _tabs.insertCell(1, 0);
-        _tabs.addStyleName("Table");
-        _tabs.getCellFormatter().setStyleName(1, 0, "TabContent");
         setStyleName("TabPanel");
+        _panel.add(_tabHeaderPanel);
     }
     
     @Override
     public void add(Widget w) {
         assert w instanceof Tab : "Can only place Tab widgets inside a Tab Panel.";
-        int index = _tabs.getCellCount(0);
         Tab tab = (Tab) w;
-        tab.initTab(this, index);
-        _tabs.setWidget(0, index, tab);
-        _tabs.getCellFormatter().setStyleName(0, index, "TabHeader");
-        _tabs.getFlexCellFormatter().setColSpan(1, 0, _tabs.getCellCount(0));
+        tab.initTab(this);
+        _tabHeaderPanel.add(w);
     }
     
     @Override
     protected void onInitialLoad() {
-        selectTab(0);
+    	if (_tabHeaderPanel.getWidgetCount() > 0) {
+    		Tab tab = (Tab) _tabHeaderPanel.getWidget(0);
+            selectTab(tab);
+    	}
     }
     
-    public void selectTab(int index) {
+    public void selectTab(Tab tab) {
         Tab selected = getSelectedTab();
-        if (selected != null) {
-            unselectTab(selected.getIndex());
+        if (selected == tab) {
+        	return;
         }
-        Tab tab = (Tab) _tabs.getWidget(0, index);
-        _tabs.setWidget(1, 0, tab.getContent());
-        _tabs.getCellFormatter().addStyleName(0, index, "Selected");
+        if (selected != null) {
+            unselectTab(selected);
+        }
+        tab.addStyleName("Selected");
+        _panel.add(tab.getContent());
     }
 
-    public void unselectTab(int index) {
-        Tab tab = (Tab) _tabs.getWidget(0, index);
-        _tabs.getCellFormatter().removeStyleName(0, tab.getIndex(), "Selected");
-        _tabs.remove(tab.getContent());
+    public void unselectTab(Tab tab) {
+        tab.removeStyleName("Selected");
+        tab.getContent().removeFromParent();
     }
 
     public Tab getSelectedTab() {
-        TabContent content = (TabContent) _tabs.getWidget(1, 0);
-        if (content != null) {
-            return content.getTab();
-        }
-        return null;
+    	if (_panel.getWidgetCount() != 2) {
+    		return null;
+    	}
+    	TabContent tabContent = (TabContent) _panel.getWidget(1);
+        return tabContent.getTab();
     }
     
     public void onClickHeader(TabHeader header) {
-        selectTab(header.getTab().getIndex());
+        selectTab(header.getTab());
     }
 
     @Override
     public void clear() {
-        // TODO Auto-generated method stub
-        
+    	_panel.clear();
     }
 
     @Override
     public Iterator<Widget> iterator() {
-        // TODO Auto-generated method stub
-        return null;
+        return _panel.iterator();
     }
 
     @Override
     public boolean remove(Widget w) {
-        // TODO Auto-generated method stub
-        return false;
+        return _panel.remove(w);
     }
 }

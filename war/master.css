@@ -253,50 +253,48 @@ html {
 .TabPanel {
 	width:100%;
 	-webkit-box-flex: 1;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
 }
 
-.TabPanel .Table{
-	width:100%;
-	border-spacing: 0 0;
-	border-width:0;
-	margin:0;
-	padding:0;
-	table-layout:fixed;
+.TabPanel > div:first-child {	/*tab header*/
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
 }
 
-.TabPanel td.TabHeader {
+.TabPanel > div:first-child > div {
+	-webkit-box-flex: 1;
+	display: -webkit-box;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
 	height: 2em;
-	text-align:center;
-	border-left: 0.1em solid gray;
-	border-right: 0.3em solid black;
+	border-left: 0.1em solid #666666;
+	border-top: 0.1em solid #666666;
+	margin: 0 0.2em 0 0.2em;
 	color: gray;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
 }
 
-.TabPanel td.TabHeader.Selected {
+.TabPanel > div:first-child > div.Selected {
 	color:black;
 	text-shadow: white 0 0.1em 0;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#BDBDBD));
 }
 
-.TabPanel td.TabHeader.Selected .gwt-Image {
+.TabPanel > div:first-child > div .gwt-Image {
 	opacity: 1;
 }
 
-.TabPanel td.TabHeader .gwt-Image {
+.TabPanel > div:first-child > div .gwt-Image {
 	opacity: 0.5;
 }
 
-.TabPanel td.TabContent {
+.TabPanel > div:last-child {		/*tab content*/
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-flex: 1;
 	border-top: 0.3em solid #BDBDBD;
+	padding-top: 0.2em;
 }
 
-.TabPanel td.TabContent > div {	
-	width:100%;
-	height:100%; 
-	overflow:auto;
-   }
 
-.TabPanel > table > tbody > tr:last-child {
-	height:100%;
-} 

@@ -1,4 +1,5 @@
 .Slide-Content, .Tab-Content {
+	display: -webkit-box;
 	-webkit-box-align: center;
 	-webkit-box-pack: center;
 	-webkit-box-orient: vertical;			

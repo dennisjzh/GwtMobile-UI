@@ -14,7 +14,9 @@
 					<g:Label>Tab1</g:Label>
 				</m:TabHeader>
 				<m:TabContent>
-					<g:Label>Tab1 Content</g:Label>
+					<g:HTMLPanel styleName="Tab-Content">
+						<g:Label>Tab1 Content</g:Label>
+					</g:HTMLPanel>
 				</m:TabContent>
 			</m:Tab>
 			<m:Tab>
@@ -22,7 +24,9 @@
 					<g:Label>Tab2</g:Label>
 				</m:TabHeader>
 				<m:TabContent>
-					<g:Label>Tab2 Content</g:Label>
+					<g:HTMLPanel styleName="Tab-Content">
+						<g:Label>Tab2 Content</g:Label>
+					</g:HTMLPanel>
 				</m:TabContent>
 			</m:Tab>
 			<m:Tab>

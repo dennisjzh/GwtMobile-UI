@@ -18,24 +18,22 @@ package com.gwtmobile.ui.client.widgets;
 
 import java.util.Iterator;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
-public class Tab extends WidgetBase implements HasWidgets {
+public class Tab extends WidgetBase implements HasWidgets, ClickHandler {
     
-    private int _index;
-    private TabPanel _tabMenu;
+    private TabPanel _tabPanel;
     private TabHeader _header;
     private TabContent _content;
 
     public Tab() {
     }
     
-    public int getIndex() {
-        return _index;
-    }    
     public TabPanel getTabMenu() {
-        return _tabMenu;
+        return _tabPanel;
     }
     public TabHeader getHeader() {
         return _header;
@@ -44,20 +42,21 @@ public class Tab extends WidgetBase implements HasWidgets {
         return _content;
     } 
     
-    protected void initTab(TabPanel tabMenu, int index) {
-        _tabMenu = tabMenu;
-        _index = index;
+    protected void initTab(TabPanel tabPanel) {
+        _tabPanel = tabPanel;
     }
     
     @Override
-    public void add(Widget w) {
-        // TODO: Check widget is a TabHeader or a TabContent.
+    public void add(Widget w) {    	
         if (this.getWidget() == null) {
+        	assert w instanceof TabHeader : "Expected a TabHeader widget in a Tab";
             _header = (TabHeader)w;
             initWidget(_header);
             _header.initHeader(this);
+            _header.addDomHandler(this, ClickEvent.getType());
         }
         else {
+        	assert w instanceof TabContent : "Expected a TabContent widget in a Tab";
             _content = (TabContent) w;
             _content.initContent(this);
         }
@@ -80,5 +79,10 @@ public class Tab extends WidgetBase implements HasWidgets {
         // TODO Auto-generated method stub
         return false;
     }
+
+	@Override
+	public void onClick(ClickEvent event) {
+		_tabPanel.onClickHeader(_header);
+	}
 
 }
