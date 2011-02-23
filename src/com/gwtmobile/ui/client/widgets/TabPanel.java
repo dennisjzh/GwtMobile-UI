@@ -25,18 +25,21 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.page.Transition;
 import com.gwtmobile.ui.client.utils.Utils;
 
 public class TabPanel extends WidgetBase implements HasWidgets, ClickHandler {
 
     private FlowPanel _panel = new FlowPanel();
     private FlowPanel _tabHeaderPanel = new FlowPanel();
+    private FlowPanel _tabContentPanel = new FlowPanel();
     private int _selectedTabIndex = -1;
     
     public TabPanel() {
         initWidget(_panel);
         setStyleName("TabPanel");
         _panel.add(_tabHeaderPanel);
+        _panel.add(_tabContentPanel);
         _tabHeaderPanel.addDomHandler(this, ClickEvent.getType());
     }
     
@@ -58,21 +61,28 @@ public class TabPanel extends WidgetBase implements HasWidgets, ClickHandler {
         	Utils.Console("same tab");
         	return;
         }
-        unselectCurrentTab();
-  		Tab tab = (Tab) _tabHeaderPanel.getWidget(index);
-        tab.addStyleName("Selected");
-        _panel.add(tab.getContent());
+        Tab from = unselectCurrentTab();
+  		Tab to = (Tab) _tabHeaderPanel.getWidget(index);
+        to.addStyleName("Selected");
+        
+        if (from == null) {
+        	_tabContentPanel.add(to.getContent());
+        }
+        else {
+        	Transition transition = Transition.SLIDE;
+        	transition.start(from.getContent(), to.getContent(), _tabContentPanel, 
+        			index < _selectedTabIndex);
+        }
         _selectedTabIndex = index;
     }
 
-    public void unselectCurrentTab() {
+    private Tab unselectCurrentTab() {
     	if (_selectedTabIndex == -1) {
-    		return;
+    		return null;
     	}
 		Tab tab = (Tab) _tabHeaderPanel.getWidget(_selectedTabIndex);
     	tab.removeStyleName("Selected");
-        tab.getContent().removeFromParent();
-        _selectedTabIndex = -1;
+        return tab;
     }
 
 	@Override

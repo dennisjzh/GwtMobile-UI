@@ -257,12 +257,13 @@ html {
 	-webkit-box-orient: vertical;
 }
 
-.TabPanel > div:first-child {	/*tab header*/
+.TabPanel > div:first-child {	/*tab header panel*/
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
+	border-bottom: 0.3em solid #BDBDBD;
 }
 
-.TabPanel > div:first-child > div {
+.TabPanel > div:first-child > div {		/*tab header*/
 	-webkit-box-flex: 1;
 	display: -webkit-box;
 	-webkit-box-align: center;
@@ -270,14 +271,20 @@ html {
 	height: 2em;
 	border-left: 0.1em solid #666666;
 	border-top: 0.1em solid #666666;
+	border-bottom: 0.1em solid #333333;
 	margin: 0 0.2em 0 0.2em;
 	color: gray;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
+	border-top-left-radius: 0.3em 0.3em;
+	border-top-right-radius: 0.3em 0.3em;
 }
 
 .TabPanel > div:first-child > div.Selected {
 	color:black;
 	text-shadow: white 0 0.1em 0;
+	border-left: 0.1em solid white;
+	border-top: 0.1em solid white;
+	border-bottom: 0.1em solid #BDBDBD;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#BDBDBD));
 }
 
@@ -289,12 +296,17 @@ html {
 	opacity: 0.5;
 }
 
-.TabPanel > div:last-child {		/*tab content*/
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
+.TabPanel > div:last-child {			/*tab content panel*/
+	position: relative;
 	-webkit-box-flex: 1;
-	border-top: 0.3em solid #BDBDBD;
-	padding-top: 0.2em;
+	margin: 0.2em;
+}
+
+.TabPanel > div:last-child > div {		/*tab content*/
+	position:absolute;
+	display: -webkit-box;
+	height: 100%;
+	width: 100%;
 }
 
 
