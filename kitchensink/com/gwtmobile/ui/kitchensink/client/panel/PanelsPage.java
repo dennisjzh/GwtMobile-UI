@@ -42,6 +42,10 @@ public class PanelsPage extends Page {
     @UiHandler("list")
     void onListSelectionChanged(SelectionChangedEvent e) {
     	switch (e.getSelection()) {
+    	case 0:
+    		AccordionPanelPage accordionPanelPage = new AccordionPanelPage();
+    		goTo(accordionPanelPage);
+    		break;
     	case 3:
     		ScrollPanelPage scrollPanelPage = new ScrollPanelPage();
     		goTo(scrollPanelPage);

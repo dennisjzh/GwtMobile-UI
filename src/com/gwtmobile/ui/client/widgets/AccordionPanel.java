@@ -23,11 +23,11 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
 
-public class Accordion extends WidgetBase implements HasWidgets {
+public class AccordionPanel extends WidgetBase implements HasWidgets {
 
     private FlowPanel _panel = new FlowPanel();
     
-	public Accordion() {
+	public AccordionPanel() {
 	    initWidget(_panel);
 		addStyleName("Accordion");
 	}

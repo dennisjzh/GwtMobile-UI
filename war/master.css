@@ -310,3 +310,39 @@ html {
 }
 
 
+/********** Accordion Panel **********/
+
+.Accordion .Stack {
+    -webkit-transition-property: height;
+    -webkit-transition-duration: 50ms;
+    -webkit-transition-timing-function: ease;
+	overflow: hidden;
+}
+
+.Accordion .Stack > .Header {
+	cursor: pointer;
+	width:100%; 
+	height:48px;
+	line-height:48px;
+	white-space:no-wrap;
+	padding:0 10px 0 40px;
+	border-bottom:1px solid #888;
+	border-top:1px solid #eee;
+	font-weight:bold;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);	
+}
+
+.Accordion .Stack:first-child > .Header {
+	border-top:0px;
+}
+
+.Accordion .Stack:last-child > .Header {
+	border-bottom:0px;
+}
+
+.Accordion > .Stack > .Content {
+	width:100%;
+	padding:10px;
+	background:#e3e3e3;
+}
+
