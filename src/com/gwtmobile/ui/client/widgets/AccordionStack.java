@@ -16,42 +16,19 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import java.util.Iterator;
-
-import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtmobile.ui.client.CSS.CSS;
 
 
-public class AccordionStack extends WidgetBase implements HasWidgets {
+public class AccordionStack extends PanelBase {
 
-    //TODO: make sure listPanel contains only two widget, a header and a content.
     private AccordionHeader _header;
     private AccordionContent _content;
-    private FlowPanel _panel = new FlowPanel();
     
-	public AccordionStack() {
-	    initWidget(_panel);
-	}
-	
 	@Override
     protected void onInitialLoad( ) {
-        if (_header.getStyleName().indexOf(CSS.S.Close()) > -1) {
-            setHeight(_header.getOffsetHeight() + "px");
+        if (this.getStyleName().indexOf("Expand") == -1) {
+        	addStyleName("Close");
         }
-        else {
-            setHeight(_header.getOffsetHeight() + _content.getOffsetHeight() + "px");
-        }
-        Timer timer = new Timer() {
-            @Override
-            public void run() {
-                setStyleName("Stack");  //set style after setting height to 
-                //prevent transition event from firing prematurely.
-            }
-        };
-        timer.schedule(1);
 	}
 	
     @Override
@@ -68,44 +45,19 @@ public class AccordionStack extends WidgetBase implements HasWidgets {
         _panel.add(w);
     }
 
-    @Override
-    public void clear() {
-        _panel.clear();
-    }
-
-    @Override
-    public Iterator<Widget> iterator() {
-        return _panel.iterator();
-    }
-
-    @Override
-    public boolean remove(Widget w) {
-        return _panel.remove(w);
-    }
-    
     public void close() {
-        setHeight(_header.getOffsetHeight() + "px");
-        _header.removeStyleName(CSS.S.Open());
-        _header.addStyleName(CSS.S.Close());
+        this.removeStyleName("Expand");
+        this.addStyleName("Close");
     }
     
-//    public void open() {
-//        //TODO: why content height is 2 times actual when the widget is loaded?
-//        setHeight(_header.getOffsetHeight() + _content.getOffsetHeight() / 2 + "px");
-//        _header.removeStyleName(CSS.Styles.Close());
-//        _header.addStyleName(CSS.Styles.Open());
-//    }
-
     public void toggle() {
-        if (_header.getStyleName().indexOf(CSS.S.Close()) > -1) {
-            setHeight(_header.getOffsetHeight() + _content.getOffsetHeight() + "px");
-            _header.removeStyleName(CSS.S.Close());
-            _header.addStyleName(CSS.S.Open());
+        if (this.getStyleName().indexOf("Expand") == -1) {
+            this.addStyleName("Expand");
+            this.removeStyleName("Close");
         }
         else {
-            setHeight(_header.getOffsetHeight() + "px");
-            _header.removeStyleName(CSS.S.Open());
-            _header.addStyleName(CSS.S.Close());
+            this.addStyleName("Close");
+            this.removeStyleName("Expand");
         }        
     }
     

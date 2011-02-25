@@ -19,23 +19,26 @@ package com.gwtmobile.ui.client.widgets;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
-import com.gwtmobile.ui.client.CSS.CSS;
 
 
-public class AccordionHeader extends HTML implements ClickHandler {
+public class AccordionHeader extends PanelBase implements ClickHandler {
 
 	public AccordionHeader() {
-	    this.addClickHandler(this);
-	    
-	    //TODO: need to figure out how to deal with internal style vs external theme.
-	    setStyleName("Header");
-        addStyleName(CSS.S.Close());
+	    this.addDomHandler(this, ClickEvent.getType());    
+        this.add(new AccordionArrow());
 	}
-
+	
     @Override
     public void onClick(ClickEvent event) {
         AccordionStack parent = (AccordionStack) this.getParent().getParent();
         parent.toggle();
+    }
+    
+    static class AccordionArrow extends HTML {    	
+    	public AccordionArrow() {
+    		super("<div/>");
+    		setStyleName("AccordionArrow");
+    	}
     }
 
 }

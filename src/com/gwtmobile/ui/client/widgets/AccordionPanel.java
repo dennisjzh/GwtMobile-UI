@@ -16,43 +16,13 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import java.util.Iterator;
+public class AccordionPanel extends PanelBase {
 
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.Widget;
-
-
-public class AccordionPanel extends WidgetBase implements HasWidgets {
-
-    private FlowPanel _panel = new FlowPanel();
-    
 	public AccordionPanel() {
-	    initWidget(_panel);
 		addStyleName("Accordion");
 	}
-		
-    @Override
-    public void add(Widget w) {
-        _panel.add(w);
-    }
 
-    @Override
-    public void clear() {
-        _panel.clear();
-    }
-
-    @Override
-    public Iterator<Widget> iterator() {
-        return _panel.iterator();
-    }
-
-    @Override
-    public boolean remove(Widget w) {
-        return _panel.remove(w);
-    }
-    
-    public AccordionStack getStack(int index) {
+	public AccordionStack getStack(int index) {
         return (AccordionStack) _panel.getWidget(index);
     }
 }

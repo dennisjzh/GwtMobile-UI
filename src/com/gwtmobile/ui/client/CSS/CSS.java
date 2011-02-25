@@ -24,15 +24,11 @@ public interface CSS extends ClientBundle {
 	
 	public static final CSS Instance = GWT.create(CSS.class);
     public static final Transitions T = Instance.transitions();
-    public static final Styles S = Instance.styles();
-    public static boolean injected = T.ensureInjected() && S.ensureInjected();
+    public static boolean injected = T.ensureInjected();
 
     @Source("Transitions.css")
     Transitions transitions();
 
-    @Source("Styles.css")
-    Styles styles();
-    
     @Source("arrowdown.png")
     ImageResource arrowdown();
 
