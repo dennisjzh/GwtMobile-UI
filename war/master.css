@@ -320,8 +320,8 @@ html {
 	cursor: pointer;
 	text-shadow: black 0.1em 0.1em 0.1em;
 	padding:.5em .5em .5em 0em;
-	border-bottom:.1em solid #333333;
-	border-top: .1em solid #666666;
+	border-bottom:1px solid #333333;
+	border-top: 1px solid #666666;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
 }
 
@@ -350,7 +350,10 @@ html {
 	width: 1em;
 	height: 1em;
 	-webkit-border-radius: 1em;
-	border: .2em solid lightgray;
+	border: .15em solid lightgray;
+	-webkit-transition-property: -webkit-transform;
+	-webkit-transition-duration: 200ms;
+	-webkit-transition-timing-function: ease;
 }
 
 .AccordionArrow > div {
@@ -362,11 +365,8 @@ html {
 	width: 0.001em;
 	position: relative;
 	left: .35em;
-	-webkit-transition-property: -webkit-transform;
-	-webkit-transition-duration: 200ms;
-	-webkit-transition-timing-function: ease;
 }
 
-.Accordion > div.Expand > div > .AccordionArrow > div {
-	-webkit-transform: rotate(90deg) translate3D(35%, 32%, 0);
+.Accordion > div.Expand > div > .AccordionArrow{
+	-webkit-transform: rotate(90deg);
 }
