@@ -19,13 +19,28 @@ package com.gwtmobile.ui.client.widgets;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
+import com.gwtmobile.ui.client.event.DragController;
+import com.gwtmobile.ui.client.event.DragEvent;
+import com.gwtmobile.ui.client.event.DragEventsHandler;
 
 
-public class AccordionHeader extends PanelBase implements ClickHandler {
+public class AccordionHeader extends PanelBase implements ClickHandler, DragEventsHandler {
 
 	public AccordionHeader() {
 	    this.addDomHandler(this, ClickEvent.getType());    
         this.add(new AccordionArrow());
+	}
+	
+	@Override
+	public void onLoad() {
+		super.onLoad();
+        DragController.get().addDragEventsHandler(this);
+	}
+	
+	@Override
+	protected void onUnload() {
+		super.onUnload();
+        DragController.get().removeDragEventsHandler(this);
 	}
 	
     @Override
@@ -34,11 +49,28 @@ public class AccordionHeader extends PanelBase implements ClickHandler {
         parent.toggle();
     }
     
+	@Override
+	public void onDragEnd(DragEvent e) {
+		removeStyleName("Pressed");
+	}
+
+	@Override
+	public void onDragMove(DragEvent e) {
+		removeStyleName("Pressed");
+	}
+
+	@Override
+	public void onDragStart(DragEvent e) {
+		addStyleName("Pressed");		
+	}
+
+	
     static class AccordionArrow extends HTML {    	
     	public AccordionArrow() {
-    		super("<div/>");
+    		//super("<div/>");
     		setStyleName("AccordionArrow");
     	}
     }
+
 
 }

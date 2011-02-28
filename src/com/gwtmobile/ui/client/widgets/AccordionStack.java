@@ -16,7 +16,10 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.utils.Utils;
 
 
 public class AccordionStack extends PanelBase {
@@ -27,7 +30,7 @@ public class AccordionStack extends PanelBase {
 	@Override
     protected void onInitialLoad( ) {
         if (this.getStyleName().indexOf("Expand") == -1) {
-        	addStyleName("Close");
+        	close();
         }
 	}
 	
@@ -46,18 +49,34 @@ public class AccordionStack extends PanelBase {
     }
 
     public void close() {
-        this.removeStyleName("Expand");
-        this.addStyleName("Close");
+        this.addStyleName("Collapse");
+		this.removeStyleName("Expand");
+		Scheduler.get().scheduleDeferred(new ScheduledCommand() {			
+			@Override
+			public void execute() {
+		        _content.setHeight("0px");
+			}
+		});
+    }
+
+    public void expand() {
+        this.addStyleName("Expand");
+        this.removeStyleName("Collapse");
+		Scheduler.get().scheduleDeferred(new ScheduledCommand() {			
+			@Override
+			public void execute() {
+				Utils.Console(_content.getElement().getScrollHeight() - _content.getElement().getOffsetHeight() + "px");
+		        _content.setHeight(_content.getElement().getScrollHeight() - _content.getElement().getOffsetHeight()+ "px");
+			}
+		});
     }
     
     public void toggle() {
         if (this.getStyleName().indexOf("Expand") == -1) {
-            this.addStyleName("Expand");
-            this.removeStyleName("Close");
+        	expand();
         }
         else {
-            this.addStyleName("Close");
-            this.removeStyleName("Expand");
+        	close();
         }        
     }
     

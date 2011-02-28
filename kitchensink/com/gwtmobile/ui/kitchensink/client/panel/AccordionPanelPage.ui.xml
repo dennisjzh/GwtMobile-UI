@@ -8,6 +8,7 @@
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>Accordion Panel</g:Label>			
 		</m:HeaderPanel>
+		<m:ScrollPanel>
 		<m:AccordionPanel ui:field="accordion">
 			<m:AccordionStack>
 				<m:AccordionHeader>
@@ -48,6 +49,7 @@
 				</m:AccordionContent>
 			</m:AccordionStack>
 		</m:AccordionPanel>
+		</m:ScrollPanel>
 		<g:Label>Can you see me?</g:Label>
 	</g:HTMLPanel>	
 </ui:UiBinder> 
