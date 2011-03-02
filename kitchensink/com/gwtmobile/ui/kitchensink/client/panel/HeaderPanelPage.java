@@ -18,25 +18,19 @@ package com.gwtmobile.ui.kitchensink.client.panel;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.page.Page;
-import com.gwtmobile.ui.client.widgets.AccordionPanel;
-import com.gwtmobile.ui.client.widgets.HeaderPanel;
 
-public class AccordionPanelPage extends Page {
+public class HeaderPanelPage extends Page {
 
-	@UiField HeaderPanel header;
-	@UiField AccordionPanel accordion;
-	
-	private static AccordionPanelPageUiBinder uiBinder = GWT
-			.create(AccordionPanelPageUiBinder.class);
+	private static HeaderPanelPageUiBinder uiBinder = GWT
+			.create(HeaderPanelPageUiBinder.class);
 
-	interface AccordionPanelPageUiBinder extends UiBinder<Widget, AccordionPanelPage> {
+	interface HeaderPanelPageUiBinder extends UiBinder<Widget, HeaderPanelPage> {
 	}
 
-	public AccordionPanelPage() {
-		initWidget(uiBinder.createAndBindUi(this));				
+	public HeaderPanelPage() {
+		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 }

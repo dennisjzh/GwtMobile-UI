@@ -19,24 +19,35 @@ package com.gwtmobile.ui.kitchensink.client.panel;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.page.Page;
-import com.gwtmobile.ui.client.widgets.AccordionPanel;
-import com.gwtmobile.ui.client.widgets.HeaderPanel;
+import com.gwtmobile.ui.client.widgets.ListPanel;
 
-public class AccordionPanelPage extends Page {
+public class ListPanelPage extends Page{
 
-	@UiField HeaderPanel header;
-	@UiField AccordionPanel accordion;
+	@UiField ListPanel list1, list2;
 	
-	private static AccordionPanelPageUiBinder uiBinder = GWT
-			.create(AccordionPanelPageUiBinder.class);
+	private static ListPanelPageUiBinder uiBinder = GWT
+			.create(ListPanelPageUiBinder.class);
 
-	interface AccordionPanelPageUiBinder extends UiBinder<Widget, AccordionPanelPage> {
+	interface ListPanelPageUiBinder extends UiBinder<Widget, ListPanelPage> {
 	}
 
-	public AccordionPanelPage() {
-		initWidget(uiBinder.createAndBindUi(this));				
+	public ListPanelPage() {
+		initWidget(uiBinder.createAndBindUi(this));		
 	}
+
+    @UiHandler("list1")
+    void onList1SelectionChanged(SelectionChangedEvent e) {
+    	Window.alert("You select item " + e.getSelection() + " on list 1.");    	
+    }
+
+    @UiHandler("list2")
+    void onList2SelectionChanged(SelectionChangedEvent e) {
+    	Window.alert("You select item " + e.getSelection() + " on list 2.");    	
+    }
 
 }

@@ -5,18 +5,15 @@
 	<ui:style>
 	</ui:style>
 	<g:HTMLPanel>
-		<m:HeaderPanel rightButton="menu">
+		<m:HeaderPanel>
 			<g:Label>Hello GWT Mobile UI!</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel>
 			<m:ListPanel ui:field="list" showArrow="true">
 				<g:Label>Animations</g:Label>			
 				<g:Label>Panels</g:Label>			
-				<m:ListItem showArrow="false"><g:Label>Hello GWT Mobile UI!</g:Label></m:ListItem>			
-				<m:ListItem showArrow="false"><g:Label>Hello GWT Mobile UI!</g:Label></m:ListItem>			
-				<m:ListItem showArrow="false"><g:Label>Hello GWT Mobile UI!</g:Label></m:ListItem>			
-				<m:ListItem showArrow="false"><g:Label>Hello GWT Mobile UI!</g:Label></m:ListItem>			
-				<m:ListItem showArrow="false"><g:Label>Hello GWT Mobile UI!</g:Label></m:ListItem>			
+				<m:ListItem showArrow="false"><g:Label>Widgets</g:Label></m:ListItem>			
+				<m:ListItem showArrow="false"><g:Label>Themes</g:Label></m:ListItem>			
 			</m:ListPanel>
 		</m:ScrollPanel>
 		

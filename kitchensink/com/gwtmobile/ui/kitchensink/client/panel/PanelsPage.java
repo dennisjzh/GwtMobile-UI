@@ -46,6 +46,14 @@ public class PanelsPage extends Page {
     		AccordionPanelPage accordionPanelPage = new AccordionPanelPage();
     		goTo(accordionPanelPage);
     		break;
+    	case 1:
+    		HeaderPanelPage headerPanelPage = new HeaderPanelPage();
+    		goTo(headerPanelPage);
+    		break;
+    	case 2:
+    		ListPanelPage listPanelPage = new ListPanelPage();
+    		goTo(listPanelPage);
+    		break;
     	case 3:
     		ScrollPanelPage scrollPanelPage = new ScrollPanelPage();
     		goTo(scrollPanelPage);
