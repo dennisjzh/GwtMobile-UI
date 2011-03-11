@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.gwtmobile.ui.kitchensink.client;
+package com.gwtmobile.ui.kitchensink.client.panel;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -24,40 +24,27 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.widgets.ListPanel;
-import com.gwtmobile.ui.kitchensink.client.panel.PanelsPage;
-import com.gwtmobile.ui.kitchensink.client.panel.WidgetsPage;
-import com.gwtmobile.ui.kitchensink.client.transition.TransitionsPage;
 
-public class MainPage extends Page {
+public class WidgetsPage extends Page {
 
 	@UiField ListPanel list;
+	
+	private static WidgetsPageUiBinder uiBinder = GWT
+			.create(WidgetsPageUiBinder.class);
 
-	private static MainPageUiBinder uiBinder = GWT
-	.create(MainPageUiBinder.class);
-
-	interface MainPageUiBinder extends UiBinder<Widget, MainPage> {
+	interface WidgetsPageUiBinder extends UiBinder<Widget, WidgetsPage> {
 	}
 
-	public MainPage() {
+	public WidgetsPage() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	@UiHandler("list")
-	void onListSelectionChanged(SelectionChangedEvent e) {
-		switch (e.getSelection()) {
-		case 0:
-			TransitionsPage transitions = new TransitionsPage();
-			this.goTo(transitions);
-			break;
-		case 1:
-			PanelsPage panels = new PanelsPage();
-			this.goTo(panels);
-			break;
-		case 2:
-			WidgetsPage widgets = new WidgetsPage();
-			this.goTo(widgets);
-			break;
-		}
-	}
+    @UiHandler("list")
+    void onListSelectionChanged(SelectionChangedEvent e) {
+    	switch (e.getSelection()) {
+    	case 0:
+    		break;
+    	}
+    }
 
 }
