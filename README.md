@@ -1,10 +1,11 @@
-gwtmobile-ui
+GWT Mobile UI
 ============
 
 gwtmobile-ui is a mobile UI widget system for GWT application.
 
-gwtmobile-ui is part of [GwtMobile](http://github.com/dennisjzh/GwtMobile), a GWT mobile development platform.
+gwtmobile-ui is part of [GWT Mobile](http://github.com/dennisjzh/GwtMobile), a GWT mobile development platform.
 
+Have questions? Post it on the [GWT Mobile Google Group](http://groups.google.com/group/gwtmobile) 
 
 Apps that use GWT Mobile UI
 ---------------------------
