@@ -8,8 +8,8 @@ gwtmobile-ui is part of [GWT Mobile](http://github.com/dennisjzh/GwtMobile), a G
 Live Kitchen Sink Demo
 ----------------------
 
-Using a desktop browser: [demo.gwtmobile.com](http://demo.gwtmobile.com)
-Using a mobile browser: [demobile.gwtmobile.com](http://demobile.gwtmobile.com)
+* Using a desktop browser: [demo.gwtmobile.com](http://demo.gwtmobile.com)
+* Using a mobile browser: [demobile.gwtmobile.com](http://demobile.gwtmobile.com)
 
 The demo only works with a WebKit (Chrome or Safari) browser.
 
