@@ -50,15 +50,13 @@ public class DragControllerMobile extends DragController {
         }
     }
 
-    private int count;
 	public void onTouchStart(TouchEvent e) {
         EventTarget target = e.getEventTarget();
         boolean preventDefault = true;
         if (Element.is(target)) {
             Element ele = Element.as(target);
             //INPUT element will not get focus if default action is prevented.
-            if (ele.getNodeName().toUpperCase().equals("INPUT")
-                    && ele.getAttribute("type").equals("text")) {
+            if (Utils.isHtmlFormControl(ele)) {
                 ele.focus();
                 preventDefault = false;
             }
@@ -67,8 +65,6 @@ public class DragControllerMobile extends DragController {
             e.preventDefault();   //prevent default action of selecting text            
             e.stopPropagation();
         }
-        _touchMoving = false;
-        Utils.Console("TouchStart" + count++);
         //FIXME: for multi-touch platforms.
 		onStart(e, new Point(e.touches().get(0).getClientX(), e.touches().get(0).getClientY()));
 	}

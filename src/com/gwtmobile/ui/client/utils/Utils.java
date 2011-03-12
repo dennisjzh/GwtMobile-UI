@@ -66,25 +66,6 @@ public class Utils {
     }-*/;
 
 	
-//	public static native void fireClick(double x, double y) /*-{
-//       var theTarget = $doc.elementFromPoint(x, y);
-//       if (theTarget.nodeType == 3) theTarget = theTarget.parentNode;
-//
-//       var theEvent = $doc.createEvent('MouseEvents');
-//       theEvent.initEvent('click', true, true);
-//       theEvent.fabricated = true;
-//       theTarget.dispatchEvent(theEvent);
-//   }-*/;
-//
-//    public static native boolean isFabricated(Event e) /*-{
-//        if (e.fabricated == undefined) {
-//            return false;
-//        }
-//        else {
-//            return e.fabricated;
-//        }
-//    }-*/;
-
     private static Element htmlNode = DOM.createElement("DIV");
     public static String unescapeHTML(String html) {
         htmlNode.setInnerHTML(html);
@@ -101,4 +82,13 @@ public class Utils {
 		RootLayoutPanel.get().remove(a);
 	}
 
+    public static boolean isHtmlFormControl(com.google.gwt.dom.client.Element ele) {
+    	if (ele == null) {
+    		return false;
+    	}
+    	String FromControls = "BUTTON INPUT SELECT TEXTAREA";
+    	String nodeName = ele.getNodeName().toUpperCase();
+    	return FromControls.contains(nodeName) 
+    		|| isHtmlFormControl(ele.getParentElement());
+    }
 }

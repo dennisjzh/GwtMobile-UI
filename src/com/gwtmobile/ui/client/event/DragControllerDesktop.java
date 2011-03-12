@@ -54,9 +54,8 @@ public class DragControllerDesktop extends DragController {
         boolean preventDefault = true;
         if (Element.is(target)) {
             Element ele = Element.as(target);
-            //INPUT element will not get focus if default action is prevented.
-            if (ele.getNodeName().toUpperCase().equals("INPUT")
-                    && ele.getAttribute("type").equals("text")) {
+            //INPUT element will not get focus if default action is prevented.            
+            if (Utils.isHtmlFormControl(ele)) {
                 ele.focus();
                 preventDefault = false;
             }
@@ -64,8 +63,8 @@ public class DragControllerDesktop extends DragController {
         if (preventDefault) {
             e.preventDefault();   //prevent default action of selecting text            
             e.stopPropagation();
+    		onStart(e, new Point(e.getClientX(), e.getClientY()));
         }
-		onStart(e, new Point(e.getClientX(), e.getClientY()));
 	}
 	
     public void onMouseMove(Event e) {
