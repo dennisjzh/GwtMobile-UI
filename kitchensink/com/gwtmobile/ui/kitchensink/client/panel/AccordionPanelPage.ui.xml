@@ -50,6 +50,5 @@
 			</m:AccordionStack>
 		</m:AccordionPanel>
 		</m:ScrollPanel>
-		<g:Label>Can you see me?</g:Label>
 	</g:HTMLPanel>	
 </ui:UiBinder> 

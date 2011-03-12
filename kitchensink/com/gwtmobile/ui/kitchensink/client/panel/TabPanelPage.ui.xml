@@ -40,6 +40,5 @@
 				</m:TabContent>
 			</m:Tab>
 		</m:TabPanel>
-		<g:Label>Can you see me?</g:Label>
 	</g:HTMLPanel>	
 </ui:UiBinder> 
