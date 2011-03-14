@@ -18,6 +18,7 @@ package com.gwtmobile.ui.client.page;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.utils.Utils;
@@ -25,135 +26,137 @@ import com.gwtmobile.ui.client.widgets.WidgetBase;
 
 public abstract class Page extends WidgetBase {
 
-    private boolean _isInitialLoad = true;
-    private Transition _transition;
-    private static Transition _defaultTransition = Transition.SLIDE;
-    
-    @Override
-    protected void initWidget(Widget widget) {
-    	super.initWidget(widget);    	
+	private boolean _isInitialLoad = true;
+	private Transition _transition;
+	private static Transition _defaultTransition = Transition.SLIDE;
+
+	@Override
+	protected void initWidget(Widget widget) {
+		super.initWidget(widget);    	
 		setStyleName("Page");    
-    }
-    
-    @Override
-    public void onLoad() {
-        if (_isInitialLoad) {
-            onInitialLoad();
-            _isInitialLoad = false;
-        }
-    }
-    
+	}
+
+	@Override
+	public void onLoad() {
+		if (_isInitialLoad) {
+			onInitialLoad();
+			_isInitialLoad = false;
+		}
+	}
+
 	protected void onInitialLoad() {
 	}
-	
+
 	@Override
 	public void onTransitionEnd() {
-	    final Page to, from;
-	    if (PageHistory.from() == null || PageHistory.from() != Page.this) {  //goto
-	    	Utils.Console("goto");
-	        from = PageHistory.current();
-	        to = this;
-	        PageHistory.add(to);
-	        //TODO: change to use scheduler deferred command.
-	        Timer timer = new Timer() {                
-                @Override
-                public void run() {
-                    to.onNavigateTo();
-                }
-            };
-            timer.schedule(1);
-	    }
-	    else {             //goback
-	    	Utils.Console("goback");
-	        from = PageHistory.current();
-	        PageHistory.back();
-	        to = PageHistory.current();
-            Timer timer = new Timer() {                
-                @Override
-                public void run() {
-                    to.onNavigateBack(from, PageHistory.getReturnValue());
-                }
-            };
-            timer.schedule(1);
-	    }       
+		final Page to, from;
+		if (PageHistory.from() == null || PageHistory.from() != Page.this) {  //goto
+			Utils.Console("goto");
+			from = PageHistory.current();
+			to = this;
+			PageHistory.add(to);
+			//TODO: change to use scheduler deferred command.
+			Timer timer = new Timer() {                
+				@Override
+				public void run() {
+					to.onNavigateTo();
+				}
+			};
+			timer.schedule(1);
+		}
+		else {             //goback
+			Utils.Console("goback");
+			from = PageHistory.current();
+			PageHistory.back();
+			to = PageHistory.current();
+			Timer timer = new Timer() {                
+				@Override
+				public void run() {
+					to.onNavigateBack(from, PageHistory.getReturnValue());
+				}
+			};
+			timer.schedule(1);
+		}       
 	}
-		
-    protected void onNavigateTo() {
-    }
 
-    protected void onNavigateBack(Page from, Object object) {
-    }
+	protected void onNavigateTo() {
+	}
 
-    public void goTo(final Page toPage, final Transition transition) {
-	    final Page fromPage = this;
-    	toPage.setTransition(transition);
-    	if (transition != null) {
-        	transition.start(fromPage, toPage, RootLayoutPanel.get(), false);
-    	}
-    	else {
-    		Transition.start(fromPage, toPage, RootLayoutPanel.get());
-    	}
+	protected void onNavigateBack(Page from, Object object) {
+	}
+
+	public void goTo(final Page toPage, final Transition transition) {
+		final Page fromPage = this;
+		toPage.setTransition(transition);
+		if (transition != null) {
+			transition.start(fromPage, toPage, RootLayoutPanel.get(), false);
+		}
+		else {
+			Transition.start(fromPage, toPage, RootLayoutPanel.get());
+		}
 	}
 
 	public void goBack(Object returnValue) {
-        final Page fromPage = this;
-        PageHistory.setReturnValue(returnValue);
-        final Page toPage = PageHistory.from();
+		final Page fromPage = this;
+		PageHistory.setReturnValue(returnValue);
+		final Page toPage = PageHistory.from();
 		if (toPage == null) {
 			// exit app here.
-		    return;
+			return;
 		}
 		final Transition transition = fromPage.getTransition();
-    	if (transition != null) {
-    		transition.start(fromPage, toPage, RootLayoutPanel.get(), true);
-    	}
-    	else {
-    		Transition.start(fromPage, toPage, RootLayoutPanel.get());
-    	}
+		if (transition != null) {
+			transition.start(fromPage, toPage, RootLayoutPanel.get(), true);
+		}
+		else {
+			Transition.start(fromPage, toPage, RootLayoutPanel.get());
+		}
 	}
-	
+
 	void setTransition(Transition transition) {
 		_transition = transition;
 	}
-	
+
 	Transition getTransition() {
 		return _transition;
 	}
 
 	public static void load(Page mainPage) {
 		setPageResolution();
-        RootLayoutPanel.get().add(mainPage);
-        PageHistory.add(mainPage);
+		RootLayoutPanel.get().add(mainPage);
+		PageHistory.add(mainPage);
 	}
-	
+
 	public static void setDefaultTransition(Transition transition) {
 		_defaultTransition = transition;
 	}
 
-    public void goTo(final Page toPage) {
-    	goTo(toPage, _defaultTransition);
+	public void goTo(final Page toPage) {
+		goTo(toPage, _defaultTransition);
 	}
-    
-    public Widget getWidget() {
-    	return super.getWidget();
-    }
-    
+
+	public Widget getWidget() {
+		return super.getWidget();
+	}
+
 	private static void setPageResolution() {
-		String ratio = getDevicePixelRatio();
-		Utils.Console("Device Pixel Ratio: " + ratio);
-		if (ratio.equals("1.5")) {
-	    	Document.get().getDocumentElement().setClassName("WVGA");
+		int ratio = getDevicePixelRatio();
+		if (ratio == 2) {	//iphone 4. screen size on iphone does not change despite the dp ratio. 
+			Document.get().getDocumentElement().setClassName("HVGA");
 		}
-		else if (ratio.equals("0.75")) {
-	    	Document.get().getDocumentElement().setClassName("QVGA");
+		else if (ratio == 1.5) {
+			Document.get().getDocumentElement().setClassName("WVGA");
+		}
+		else if (ratio == 0.75) {
+			Document.get().getDocumentElement().setClassName("QVGA");
 		}
 		else {
-	    	Document.get().getDocumentElement().setClassName("HVGA");
+			Document.get().getDocumentElement().setClassName("HVGA");
 		}
 	}
 
-    public static native String getDevicePixelRatio() /*-{
-		return $wnd.devicePixelRatio + "";
+	public static native int getDevicePixelRatio() /*-{
+		return $wnd.devicePixelRatio;
 	}-*/;
 
 }
