@@ -51,7 +51,7 @@ html {
 	-webkit-box-align: center;
 	-webkit-box-pack: justify;
 	padding: 0.3em 0.3em;
-	margin-bottom: 0.5em;
+	margin-bottom: 0.3em;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1e1f21), color-stop(0.98, #272729), color-stop(0.98, black), to(black));
 	-webkit-box-shadow: 0px 0px 12px black;
 	text-shadow: black 0.1em 0.1em 0.1em;
@@ -165,13 +165,17 @@ html {
 	color: gray;
 }
 
-/********** Scroller **********/
-.Scroller {
+/********** Scroll Panel **********/
+.ScrollPanel {
 	-webkit-transition-property: -webkit-transform;
     -webkit-transition-timing-function: cubic-bezier(0,0,0.25,1);
 	-webkit-box-flex: 10;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
+	overflow: hidden;
+	margin-top: -.3em;	/* same value as header panel */
+	padding-top: .5em;
+	padding-bottom: .5em;
 }
 
 /********** List Panel **********/
@@ -235,7 +239,7 @@ html {
 	position: absolute;
 	width: 0.3em;
 	height: 0.8em;
-	background: gray;	
+	background: gray;
 }
 
 .Chevron > span:first-child {
@@ -376,10 +380,24 @@ html {
 	margin-left: .5em;
 }
 
-.Accordion > div.Expand > div > .AccordionArrow{
+.Accordion > div.Expand > div > .AccordionArrow {
 	position: relative;
 	top: .3em;
 	left: -.2em;
 	border-top-color: gray;
 	border-left-color: transparent;
+}
+
+
+/********** TextBox **********/
+
+.TextBox {
+/*	padding: .4em;
+	-webkit-border-radius: .6em;
+*/	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	border: 0;
+}
+
+.TextBox.Focus {
+	-webkit-box-shadow: lightgreen 0 0 1em;
 }

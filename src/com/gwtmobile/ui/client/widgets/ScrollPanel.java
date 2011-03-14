@@ -16,11 +16,8 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import java.util.Iterator;
-
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
@@ -28,14 +25,13 @@ import com.gwtmobile.ui.client.event.DragEventsHandler;
 import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 
-public class ScrollPanel extends WidgetBase 
+public class ScrollPanel extends PanelBase 
 implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 
-	protected SimplePanel _panel = new SimplePanel();
+//	Element _activeElement = null; 
 	
     public ScrollPanel() {
-    	initWidget(_panel);
-        setStyleName("Scroller");
+        setStyleName("ScrollPanel");
     }
     
     @Override
@@ -52,7 +48,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 	
 	@Override
     public Widget getWidget() {
-    	return _panel.getWidget();
+    	return _panel.getWidget(0);
     }
     
 	public void reset() {
@@ -93,6 +89,10 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		ele.style.webkitTransitionDuration = "" + value + "ms";
 	}-*/;
 
+	private native int getHeight(Element ele) /*-{
+		return parseInt($doc.defaultView.getComputedStyle(ele, "").getPropertyValue("height"));
+	}-*/;
+
 
 	@Override
     public void onDragStart(DragEvent e) {
@@ -106,11 +106,15 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 			setTranslateY(element, matrix + offset);
 			DragController.get().suppressNextClick();
 		}
+//		_activeElement = Utils.getActiveElement();
+//		_activeElement.blur();
 	}
 
 	@Override
     public void onDragMove(DragEvent e) {
 		Element widgetEle = getWidget().getElement();
+		int panelHeight = getHeight(this.getElement());
+		int widgetHeight = widgetEle.getOffsetHeight();
 		int current = getTranslateY(widgetEle);
 		if (current > 0) {//exceed top boundary
 			if (e.OffsetY > 0) { 	//resist scroll down.
@@ -120,7 +124,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 				current += e.OffsetY * 2;				
 			}
 		}
-		else if (-current + this.getElement().getClientHeight() > widgetEle.getScrollHeight()) { //exceed bottom boundary
+		else if (-current + panelHeight > widgetHeight) { //exceed bottom boundary
 			if (e.OffsetY < 0) { 	//resist scroll up.
 				current += e.OffsetY / 2;
 			}
@@ -141,23 +145,30 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		if (current == 0) {
 			return;
 		}
+		int panelHeight = getHeight(this.getElement());
+		int widgetHeight = widgetEle.getOffsetHeight();
 		if (current > 0 //exceed top boundary
-				|| getElement().getClientHeight() > widgetEle.getScrollHeight()) {
+				|| panelHeight > widgetHeight) {
 			setTransitionDuration(widgetEle, 500);
 			setTranslateY(widgetEle, 0);
 		}
-		else if (-current + this.getElement().getClientHeight() > widgetEle.getScrollHeight()) { //exceed bottom boundary
+		else if (-current + panelHeight > widgetHeight) { //exceed bottom boundary
 			setTransitionDuration(widgetEle, 500);
-			setTranslateY(widgetEle, this.getElement().getClientHeight() - widgetEle.getScrollHeight());
+			setTranslateY(widgetEle, panelHeight - widgetHeight);
 		}
+//		if (_activeElement != null) {
+//			_activeElement.focus();
+//		}
 	}
 
 	@Override
     public void onSwipeVertical(SwipeEvent e) {
 		Element widgetEle = getWidget().getElement();
+		int panelHeight = getHeight(this.getElement());
+		int widgetHeight = widgetEle.getOffsetHeight();
 		long current = getTranslateY(widgetEle);
 		if ((current >= 0) // exceed top boundary
-			|| (-current + this.getElement().getClientHeight() >= widgetEle.getScrollHeight())) { // exceed bottom boundary
+			|| (-current + panelHeight >= widgetHeight)) { // exceed bottom boundary
 			return;
 		}
 		
@@ -172,8 +183,8 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 			time = (long) (time * timeAdj * timeAdj);
 			current = 0;
 		}
-		else if (-current + this.getElement().getClientHeight() > widgetEle.getScrollHeight()) { //exceed bottom boundary
-			long bottom = this.getElement().getClientHeight() - widgetEle.getScrollHeight();
+		else if (-current + panelHeight > widgetHeight) { //exceed bottom boundary
+			long bottom = panelHeight - widgetHeight;
 			double timeAdj = 1 - (double)(current - bottom) / distance;
 			time = (long) (time * timeAdj * timeAdj);
 			current = bottom;
@@ -188,23 +199,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 
 	@Override
 	public void add(Widget w) {
-		assert _panel.getWidget() == null : "Can only add one widget to Scroller.";
-		_panel.setWidget(w);
+		assert _panel.getWidgetCount()  == 0 : "Can only add one widget to ScrollPanel.";
+		super.add(w);
 	}
-
-	@Override
-	public void clear() {
-		_panel.clear();
-	}
-
-	@Override
-	public Iterator<Widget> iterator() {
-		return _panel.iterator();
-	}
-
-	@Override
-	public boolean remove(Widget w) {
-		return _panel.remove(w);
-	}
-	
 }
