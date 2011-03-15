@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.gwtmobile.ui.kitchensink.client.panel;
+package com.gwtmobile.ui.kitchensink.client.widget;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -42,7 +42,9 @@ public class WidgetsPage extends Page {
     @UiHandler("list")
     void onListSelectionChanged(SelectionChangedEvent e) {
     	switch (e.getSelection()) {
-    	case 0:
+    	case 5:
+    		TextBoxPage textBox = new TextBoxPage();
+    		goTo(textBox);
     		break;
     	}
     }
