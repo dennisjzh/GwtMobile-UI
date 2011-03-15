@@ -91,4 +91,8 @@ public class Utils {
     	return FromControls.contains(nodeName) 
     		|| isHtmlFormControl(ele.getParentElement());
     }
+    
+    public native static Element getActiveElement() /*-{
+    	return $doc.activeElement;
+    }-*/;
 }

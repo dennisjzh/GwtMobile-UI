@@ -1,0 +1,48 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
+	<ui:style>
+	</ui:style>
+	<g:HTMLPanel>
+		<m:HeaderPanel ui:field="header" leftButton="Back">
+			<g:Label>Text Box</g:Label>			
+		</m:HeaderPanel>
+		<m:ScrollPanel>
+			<g:HTMLPanel>			
+				<g:ListBox>
+					<g:item value='1'>first item</g:item>
+					<g:item value='2'>second item</g:item>
+				</g:ListBox>
+				<g:ListBox visibleItemCount="2">
+					<g:item value='1'>first item</g:item>
+					<g:item value='2'>second item</g:item>
+				</g:ListBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox></m:TextBox>
+				<m:TextBox ui:field="textbox"></m:TextBox>
+				<g:TextBox></g:TextBox>
+				<g:TextArea></g:TextArea>
+				<g:Button ui:field="gbutton">button</g:Button>
+				<g:RadioButton ui:name="radio" ui:text="U2"></g:RadioButton>
+				<g:RadioButton ui:name="radio" ui:text="U3"></g:RadioButton>
+				<g:CheckBox>check 1</g:CheckBox>
+				<g:CheckBox>check 2</g:CheckBox>
+			</g:HTMLPanel>
+		</m:ScrollPanel>
+	</g:HTMLPanel>	
+</ui:UiBinder> 

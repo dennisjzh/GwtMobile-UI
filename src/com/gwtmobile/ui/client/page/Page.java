@@ -18,7 +18,6 @@ package com.gwtmobile.ui.client.page;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.utils.Utils;
