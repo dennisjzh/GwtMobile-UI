@@ -16,6 +16,8 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import com.google.gwt.dom.client.Style;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -24,20 +26,29 @@ import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
 import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
+import com.gwtmobile.ui.client.utils.Utils;
 
 public class ScrollPanel extends PanelBase 
 implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 
-//	Element _activeElement = null; 
+	private boolean _hasTextBox = false;
 	
     public ScrollPanel() {
         setStyleName("ScrollPanel");
     }
     
+    public void setHasTextBox(boolean hasTextBox) {
+		_hasTextBox = hasTextBox;
+	}
+
+	public boolean getHasTextBox() {
+		return _hasTextBox;
+	}
+
     @Override
 	public void onLoad() {
         DragController.get().addDragEventsHandler(this);
-        DragController.get().addSwipeEventHandler(this);
+        DragController.get().addSwipeEventsHandler(this);
 	}
 	
 	@Override
@@ -65,6 +76,36 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
         setTransitionDuration(getWidget().getElement(), 0);
         setTranslateY(getWidget().getElement(), 
                 this.getElement().getClientHeight() - this.getElement().getScrollHeight());
+	}
+	
+	public void setScrollPosition(int pos) {
+		if (_hasTextBox) {
+			setStyleTop(pos);
+		}
+		else {
+			Element element = getWidget().getElement();
+			setTranslateY(element, pos);
+		}
+	}
+	
+	public int getScrollPosition() {
+		if (_hasTextBox) {
+			return getStyleTop();
+		}
+		else {
+			Element element = getWidget().getElement();
+			return getTranslateY(element);
+		}
+	}
+	
+	public int getScrollToPosition() {
+		if (_hasTextBox) {
+			return getStyleTop();
+		}
+		else {
+			Element element = getWidget().getElement();
+			return getMatrixY(element);
+		}
 	}
 	
 	private native void setTranslateY(Element ele, double value) /*-{
@@ -96,18 +137,16 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 
 	@Override
     public void onDragStart(DragEvent e) {
-		Element element = getWidget().getElement();
-		int matrix = getMatrixY(element);
-		int current = getTranslateY(element);
-		setTransitionDuration(element, 0);
+		//Element element = getWidget().getElement();
+		int matrix = getScrollToPosition();
+		int current = getScrollPosition();
+		setTransitionDuration(getWidget().getElement(), 0);
 		if (current != matrix) {  //scroll on going
 			int diff = current - matrix;
 			int offset = diff > 2 ? 2 : diff > -2 ? diff : -2;
-			setTranslateY(element, matrix + offset);
+			setScrollPosition(matrix + offset);
 			DragController.get().suppressNextClick();
 		}
-//		_activeElement = Utils.getActiveElement();
-//		_activeElement.blur();
 	}
 
 	@Override
@@ -115,10 +154,10 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		Element widgetEle = getWidget().getElement();
 		int panelHeight = getHeight(this.getElement());
 		int widgetHeight = widgetEle.getOffsetHeight();
-		int current = getTranslateY(widgetEle);
+		int current = getScrollPosition();
 		if (current > 0) {//exceed top boundary
 			if (e.OffsetY > 0) { 	//resist scroll down.
-				current += e.OffsetY / 2;
+				current += (int)(e.OffsetY / 2);	// need the cast for production mode.
 			}
 			else {				
 				current += e.OffsetY * 2;				
@@ -126,7 +165,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		}
 		else if (-current + panelHeight > widgetHeight) { //exceed bottom boundary
 			if (e.OffsetY < 0) { 	//resist scroll up.
-				current += e.OffsetY / 2;
+				current += (int)(e.OffsetY / 2);
 			}
 			else {				
 				current += e.OffsetY * 2;				
@@ -135,13 +174,14 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		else {
 			current += e.OffsetY;
 		}
-		setTranslateY(widgetEle, current);		
+		Utils.Console(current + "");
+		setScrollPosition(current);		
 	}
 
 	@Override
     public void onDragEnd(DragEvent e) {
 		Element widgetEle = getWidget().getElement();
-		int current = getTranslateY(widgetEle);
+		int current = getScrollPosition();
 		if (current == 0) {
 			return;
 		}
@@ -150,15 +190,12 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		if (current > 0 //exceed top boundary
 				|| panelHeight > widgetHeight) {
 			setTransitionDuration(widgetEle, 500);
-			setTranslateY(widgetEle, 0);
+			setScrollPosition(0);
 		}
 		else if (-current + panelHeight > widgetHeight) { //exceed bottom boundary
 			setTransitionDuration(widgetEle, 500);
-			setTranslateY(widgetEle, panelHeight - widgetHeight);
+			setScrollPosition(panelHeight - widgetHeight);
 		}
-//		if (_activeElement != null) {
-//			_activeElement.focus();
-//		}
 	}
 
 	@Override
@@ -166,12 +203,13 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		Element widgetEle = getWidget().getElement();
 		int panelHeight = getHeight(this.getElement());
 		int widgetHeight = widgetEle.getOffsetHeight();
-		long current = getTranslateY(widgetEle);
+		long current = getScrollPosition();
 		if ((current >= 0) // exceed top boundary
 			|| (-current + panelHeight >= widgetHeight)) { // exceed bottom boundary
 			return;
 		}
 		
+		//TODO: simplify the swipe distance calculation.
 		double speed = e.getSpeed() * 2000;
 		double dicstanceFactor = 0.5;
 		double timeFactor = 2;
@@ -190,7 +228,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 			current = bottom;
 		}
 		setTransitionDuration(widgetEle, time);
-		setTranslateY(widgetEle, current);
+		setScrollPosition((int) current);
 	}
 
     @Override
@@ -202,4 +240,21 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		assert _panel.getWidgetCount()  == 0 : "Can only add one widget to ScrollPanel.";
 		super.add(w);
 	}
+	
+	private int getStyleTop() {
+		Style style = getWidget().getElement().getStyle();
+		String top = style.getTop();
+		if (top.isEmpty()) {
+			return 0;
+		}
+		else {
+			return Integer.parseInt(top.replace("px", ""));
+		}
+	}
+
+	private void setStyleTop(int top) {
+		Style style = getWidget().getElement().getStyle();
+		style.setTop(top, Unit.PX);
+	}
+	
 }

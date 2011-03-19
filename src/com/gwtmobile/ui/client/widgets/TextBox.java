@@ -18,6 +18,7 @@ public class TextBox extends com.google.gwt.user.client.ui.TextBox
 	public void onFocus(FocusEvent event) {
 		this.addStyleName("Focus");
 		//TODO: need to scroll to view
+		//this.getElement().scrollIntoView();
 	}
 
 	@Override

@@ -70,7 +70,7 @@ public abstract class DragController implements EventListener {
         _dragEventHandlers.add(dragHandler);
 	}
 	
-	public void addSwipeEventHandler(SwipeEventsHandler swipeHandler) {
+	public void addSwipeEventsHandler(SwipeEventsHandler swipeHandler) {
         _swipeEventHandlers.add(swipeHandler);
 	}
 	

@@ -81,7 +81,7 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
 	@Override
 	public void onLoad() {
 		super.onLoad();		
-        DragController.get().addSwipeEventHandler(this);
+        DragController.get().addSwipeEventsHandler(this);
 	}
 	
 	@Override

@@ -8,8 +8,8 @@
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>Text Box</g:Label>			
 		</m:HeaderPanel>
-		<m:ScrollPanel>
-			<g:HTMLPanel>			
+		<m:ScrollPanel hasTextBox="true">
+			<g:VerticalPanel>
 				<g:ListBox>
 					<g:item value='1'>first item</g:item>
 					<g:item value='2'>second item</g:item>
@@ -18,23 +18,37 @@
 					<g:item value='1'>first item</g:item>
 					<g:item value='2'>second item</g:item>
 				</g:ListBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox></m:TextBox>
-				<m:TextBox ui:field="textbox"></m:TextBox>
+				<m:TextBox>1</m:TextBox>
+				<m:TextBox>2</m:TextBox>
+				<m:TextBox>3</m:TextBox>
+				<m:TextBox>4</m:TextBox>
+				<m:TextBox>5</m:TextBox>
+				<m:TextBox>6</m:TextBox>
+				<m:TextBox>7</m:TextBox>
+				<m:TextBox>8</m:TextBox>
+				<m:TextBox>9</m:TextBox>
+				<m:TextBox>10</m:TextBox>
+				<m:TextBox>11</m:TextBox>
+				<m:TextBox>12</m:TextBox>
+				<m:TextBox>13</m:TextBox>
+				<m:TextBox>14</m:TextBox>
+				<m:TextBox>15</m:TextBox>
+				<m:TextBox>1</m:TextBox>
+				<m:TextBox>2</m:TextBox>
+				<m:TextBox>3</m:TextBox>
+				<m:TextBox>4</m:TextBox>
+				<m:TextBox>5</m:TextBox>
+				<m:TextBox>6</m:TextBox>
+				<m:TextBox>7</m:TextBox>
+				<m:TextBox>8</m:TextBox>
+				<m:TextBox>9</m:TextBox>
+				<m:TextBox>10</m:TextBox>
+				<m:TextBox>11</m:TextBox>
+				<m:TextBox>12</m:TextBox>
+				<m:TextBox>13</m:TextBox>
+				<m:TextBox>14</m:TextBox>
+				<m:TextBox>15</m:TextBox>
+				<m:TextBox ui:field="textbox">31</m:TextBox>
 				<g:TextBox></g:TextBox>
 				<g:TextArea></g:TextArea>
 				<g:Button ui:field="gbutton">button</g:Button>
@@ -42,7 +56,7 @@
 				<g:RadioButton ui:name="radio" ui:text="U3"></g:RadioButton>
 				<g:CheckBox>check 1</g:CheckBox>
 				<g:CheckBox>check 2</g:CheckBox>
-			</g:HTMLPanel>
+			</g:VerticalPanel>			
 		</m:ScrollPanel>
 	</g:HTMLPanel>	
 </ui:UiBinder> 
