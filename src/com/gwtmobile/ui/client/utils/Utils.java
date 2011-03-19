@@ -22,6 +22,7 @@ import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.EventListener;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
@@ -95,4 +96,8 @@ public class Utils {
     public native static Element getActiveElement() /*-{
     	return $doc.activeElement;
     }-*/;
+    
+    public static boolean isAndroid() {
+    	return Window.Navigator.getUserAgent().contains("Android");
+    }
 }

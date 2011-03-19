@@ -37,8 +37,8 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
         setStyleName("ScrollPanel");
     }
     
-    public void setHasTextBox(boolean hasTextBox) {
-		_hasTextBox = hasTextBox;
+    public void setHasTextBox(boolean hasTextBox) {    	
+		_hasTextBox = hasTextBox && Utils.isAndroid();
 	}
 
 	public boolean getHasTextBox() {
@@ -137,7 +137,6 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 
 	@Override
     public void onDragStart(DragEvent e) {
-		//Element element = getWidget().getElement();
 		int matrix = getScrollToPosition();
 		int current = getScrollPosition();
 		setTransitionDuration(getWidget().getElement(), 0);
