@@ -5,11 +5,11 @@ import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
 
-public class TextBox extends com.google.gwt.user.client.ui.TextBox 
+public class PasswordTextBox extends com.google.gwt.user.client.ui.PasswordTextBox 
 	implements FocusHandler, BlurHandler {
 
-	public TextBox() {
-		setStyleName("TextBox");
+	public PasswordTextBox() {
+		setStyleName("PasswordTextBox");
 		addFocusHandler(this);
 		addBlurHandler(this);
 	}
