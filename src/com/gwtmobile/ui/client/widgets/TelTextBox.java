@@ -17,9 +17,9 @@
 package com.gwtmobile.ui.client.widgets;
 
 
-public class NumberTextBox extends TextBoxBase {
+public class TelTextBox extends TextBoxBase {
 
-	public NumberTextBox() {
-	    super("number");
-	}	
+	public TelTextBox() {
+	    super("tel");
+	}
 }
