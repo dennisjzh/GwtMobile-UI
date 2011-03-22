@@ -39,7 +39,7 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
 	
     public ListPanel() { 
         addDomHandler(this, ClickEvent.getType());
-        setStyleName("List");
+        setStyleName("ListPanel");
     }
 
     public HandlerRegistration addSelectionChangedHandler(SelectionChangedHandler handler) {
