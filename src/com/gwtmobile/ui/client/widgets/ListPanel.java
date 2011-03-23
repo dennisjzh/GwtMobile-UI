@@ -36,6 +36,7 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
 
 	private boolean _showArrow;
 	private int _selected = -1;
+	private boolean _selectable = true;
 	
     public ListPanel() { 
         addDomHandler(this, ClickEvent.getType());
@@ -91,11 +92,25 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
 		}
     }
     
+    public boolean getShowArrow() {
+    	return _showArrow;
+    }
+    
+    public void setSelectable(boolean selectable) {
+    	_selectable  = selectable;
+    }
+    
+    public boolean getSelectable() {
+    	return _selectable;
+    }
+    
     @Override
     public void onDragStart(DragEvent e) {
-    	_selected = getTargetItemIndex(e.getNativeEvent().getEventTarget());
-    	if (_selected >= 0) {
-        	getWidget(_selected).addStyleName("Pressed");
+    	if (_selectable) {
+	    	_selected = getTargetItemIndex(e.getNativeEvent().getEventTarget());
+	    	if (_selected >= 0) {
+	        	getWidget(_selected).addStyleName("Pressed");
+	    	}
     	}
     }
 
