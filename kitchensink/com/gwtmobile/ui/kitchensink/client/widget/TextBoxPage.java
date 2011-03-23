@@ -18,17 +18,13 @@ package com.gwtmobile.ui.kitchensink.client.widget;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.utils.Utils;
-import com.gwtmobile.ui.client.widgets.TextBox;
 
 public class TextBoxPage extends Page{
 
-	@UiField TextBox textbox;
-	
 	private static TextBoxPageUiBinder uiBinder = GWT
 			.create(TextBoxPageUiBinder.class);
 

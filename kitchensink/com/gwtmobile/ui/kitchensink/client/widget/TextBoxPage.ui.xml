@@ -3,60 +3,54 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
 	<ui:style>
+		.flex > div {
+			display: table;
+			width: 100%;
+		}
+		.flex > div > * {
+			vertical-align: middle;
+			display: table-cell;
+		}
+		.flex > div > *:first-child {
+			text-align: right;
+			padding-right: 1em;
+			width: 30%;
+		}
+		.flex > div > *:last-child {
+			width: 90%;
+		}
 	</ui:style>
 	<g:HTMLPanel>
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>Text Box</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel hasTextBox="true">
-			<g:VerticalPanel>
-				<g:ListBox>
-					<g:item value='1'>first item</g:item>
-					<g:item value='2'>second item</g:item>
-				</g:ListBox>
-				<g:ListBox visibleItemCount="2">
-					<g:item value='1'>first item</g:item>
-					<g:item value='2'>second item</g:item>
-				</g:ListBox>
-				<m:TextBox>1</m:TextBox>
-				<m:TextBox>2</m:TextBox>
-				<m:TextBox>3</m:TextBox>
-				<m:TextBox>4</m:TextBox>
-				<m:TextBox>5</m:TextBox>
-				<m:TextBox>6</m:TextBox>
-				<m:TextBox>7</m:TextBox>
-				<m:TextBox>8</m:TextBox>
-				<m:TextBox>9</m:TextBox>
-				<m:TextBox>10</m:TextBox>
-				<m:TextBox>11</m:TextBox>
-				<m:TextBox>12</m:TextBox>
-				<m:TextBox>13</m:TextBox>
-				<m:TextBox>14</m:TextBox>
-				<m:TextBox>15</m:TextBox>
-				<m:TextBox>1</m:TextBox>
-				<m:TextBox>2</m:TextBox>
-				<m:TextBox>3</m:TextBox>
-				<m:TextBox>4</m:TextBox>
-				<m:TextBox>5</m:TextBox>
-				<m:TextBox>6</m:TextBox>
-				<m:TextBox>7</m:TextBox>
-				<m:TextBox>8</m:TextBox>
-				<m:TextBox>9</m:TextBox>
-				<m:TextBox>10</m:TextBox>
-				<m:TextBox>11</m:TextBox>
-				<m:TextBox>12</m:TextBox>
-				<m:TextBox>13</m:TextBox>
-				<m:TextBox>14</m:TextBox>
-				<m:TextBox>15</m:TextBox>
-				<m:TextBox ui:field="textbox">31</m:TextBox>
-				<g:TextBox></g:TextBox>
-				<g:TextArea></g:TextArea>
-				<g:Button ui:field="gbutton">button</g:Button>
-				<g:RadioButton ui:name="radio" ui:text="U2"></g:RadioButton>
-				<g:RadioButton ui:name="radio" ui:text="U3"></g:RadioButton>
-				<g:CheckBox>check 1</g:CheckBox>
-				<g:CheckBox>check 2</g:CheckBox>
-			</g:VerticalPanel>			
+			<m:ListPanel selectable="false" styleName="ListPanel {style.flex}" >
+<!--				<g:HTMLPanel>-->
+<!--					<div id='log' style='position:absolute; color:red;'/>-->
+<!--				</g:HTMLPanel>-->
+				<m:ListItem>
+					<g:Label>Text:</g:Label><m:TextBox/>
+				</m:ListItem>
+				<m:ListItem>
+					<g:Label>Password:</g:Label><m:PasswordTextBox/>
+				</m:ListItem>
+				<m:ListItem>
+					<g:Label>Number:</g:Label><m:NumberTextBox/>
+				</m:ListItem>
+				<m:ListItem>
+					<g:Label>Email:</g:Label><m:EmailTextBox/>
+				</m:ListItem>
+				<m:ListItem>
+					<g:Label>Url:</g:Label><m:UrlTextBox/>
+				</m:ListItem>
+				<m:ListItem>
+					<g:Label>Tel:</g:Label><m:TelTextBox/>
+				</m:ListItem>
+				<m:ListItem>
+					<g:Label>Text Area:</g:Label><m:TextArea/>
+				</m:ListItem>
+			</m:ListPanel>			
 		</m:ScrollPanel>
 	</g:HTMLPanel>	
 </ui:UiBinder> 
