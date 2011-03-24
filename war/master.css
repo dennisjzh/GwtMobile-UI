@@ -220,6 +220,10 @@ html {
 		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
 }
 
+.ListPanel > div.Disabled {
+	color: gray;
+}
+
 /********** Slide Panel **********/
 .SlidePanel {
 	-webkit-box-flex: 1;

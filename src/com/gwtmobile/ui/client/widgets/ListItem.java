@@ -18,20 +18,16 @@ package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtmobile.ui.client.utils.Utils;
 
 public class ListItem extends FlowPanel{
 
-	enum ShowArrow { Default, True, False };
+	public enum ShowArrow { Default, True, False };
 	ShowArrow _showArrow = ShowArrow.Default;
+	boolean _disabled = false;
 	
     public ListItem() { 
     }
 
-    public void setTest(boolean show) {
-    	Utils.Console("ListItem setShowArrow");
-    }
-    
 	public void setShowArrow(boolean show) {
 		_showArrow = show ? ShowArrow.True : ShowArrow.False;
 		int last = getWidgetCount() - 1;
@@ -48,6 +44,20 @@ public class ListItem extends FlowPanel{
 				}
 			}
 		}		
+	}
+	
+	public void setDisabled(boolean disabled) {
+		_disabled = disabled;
+		if (_disabled) {
+			addStyleName("Disabled");
+		}
+		else {
+			removeStyleName("Disabled");
+		}
+	}
+	
+	public boolean getDisabled() {
+		return _disabled;
 	}
 	
 	void setShowArrowFromParent(boolean show) {

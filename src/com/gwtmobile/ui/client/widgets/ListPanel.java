@@ -77,10 +77,13 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
     @Override
     public void onClick(ClickEvent e) {
         if (_selected >= 0) {
-            SelectionChangedEvent selectionChangedEvent = new SelectionChangedEvent(_selected, 
-            	e.getNativeEvent().getEventTarget());
-            this.fireEvent(selectionChangedEvent);
-        	getWidget(_selected).removeStyleName("Pressed");
+    		ListItem item = (ListItem) getWidget(_selected);
+    		if (!item.getDisabled()) {
+	            SelectionChangedEvent selectionChangedEvent = new SelectionChangedEvent(_selected, 
+	            	e.getNativeEvent().getEventTarget());
+	            this.fireEvent(selectionChangedEvent);
+	        	item.removeStyleName("Pressed");
+    		}
     		_selected = -1;
         }
     }
@@ -109,7 +112,10 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
     	if (_selectable) {
 	    	_selected = getTargetItemIndex(e.getNativeEvent().getEventTarget());
 	    	if (_selected >= 0) {
-	        	getWidget(_selected).addStyleName("Pressed");
+	    		ListItem item = (ListItem) getWidget(_selected);
+	    		if (!item.getDisabled()) {
+		        	getWidget(_selected).addStyleName("Pressed");
+	    		}
 	    	}
     	}
     }
