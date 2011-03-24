@@ -17,27 +17,39 @@
 package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HasText;
 
-//TODO: base should be WidgeBase?
-public class RadioButton extends HTML{
+public class RadioButton extends WidgetBase implements HasText {
 
-    private boolean _isSelected;
-    public RadioButton() {
-        setStyleName("Radio");
-    }
+	private HTML _html = new HTML();
+	private boolean _isSelected;
 
-    public void setSelected(boolean selected) {
-        _isSelected = selected;
-        if (_isSelected) {
-            addStyleName("Selected");
-        }
-        else {
-            removeStyleName("Selected");       
-        }
-    }
+	public RadioButton() {
+		initWidget(_html);
+	}
 
-    public boolean isSelected() {
-        return _isSelected;
-    }
+	public void setSelected(boolean selected) {
+		_isSelected = selected;
+		if (_isSelected) {
+			addStyleName("Selected");
+		}
+		else {
+			removeStyleName("Selected");       
+		}
+	}
+
+	public boolean isSelected() {
+		return _isSelected;
+	}
+
+	@Override
+	public String getText() {
+		return _html.getHTML();
+	}
+
+	@Override
+	public void setText(String text) {
+		_html.setHTML(text);
+	}
 
 }

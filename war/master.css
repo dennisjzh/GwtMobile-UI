@@ -411,3 +411,40 @@ html {
 .TextBox.Focus, .TextArea.Focus {
 	-webkit-box-shadow: lightgreen 0em 0em 1em;
 }
+
+/******************* Radio Button *************/
+
+.RadioButtonGroup {
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	width: 100%;
+}
+
+.RadioButtonGroup > div {
+	-webkit-box-flex: 1;
+	display: -webkit-box;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	text-shadow: white 0px 0.1em 0.1em;
+	padding: .5em;
+	border-left: 1px solid white;
+	border-right: 1px solid #A6A6A6;
+	color: black;
+	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(white), color-stop(0.02, #E6E6E6), to(#BABABA));	
+}
+
+.RadioButtonGroup > div.Selected {
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFDC52), to(#FFBC19));	
+}
+
+.RadioButtonGroup > div:first-child {
+	border-left: 0px;
+	border-bottom-left-radius: 0.6em 0.6em;
+	border-top-left-radius: 0.6em 0.6em;
+}
+
+.RadioButtonGroup > div:last-child {
+	border-right: 0px;
+	border-bottom-right-radius: 0.6em 0.6em;
+	border-top-right-radius: 0.6em 0.6em;
+}
