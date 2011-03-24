@@ -1,0 +1,33 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
+	<ui:style>
+		.modify {
+			-webkit-box-orient: vertical !important;
+			-webkit-box-align: start !important;		
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<m:HeaderPanel ui:field="header" leftButton="Back">
+			<g:Label>Radio Button</g:Label>			
+		</m:HeaderPanel>
+		<m:ScrollPanel hasTextBox="true">
+			<m:ListPanel selectable="false">
+<!--				<g:HTMLPanel>-->
+<!--					<div id='log' style='position:absolute; color:red;'/>-->
+<!--				</g:HTMLPanel>-->
+			<m:ListItem styleName="{style.modify}">
+				<g:Label>Horizontal</g:Label>
+				<m:RadioButtonGroup>
+					<m:RadioButton>iPhone</m:RadioButton>
+					<m:RadioButton>Android</m:RadioButton>
+					<m:RadioButton>BlackBerry</m:RadioButton>
+					<m:RadioButton>WP7</m:RadioButton>
+				</m:RadioButtonGroup>
+			</m:ListItem>
+
+			</m:ListPanel>			
+		</m:ScrollPanel>
+	</g:HTMLPanel>	
+</ui:UiBinder> 

@@ -42,6 +42,10 @@ public class WidgetsPage extends Page {
     @UiHandler("list")
     void onListSelectionChanged(SelectionChangedEvent e) {
     	switch (e.getSelection()) {
+    	case 3:
+    		RadioButtonPage radioButton = new RadioButtonPage();
+    		goTo(radioButton);
+    		break;
     	case 5:
     		TextBoxPage textBox = new TextBoxPage();
     		goTo(textBox);

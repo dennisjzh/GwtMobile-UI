@@ -6,7 +6,7 @@
 	</ui:style>
 	<g:HTMLPanel>
 		<m:HeaderPanel leftButton="Back">
-			<g:Label>Panels</g:Label>			
+			<g:Label>Widgets</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel>
 			<m:ListPanel ui:field="list" showArrow="false">
@@ -19,9 +19,7 @@
 				<m:ListItem disabled="true">
 					<g:Label>Flip Switch</g:Label>
 				</m:ListItem>
-				<m:ListItem disabled="true">
-					<g:Label>Radio Button</g:Label>
-				</m:ListItem>
+				<g:Label>Radio Button</g:Label>
 				<m:ListItem disabled="true">
 					<g:Label>Slider</g:Label>
 				</m:ListItem>
