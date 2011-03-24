@@ -26,9 +26,6 @@
 		</m:HeaderPanel>
 		<m:ScrollPanel hasTextBox="true">
 			<m:ListPanel selectable="false" styleName="ListPanel {style.flex}" >
-<!--				<g:HTMLPanel>-->
-<!--					<div id='log' style='position:absolute; color:red;'/>-->
-<!--				</g:HTMLPanel>-->
 				<m:ListItem>
 					<g:Label>Text:</g:Label><m:TextBox/>
 				</m:ListItem>
