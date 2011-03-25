@@ -18,11 +18,20 @@ package com.gwtmobile.ui.kitchensink.client.widget;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.page.Page;
+import com.gwtmobile.ui.client.utils.Utils;
+import com.gwtmobile.ui.client.widgets.RadioButton;
+import com.gwtmobile.ui.client.widgets.RadioButtonGroup;
 
 public class RadioButtonPage extends Page{
 
+	@UiField RadioButtonGroup radiogroup1;
+	@UiField RadioButtonGroup radiogroup2;
+	
 	private static RadioButtonPageUiBinder uiBinder = GWT
 			.create(RadioButtonPageUiBinder.class);
 
@@ -32,5 +41,16 @@ public class RadioButtonPage extends Page{
 	public RadioButtonPage() {
 		initWidget(uiBinder.createAndBindUi(this));	
 	}
+	
+    @UiHandler("radiogroup1")
+    void onRadioGroup1SelectionChanged(SelectionChangedEvent e) {
+    	RadioButton radio = radiogroup1.getCheckedRadioButton();
+    	Utils.Console("group1 " + e.getSelection() + " " + radio.getText());
+    }
 
+    @UiHandler("radiogroup2")
+    void onRadioGroup2SelectionChanged(SelectionChangedEvent e) {
+    	RadioButton radio = radiogroup2.getCheckedRadioButton();
+    	Utils.Console("group2 " + e.getSelection() + " " + radio.getText());
+    }
 }
