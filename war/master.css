@@ -420,31 +420,55 @@ html {
 	width: 100%;
 }
 
-.RadioButtonGroup > div {
+.RadioButtonGroup > span {
 	-webkit-box-flex: 1;
 	display: -webkit-box;
 	-webkit-box-align: center;
 	-webkit-box-pack: center;
 	text-shadow: white 0px 0.1em 0.1em;
-	padding: .5em;
+	padding: .5em .1em;
 	border-left: 1px solid white;
 	border-right: 1px solid #A6A6A6;
 	color: black;
 	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(white), color-stop(0.02, #E6E6E6), to(#BABABA));	
 }
 
-.RadioButtonGroup > div.Selected {
+.RadioButtonGroup > span.Selected {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFDC52), to(#FFBC19));	
 }
 
-.RadioButtonGroup > div:first-child {
+.RadioButtonGroup > span:first-child {
 	border-left: 0px;
 	border-bottom-left-radius: 0.6em 0.6em;
 	border-top-left-radius: 0.6em 0.6em;
 }
 
-.RadioButtonGroup > div:last-child {
+.RadioButtonGroup > span:last-child {
 	border-right: 0px;
 	border-bottom-right-radius: 0.6em 0.6em;
 	border-top-right-radius: 0.6em 0.6em;
 }
+
+.RadioButtonGroup.HideIndicator > span > input {
+	display: none;
+}
+
+.RadioButtonGroup.Vertical {
+	-webkit-box-orient: vertical !important;
+}
+
+.RadioButtonGroup.Vertical > span {
+	-webkit-box-pack: start !important;
+	border: 0 !important;
+}
+
+.RadioButtonGroup.Vertical > span:first-child {
+	border-bottom-left-radius: 0 !important;
+	border-top-right-radius: 0.6em 0.6em;
+}
+
+.RadioButtonGroup.Vertical > span:last-child {
+	border-bottom-left-radius: 0.6em 0.6em;
+	border-top-right-radius: 0 !important;
+}
+

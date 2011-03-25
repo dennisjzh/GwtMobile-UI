@@ -16,40 +16,27 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HasText;
 
-public class RadioButton extends WidgetBase implements HasText {
-
-	private HTML _html = new HTML();
-	private boolean _isSelected;
+public class RadioButton extends com.google.gwt.user.client.ui.RadioButton {
 
 	public RadioButton() {
-		initWidget(_html);
+		super(null);
 	}
 
-	public void setSelected(boolean selected) {
-		_isSelected = selected;
-		if (_isSelected) {
+	@Override
+	public void setValue(Boolean value) {
+		setValue(value, false);
+	}
+	
+	@Override
+	public void setValue(Boolean checked, boolean fireEvents) {
+		super.setValue(checked, true);
+		if (checked) {
 			addStyleName("Selected");
 		}
 		else {
 			removeStyleName("Selected");       
 		}
 	}
-
-	public boolean isSelected() {
-		return _isSelected;
-	}
-
-	@Override
-	public String getText() {
-		return _html.getHTML();
-	}
-
-	@Override
-	public void setText(String text) {
-		_html.setHTML(text);
-	}
-
+	
 }

@@ -34,6 +34,7 @@ import com.gwtmobile.ui.client.utils.Utils;
 public class RadioButtonGroup extends WidgetBase implements HasWidgets, ClickHandler {
 
     private FlowPanel _panel = new FlowPanel();
+    private String _name = null;
     
     public RadioButtonGroup() {
         initWidget(_panel);
@@ -46,37 +47,94 @@ public class RadioButtonGroup extends WidgetBase implements HasWidgets, ClickHan
     }
     
     @Override
+    public void onLoad() {
+    	super.onLoad();
+    	assert _name != null
+			: "Attribute 'name' must be set on RadioButtonGroup";
+    }
+    
+    @Override
     public void onClick(ClickEvent e) {
         EventTarget target = e.getNativeEvent().getEventTarget();
         Element div = Element.as(target);
-        while (!div.getNodeName().toUpperCase().equals("DIV") || 
+        while (!div.getNodeName().toUpperCase().equals("SPAN") || 
                 div.getParentElement() != this.getElement()) {
             div = div.getParentElement();
             if (div == null) {
-                Utils.Console("RadioButtonGroup onClick: div not found");
+                Utils.Console("RadioButtonGroup onClick: span not found");
                 return;
             }
         }
-        int index = DOM.getChildIndex(this.getElement(), (com.google.gwt.user.client.Element)div);
-        for (int i = 0; i < _panel.getWidgetCount(); i++) {
-            RadioButton radio = (RadioButton) _panel.getWidget(i);
-            if (radio.isSelected() && i != index) {
-                SelectionChangedEvent selectionChangedEvent = new SelectionChangedEvent(index, target);
-                this.fireEvent(selectionChangedEvent);
-            }
-            radio.setSelected(i == index);
+        int index = DOM.getChildIndex(this.getElement(), (com.google.gwt.user.client.Element)div);        
+        RadioButton radio = (RadioButton) _panel.getWidget(index);
+        if (!radio.getValue()) {
+    		RadioButton current = getCheckedRadioButton();
+    		if (current != null) {
+    			current.setValue(false, true);
+    		}
+        	radio.setValue(true, true);
+			SelectionChangedEvent selectionChangedEvent = new SelectionChangedEvent(index, target);
+			fireEvent(selectionChangedEvent);
         }
     }
     
     public RadioButton getRadioButton(int index) {
         return (RadioButton) _panel.getWidget(index);
     }
+    
+    public int getCheckedRadioButtonIndex() {
+        for (int i = 0; i < _panel.getWidgetCount(); i++) {
+            RadioButton radio = (RadioButton) _panel.getWidget(i);
+            if (radio.getValue()) {
+            	return i;
+            }
+        }
+        return -1;
+    }
+
+    public RadioButton getCheckedRadioButton() {
+    	int i = getCheckedRadioButtonIndex();
+    	if (i > -1) {
+    		return (RadioButton) _panel.getWidget(i);
+    	}
+		return null;
+    }
+    
     @Override
     public void add(Widget w) {
-        if (w.getClass() != RadioButton.class) {
-            assert false : "Can only contain RadioButton widgets in RadioButtonGroup"; 
-        }
+    	assert w.getClass() == RadioButton.class 
+    		: "Can only contain RadioButton widgets in RadioButtonGroup";
         _panel.add(w);
+    }
+    
+    public void setName(String name) {
+    	_name = name;
+    	for (int i = 0; i < _panel.getWidgetCount(); i++) {
+    		RadioButton radio = (RadioButton) _panel.getWidget(i);
+    		radio.setName(_name);
+    	}
+    }
+    
+    public String getName() {
+    	return _name;
+    }
+    
+    public void setShowIndicator(boolean show) {
+    	if (show) {
+    		removeStyleName("HideIndicator");
+    	}
+    	else {
+    		addStyleName("HideIndicator");
+    	}
+    }
+    
+    public void setVertical(boolean vertical) {
+    	if (vertical) {
+    		addStyleName("Vertical");
+    	}
+    	else {
+    		removeStyleName("Vertical");
+    	}
     }
     
     @Override
