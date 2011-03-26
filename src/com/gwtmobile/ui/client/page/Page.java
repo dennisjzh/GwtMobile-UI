@@ -25,7 +25,6 @@ import com.gwtmobile.ui.client.widgets.WidgetBase;
 
 public abstract class Page extends WidgetBase {
 
-	private boolean _isInitialLoad = true;
 	private Transition _transition;
 	private static Transition _defaultTransition = Transition.SLIDE;
 
@@ -33,17 +32,10 @@ public abstract class Page extends WidgetBase {
 	protected void initWidget(Widget widget) {
 		super.initWidget(widget);    	
 		setStyleName("Page");    
-	}
-
-	@Override
-	public void onLoad() {
-		if (_isInitialLoad) {
-			onInitialLoad();
-			_isInitialLoad = false;
-		}
-	}
-
-	protected void onInitialLoad() {
+        //TODO: use permutation instead?
+        if (Utils.isAndroid()) {
+        	addStyleName("Android");
+       }
 	}
 
 	@Override
@@ -132,10 +124,6 @@ public abstract class Page extends WidgetBase {
 
 	public void goTo(final Page toPage) {
 		goTo(toPage, _defaultTransition);
-	}
-
-	public Widget getWidget() {
-		return super.getWidget();
 	}
 
 	private static void setPageResolution() {

@@ -24,6 +24,7 @@ public class WidgetBase extends Composite {
     
     @Override
     public void onLoad() {
+    	super.onLoad();
         if (_isInitialLoad) {
             _isInitialLoad = false;
             onInitialLoad();

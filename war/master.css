@@ -78,9 +78,9 @@ html {
 	text-decoration: none;
 	display: inline-block;
 	padding: 0.3em 0.5em 0.5em 0.5em;
-	-webkit-border-radius: 0.4em;
+	-webkit-border-radius: 0.3em;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#838383), color-stop(0.5, #444), color-stop(0.5, #303030), to(#333));
-	border: solid 1px rgba(79, 79, 79, 0.75);
+	border: solid 0px rgba(79, 79, 79, 0.75);
 	height:1em;	
 	text-shadow: rgba(0, 0, 0, 1) 0 -0.1em 0.1em;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0.1em 0.1em 0.1em;
@@ -109,13 +109,11 @@ html {
 	display: block;
 	height: 1.3em;
 	width: 1.3em;
-	left: -0.7em;
-	top: 0.28em;
+	left: -0.65em;
+	top: 0.25em;
 	border-top: 0;
 	border-right: 0;
 	background-image: -webkit-gradient(linear, left top, right bottom, from(#838383), color-stop(0.5, #444), color-stop(0.5, #303030), to(#333));
-	border-left: solid 1px rgba(79, 79, 79, 0.75);
-	border-bottom: solid 1px rgba(79, 79, 79, 0.75);
 	-webkit-transform: rotate(45deg);
 	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0.1em 0.1em 0.1em;
 	z-index: -1;
@@ -144,13 +142,11 @@ html {
 	display: block;
 	height: 1.3em;
 	width: 1.3em;
-	right: -0.7em;
-	top: 0.30em;
+	right: -0.65em;
+	top: 0.25em;
 	border-top: 0;
 	border-left: 0;
 	background-image: -webkit-gradient(linear, left top, right bottom, from(#838383), color-stop(0.5, #444), color-stop(0.5, #303030), to(#333));
-	border-right: solid 1px rgba(79, 79, 79, 0.75);
-	border-top: solid 1px rgba(79, 79, 79, 0.75);
 	-webkit-transform: rotate(45deg);
 	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0.1em 0.1em 0.1em;
 	z-index: -1;
@@ -203,15 +199,15 @@ html {
 
 .ListPanel > div:first-child {
 	border-top:0px;
-	border-top-left-radius: 0.6em 0.6em;
-	border-top-right-radius: 0.6em 0.6em;
+	border-top-left-radius: 0.4em 0.4em;
+	border-top-right-radius: 0.4em 0.4em;
 	-webkit-box-shadow: rgba(0, 0, 0, 1) 0em 0em 0.5em;
 } 
 
 .ListPanel > div:last-child {
 	border-bottom:0px;
-	border-bottom-left-radius: 0.6em 0.6em;
-	border-bottom-right-radius: 0.6em 0.6em;
+	border-bottom-left-radius: 0.4em 0.4em;
+	border-bottom-right-radius: 0.4em 0.4em;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0em 0.2em 0.2em;
 } 
 
@@ -283,9 +279,9 @@ html {
 	-webkit-box-align: center;
 	-webkit-box-pack: center;
 	height: 2em;
-	border-left: 0.1em solid #666666;
-	border-top: 0.1em solid #666666;
-	border-bottom: 0.1em solid #333333;
+	border-left: 1px solid #666666;
+	border-top: 1px solid #666666;
+	border-bottom: 1px solid #333333;
 	margin: 0 0.2em 0 0.2em;
 	color: gray;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
@@ -295,14 +291,14 @@ html {
 
 .TabPanel > div:first-child > div.Selected {
 	color:black;
-	text-shadow: white 0 0.1em 0;
-	border-left: 0.1em solid white;
-	border-top: 0.1em solid white;
-	border-bottom: 0.1em solid #BDBDBD;
+	text-shadow: white 0 .1em .1em;
+	border-left: 1px solid white;
+	border-top: 1px solid white;
+	border-bottom: 1px solid #BDBDBD;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#BDBDBD));
 }
 
-.TabPanel > div:first-child > div .gwt-Image {
+.TabPanel > div:first-child > div.Selected .gwt-Image {
 	opacity: 1;
 }
 
@@ -323,6 +319,9 @@ html {
 	width: 100%;
 }
 
+.Android .TabPanel > div:first-child > div {		/*tab header*/
+	-webkit-box-shadow: #BDBDBD 0 0 .1em;	/* antialias workaround */
+}
 
 /********** Accordion Panel **********/
 
@@ -347,15 +346,15 @@ html {
 
 .Accordion > div:first-child > div:first-child {
 	border-top:0;
-	border-top-left-radius: 0.6em 0.6em;
-	border-top-right-radius: 0.6em 0.6em;
+	border-top-left-radius: 0.4em 0.4em;
+	border-top-right-radius: 0.4em 0.4em;
 	-webkit-box-shadow: rgba(0, 0, 0, 1) 0em 0em 0.5em;
 }
 
 .Accordion > div:last-child.Collapse > div:first-child {
 	border-bottom:0;
-	border-bottom-left-radius: 0.6em 0.6em;
-	border-bottom-right-radius: 0.6em 0.6em;
+	border-bottom-left-radius: 0.4em 0.4em;
+	border-bottom-right-radius: 0.4em 0.4em;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0em 0.2em 0.2em;
 }
 
@@ -370,8 +369,8 @@ html {
 }
 
 .Accordion > div:last-child.Expand > div:last-child { /* content */
-	border-bottom-left-radius: 0.6em 0.6em;
-	border-bottom-right-radius: 0.6em 0.6em;
+	border-bottom-left-radius: 0.4em 0.4em;
+	border-bottom-right-radius: 0.4em 0.4em;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0em 0.2em 0.2em;
 }
 
@@ -439,19 +438,25 @@ html {
 
 .RadioButtonGroup > span:first-child {
 	border-left: 0px;
-	border-bottom-left-radius: 0.6em 0.6em;
-	border-top-left-radius: 0.6em 0.6em;
+	border-bottom-left-radius: 0.4em 0.4em;
+	border-top-left-radius: 0.4em 0.4em;
 }
 
 .RadioButtonGroup > span:last-child {
 	border-right: 0px;
-	border-bottom-right-radius: 0.6em 0.6em;
-	border-top-right-radius: 0.6em 0.6em;
+	border-bottom-right-radius: 0.4em 0.4em;
+	border-top-right-radius: 0.4em 0.4em;
 }
 
 .RadioButtonGroup.HideIndicator > span > input {
 	display: none;
 }
+
+.RadioButtonGroup > span > input {
+/*	position: relative;
+	width: 200%;
+	font-size: 4em;
+*/}
 
 .RadioButtonGroup.Vertical {
 	-webkit-box-orient: vertical !important;
@@ -464,11 +469,14 @@ html {
 
 .RadioButtonGroup.Vertical > span:first-child {
 	border-bottom-left-radius: 0 !important;
-	border-top-right-radius: 0.6em 0.6em;
+	border-top-right-radius: 0.4em 0.4em;
 }
 
 .RadioButtonGroup.Vertical > span:last-child {
-	border-bottom-left-radius: 0.6em 0.6em;
+	border-bottom-left-radius: 0.4em 0.4em;
 	border-top-right-radius: 0 !important;
 }
 
+.Android .RadioButtonGroup > span {
+	-webkit-box-shadow: 0 0 .1em white;	/* android radius antialias workaround */
+}
