@@ -448,15 +448,10 @@ html {
 	border-top-right-radius: 0.4em 0.4em;
 }
 
-.RadioButtonGroup.HideIndicator > span > input {
+.RadioButtonGroup.HideIndicator > span > input, 
+.RadioButtonGroup.HideIndicator > span > div {
 	display: none;
 }
-
-.RadioButtonGroup > span > input {
-/*	position: relative;
-	width: 200%;
-	font-size: 4em;
-*/}
 
 .RadioButtonGroup.Vertical {
 	-webkit-box-orient: vertical !important;
@@ -478,5 +473,32 @@ html {
 }
 
 .Android .RadioButtonGroup > span {
-	-webkit-box-shadow: 0 0 .1em white;	/* android radius antialias workaround */
+	-webkit-box-shadow: 0 0 .1em white;	/* android radius antialias workaround */	
+}
+
+/* Android native radio button is too small in WVGA resolution */
+
+.Android .RadioButtonGroup > span > input {
+	display: none;
+}
+
+.Android .RadioButtonGroup > span > div {
+	width: .8em;
+	height: .8em;
+	margin: .4em;
+	background-image:
+		-webkit-gradient(radial, 50% 50%, 0, 50% 50%, 8,
+			from(white),
+			to(#BABABA));
+	-webkit-border-radius: .4em;
+	border: 1px solid gray;
+	-webkit-box-shadow:0 0 .1em black;
+}
+
+.Android .RadioButtonGroup > span.Selected > div {
+	background-image:
+		-webkit-gradient(radial, 50% 50%, 0, 50% 50%, 8,
+			from(#c7f08b),
+			to(green));
+	-webkit-box-shadow:0 0 .3em green;
 }

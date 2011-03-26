@@ -16,11 +16,19 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import com.google.gwt.dom.client.DivElement;
+import com.google.gwt.dom.client.Document;
+import com.gwtmobile.ui.client.utils.Utils;
+
 
 public class RadioButton extends com.google.gwt.user.client.ui.RadioButton {
 
 	public RadioButton() {
 		super(null);
+		if (Utils.isAndroid()) {
+			DivElement div = Document.get().createDivElement();
+			this.getElement().insertFirst(div);
+		}
 	}
 
 	@Override
