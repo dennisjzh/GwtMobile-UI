@@ -38,7 +38,7 @@ public class RadioButton extends com.google.gwt.user.client.ui.RadioButton {
 	
 	@Override
 	public void setValue(Boolean checked, boolean fireEvents) {
-		super.setValue(checked, true);
+		super.setValue(checked, fireEvents);
 		if (checked) {
 			addStyleName("Selected");
 		}
@@ -46,5 +46,5 @@ public class RadioButton extends com.google.gwt.user.client.ui.RadioButton {
 			removeStyleName("Selected");       
 		}
 	}
-	
+
 }

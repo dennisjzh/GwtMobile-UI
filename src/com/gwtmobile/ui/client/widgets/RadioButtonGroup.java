@@ -16,28 +16,27 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import java.util.Iterator;
-
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.event.SelectionChangedHandler;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public class RadioButtonGroup extends WidgetBase implements HasWidgets, ClickHandler {
+public class RadioButtonGroup extends PanelBase 
+	implements HasWidgets, ClickHandler, ValueChangeHandler<Boolean> {
 
-    private FlowPanel _panel = new FlowPanel();
     private String _name = null;
     
     public RadioButtonGroup() {
-        initWidget(_panel);
+    	super();
         addDomHandler(this, ClickEvent.getType());
         setStyleName("RadioButtonGroup");
     }
@@ -70,9 +69,9 @@ public class RadioButtonGroup extends WidgetBase implements HasWidgets, ClickHan
         if (!radio.getValue()) {
     		RadioButton current = getCheckedRadioButton();
     		if (current != null) {
-    			current.setValue(false, true);
+    			current.setValue(false);
     		}
-        	radio.setValue(true, true);
+        	radio.setValue(true);
 			SelectionChangedEvent selectionChangedEvent = new SelectionChangedEvent(index, target);
 			fireEvent(selectionChangedEvent);
         }
@@ -104,7 +103,9 @@ public class RadioButtonGroup extends WidgetBase implements HasWidgets, ClickHan
     public void add(Widget w) {
     	assert w.getClass() == RadioButton.class 
     		: "Can only contain RadioButton widgets in RadioButtonGroup";
-        _panel.add(w);
+    	RadioButton radio = (RadioButton) w;
+        _panel.add(radio);
+		radio.addValueChangeHandler(this);
     }
     
     public void setName(String name) {
@@ -137,19 +138,15 @@ public class RadioButtonGroup extends WidgetBase implements HasWidgets, ClickHan
     	}
     }
     
-    @Override
-    public void clear() {
-        _panel.clear();
-    }
-
-    @Override
-    public Iterator<Widget> iterator() {
-        return _panel.iterator();
-    }
-
-    @Override
-    public boolean remove(Widget w) {
-        return _panel.remove(w);
-    }
+	@Override
+	public void onValueChange(ValueChangeEvent<Boolean> event) {
+		// if user touches the radio button indicator, 
+		// a value change event will be fired instead of a click event.
+		// when this occurs, need to make sure style on each radio button is correct.
+        for (int i = 0; i < _panel.getWidgetCount(); i++) {
+            RadioButton radio = (RadioButton) _panel.getWidget(i);
+            radio.setValue(radio.getValue());
+        }
+	}
 
 }
