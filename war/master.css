@@ -413,13 +413,13 @@ html {
 
 /******************* Radio Button *************/
 
-.RadioButtonGroup {
+.CheckBoxGroup, .RadioButtonGroup {
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
 	width: 100%;
 }
 
-.RadioButtonGroup > span {
+.CheckBoxGroup > span, .RadioButtonGroup > span {
 	-webkit-box-flex: 1;
 	display: -webkit-box;
 	-webkit-box-align: center;
@@ -432,46 +432,56 @@ html {
 	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(white), color-stop(0.02, #E6E6E6), to(#BABABA));	
 }
 
+.CheckBoxGroup > span.Selected,
 .RadioButtonGroup > span.Selected {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFDC52), to(#FFBC19));	
 }
 
+.CheckBoxGroup > span:first-child,
 .RadioButtonGroup > span:first-child {
 	border-left: 0px;
 	border-bottom-left-radius: 0.4em 0.4em;
 	border-top-left-radius: 0.4em 0.4em;
 }
 
+.CheckBoxGroup > span:last-child,
 .RadioButtonGroup > span:last-child {
 	border-right: 0px;
 	border-bottom-right-radius: 0.4em 0.4em;
 	border-top-right-radius: 0.4em 0.4em;
 }
 
+.CheckBoxGroup.HideIndicator > span > input, 
+.CheckBoxGroup.HideIndicator > span > div,
 .RadioButtonGroup.HideIndicator > span > input, 
 .RadioButtonGroup.HideIndicator > span > div {
 	display: none;
 }
 
+.CheckBoxGroup.Vertical,
 .RadioButtonGroup.Vertical {
-	-webkit-box-orient: vertical !important;
+	-webkit-box-orient: vertical;
 }
 
+.CheckBoxGroup.Vertical > span,
 .RadioButtonGroup.Vertical > span {
-	-webkit-box-pack: start !important;
-	border: 0 !important;
+	-webkit-box-pack: start;
+	border: 0;
 }
 
+.CheckBoxGroup.Vertical > span:first-child,
 .RadioButtonGroup.Vertical > span:first-child {
-	border-bottom-left-radius: 0 !important;
+	border-bottom-left-radius: 0;
 	border-top-right-radius: 0.4em 0.4em;
 }
 
+.CheckBoxGroup.Vertical > span:last-child,
 .RadioButtonGroup.Vertical > span:last-child {
 	border-bottom-left-radius: 0.4em 0.4em;
-	border-top-right-radius: 0 !important;
+	border-top-right-radius: 0;
 }
 
+.Android .CheckBoxGroup > span,
 .Android .RadioButtonGroup > span {
 	-webkit-box-shadow: 0 0 .1em white;	/* android radius antialias workaround */	
 }

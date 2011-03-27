@@ -13,9 +13,7 @@
 				<m:ListItem disabled="true">
 					<g:Label>Button</g:Label>
 				</m:ListItem>
-				<m:ListItem disabled="true">
-					<g:Label>Checkbox</g:Label>
-				</m:ListItem>
+				<g:Label>Checkbox</g:Label>
 				<m:ListItem disabled="true">
 					<g:Label>Flip Switch</g:Label>
 				</m:ListItem>
