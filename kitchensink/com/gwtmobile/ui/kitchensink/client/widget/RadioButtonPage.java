@@ -44,13 +44,13 @@ public class RadioButtonPage extends Page{
 	
     @UiHandler("radiogroup1")
     void onRadioGroup1SelectionChanged(SelectionChangedEvent e) {
-    	RadioButton radio = radiogroup1.getCheckedRadioButton();
+    	RadioButton radio = (RadioButton) radiogroup1.getWidget(e.getSelection());
     	Utils.Console("group1 " + e.getSelection() + " " + radio.getText());
     }
 
     @UiHandler("radiogroup2")
     void onRadioGroup2SelectionChanged(SelectionChangedEvent e) {
-    	RadioButton radio = radiogroup2.getCheckedRadioButton();
+    	RadioButton radio = (RadioButton) radiogroup2.getWidget(e.getSelection());
     	Utils.Console("group2 " + e.getSelection() + " " + radio.getText());
     }
 }
