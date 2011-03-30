@@ -3,10 +3,6 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
 	<ui:style>
-		.modify {
-			-webkit-box-orient: vertical !important;
-			-webkit-box-align: start !important;		
-		}
 	</ui:style>
 	<g:HTMLPanel>
 		<m:HeaderPanel ui:field="header" leftButton="Back">
@@ -14,20 +10,20 @@
 		</m:HeaderPanel>
 		<m:ScrollPanel hasTextBox="true">
 			<m:ListPanel selectable="false">
-				<m:ListItem styleName="{style.modify}">
-					<m:FlipSwitch>iPhone</m:FlipSwitch>
-					<m:FlipSwitch>Android</m:FlipSwitch>
-					<m:FlipSwitch>BlackBerry</m:FlipSwitch>
-					<m:FlipSwitch>WP7</m:FlipSwitch>
+				<m:ListItem>
+					<g:Label>iPhone</g:Label><m:FlipSwitch/>
 				</m:ListItem>
-				<m:ListItem styleName="{style.modify}">
-					<g:HTML styleName="FlipSwitch">
-						<div>
-							<div>ON</div>
-							<div></div>
-							<div>OFF</div>
-						</div>
-					</g:HTML>
+				<m:ListItem>
+					<g:Label>Android</g:Label><m:FlipSwitch value="true"/>
+				</m:ListItem>
+				<m:ListItem>
+					<g:Label>BlackBerry</g:Label><m:FlipSwitch/>
+				</m:ListItem>
+				<m:ListItem>
+					<g:Label>WebOS</g:Label><m:FlipSwitch/>
+				</m:ListItem>
+				<m:ListItem>
+					<g:Label>WP7</g:Label><m:FlipSwitch/>
 				</m:ListItem>
 			</m:ListPanel>			
 		</m:ScrollPanel>

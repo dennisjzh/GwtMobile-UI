@@ -16,26 +16,29 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
 
-public class FlipSwitch extends HTML implements DragEventsHandler{
+public class FlipSwitch extends HTML implements DragEventsHandler, ClickHandler {
 
-	private boolean _isDisabled = false;
+	protected boolean _value = false;
 	
     public FlipSwitch() {
-        setStyleName("Button");
+        setStyleName("FlipSwitch");
+        addStyleName("Off");
+        addClickHandler(this);
+  	super.setHTML("<div></div><div></div><div><div><div>ON</div><div></div><div>OFF</div></div></div>");
     }
     
-    public FlipSwitch(String caption, ClickHandler handler) {
-        this();
-        setHTML(caption);
-        this.addClickHandler(handler);
+    @Override
+    public void setHTML(String html) {
+    	assert false : "HTML/Text cannot be set to a FlipSwith widget.";
     }
-
+    
     @Override
     public void onLoad() {
         super.onLoad();
@@ -49,36 +52,37 @@ public class FlipSwitch extends HTML implements DragEventsHandler{
     
     @Override
     public void onDragStart(DragEvent e) {
-    	if (!_isDisabled) {
-            addStyleName("Pressed");
-    	}
     }
 
     @Override
     public void onDragMove(DragEvent e) {
-    	if (!_isDisabled) {
-    		removeStyleName("Pressed");       
-    	}
     }
 
     @Override
     public void onDragEnd(DragEvent e) {
-    	if (!_isDisabled) {
-    		removeStyleName("Pressed");        
-    	}
     }
     
-    public void setDisabled(boolean disabled) {
-    	_isDisabled = disabled;
-    	if (disabled) {
-    		addStyleName("Disabled");
-    	}
-    	else {
-    		removeStyleName("Disabled");
-    	}
+    public void setValue(boolean value) {
+    	_value = value;
+    	updateStyle();    	
     }
     
-    public boolean isDisabled() {
-    	return _isDisabled;
+    public boolean getValue() {
+    	return _value;
     }
+
+	@Override
+	public void onClick(ClickEvent event) {
+		_value = !_value;
+		updateStyle();
+	}
+	
+	private void updateStyle() {
+		if (_value) {
+			removeStyleName("Off");
+		}
+		else {
+			addStyleName("Off");
+		}
+	}
 }

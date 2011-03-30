@@ -518,53 +518,80 @@ html {
 /******************* Flip Switch *************/
 
 .FlipSwitch {
+	position: relative;
 	border-radius: .3em;
-	width: 5.75em;
 	overflow: hidden;
 	border: 1px solid #333;
 	-webkit-box-shadow: 0px 0px .1em #333;
-}
-
-.FlipSwitch > div {
-	position: relative;
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
 }
 
-.FlipSwitch > div > div {
+.FlipSwitch > div:first-child, .FlipSwitch > div:nth-child(2) {
+	width: 3em;
+	height: 1.75em;	
+}
+
+.FlipSwitch > div:first-child {
+	border-top-left-radius: .3em;
+	border-bottom-left-radius: .3em;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
+		from(darkGreen), color-stop(0.1, #298C08), color-stop(0.5, #lightGreen), to(lightGreen));
+}
+
+.FlipSwitch > div:nth-child(2) {
+	border-top-right-radius: .3em;
+	border-bottom-right-radius: .3em;
+	background: white -webkit-gradient(linear, 0% 0%, 0% 100%, 
+		from(#gray), color-stop(0.1, lightgray), color-stop(0.5, white), to(white));
+}
+
+
+.FlipSwitch > div:last-child {
+	position: absolute;
+	left: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+
+.FlipSwitch > div:last-child > div {
+	position: relative;
+	display: -webkit-box;
+	height: 100%;
+	-webkit-transition-property: -webkit-transform;
+	-webkit-transition-duration: 200ms;
+	-webkit-transition-timing-function: linear;
+}
+
+.FlipSwitch.Off > div:last-child > div {
+    -webkit-transform: translate3d(-2.8em, 0, 0);
+}
+
+.FlipSwitch > div:last-child > div > div {
 	display: -webkit-box;
 	-webkit-box-align: center;
 	-webkit-box-pack: center;
 	font-weight: bold;
+}
+
+.FlipSwitch > div:last-child > div > div:first-child {
 	width: 3em;
-	height: 1.75em;	
-	border-radius: .3em;
+	text-shadow: #093B5C 0px 1px 1px;
 }
 
-.FlipSwitch > div > div:first-child {
-	padding: 1px;
-	margin-right: -.5em;
-	text-shadow: #093B5C 0px -1px 1px;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
-		from(darkGreen), color-stop(0.1, darkGreen), 
-		color-stop(0.2, green), color-stop(0.5, #298C08), to(lightGreen));
+.FlipSwitch > div:last-child > div > div:last-child {
+	width: 3em;
+	color: darkgray;
+	text-shadow: black 0px 1px 1px;
 }
 
-.FlipSwitch > div > div:nth-child(2) {
+.FlipSwitch > div:last-child > div > div:nth-child(2) {
+	width: 3.1em;
+	margin-left: -.22em;
 	border: 1px solid #E5E5E5;
 	border-radius: .3em;
-	position: relative;	
-	z-index: 1;
 	-webkit-box-shadow: black 0 0 .2em;
 	background: white -webkit-gradient(linear, 0% 0%, 0% 100%, from(#A1A1A1), to(white));
 }
 
-.FlipSwitch > div > div:last-child {
-	display:none;
-	padding: 1px;
-	text-shadow: black 0px -1px 1px;
-	color: darkgray;
-	margin-left: -.5em;
-	background: white -webkit-gradient(linear, 0% 0%, 0% 100%, 
-		from(#gray), color-stop(0.1, lightgray), color-stop(0.5, white), to(white));
-}
