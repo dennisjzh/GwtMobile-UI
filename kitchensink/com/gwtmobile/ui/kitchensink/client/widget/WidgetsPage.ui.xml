@@ -15,8 +15,9 @@
 				</m:ListItem>
 				<g:Label>Checkbox</g:Label>
 				<m:ListItem disabled="true">
-					<g:Label>Flip Switch</g:Label>
+					<g:Label>Drop Down List</g:Label>
 				</m:ListItem>
+				<g:Label>Flip Switch</g:Label>
 				<g:Label>Radio Button</g:Label>
 				<m:ListItem disabled="true">
 					<g:Label>Slider</g:Label>

@@ -47,10 +47,14 @@ public class WidgetsPage extends Page {
     		goTo(checkBox);
     		break;
     	case 3:
+    		FlipSwitchPage flipSwitch = new FlipSwitchPage();
+    		goTo(flipSwitch);
+    		break;
+    	case 4:
     		RadioButtonPage radioButton = new RadioButtonPage();
     		goTo(radioButton);
     		break;
-    	case 5:
+    	case 6:
     		TextBoxPage textBox = new TextBoxPage();
     		goTo(textBox);
     		break;
