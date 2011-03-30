@@ -126,6 +126,11 @@ public abstract class Page extends WidgetBase {
 		goTo(toPage, _defaultTransition);
 	}
 
+	@Override
+	public Widget getWidget() {	//make getWidget() public
+		return super.getWidget();
+	}
+	
 	private static void setPageResolution() {
 		int ratio = getDevicePixelRatio();
 		if (ratio == 2) {	//iphone 4. screen size on iphone does not change despite the dp ratio. 
