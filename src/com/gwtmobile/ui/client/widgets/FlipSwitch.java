@@ -46,7 +46,9 @@ public class FlipSwitch extends WidgetBase
     @Override
     protected void onInitialLoad() {
     	super.onInitialLoad();
-    	updateFlipPosition();
+    	if (!_value) {
+        	updateFlipPosition(0);
+    	}
     }
     
     @Override
@@ -93,29 +95,32 @@ public class FlipSwitch extends WidgetBase
     	int onPosition = getOnPosition();
     	int offPosition = getOffPosition();
     	if (x == onPosition) {
-    		setValue(true);
+    		setValue(true, false, 0);
     	}
     	else if (x == offPosition) {
-    		setValue(false);
+    		setValue(false, false, 0);
     	}
     	else {
-	    	boolean newValue = x >= (offPosition - onPosition) / 2;
-	    	setValue(newValue, true);
+    		float ratio = (float)x / (float)(offPosition - onPosition);
+	    	boolean newValue = ratio < 0.5;
+	    	int duration = (int) ((0.5 - Math.abs(ratio - 0.5)) * 200);
+	    	Utils.Console("ratio " + ratio + " duration " + duration);
+	    	setValue(newValue, true,  duration);
     	}
     }
 
     public void setValue(boolean value) {
-    	setValue(value, false);
+    	setValue(value, false, 200);
     }
     
-    public void setValue(boolean value, boolean forceUpdateFlipPosition) {
+    public void setValue(boolean value, boolean forceUpdateFlipPosition, int duration) {
     	if (_value != value) {
         	_value = value;
-        	updateFlipPosition();    	
+        	updateFlipPosition(duration);    	
     		ValueChangeEvent.fire(this, _value);
     	}
     	else if (forceUpdateFlipPosition) {
-        	updateFlipPosition();    	
+        	updateFlipPosition(duration);    	
     	}
     }
     
@@ -128,8 +133,8 @@ public class FlipSwitch extends WidgetBase
 		setValue(!_value);
 	}
 	
-	private void updateFlipPosition() {
-    	Utils.setTransitionDuration(getFilpElement(), 200);
+	private void updateFlipPosition(int duration) {
+    	Utils.setTransitionDuration(getFilpElement(), duration);
 		Element flip = getFilpElement();
 		if (_value) {
 			Utils.setTranslateX(flip, getOnPosition());
