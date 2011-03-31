@@ -62,7 +62,7 @@ public class FlipSwitch extends WidgetBase
     
     @Override
     public void onDragStart(DragEvent e) {
-    	DragController.get().catchDragEvents(this);
+    	DragController.get().captureDragEvents(this);
     	Utils.setTransitionDuration(getFilpElement(), 0);
     }
 
@@ -87,7 +87,7 @@ public class FlipSwitch extends WidgetBase
 
     @Override
     public void onDragEnd(DragEvent e) {
-    	DragController.get().releaseCatch(this);
+    	DragController.get().releaseCapture(this);
     	Element flip = getFilpElement();
     	int x = Utils.getTranslateX(flip);
     	int onPosition = getOnPosition();

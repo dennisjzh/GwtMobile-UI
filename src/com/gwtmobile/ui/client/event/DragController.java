@@ -36,7 +36,7 @@ public abstract class DragController implements EventListener {
 
     private List<DragEventsHandler> _dragEventHandlers = new ArrayList<DragEventsHandler>();
     private List<SwipeEventsHandler> _swipeEventHandlers = new ArrayList<SwipeEventsHandler>();
-    protected DragEventsHandler _catchingDragEventsHandler = null;
+    protected DragEventsHandler _capturingDragEventsHandler = null;
     protected Widget _source;
 	private boolean _isDown = false;
 	private boolean _suppressNextClick = false;
@@ -163,8 +163,8 @@ public abstract class DragController implements EventListener {
     }
     
     protected void fireDragEvent(DragEvent e) {
-    	if (_catchingDragEventsHandler != null) {
-    		e.dispatch(_catchingDragEventsHandler);
+    	if (_capturingDragEventsHandler != null) {
+    		e.dispatch(_capturingDragEventsHandler);
     		return;
     	}
         EventTarget target = e.getNativeEvent().getEventTarget();
@@ -241,22 +241,22 @@ public abstract class DragController implements EventListener {
         Utils.Console("drag events resumed.");
     }
     
-    public boolean catchDragEvents(DragEventsHandler cachingHandler) {
-    	if (_catchingDragEventsHandler != null) {
+    public boolean captureDragEvents(DragEventsHandler cachingHandler) {
+    	if (_capturingDragEventsHandler != null) {
     		return false;
     	}
-    	_catchingDragEventsHandler = cachingHandler;
+    	_capturingDragEventsHandler = cachingHandler;
     	return true;
     }
     
-    public boolean releaseCatch(DragEventsHandler cachingHandler) {
-    	if (_catchingDragEventsHandler == null) {
+    public boolean releaseCapture(DragEventsHandler cachingHandler) {
+    	if (_capturingDragEventsHandler == null) {
     		return true;
     	}
-    	if (_catchingDragEventsHandler != cachingHandler) {
+    	if (_capturingDragEventsHandler != cachingHandler) {
     		return false;
     	}
-    	_catchingDragEventsHandler = null;
+    	_capturingDragEventsHandler = null;
     	return true;
     }
 }
