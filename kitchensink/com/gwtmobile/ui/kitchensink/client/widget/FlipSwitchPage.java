@@ -17,20 +17,15 @@
 package com.gwtmobile.ui.kitchensink.client.widget;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.utils.Utils;
-import com.gwtmobile.ui.client.widgets.FlipSwitch;
 
 public class FlipSwitchPage extends Page{
 
-//	@UiField FlipSwitchGroup radiogroup1;
-//	@UiField FlipSwitchGroup radiogroup2;
-	
 	private static FlipSwitchPageUiBinder uiBinder = GWT
 			.create(FlipSwitchPageUiBinder.class);
 
@@ -40,16 +35,29 @@ public class FlipSwitchPage extends Page{
 	public FlipSwitchPage() {
 		initWidget(uiBinder.createAndBindUi(this));	
 	}
-	
-//    @UiHandler("radiogroup1")
-//    void onRadioGroup1SelectionChanged(SelectionChangedEvent e) {
-//    	FlipSwitch radio = (FlipSwitch) radiogroup1.getWidget(e.getSelection());
-//    	Utils.Console("group1 " + e.getSelection() + " " + radio.getText());
-//    }
 
-//    @UiHandler("radiogroup2")
-//    void onRadioGroup2SelectionChanged(SelectionChangedEvent e) {
-//    	FlipSwitch radio = (FlipSwitch) radiogroup2.getWidget(e.getSelection());
-//    	Utils.Console("group2 " + e.getSelection() + " " + radio.getText());
-//    }
+	@UiHandler("iphone")
+	void onValueChangeIPhone(ValueChangeEvent<Boolean> e) {
+		Utils.Console("Flip switch iPhone " + e.getValue());
+	}
+
+	@UiHandler("android")
+	void onValueChangeAndroid(ValueChangeEvent<Boolean> e) {
+		Utils.Console("Flip switch android " + e.getValue());
+	}
+	
+	@UiHandler("blackberry")
+	void onValueChangeBlackBerry(ValueChangeEvent<Boolean> e) {
+		Utils.Console("Flip switch blackberry " + e.getValue());
+	}
+	
+	@UiHandler("webos")
+	void onValueChangeWebOS(ValueChangeEvent<Boolean> e) {
+		Utils.Console("Flip switch webos " + e.getValue());
+	}
+	
+	@UiHandler("wp7")
+	void onValueChangeWP7(ValueChangeEvent<Boolean> e) {
+		Utils.Console("Flip switch wp7 " + e.getValue());
+	}
 }

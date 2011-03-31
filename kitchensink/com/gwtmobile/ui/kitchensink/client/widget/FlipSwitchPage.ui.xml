@@ -11,19 +11,19 @@
 		<m:ScrollPanel hasTextBox="true">
 			<m:ListPanel selectable="false">
 				<m:ListItem>
-					<g:Label>iPhone</g:Label><m:FlipSwitch/>
+					<g:Label>iPhone</g:Label><m:FlipSwitch ui:field="iphone"/>
 				</m:ListItem>
 				<m:ListItem>
-					<g:Label>Android</g:Label><m:FlipSwitch value="true"/>
+					<g:Label>Android</g:Label><m:FlipSwitch ui:field="android" value="false"/>
 				</m:ListItem>
 				<m:ListItem>
-					<g:Label>BlackBerry</g:Label><m:FlipSwitch/>
+					<g:Label>BlackBerry</g:Label><m:FlipSwitch ui:field="blackberry"/>
 				</m:ListItem>
 				<m:ListItem>
-					<g:Label>WebOS</g:Label><m:FlipSwitch/>
+					<g:Label>WebOS</g:Label><m:FlipSwitch ui:field="webos"/>
 				</m:ListItem>
 				<m:ListItem>
-					<g:Label>WP7</g:Label><m:FlipSwitch/>
+					<g:Label>WP7</g:Label><m:FlipSwitch ui:field="wp7"/>
 				</m:ListItem>
 			</m:ListPanel>			
 		</m:ScrollPanel>
