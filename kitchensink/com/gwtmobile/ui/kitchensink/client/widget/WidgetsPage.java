@@ -28,6 +28,10 @@ import com.gwtmobile.ui.client.widgets.ListPanel;
 public class WidgetsPage extends Page {
 
 	@UiField ListPanel list;
+	CheckBoxPage checkBox = new CheckBoxPage();
+	FlipSwitchPage flipSwitch = new FlipSwitchPage();
+	RadioButtonPage radioButton = new RadioButtonPage();
+	TextBoxPage textBox = new TextBoxPage();
 	
 	private static WidgetsPageUiBinder uiBinder = GWT
 			.create(WidgetsPageUiBinder.class);
@@ -43,19 +47,15 @@ public class WidgetsPage extends Page {
     void onListSelectionChanged(SelectionChangedEvent e) {
     	switch (e.getSelection()) {
     	case 1:
-    		CheckBoxPage checkBox = new CheckBoxPage();
     		goTo(checkBox);
     		break;
     	case 3:
-    		FlipSwitchPage flipSwitch = new FlipSwitchPage();
     		goTo(flipSwitch);
     		break;
     	case 4:
-    		RadioButtonPage radioButton = new RadioButtonPage();
     		goTo(radioButton);
     		break;
     	case 6:
-    		TextBoxPage textBox = new TextBoxPage();
     		goTo(textBox);
     		break;
     	}
