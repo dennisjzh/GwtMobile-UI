@@ -63,18 +63,18 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
     }
     
 	public void reset() {
-        setTransitionDuration(getWidget().getElement(), 0);
-        setTranslateY(getWidget().getElement(), 0);
+        Utils.setTransitionDuration(getWidget().getElement(), 0);
+        Utils.setTranslateY(getWidget().getElement(), 0);
 	}
 	
 	public void setPostionToTop() {
-        setTransitionDuration(getWidget().getElement(), 0);
-	    setTranslateY(getWidget().getElement(), 0);
+        Utils.setTransitionDuration(getWidget().getElement(), 0);
+	    Utils.setTranslateY(getWidget().getElement(), 0);
 	}
 	
 	public void setPositionToBottom() {
-        setTransitionDuration(getWidget().getElement(), 0);
-        setTranslateY(getWidget().getElement(), 
+        Utils.setTransitionDuration(getWidget().getElement(), 0);
+        Utils.setTranslateY(getWidget().getElement(), 
                 this.getElement().getClientHeight() - this.getElement().getScrollHeight());
 	}
 	
@@ -84,7 +84,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		}
 		else {
 			Element element = getWidget().getElement();
-			setTranslateY(element, pos);
+			Utils.setTranslateY(element, pos);
 		}
 	}
 	
@@ -94,7 +94,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		}
 		else {
 			Element element = getWidget().getElement();
-			return getTranslateY(element);
+			return Utils.getTranslateY(element);
 		}
 	}
 	
@@ -104,42 +104,15 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		}
 		else {
 			Element element = getWidget().getElement();
-			return getMatrixY(element);
+			return Utils.getMatrixY(element);
 		}
 	}
 	
-	private native void setTranslateY(Element ele, double value) /*-{
-		ele.style.webkitTransform = "translate3d(0px, " + value + "px ,0px)";
-	}-*/;
-
-	private native int getTranslateY(Element ele) /*-{
-        var transform = ele.style.webkitTransform;
-        var translateY = 0;        
-        if (transform && transform !== "") {
-            translateY = parseInt((/translate3d\(0px, (\-?.*)px, 0px\)/).exec(transform)[1]);
-        }        
-        return translateY;
-    }-*/;
-
-	private native int getMatrixY(Element ele) /*-{
-		var matrix = new WebKitCSSMatrix(window.getComputedStyle(ele).webkitTransform);
-		return matrix.f;
-    }-*/;
-	
-	private native void setTransitionDuration(Element ele, double value) /*-{
-		ele.style.webkitTransitionDuration = "" + value + "ms";
-	}-*/;
-
-	private native int getHeight(Element ele) /*-{
-		return parseInt($doc.defaultView.getComputedStyle(ele, "").getPropertyValue("height"));
-	}-*/;
-
-
 	@Override
     public void onDragStart(DragEvent e) {
 		int matrix = getScrollToPosition();
 		int current = getScrollPosition();
-		setTransitionDuration(getWidget().getElement(), 0);
+		Utils.setTransitionDuration(getWidget().getElement(), 0);
 		if (current != matrix) {  //scroll on going
 			int diff = current - matrix;
 			int offset = diff > 2 ? 2 : diff > -2 ? diff : -2;
@@ -151,7 +124,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 	@Override
     public void onDragMove(DragEvent e) {
 		Element widgetEle = getWidget().getElement();
-		int panelHeight = getHeight(this.getElement());
+		int panelHeight = Utils.getHeight(this.getElement());
 		int widgetHeight = widgetEle.getOffsetHeight();
 		int current = getScrollPosition();
 		if (current > 0) {//exceed top boundary
@@ -173,7 +146,6 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		else {
 			current += e.OffsetY;
 		}
-		Utils.Console(current + "");
 		setScrollPosition(current);		
 	}
 
@@ -184,15 +156,15 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		if (current == 0) {
 			return;
 		}
-		int panelHeight = getHeight(this.getElement());
+		int panelHeight = Utils.getHeight(this.getElement());
 		int widgetHeight = widgetEle.getOffsetHeight();
 		if (current > 0 //exceed top boundary
 				|| panelHeight > widgetHeight) {
-			setTransitionDuration(widgetEle, 500);
+			Utils.setTransitionDuration(widgetEle, 500);
 			setScrollPosition(0);
 		}
 		else if (-current + panelHeight > widgetHeight) { //exceed bottom boundary
-			setTransitionDuration(widgetEle, 500);
+			Utils.setTransitionDuration(widgetEle, 500);
 			setScrollPosition(panelHeight - widgetHeight);
 		}
 	}
@@ -200,7 +172,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 	@Override
     public void onSwipeVertical(SwipeEvent e) {
 		Element widgetEle = getWidget().getElement();
-		int panelHeight = getHeight(this.getElement());
+		int panelHeight = Utils.getHeight(this.getElement());
 		int widgetHeight = widgetEle.getOffsetHeight();
 		long current = getScrollPosition();
 		if ((current >= 0) // exceed top boundary
@@ -226,7 +198,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 			time = (long) (time * timeAdj * timeAdj);
 			current = bottom;
 		}
-		setTransitionDuration(widgetEle, time);
+		Utils.setTransitionDuration(widgetEle, time);
 		setScrollPosition((int) current);
 	}
 

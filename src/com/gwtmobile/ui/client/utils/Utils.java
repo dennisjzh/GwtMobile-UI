@@ -20,7 +20,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
@@ -100,4 +100,48 @@ public class Utils {
     public static boolean isAndroid() {
     	return Window.Navigator.getUserAgent().contains("Android");
     }
+    
+	public static native void setTranslateX(Element ele, double value) /*-{
+		ele.style.webkitTransform = "translate3d(" + value + "px, 0px, 0px)";
+	}-*/;
+	
+	public static native int getTranslateX(Element ele) /*-{
+	    var transform = ele.style.webkitTransform;
+	    var translateX = 0;        
+	    if (transform && transform !== "") {
+	        translateX = parseInt((/translate3d\((\-?.*)px, 0px, 0px\)/).exec(transform)[1]);
+	    }        
+	    return translateX;
+	}-*/;
+
+	public static native void setTranslateY(Element ele, double value) /*-{
+		ele.style.webkitTransform = "translate3d(0px, " + value + "px ,0px)";
+	}-*/;
+
+	public static native int getTranslateY(Element ele) /*-{
+	    var transform = ele.style.webkitTransform;
+	    var translateY = 0;        
+	    if (transform && transform !== "") {
+	        translateY = parseInt((/translate3d\(0px, (\-?.*)px, 0px\)/).exec(transform)[1]);
+	    }        
+	    return translateY;
+	}-*/;
+
+	public static native int getMatrixY(Element ele) /*-{
+		var matrix = new WebKitCSSMatrix(window.getComputedStyle(ele).webkitTransform);
+		return matrix.f;
+	}-*/;
+	
+	public static native void setTransitionDuration(Element ele, double value) /*-{
+		ele.style.webkitTransitionDuration = "" + value + "ms";
+	}-*/;
+	
+	public static native int getHeight(Element ele) /*-{
+		return parseInt($doc.defaultView.getComputedStyle(ele, "").getPropertyValue("height"));
+	}-*/;
+
+	public static native int getWidth(Element ele) /*-{
+		return parseInt($doc.defaultView.getComputedStyle(ele, "").getPropertyValue("width"));
+	}-*/;
+
 }
