@@ -560,14 +560,13 @@ html {
 	display: -webkit-box;
 	height: 100%;
 	-webkit-transition-property: -webkit-transform;
-	-webkit-transition-duration: 200ms;
 	-webkit-transition-timing-function: linear;
 }
 
-.FlipSwitch.Off > div:last-child > div {
+/*.FlipSwitch.Off > div:last-child > div {
     -webkit-transform: translate3d(-2.8em, 0, 0);
 }
-
+*/
 .FlipSwitch > div:last-child > div > div {
 	display: -webkit-box;
 	-webkit-box-align: center;
@@ -581,14 +580,14 @@ html {
 }
 
 .FlipSwitch > div:last-child > div > div:last-child {
-	width: 3em;
+	width: 2.8125em;
 	color: darkgray;
 	text-shadow: black 0px 1px 1px;
 }
 
 .FlipSwitch > div:last-child > div > div:nth-child(2) {
 	width: 3.1em;
-	margin-left: -.22em;
+	margin-left: -.1875em;
 	border: 1px solid #E5E5E5;
 	border-radius: .3em;
 	-webkit-box-shadow: black 0 0 .2em;
