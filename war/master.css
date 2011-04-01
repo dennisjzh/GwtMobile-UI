@@ -76,12 +76,13 @@ html {
 .Button {
 	color: #fff;
 	text-decoration: none;
-	display: inline-block;
+	display: block;
 	padding: 0.3em 0.5em 0.5em 0.5em;
 	-webkit-border-radius: 0.3em;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#838383), color-stop(0.5, #444), color-stop(0.5, #303030), to(#333));
 	border: solid 0px rgba(79, 79, 79, 0.75);
 	height:1em;	
+	text-align: center;
 	text-shadow: rgba(0, 0, 0, 1) 0 -0.1em 0.1em;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0.1em 0.1em 0.1em;
 }

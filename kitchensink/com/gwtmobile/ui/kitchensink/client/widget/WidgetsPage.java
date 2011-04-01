@@ -28,6 +28,7 @@ import com.gwtmobile.ui.client.widgets.ListPanel;
 public class WidgetsPage extends Page {
 
 	@UiField ListPanel list;
+	ButtonPage button = new ButtonPage();
 	CheckBoxPage checkBox = new CheckBoxPage();
 	FlipSwitchPage flipSwitch = new FlipSwitchPage();
 	RadioButtonPage radioButton = new RadioButtonPage();
@@ -46,6 +47,9 @@ public class WidgetsPage extends Page {
     @UiHandler("list")
     void onListSelectionChanged(SelectionChangedEvent e) {
     	switch (e.getSelection()) {
+    	case 0:
+    		goTo(button);
+    		break;
     	case 1:
     		goTo(checkBox);
     		break;

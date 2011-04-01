@@ -10,9 +10,7 @@
 		</m:HeaderPanel>
 		<m:ScrollPanel>
 			<m:ListPanel ui:field="list" showArrow="false">
-				<m:ListItem disabled="true">
-					<g:Label>Button</g:Label>
-				</m:ListItem>
+				<g:Label>Button</g:Label>
 				<g:Label>Checkbox</g:Label>
 				<m:ListItem disabled="true">
 					<g:Label>Drop Down List</g:Label>
