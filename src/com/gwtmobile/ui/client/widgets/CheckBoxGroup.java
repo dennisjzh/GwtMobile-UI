@@ -115,9 +115,6 @@ public class CheckBoxGroup extends PanelBase
 		checkbox.addValueChangeHandler(this);
     }
     
-    public Widget getWidget(int index) {
-    	return _panel.getWidget(index);
-    }
     public void setShowIndicator(boolean show) {
     	if (show) {
     		removeStyleName("HideIndicator");
