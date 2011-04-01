@@ -34,7 +34,10 @@ public class WidgetBase extends Composite {
     protected void onInitialLoad() {
     }
     
-    public void onTransitionEnd() {
-    	
+    public void onTransitionEnd() {    	
+    }
+    
+    public void setSecondaryStyle(String style) {
+    	addStyleName(style);
     }
 }
