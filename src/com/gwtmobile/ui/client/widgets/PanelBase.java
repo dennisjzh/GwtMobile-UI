@@ -50,4 +50,11 @@ public class PanelBase extends WidgetBase implements HasWidgets {
 		return _panel.remove(w);
 	}
 
+	public Widget getWidget(int index) {
+		return _panel.getWidget(index);
+	}
+	
+	public int getWidgetCount() {
+		return _panel.getWidgetCount();
+	}
 }

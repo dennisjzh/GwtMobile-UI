@@ -22,7 +22,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.event.DragController;
@@ -32,7 +31,7 @@ import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.event.SelectionChangedHandler;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHandler{
+public class ListPanel extends PanelBase implements ClickHandler, DragEventsHandler{
 
 	private boolean _showArrow;
 	private int _selected = -1;
@@ -90,8 +89,9 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
     
     public void setShowArrow(boolean show) {
     	_showArrow = show;
-    	for (Widget listItem : this.getChildren()) {
-			((ListItem)listItem).setShowArrowFromParent(show);
+    	for (int i = 0; i < getWidgetCount(); i++) {
+    		ListItem listItem = (ListItem) getWidget(i);
+			listItem.setShowArrowFromParent(show);
 		}
     }
     
