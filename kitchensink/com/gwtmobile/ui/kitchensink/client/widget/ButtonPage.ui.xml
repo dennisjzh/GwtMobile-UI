@@ -10,7 +10,7 @@
 	</ui:style>
 	<g:HTMLPanel>
 		<m:HeaderPanel ui:field="header" leftButton="Back">
-			<g:Label>Radio Button</g:Label>			
+			<g:Label>Button</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel hasTextBox="true">
 			<m:ListPanel selectable="false" secondaryStyle="{style.modify}">
