@@ -595,3 +595,45 @@ html {
 	background: white -webkit-gradient(linear, 0% 0%, 0% 100%, from(#A1A1A1), to(white));
 }
 
+
+/******************* Slider *************/
+
+.Slider {
+	position: relative;
+	height: 1.8em;
+	display: -webkit-box;
+	-webkit-box-align: center;
+}
+
+.Slider > div {
+	border: 1px solid #333;
+	height: 1em;
+	-webkit-background-clip: content !important;
+}
+
+.Slider > div:first-child {
+	width: 50%;
+	border-top-left-radius: .3em;
+	border-bottom-left-radius: .3em;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
+		from(darkgreen), to(lightgreen));
+}
+
+.Slider > div:nth-child(2) {
+	width: 50%;
+	border-top-right-radius: .3em;
+	border-bottom-right-radius: .3em;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
+		from(gray), to(white));
+}
+
+.Slider > div:last-child {
+	position: absolute;
+	left: 49%;
+	width: 1em;
+	height: 1.8em;
+	border-radius: .2em;
+	-webkit-box-shadow: black 0 0 .1em;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
+		from(#A1A1A1), to(white));
+}

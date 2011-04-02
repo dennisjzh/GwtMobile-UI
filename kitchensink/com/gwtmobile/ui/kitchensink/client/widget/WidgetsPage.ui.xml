@@ -17,9 +17,7 @@
 				</m:ListItem>
 				<g:Label>Flip Switch</g:Label>
 				<g:Label>Radio Button</g:Label>
-				<m:ListItem disabled="true">
-					<g:Label>Slider</g:Label>
-				</m:ListItem>
+				<g:Label>Slider</g:Label>
 				<g:Label>Text Box</g:Label>
 			</m:ListPanel>
 		</m:ScrollPanel>

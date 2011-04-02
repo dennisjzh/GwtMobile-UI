@@ -32,6 +32,7 @@ public class WidgetsPage extends Page {
 	CheckBoxPage checkBox = new CheckBoxPage();
 	FlipSwitchPage flipSwitch = new FlipSwitchPage();
 	RadioButtonPage radioButton = new RadioButtonPage();
+	SliderPage slider = new SliderPage();
 	TextBoxPage textBox = new TextBoxPage();
 	
 	private static WidgetsPageUiBinder uiBinder = GWT
@@ -58,6 +59,9 @@ public class WidgetsPage extends Page {
     		break;
     	case 4:
     		goTo(radioButton);
+    		break;
+    	case 5:
+    		goTo(slider);
     		break;
     	case 6:
     		goTo(textBox);
