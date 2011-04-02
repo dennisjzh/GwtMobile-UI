@@ -17,8 +17,7 @@
 package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -27,10 +26,9 @@ import com.google.gwt.user.client.ui.HTML;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
-import com.gwtmobile.ui.client.utils.Utils;
 
 public class Slider extends WidgetBase 
-	implements DragEventsHandler, HasValueChangeHandlers<Boolean> {
+	implements DragEventsHandler, HasValueChangeHandlers<Integer> {
 
 	protected int _value = 0;
 	protected HTML _html = new HTML();
@@ -38,6 +36,7 @@ public class Slider extends WidgetBase
     public Slider() {
     	initWidget(_html);
         setStyleName("Slider");
+		ValueChangeEvent.fire(this, _value);
         _html.setHTML("<div></div><div></div><div></div>");
     }
     
@@ -55,48 +54,59 @@ public class Slider extends WidgetBase
     @Override
     public void onDragStart(DragEvent e) {
     	DragController.get().captureDragEvents(this);
-    	Utils.setTransitionDuration(getSliderElement(), 0);
+    	int value = computeNewValue(e);
+   		setValue(value);
     }
 
     @Override
     public void onDragMove(DragEvent e) {
     	e.stopPropagation();
-    	Element flip = getSliderElement();
-    	int x = Utils.getTranslateX(flip);
-    	int newX = (int) (x + e.OffsetX);
-    	int leftMostPosition = 0;
-    	int rightMostPosition = 100;	//TODO: fix me.
-    	if (newX > rightMostPosition) {
-    		newX = rightMostPosition;
-    	}
-    	else if (newX < leftMostPosition) {
-    		newX = leftMostPosition;
-    	}
-    	if (newX != x) {
-        	Utils.setTranslateX(flip, newX);
-    	}
+    	int value = computeNewValue(e);
+   		setValue(value);
     }
 
     @Override
     public void onDragEnd(DragEvent e) {
     	DragController.get().releaseCapture(this);
     }
-
+    
     public void setValue(int value) {
-    	_value = value;
+    	if (_value != value) {
+        	_value = value;
+        	updateSliderPosition();
+    	}
     }
     
-    public int getValue() {
+	public int getValue() {
     	return _value;
     }
 
-	private Element getSliderElement() {
-    	return (Element) getElement().getChild(2);
-	}
-
 	@Override
 	public HandlerRegistration addValueChangeHandler(
-			ValueChangeHandler<Boolean> handler) {
+			ValueChangeHandler<Integer> handler) {
 		return this.addHandler(handler, ValueChangeEvent.getType());
+	}
+	
+    private int computeNewValue(DragEvent e) {
+    	Element ele = getElement();
+    	int offset = (int)e.X - ele.getAbsoluteLeft();
+    	int width = ele.getClientWidth();
+    	int value = offset * 100 / width;
+    	if (value > 100) {
+    		value = 100;
+    	}
+    	else if (value < 0) {
+    		value = 0;
+    	}
+    	return value;
+    }
+
+	private void updateSliderPosition() {
+    	Element slider = getSliderElement();
+		slider.getStyle().setWidth(_value, Unit.PCT);
+	}
+
+	private Element getSliderElement() {
+    	return (Element) getElement().getChild(1);
 	}
 }

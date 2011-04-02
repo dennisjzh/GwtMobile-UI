@@ -3,15 +3,25 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
 	<ui:style>
+		.modify > div > div {
+			-webkit-box-flex: 1;
+			margin: 0 .5em 0 .5em;
+		}
 	</ui:style>
 	<g:HTMLPanel>
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>Slider</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel hasTextBox="true">
-			<m:ListPanel selectable="false">
+			<m:ListPanel selectable="false" secondaryStyle="{style.modify}">
 				<m:ListItem>
-					<m:Slider width="50%"></m:Slider>
+					<m:Slider></m:Slider>
+				</m:ListItem>
+				<m:ListItem>
+					<m:Slider value="50"></m:Slider>
+				</m:ListItem>
+				<m:ListItem>
+					<m:Slider value="100"></m:Slider>
 				</m:ListItem>
 			</m:ListPanel>			
 		</m:ScrollPanel>

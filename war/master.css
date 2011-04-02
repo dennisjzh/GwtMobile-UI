@@ -602,7 +602,6 @@ html {
 	position: relative;
 	height: 1.8em;
 	display: -webkit-box;
-	-webkit-box-align: center;
 }
 
 .Slider > div {
@@ -612,24 +611,27 @@ html {
 }
 
 .Slider > div:first-child {
-	width: 50%;
+	position: absolute;
+	top: .4em;
+	width: 100%;
+	border-radius: .3em;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
+		from(gray), to(white));
+}
+
+.Slider > div:nth-child(2) {
+	position: relative;
+	top: .4em;
 	border-top-left-radius: .3em;
 	border-bottom-left-radius: .3em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(darkgreen), to(lightgreen));
 }
 
-.Slider > div:nth-child(2) {
-	width: 50%;
-	border-top-right-radius: .3em;
-	border-bottom-right-radius: .3em;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
-		from(gray), to(white));
-}
 
 .Slider > div:last-child {
-	position: absolute;
-	left: 49%;
+	position: relative;
+	margin-left: -.5em;
 	width: 1em;
 	height: 1.8em;
 	border-radius: .2em;
