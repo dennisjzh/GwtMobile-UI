@@ -18,60 +18,65 @@ package com.gwtmobile.ui.client.utils;
 
 public class Point {
 
-  private double x, y;
+	private double x, y;
 
-  public Point(Point c) {
-    x = c.x;
-    y = c.y;
-  }
-  
-  public double X() {
-	  return x;
-  }
+	public Point(Point c) {
+		x = c.x;
+		y = c.y;
+	}
 
-  public double Y() {
-	  return y;
-  }
+	public double X() {
+		return x;
+	}
 
-  public Point(double x, double y) {
-	  Set(x, y);
-  }
+	public double Y() {
+		return y;
+	}
 
-  public Point Set(double x, double y) {
-    this.x = x;
-    this.y = y;
-    return this;
-  }
+	public Point(double x, double y) {
+		Set(x, y);
+	}
 
-  @Override
-  public boolean equals(Object obj) {
-    if (!(obj instanceof Point)) {
-      return false;
-    }
-    Point c = (Point) obj;
-    return (x == c.x) && (y == c.y);
-  }
+	public Point Set(double x, double y) {
+		this.x = x;
+		this.y = y;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return (int) x ^ (int) y;
-  }
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Point)) {
+			return false;
+		}
+		Point c = (Point) obj;
+		return (x == c.x) && (y == c.y);
+	}
 
-  public Point minus(Point c) {
-    this.x -= c.x;
-    this.y -= c.y;
-    return this;
-  }
+	@Override
+	public int hashCode() {
+		return (int) x ^ (int) y;
+	}
 
-  public Point plus(Point c) {
-	    this.x += c.x;
-	    this.y += c.y;
-	    return this;
-  }
-  
-  public Point clone(Point c) {
-	    this.x = c.x;
-	    this.y = c.y;
-	    return this;
-  }
+	public Point minus(Point c) {
+		this.x -= c.x;
+		this.y -= c.y;
+		return this;
+	}
+
+	public Point plus(Point c) {
+		this.x += c.x;
+		this.y += c.y;
+		return this;
+	}
+
+	public Point clone(Point c) {
+		this.x = c.x;
+		this.y = c.y;
+		return this;
+	}
+
+	@Override
+	public String toString() {
+		return "(" + x + ", " + y + ")"; 
+	}
 }
