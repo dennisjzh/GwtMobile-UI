@@ -489,11 +489,11 @@ html {
 
 /* Android native radio button is too small in WVGA resolution */
 
-.Android .RadioButtonGroup > span > input {
+.WVGA .RadioButtonGroup > span > input {
 	display: none;
 }
 
-.Android .RadioButtonGroup > span > div {
+.WVGA .RadioButtonGroup > span > div {
 	width: .8em;
 	height: .8em;
 	margin: .4em;
@@ -506,15 +506,14 @@ html {
 	-webkit-box-shadow:0 0 .1em black;
 }
 
-.Android .RadioButtonGroup > span.Selected > div {
+.WVGA .RadioButtonGroup > span.Selected > div {
 	background-image:
 		-webkit-gradient(radial, 50% 50%, 0, 50% 50%, 8,
 			from(#c7f08b),
 			to(green));
 	-webkit-box-shadow:0 0 .3em green;
 }
-
-
+	
 
 /******************* Flip Switch *************/
 
