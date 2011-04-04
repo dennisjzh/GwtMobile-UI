@@ -599,18 +599,36 @@ html {
 /******************* Slider *************/
 
 .Slider {
-	position: relative;
-	height: 1.8em;
 	display: -webkit-box;
+	-webkit-box-orient: horizontal;
 }
 
-.Slider > div {
+.Slider > div:first-child {		/* label */
+	min-width: 2em;
+	display: -webkit-box;
+	-webkit-box-align: center;
+}
+
+.Slider > div:first-child.Hide {
+	display: none;
+}
+
+.Slider > div:last-child {		/* slider */
+	position: relative;
+	height: 1.8em;
+	min-width: 10em;
+	margin: 0 .5em 0 .5em;	
+	display: -webkit-box;
+	-webkit-box-flex: 1;
+}
+
+.Slider > div:last-child > div {
 	border: 1px solid #333;
 	height: 1em;
 	-webkit-background-clip: content !important;
 }
 
-.Slider > div:first-child {
+.Slider > div:last-child > div:first-child {
 	position: absolute;
 	top: .4em;
 	width: 100%;
@@ -619,7 +637,7 @@ html {
 		from(gray), to(white));
 }
 
-.Slider > div:nth-child(2) {
+.Slider > div:last-child > div:nth-child(2) {
 	position: relative;
 	top: .4em;
 	border-top-left-radius: .3em;
@@ -629,7 +647,7 @@ html {
 }
 
 
-.Slider > div:last-child {
+.Slider > div:last-child > div:last-child {
 	position: relative;
 	margin-left: -.5em;
 	width: 1em;

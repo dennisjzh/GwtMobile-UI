@@ -17,12 +17,18 @@
 package com.gwtmobile.ui.kitchensink.client.widget;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.page.Page;
 
 public class SliderPage extends Page{
 
+	@UiField Label value1;
+	
 	private static FlipSwitchPageUiBinder uiBinder = GWT
 			.create(FlipSwitchPageUiBinder.class);
 
@@ -31,5 +37,10 @@ public class SliderPage extends Page{
 
 	public SliderPage() {
 		initWidget(uiBinder.createAndBindUi(this));	
+	}
+	
+	@UiHandler("slider1")
+	public void onValueChangeSlider1(ValueChangeEvent<Integer> e) {
+		value1.setText(e.getValue() + "");
 	}
 }

@@ -3,9 +3,11 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
 	<ui:style>
-		.modify > div > div {
+		.modify > div > div:last-child {
 			-webkit-box-flex: 1;
-			margin: 0 .5em 0 .5em;
+		}
+		.label {
+			min-width: 2em;
 		}
 	</ui:style>
 	<g:HTMLPanel>
@@ -15,7 +17,8 @@
 		<m:ScrollPanel hasTextBox="true">
 			<m:ListPanel selectable="false" secondaryStyle="{style.modify}">
 				<m:ListItem>
-					<m:Slider></m:Slider>
+					<g:Label ui:field="value1" styleName="{style.label}">0</g:Label>
+					<m:Slider ui:field="slider1" displayValue="false"></m:Slider>
 				</m:ListItem>
 				<m:ListItem>
 					<m:Slider value="50"></m:Slider>

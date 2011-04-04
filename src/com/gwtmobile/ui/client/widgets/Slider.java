@@ -22,6 +22,7 @@ import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
@@ -31,13 +32,16 @@ public class Slider extends WidgetBase
 	implements DragEventsHandler, HasValueChangeHandlers<Integer> {
 
 	protected int _value = 0;
-	protected HTML _html = new HTML();
+	protected FlowPanel _panel = new FlowPanel();	
+	protected HTML _label = new HTML(_value + "");	
+	protected HTML _slider = new HTML();	
 	
     public Slider() {
-    	initWidget(_html);
+    	_panel.add(_label);
+        _slider.setHTML("<div></div><div></div><div></div>");
+    	_panel.add(_slider);
+    	initWidget(_panel);
         setStyleName("Slider");
-		ValueChangeEvent.fire(this, _value);
-        _html.setHTML("<div></div><div></div><div></div>");
     }
     
     @Override
@@ -74,17 +78,27 @@ public class Slider extends WidgetBase
     	if (_value != value) {
         	_value = value;
         	updateSliderPosition();
+        	ValueChangeEvent.fire(this, _value);
     	}
     }
     
 	public int getValue() {
     	return _value;
     }
-
+	
 	@Override
 	public HandlerRegistration addValueChangeHandler(
 			ValueChangeHandler<Integer> handler) {
 		return this.addHandler(handler, ValueChangeEvent.getType());
+	}
+	
+	public void setDisplayValue (boolean display) {
+		if (display) {
+			_label.removeStyleName("Hide");
+		}
+		else {
+			_label.addStyleName("Hide");
+		}
 	}
 	
     private int computeNewValue(DragEvent e) {
@@ -102,11 +116,12 @@ public class Slider extends WidgetBase
     }
 
 	private void updateSliderPosition() {
+    	_label.setHTML(_value + "");
     	Element slider = getSliderElement();
 		slider.getStyle().setWidth(_value, Unit.PCT);
 	}
 
 	private Element getSliderElement() {
-    	return (Element) getElement().getChild(1);
+    	return (Element) _slider.getElement().getChild(1);
 	}
 }
