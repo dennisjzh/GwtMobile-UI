@@ -12,7 +12,7 @@
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>Radio Button</g:Label>			
 		</m:HeaderPanel>
-		<m:ScrollPanel hasTextBox="true">
+		<m:ScrollPanel>
 			<m:ListPanel selectable="false">
 				<m:ListItem styleName="{style.modify}">
 					<g:Label>Horizontal</g:Label>

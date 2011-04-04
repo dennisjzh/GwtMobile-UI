@@ -8,7 +8,7 @@
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>Flip Switch</g:Label>			
 		</m:HeaderPanel>
-		<m:ScrollPanel hasTextBox="true">
+		<m:ScrollPanel>
 			<m:ListPanel selectable="false">
 				<m:ListItem>
 					<g:Label>iPhone</g:Label><m:FlipSwitch ui:field="iphone"/>

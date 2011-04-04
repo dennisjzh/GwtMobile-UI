@@ -12,7 +12,7 @@
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>Button</g:Label>			
 		</m:HeaderPanel>
-		<m:ScrollPanel hasTextBox="true">
+		<m:ScrollPanel>
 			<m:ListPanel selectable="false" secondaryStyle="{style.modify}">
 				<m:ListItem>
 					<m:Button ui:field="ok1">OK</m:Button>

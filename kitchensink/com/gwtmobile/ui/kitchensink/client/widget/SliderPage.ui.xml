@@ -14,7 +14,7 @@
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>Slider</g:Label>			
 		</m:HeaderPanel>
-		<m:ScrollPanel hasTextBox="true">
+		<m:ScrollPanel>
 			<m:ListPanel selectable="false" secondaryStyle="{style.modify}">
 				<m:ListItem>
 					<g:Label ui:field="value1" styleName="{style.label}">0</g:Label>

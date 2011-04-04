@@ -26,10 +26,10 @@ import com.gwtmobile.ui.client.page.Page;
 
 public class ButtonPage extends Page{
 
-	private static RadioButtonPageUiBinder uiBinder = GWT
-			.create(RadioButtonPageUiBinder.class);
+	private static ButtonPageUiBinder uiBinder = GWT
+			.create(ButtonPageUiBinder.class);
 
-	interface RadioButtonPageUiBinder extends UiBinder<Widget, ButtonPage> {
+	interface ButtonPageUiBinder extends UiBinder<Widget, ButtonPage> {
 	}
 
 	public ButtonPage() {
