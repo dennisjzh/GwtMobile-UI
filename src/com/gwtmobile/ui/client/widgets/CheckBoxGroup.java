@@ -39,6 +39,7 @@ public class CheckBoxGroup extends PanelBase
     	super();
         addDomHandler(this, ClickEvent.getType());
         setStyleName("CheckBoxGroup");
+		addStyleName("Vertical");
     }
 
     public HandlerRegistration addSelectionChangedHandler(SelectionChangedHandler handler) {
@@ -115,20 +116,13 @@ public class CheckBoxGroup extends PanelBase
 		checkbox.addValueChangeHandler(this);
     }
     
-    public void setShowIndicator(boolean show) {
-    	if (show) {
-    		removeStyleName("HideIndicator");
-    	}
-    	else {
-    		addStyleName("HideIndicator");
-    	}
-    }
-    
     public void setVertical(boolean vertical) {
     	if (vertical) {
     		addStyleName("Vertical");
+    		removeStyleName("Horizontal");
     	}
     	else {
+    		addStyleName("Horizontal");
     		removeStyleName("Vertical");
     	}
     }

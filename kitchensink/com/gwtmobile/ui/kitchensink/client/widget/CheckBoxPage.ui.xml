@@ -16,7 +16,7 @@
 			<m:ListPanel selectable="false">
 				<m:ListItem styleName="{style.modify}">
 					<g:Label>Horizontal</g:Label>
-					<m:CheckBoxGroup ui:field="group1" showIndicator="false">
+					<m:CheckBoxGroup ui:field="group1" vertical="false">
 						<m:CheckBox>iPhone</m:CheckBox>
 						<m:CheckBox>Android</m:CheckBox>
 						<m:CheckBox>BlackBerry</m:CheckBox>
@@ -25,7 +25,7 @@
 				</m:ListItem>
 				<m:ListItem styleName="{style.modify}">
 					<g:Label>Vertical</g:Label>
-					<m:CheckBoxGroup ui:field="group2" vertical="true">
+					<m:CheckBoxGroup ui:field="group2">
 						<m:CheckBox>iPhone</m:CheckBox>
 						<m:CheckBox>Android</m:CheckBox>
 						<m:CheckBox>BlackBerry</m:CheckBox>

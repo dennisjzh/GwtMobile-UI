@@ -16,7 +16,7 @@
 			<m:ListPanel selectable="false">
 				<m:ListItem styleName="{style.modify}">
 					<g:Label>Horizontal</g:Label>
-					<m:RadioButtonGroup name="phone1" showIndicator="false" ui:field="radiogroup1">
+					<m:RadioButtonGroup name="phone1" vertical="false" ui:field="radiogroup1">
 						<m:RadioButton>iPhone</m:RadioButton>
 						<m:RadioButton>Android</m:RadioButton>
 						<m:RadioButton>BlackBerry</m:RadioButton>
@@ -25,7 +25,7 @@
 				</m:ListItem>
 				<m:ListItem styleName="{style.modify}">
 					<g:Label>Vertical</g:Label>
-					<m:RadioButtonGroup name="phone2" vertical="true" ui:field="radiogroup2">
+					<m:RadioButtonGroup name="phone2" ui:field="radiogroup2">
 						<m:RadioButton>iPhone</m:RadioButton>
 						<m:RadioButton>Android</m:RadioButton>
 						<m:RadioButton>BlackBerry</m:RadioButton>

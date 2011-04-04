@@ -29,6 +29,7 @@ public class RadioButtonGroup extends CheckBoxGroup {
     public RadioButtonGroup() {
     	super();
     	setStyleName("RadioButtonGroup");
+    	addStyleName("Vertical");
     }
 
     @Override

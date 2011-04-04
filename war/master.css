@@ -425,17 +425,26 @@ html {
 	display: -webkit-box;
 	-webkit-box-align: center;
 	-webkit-box-pack: center;
-	text-shadow: white 0px 0.1em 0.1em;
+	text-shadow: black 0px 0.1em 0.1em;
 	padding: .5em .1em;
-	border-left: 1px solid white;
-	border-right: 1px solid #A6A6A6;
-	color: black;
-	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(white), color-stop(0.02, #E6E6E6), to(#BABABA));	
+	border-left: 1px solid #777;
+	border-right: 1px solid #555;
+	color: white;
+	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#666), to(#555));	
 }
 
-.CheckBoxGroup > span.Selected,
-.RadioButtonGroup > span.Selected {
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFDC52), to(#FFBC19));	
+.CheckBoxGroup.Horizontal > span.Selected,
+.RadioButtonGroup.Horizontal > span.Selected {
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightGreen), to(darkGreen));
+	border-left-color: lightGreen;
+	border-right-color: darkGreen;
+}
+
+.CheckBoxGroup.Horizontal > span > input, 
+.CheckBoxGroup.Horizontal > span > div,
+.RadioButtonGroup.Horizontal > span > input, 
+.RadioButtonGroup.Horizontal > span > div {
+	display: none;
 }
 
 .CheckBoxGroup > span:first-child,
@@ -450,13 +459,6 @@ html {
 	border-right: 0px;
 	border-bottom-right-radius: 0.4em 0.4em;
 	border-top-right-radius: 0.4em 0.4em;
-}
-
-.CheckBoxGroup.HideIndicator > span > input, 
-.CheckBoxGroup.HideIndicator > span > div,
-.RadioButtonGroup.HideIndicator > span > input, 
-.RadioButtonGroup.HideIndicator > span > div {
-	display: none;
 }
 
 .CheckBoxGroup.Vertical,
@@ -563,10 +565,6 @@ html {
 	-webkit-transition-timing-function: linear;
 }
 
-/*.FlipSwitch.Off > div:last-child > div {
-    -webkit-transform: translate3d(-2.8em, 0, 0);
-}
-*/
 .FlipSwitch > div:last-child > div > div {
 	display: -webkit-box;
 	-webkit-box-align: center;
