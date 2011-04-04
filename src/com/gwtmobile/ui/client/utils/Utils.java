@@ -18,6 +18,7 @@ package com.gwtmobile.ui.client.utils;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.dom.client.Element;
@@ -147,5 +148,25 @@ public class Utils {
 	public static native int getWidth(Element ele) /*-{
 		return parseInt($doc.defaultView.getComputedStyle(ele, "").getPropertyValue("width"));
 	}-*/;
+	
+    public static int getTargetItemIndex(Element parent, EventTarget target) {
+        Element div = Element.as(target);
+        if (div == parent) {
+        	Utils.Console("Is click on list working? " + target.toString());
+        	return -1;
+        }
+        while (div.getParentElement() != parent) {
+            div = div.getParentElement();
+            if (div == null) {
+            	return -1;
+            }
+        }
+        int index = DOM.getChildIndex(
+        		(com.google.gwt.user.client.Element)parent, 
+        		(com.google.gwt.user.client.Element)div);
+        return index;
+    }
+    
+
 
 }
