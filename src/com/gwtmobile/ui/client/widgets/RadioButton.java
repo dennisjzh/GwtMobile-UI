@@ -25,7 +25,7 @@ public class RadioButton extends com.google.gwt.user.client.ui.RadioButton {
 
 	public RadioButton() {
 		super(null);
-		if (Utils.isAndroid()) {
+		if (Utils.isAndroid() && Utils.isWVGA()) {
 			DivElement div = Document.get().createDivElement();
 			this.getElement().insertFirst(div);
 		}

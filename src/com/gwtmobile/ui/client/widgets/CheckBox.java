@@ -16,8 +16,7 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import com.google.gwt.dom.client.DivElement;
-import com.google.gwt.dom.client.Document;
+import com.google.gwt.user.client.ui.HTML;
 import com.gwtmobile.ui.client.utils.Utils;
 
 
@@ -25,9 +24,9 @@ public class CheckBox extends com.google.gwt.user.client.ui.CheckBox {
 
 	public CheckBox() {
 		super();
-		if (Utils.isAndroid()) {
-			DivElement div = Document.get().createDivElement();
-			this.getElement().insertFirst(div);
+		if (Utils.isAndroid() && Utils.isWVGA()) {
+			CheckBoxIndicator indicator = new CheckBoxIndicator();
+			this.getElement().insertFirst(indicator.getElement());
 		}
 	}
 
@@ -47,4 +46,11 @@ public class CheckBox extends com.google.gwt.user.client.ui.CheckBox {
 		}
 	}
 
+	static class CheckBoxIndicator extends HTML {
+		
+		public CheckBoxIndicator() {
+			super("<div><div></div></div><div></div><div></div><div></div>");
+			setStyleName("CheckBoxIndicator");
+		}
+	}
 }

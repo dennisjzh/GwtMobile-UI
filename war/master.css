@@ -486,36 +486,94 @@ html {
 
 .Android .CheckBoxGroup > span,
 .Android .RadioButtonGroup > span {
-	-webkit-box-shadow: 0 0 .1em white;	/* android radius antialias workaround */	
+	-webkit-box-shadow: 0 0 1px #666;	/* android radius antialias workaround */	
 }
 
-/* Android native radio button is too small in WVGA resolution */
+/* Android native check box and radio button are too small in WVGA resolution */
 
+.WVGA .CheckBoxGroup > span > input,
 .WVGA .RadioButtonGroup > span > input {
 	display: none;
 }
 
 .WVGA .RadioButtonGroup > span > div {
-	width: .8em;
-	height: .8em;
-	margin: .4em;
+	width: 1.2em;
+	height: 1.2em;
+	margin: 0 .4em 0 .4em;
 	background-image:
-		-webkit-gradient(radial, 50% 50%, 0, 50% 50%, 8,
+		-webkit-gradient(radial, 50% 50%, 0, 50% 50%, 16,
 			from(white),
-			to(#BABABA));
-	-webkit-border-radius: .4em;
-	border: 1px solid gray;
-	-webkit-box-shadow:0 0 .1em black;
+			to(gray));
+	-webkit-border-radius: .6em;
+	border: 1px solid #444;
+	-webkit-box-shadow:0 0 .1em #444;
 }
 
 .WVGA .RadioButtonGroup > span.Selected > div {
 	background-image:
-		-webkit-gradient(radial, 50% 50%, 0, 50% 50%, 8,
-			from(#c7f08b),
+		-webkit-gradient(radial, 50% 50%, 0, 50% 50%, 16,
+			from(lightgreen),
 			to(green));
-	-webkit-box-shadow:0 0 .3em green;
+	-webkit-box-shadow:0 0 .1em darkgreen;
 }
 	
+.WVGA .CheckBoxIndicator {
+	position: relative;
+	margin: 0 .4em 0 .4em;
+}
+
+.WVGA .CheckBoxIndicator > div:first-child {
+	width: .8em;
+	height: .8em;
+	padding: .1em;	
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#555), to(#777));
+	-webkit-background-clip: padding;
+	border: .1em solid #333;
+	border-radius: .2em;
+}
+
+.WVGA .CheckBoxIndicator > div:first-child > div {
+	width: .65em;
+	height: .65em;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(gray));
+	border: .1em solid #333;
+}
+
+.WVGA .Selected .CheckBoxIndicator > div:nth-child(2),
+.WVGA .Selected .CheckBoxIndicator > div:nth-child(3),
+.WVGA .Selected .CheckBoxIndicator > div:nth-child(4) {
+	position: absolute;
+	background: #00CC00;
+	border: .1em solid #111;
+}
+	
+.WVGA .Selected .CheckBoxIndicator > div:nth-child(2) {
+	width: .2em;
+	height: .3em;
+	top: .35em;
+	left: .2em;
+	-webkit-transform: rotate(-45deg);
+	border-bottom: 0;
+}
+
+.WVGA .Selected .CheckBoxIndicator > div:nth-child(3) {
+	width: .2em;
+	height: 1em;
+	top: -.1em;
+	left: .7em;
+	-webkit-transform: rotate(45deg);
+	border-bottom: 0;
+}
+
+.WVGA .Selected .CheckBoxIndicator > div:nth-child(4) {
+	width: .2em;
+	height: .4em;
+	top: .5em;
+	left: .4em;
+	-webkit-transform: rotate(-45deg);
+	border-right: 0;
+	border-top: 0;
+}
 
 /******************* Flip Switch *************/
 

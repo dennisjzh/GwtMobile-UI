@@ -101,6 +101,10 @@ public class Utils {
     	return Window.Navigator.getUserAgent().contains("Android");
     }
     
+    public static boolean isWVGA() {
+		return Document.get().getDocumentElement().getClassName().contains("WVGA");
+    }
+    
 	public static native void setTranslateX(Element ele, double value) /*-{
 		ele.style.webkitTransform = "translate3d(" + value + "px, 0px, 0px)";
 	}-*/;
