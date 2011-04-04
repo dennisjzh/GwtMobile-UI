@@ -28,18 +28,35 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.event.DragController;
+import com.gwtmobile.ui.client.event.DragEvent;
+import com.gwtmobile.ui.client.event.DragEventsHandler;
 import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.event.SelectionChangedHandler;
 import com.gwtmobile.ui.client.utils.Utils;
 
 public class CheckBoxGroup extends PanelBase 
-	implements HasWidgets, ClickHandler, ValueChangeHandler<Boolean> {
+	implements HasWidgets, ClickHandler, DragEventsHandler, ValueChangeHandler<Boolean> {
+
+	private int _pressed = -1;
 
     public CheckBoxGroup() {
     	super();
         addDomHandler(this, ClickEvent.getType());
         setStyleName("CheckBoxGroup");
 		addStyleName("Vertical");
+    }
+    
+    @Override
+    public void onLoad() {
+    	super.onLoad();
+    	DragController.get().addDragEventsHandler(this);
+    }
+    
+    @Override
+    protected void onUnload() {
+    	super.onUnload();
+    	DragController.get().removeDragEventsHandler(this);
     }
 
     public HandlerRegistration addSelectionChangedHandler(SelectionChangedHandler handler) {
@@ -132,4 +149,27 @@ public class CheckBoxGroup extends PanelBase
 		Utils.Console("onValueChange " + event.getValue() + " " + event.getSource().getClass());
 	}
 
+	@Override
+	public void onDragStart(DragEvent e) {
+		_pressed = Utils.getTargetItemIndex(getElement(), e.getNativeEvent().getEventTarget());
+    	if (_pressed >= 0) {
+    		Widget item = getWidget(_pressed);
+    		item.addStyleName("Pressed");
+    	}
+	}
+	
+	@Override
+	public void onDragMove(DragEvent e) {
+		if (_pressed >= 0) {
+    		Widget item = getWidget(_pressed);
+    		item.removeStyleName("Pressed");
+    		_pressed = -1;
+		}
+	}
+
+	@Override
+	public void onDragEnd(DragEvent e) {
+		onDragMove(e);
+	}
+	
 }

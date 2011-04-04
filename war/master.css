@@ -472,6 +472,11 @@ html {
 	border: 0;
 }
 
+.CheckBoxGroup.Vertical > span.Pressed,
+.RadioButtonGroup.Vertical > span.Pressed {
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightGreen), to(darkGreen));
+}
+
 .CheckBoxGroup.Vertical > span:first-child,
 .RadioButtonGroup.Vertical > span:first-child {
 	border-bottom-left-radius: 0;
