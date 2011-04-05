@@ -21,7 +21,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.page.Page;
 
-public class DropDownListPage extends Page{
+public class DropDownListPage extends Page {
 
 	private static DropDownListPageUiBinder uiBinder = GWT
 			.create(DropDownListPageUiBinder.class);
@@ -32,5 +32,5 @@ public class DropDownListPage extends Page{
 	public DropDownListPage() {
 		initWidget(uiBinder.createAndBindUi(this));	
 	}
-	
+
 }

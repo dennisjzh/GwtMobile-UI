@@ -409,7 +409,7 @@ html {
 }
 
 .TextBox.Focus, .TextArea.Focus {
-	-webkit-box-shadow: lightgreen 0em 0em 1em;
+	-webkit-box-shadow: lightgreen 0em 0em .4em;
 }
 
 /******************* Radio Button *************/
@@ -716,4 +716,67 @@ html {
 	-webkit-box-shadow: black 0 0 .1em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(#A1A1A1), to(white));
+}
+
+
+/******************* Drop Down List *************/
+
+.DropDownList {
+	display: -webkit-box;	
+}
+
+.DropDownList > select {
+	-webkit-appearance: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	height: 1.5em;
+	min-width: 10em;
+	padding-left: .4em;
+	border: 0;
+	border-radius: .3em;
+	-webkit-box-shadow: 0 0 1px white;
+	-webkit-background-clip: content;	
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(gray));
+}
+
+.DropDownList > div:nth-child(2) {
+	position: relative;
+	border: 0;
+	width: 1.5em;
+	height: 1.5em;
+	border-top-right-radius: .3em;
+	border-bottom-right-radius: .3em;
+	margin-left: -1.5em;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BBB), to(#666));
+}
+
+.DropDownList > div:nth-child(3) {
+	position: relative;
+	border: .4em solid black;
+	border-right-color: transparent;
+	border-left-color: transparent;
+	border-bottom-color: transparent;
+	height: 0.001em;
+	width: 0.001em;
+	left: -1.2em;
+	top: .6em;
+}
+
+.DropDownList > div:nth-child(4) {
+	position: relative;
+	border: .4em solid white;
+	border-right-color: transparent;
+	border-left-color: transparent;
+	border-bottom-color: transparent;
+	height: 0.001em;
+	width: 0.001em;
+	left: -1.95em;
+	top: .55em;
+}
+
+.DropDownList.Focus > select {
+	-webkit-box-shadow: lightgreen 0em 0em .4em;
+}
+
+.DropDownList.Focus > div:nth-child(2) {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightgreen), to(darkgreen));
 }

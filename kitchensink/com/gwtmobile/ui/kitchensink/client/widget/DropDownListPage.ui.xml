@@ -22,10 +22,10 @@
 						<option value="audi">Audi</option>
 					</select>
 				</g:HTML>
-				<g:ListBox visibleItemCount="2">
-					<g:item>first</g:item>
-					<g:item>second</g:item>
-				</g:ListBox>
+				<m:DropDownList ui:field="ddl">
+					<m:DropDownItem>first</m:DropDownItem>
+					<m:DropDownItem>second</m:DropDownItem>
+				</m:DropDownList>
 			</m:ListPanel>			
 		</m:ScrollPanel>
 	</g:HTMLPanel>	
