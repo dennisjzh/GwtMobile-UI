@@ -12,9 +12,7 @@
 			<m:ListPanel ui:field="list" showArrow="false">
 				<g:Label>Button</g:Label>
 				<g:Label>Checkbox</g:Label>
-				<m:ListItem disabled="true">
-					<g:Label>Drop Down List</g:Label>
-				</m:ListItem>
+				<g:Label>Drop Down List</g:Label>
 				<g:Label>Flip Switch</g:Label>
 				<g:Label>Radio Button</g:Label>
 				<g:Label>Slider</g:Label>

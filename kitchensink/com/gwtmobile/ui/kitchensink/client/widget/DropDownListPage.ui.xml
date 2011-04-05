@@ -1,0 +1,32 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
+	<ui:style>
+		.modify > div > div {
+			-webkit-box-flex: 1;
+			margin: 0 .5em 0 .5em;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<m:HeaderPanel ui:field="header" leftButton="Back">
+			<g:Label>Drop Down List</g:Label>			
+		</m:HeaderPanel>
+		<m:ScrollPanel>
+			<m:ListPanel selectable="false" secondaryStyle="{style.modify}">
+				<g:HTML>
+					<select>
+						<option value="volvo">Volvo</option>
+						<option value="saab">Saab</option>
+						<option value="mercedes">Mercedes</option>
+						<option value="audi">Audi</option>
+					</select>
+				</g:HTML>
+				<g:ListBox visibleItemCount="2">
+					<g:item>first</g:item>
+					<g:item>second</g:item>
+				</g:ListBox>
+			</m:ListPanel>			
+		</m:ScrollPanel>
+	</g:HTMLPanel>	
+</ui:UiBinder> 
