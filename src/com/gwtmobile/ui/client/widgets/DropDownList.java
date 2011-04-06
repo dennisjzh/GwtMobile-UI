@@ -23,6 +23,7 @@ import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.utils.Utils;
 
 
 public class DropDownList extends PanelBase implements FocusHandler, BlurHandler {
@@ -32,13 +33,14 @@ public class DropDownList extends PanelBase implements FocusHandler, BlurHandler
 	public DropDownList() {
 		super();
 		_panel.add(_listBox);
-		_panel.add(new HTMLPanel(""));
-		_panel.add(new HTMLPanel(""));
-		_panel.add(new HTMLPanel(""));
+		if (!Utils.isIOS()) {
+			_panel.add(new HTMLPanel(""));
+			_panel.add(new HTMLPanel(""));
+			_panel.add(new HTMLPanel(""));
+		}
 		setStyleName("DropDownList");
 		_listBox.addFocusHandler(this);
 		_listBox.addBlurHandler(this);
-		//getElement().insertFirst(Document.get().createDivElement());
 	}
 	
 	@Override

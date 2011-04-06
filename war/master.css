@@ -721,11 +721,17 @@ html {
 
 /******************* Drop Down List *************/
 
-.DropDownList {
+.Desktop .DropDownList,
+.Android .DropDownList {
 	display: -webkit-box;	
 }
 
-.DropDownList > select {
+.iOS .DropDownList > select {
+	font-size: .8em;
+}
+
+.Desktop .DropDownList > select,
+.Android .DropDownList > select {
 	-webkit-appearance: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	height: 1.5em;
@@ -738,7 +744,12 @@ html {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(gray));
 }
 
-.DropDownList > div:nth-child(2) {
+.Desktop .DropDownList > select {	/* bug in Desktop Chrome? */
+	height: 24px;
+}
+
+.Desktop .DropDownList > div:nth-child(2),
+.Android .DropDownList > div:nth-child(2) {
 	position: relative;
 	border: 0;
 	width: 1.5em;
@@ -749,7 +760,8 @@ html {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BBB), to(#666));
 }
 
-.DropDownList > div:nth-child(3) {
+.Desktop .DropDownList > div:nth-child(3),
+.Android .DropDownList > div:nth-child(3) {
 	position: relative;
 	border: .4em solid black;
 	border-right-color: transparent;
@@ -761,7 +773,8 @@ html {
 	top: .6em;
 }
 
-.DropDownList > div:nth-child(4) {
+.Desktop .DropDownList > div:nth-child(4),
+.Android .DropDownList > div:nth-child(4) {
 	position: relative;
 	border: .4em solid white;
 	border-right-color: transparent;
@@ -773,10 +786,12 @@ html {
 	top: .55em;
 }
 
-.DropDownList.Focus > select {
+.Desktop .DropDownList.Focus > select,
+.Android .DropDownList.Focus > select {
 	-webkit-box-shadow: lightgreen 0em 0em .4em;
 }
 
-.DropDownList.Focus > div:nth-child(2) {
+.Desktop .DropDownList.Focus > div:nth-child(2),
+.Android .DropDownList.Focus > div:nth-child(2) {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightgreen), to(darkgreen));
 }
