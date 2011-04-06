@@ -32,10 +32,16 @@ public abstract class Page extends WidgetBase {
 	protected void initWidget(Widget widget) {
 		super.initWidget(widget);    	
 		setStyleName("Page");    
-        //TODO: use permutation instead?
-        if (Utils.isAndroid()) {
-        	addStyleName("Android");
-       }
+		//TODO: use permutation instead?
+		if (Utils.isAndroid()) {
+			addStyleName("Android");
+		}
+		else if (Utils.isIOS()) {
+			addStyleName("iOS");
+		}
+		else {
+			addStyleName("Desktop");
+		}
 	}
 
 	@Override

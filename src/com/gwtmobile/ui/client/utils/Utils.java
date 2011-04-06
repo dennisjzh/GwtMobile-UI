@@ -102,6 +102,11 @@ public class Utils {
     	return Window.Navigator.getUserAgent().contains("Android");
     }
     
+    public static boolean isIOS() {
+    	return Window.Navigator.getUserAgent().contains("iPhone") || 
+    			Window.Navigator.getUserAgent().contains("iPod");
+    }
+    
     public static boolean isWVGA() {
 		return Document.get().getDocumentElement().getClassName().contains("WVGA");
     }
