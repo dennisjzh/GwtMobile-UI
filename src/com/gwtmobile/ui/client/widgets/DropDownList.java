@@ -52,6 +52,12 @@ public class DropDownList extends PanelBase
 	}
 	
 	@Override
+	protected void onUnload() {
+		removeStyleName("Focus");
+		super.onUnload();
+	}
+	
+	@Override
 	public void onFocus(FocusEvent event) {
 		addStyleName("Focus");
 	}
