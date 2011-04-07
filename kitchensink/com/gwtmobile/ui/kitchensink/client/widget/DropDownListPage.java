@@ -17,12 +17,19 @@
 package com.gwtmobile.ui.kitchensink.client.widget;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.page.Page;
+import com.gwtmobile.ui.client.utils.Utils;
+import com.gwtmobile.ui.client.widgets.DropDownList;
 
 public class DropDownListPage extends Page {
 
+	@UiField DropDownList movie;
+	
 	private static DropDownListPageUiBinder uiBinder = GWT
 			.create(DropDownListPageUiBinder.class);
 
@@ -31,6 +38,21 @@ public class DropDownListPage extends Page {
 
 	public DropDownListPage() {
 		initWidget(uiBinder.createAndBindUi(this));	
+	}
+	
+	@UiHandler("car")
+	public void onValueChangeCar(ValueChangeEvent<String> e) {
+		Utils.Console(e.getValue());
+	}
+
+	@UiHandler("movie")
+	public void onValueChangeMovie(ValueChangeEvent<String> e) {
+		Utils.Console(movie.getSelectedText() + "(" + movie.getSelectedValue() + ")");
+	}
+	
+	@UiHandler("city")
+	public void onValueChangeCity(ValueChangeEvent<String> e) {
+		Utils.Console(e.getValue());
 	}
 
 }

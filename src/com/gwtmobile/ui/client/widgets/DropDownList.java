@@ -18,15 +18,22 @@ package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
+import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.utils.Utils;
 
 
-public class DropDownList extends PanelBase implements FocusHandler, BlurHandler {
+public class DropDownList extends PanelBase 
+	implements FocusHandler, BlurHandler, ChangeHandler, HasValueChangeHandlers<String> {
 
 	ListBox _listBox = new ListBox();
 	
@@ -41,6 +48,7 @@ public class DropDownList extends PanelBase implements FocusHandler, BlurHandler
 		setStyleName("DropDownList");
 		_listBox.addFocusHandler(this);
 		_listBox.addBlurHandler(this);
+		_listBox.addChangeHandler(this);
 	}
 	
 	@Override
@@ -54,10 +62,47 @@ public class DropDownList extends PanelBase implements FocusHandler, BlurHandler
 	}
 	
 	@Override
+	public void onChange(ChangeEvent event) {
+		int index = _listBox.getSelectedIndex();
+		String value = _listBox.getValue(index);
+		ValueChangeEvent.fire(this, value);
+	}
+
+	@Override
 	public void add(Widget w) {
 		assert w.getClass() == DropDownItem.class : "Can only contain DropDownItem in DropDownList.";
 		DropDownItem item = (DropDownItem) w;
-		_listBox.addItem(item.getText());
+		_listBox.addItem(item.getText(), item.getValue());
+	}
+
+	public String getSelectedText() {
+		int index = _listBox.getSelectedIndex();
+		if (index >= 0) {
+			return _listBox.getItemText(index);
+		}
+		else {
+			return null;
+		}
+	}
+
+	public String getSelectedValue() {
+		int index = _listBox.getSelectedIndex();
+		if (index >= 0) {
+			return _listBox.getValue(index);
+		}
+		else {
+			return null;
+		}
+	}
+
+	public ListBox getListBox() {
+		return _listBox;
+	}
+	
+	@Override
+	public HandlerRegistration addValueChangeHandler(
+			ValueChangeHandler<String> handler) {
+		return this.addHandler(handler, ValueChangeEvent.getType());
 	}
 
 }

@@ -20,4 +20,18 @@ import com.google.gwt.user.client.ui.Label;
 
 
 public class DropDownItem extends Label {
+	String _value;
+	
+	public void setValue(String value) {
+		_value = value;
+	}
+	
+	public String getValue() {
+		if (_value != null) {
+			return _value;
+		}
+		else {
+			return getText();
+		}
+	}
 }
