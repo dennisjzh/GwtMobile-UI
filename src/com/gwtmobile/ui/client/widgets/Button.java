@@ -22,9 +22,10 @@ import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
 
-public class Button extends HTML implements DragEventsHandler{
+public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget {
 
 	private boolean _isDisabled = false;
+	private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
 	
     public Button() {
         setStyleName("Button");
@@ -40,6 +41,7 @@ public class Button extends HTML implements DragEventsHandler{
     public void onLoad() {
         super.onLoad();
         DragController.get().addDragEventsHandler(this);
+        _widgetHelper.CheckInitialLoad(this);
     }
     
     @Override
@@ -81,4 +83,17 @@ public class Button extends HTML implements DragEventsHandler{
     public boolean isDisabled() {
     	return _isDisabled;
     }
+
+	@Override
+	public void onInitialLoad() {
+	}
+
+	@Override
+	public void onTransitionEnd() {
+	}
+
+	@Override
+	public void setSecondaryStyle(String style) {
+		_widgetHelper.setSecondaryStyle(this, style);
+	}
 }

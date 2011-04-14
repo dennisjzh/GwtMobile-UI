@@ -33,8 +33,8 @@ public class RadioButtonGroup extends CheckBoxGroup {
     }
 
     @Override
-    public void onLoad() {
-    	super.onLoad();
+    public void onInitialLoad() {
+    	super.onInitialLoad();
     	assert _name != null
 			: "Attribute 'name' must be set on RadioButtonGroup";
     }
@@ -92,6 +92,9 @@ public class RadioButtonGroup extends CheckBoxGroup {
     	assert w.getClass() == RadioButton.class 
     		: "Can only contain RadioButton widgets in RadioButtonGroup";
     	RadioButton radio = (RadioButton) w;
+    	if (_name != null) {
+    		radio.setName(_name);
+    	}
         _panel.add(radio);
 		radio.addValueChangeHandler(this);
     }

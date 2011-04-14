@@ -28,7 +28,7 @@ public class AccordionStack extends PanelBase {
     private AccordionContent _content;
     
 	@Override
-    protected void onInitialLoad( ) {
+	public void onInitialLoad() {
         if (this.getStyleName().indexOf("Expand") == -1) {
         	close();
         }

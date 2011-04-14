@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 Zhihua (Dennis) Jiang
+ * Copyright (c) 2011 Zhihua (Dennis) Jiang
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,26 +16,20 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Widget;
 
-public class WidgetBase extends Composite implements IsGwtMobileWidget {
+public class IsGwtMobileWidgetHelper {
 
-    private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
+    private boolean _isInitialLoad = true;
     
-    @Override
-    public void onLoad() {
-    	super.onLoad();
-    	_widgetHelper.CheckInitialLoad(this);
+    public void CheckInitialLoad(IsGwtMobileWidget widget) {
+        if (_isInitialLoad) {
+            _isInitialLoad = false;
+            widget.onInitialLoad();
+        }
     }
 
-    public void onInitialLoad() {
-    }
-    
-    //FIXME: shouldn't this method be on PageBase/PanelBase?
-    public void onTransitionEnd() {    	
-    }
-    
-    public void setSecondaryStyle(String style) {
-    	_widgetHelper.setSecondaryStyle(this, style);
+    public void setSecondaryStyle(Widget widget, String style) {
+    	widget.addStyleName(style);
     }
 }

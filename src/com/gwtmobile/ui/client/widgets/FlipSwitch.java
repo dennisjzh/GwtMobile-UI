@@ -44,7 +44,7 @@ public class FlipSwitch extends WidgetBase
     }
     
     @Override
-    protected void onInitialLoad() {
+	public void onInitialLoad() {
     	super.onInitialLoad();
     	if (!_value) {
         	updateFlipPosition(0);

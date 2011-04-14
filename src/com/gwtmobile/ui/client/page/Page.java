@@ -17,12 +17,14 @@
 package com.gwtmobile.ui.client.page;
 
 import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.utils.Utils;
 import com.gwtmobile.ui.client.widgets.WidgetBase;
 
+//FIXME: extends PanelBase?
 public abstract class Page extends WidgetBase {
 
 	private Transition _transition;
@@ -83,6 +85,8 @@ public abstract class Page extends WidgetBase {
 	}
 
 	public void goTo(final Page toPage, final Transition transition) {
+		Element focus = Utils.getActiveElement();
+		focus.blur();
 		final Page fromPage = this;
 		toPage.setTransition(transition);
 		if (transition != null) {
@@ -101,6 +105,8 @@ public abstract class Page extends WidgetBase {
 			// exit app here.
 			return;
 		}
+		Element focus = Utils.getActiveElement();
+		focus.blur();
 		final Transition transition = fromPage.getTransition();
 		if (transition != null) {
 			transition.start(fromPage, toPage, RootLayoutPanel.get(), true);

@@ -27,6 +27,7 @@ import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 import com.gwtmobile.ui.client.page.Transition;
 
+//FIXME: inherit from PanelBase
 public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHandler {
 
     protected FlowPanel _panel = new FlowPanel();
@@ -58,7 +59,7 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
 	}
 
 	@Override
-    protected void onInitialLoad() {
+	public void onInitialLoad() {
     	super.onInitialLoad();
 		_current = 0;
     	Slide slide = getSlide(_current);

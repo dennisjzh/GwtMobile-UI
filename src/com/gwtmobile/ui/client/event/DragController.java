@@ -154,6 +154,12 @@ public abstract class DragController implements EventListener {
             Date currentDateTime = new Date();
             long time = currentDateTime.getTime() - _lastDragTimeStamp;
             double speed = distance / time;
+            if (speed > 4) {
+            	speed = 4;
+            }
+            else if (speed < -4) {
+            	speed = -4;
+            }
             if (Math.abs(speed) > 0.2)
             {
                 SwipeEvent swipeEvent = new SwipeEvent(e, swipeType, speed);
