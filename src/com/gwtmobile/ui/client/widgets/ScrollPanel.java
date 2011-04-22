@@ -181,9 +181,9 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		}
 		
 		double speed = e.getSpeed();		
-		double timeFactor = 2800;
+		double timeFactor = 3000;
 		long time =  (long) Math.abs(speed * timeFactor);
-		double dicstanceFactor = 0.24;
+		double dicstanceFactor = 0.25;
 		long distance = (long) (speed * time * dicstanceFactor);
 		//Utils.Console("speed " + speed + " time " + time + " distance " + distance + " current " + current);
 		current += distance;
@@ -210,6 +210,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 	public void add(Widget w) {
 		assert _panel.getWidgetCount()  == 0 : "Can only add one widget to ScrollPanel.";
 		super.add(w);
+		Utils.setTranslateY(w.getElement(), 0); //anti-flickering on iOS.
 	}
 	
 	private int getStyleTop() {
