@@ -230,6 +230,11 @@ html {
 	color: gray;
 }
 
+/* anti-flickering */
+.ScrollPanel > .ListPanel > div {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+}
+
 /********** Slide Panel **********/
 .SlidePanel {
 	-webkit-box-flex: 1;
@@ -392,6 +397,7 @@ html {
 .Accordion > div.Collapse > div:last-child {
 	padding-top: 0;
 	padding-bottom: 0;
+	height: 0;
 }
 
 .AccordionArrow {
