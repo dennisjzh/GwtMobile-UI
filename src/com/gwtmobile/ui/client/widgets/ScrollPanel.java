@@ -210,7 +210,9 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 	public void add(Widget w) {
 		assert _panel.getWidgetCount()  == 0 : "Can only add one widget to ScrollPanel.";
 		super.add(w);
-		Utils.setTranslateY(w.getElement(), 0); //anti-flickering on iOS.
+		if (Utils.isIOS()) {
+			Utils.setTranslateY(w.getElement(), 0); //anti-flickering on iOS.
+		}
 	}
 	
 	private int getStyleTop() {

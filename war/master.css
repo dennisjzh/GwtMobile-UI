@@ -231,7 +231,7 @@ html {
 }
 
 /* anti-flickering */
-.ScrollPanel > .ListPanel > div {
+.iOS .ScrollPanel > .ListPanel > div {
     -webkit-transform: translate3d(0px, 0px, 0px);
 }
 
