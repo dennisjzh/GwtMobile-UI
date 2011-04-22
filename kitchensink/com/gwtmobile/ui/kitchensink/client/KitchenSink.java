@@ -17,15 +17,23 @@
 package com.gwtmobile.ui.kitchensink.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.gwtmobile.ui.client.page.Page;
 
 public class KitchenSink implements EntryPoint {
 
-	MainPage mainPage = new MainPage();
+	MainPage mainPage;
 	
 	@Override
 	public void onModuleLoad() {
-		Page.load(mainPage);
+		Scheduler.get().scheduleDeferred(new ScheduledCommand() {			
+			@Override
+			public void execute() {
+				mainPage = new MainPage();
+				Page.load(mainPage);
+			}
+		});
 	}
 
 }
