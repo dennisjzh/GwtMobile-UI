@@ -113,7 +113,7 @@ public class FlipSwitch extends WidgetBase
     	setValue(value, false, 200);
     }
     
-    public void setValue(boolean value, boolean forceUpdateFlipPosition, int duration) {
+    private void setValue(boolean value, boolean forceUpdateFlipPosition, int duration) {
     	if (_value != value) {
         	_value = value;
         	updateFlipPosition(duration);    	
