@@ -54,6 +54,7 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     	if (!_isDisabled) {
             addStyleName("Pressed");
     	}
+        e.stopPropagation();
     }
 
     @Override
@@ -61,13 +62,18 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     	if (!_isDisabled) {
     		removeStyleName("Pressed");       
     	}
+        e.stopPropagation();
     }
 
     @Override
     public void onDragEnd(DragEvent e) {
     	if (!_isDisabled) {
-    		removeStyleName("Pressed");        
+    		removeStyleName("Pressed");
     	}
+    	else {
+    		DragController.get().suppressNextClick();
+    	}
+        e.stopPropagation();
     }
     
     public void setDisabled(boolean disabled) {
