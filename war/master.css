@@ -381,7 +381,7 @@ html {
 .Accordion > div > div:last-child { /* content */
 	overflow: hidden;
 	padding:.5em;
-	color: gray;
+	color: black;
 	background:#e3e3e3;
 	-webkit-transition-property: height;
 	-webkit-transition-duration: 200ms;
@@ -397,7 +397,7 @@ html {
 .Accordion > div.Collapse > div:last-child {
 	padding-top: 0;
 	padding-bottom: 0;
-	height: 0;
+	height: 0 !important;
 }
 
 .AccordionArrow {
@@ -814,4 +814,18 @@ html {
 .Desktop .DropDownList.Focus > div:nth-child(2),
 .Android .DropDownList.Focus > div:nth-child(2) {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightgreen), to(darkgreen));
+}
+
+/******************* Horizontal Panel *************/
+.HorizontalPanel {
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-align: center;
+}
+
+
+/******************* Vertical Panel *************/
+.VerticalPanel {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
 }
