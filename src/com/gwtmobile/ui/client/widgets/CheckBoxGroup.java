@@ -134,7 +134,7 @@ public class CheckBoxGroup extends PanelBase
     
     @Override
     public void add(Widget w) {
-    	assert w.getClass() == CheckBox.class 
+    	assert w instanceof CheckBox 
     		: "Can only contain CheckBox widgets in CheckBoxGroup";
     	CheckBox checkbox = (CheckBox) w;
         _panel.add(checkbox);

@@ -89,7 +89,7 @@ public class RadioButtonGroup extends CheckBoxGroup {
     
     @Override
     public void add(Widget w) {
-    	assert w.getClass() == RadioButton.class 
+    	assert w instanceof RadioButton 
     		: "Can only contain RadioButton widgets in RadioButtonGroup";
     	RadioButton radio = (RadioButton) w;
     	if (_name != null) {
