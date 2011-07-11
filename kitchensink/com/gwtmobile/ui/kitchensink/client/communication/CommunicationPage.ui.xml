@@ -5,16 +5,14 @@
 	<ui:style>
 	</ui:style>
 	<g:HTMLPanel>
-		<m:HeaderPanel>
-			<g:Label>Hello GWT Mobile UI!</g:Label>			
+		<m:HeaderPanel leftButton="Back">
+			<g:Label>Widgets</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel>
-			<m:ListPanel ui:field="list" showArrow="true">
-				<g:Label>Animations</g:Label>			
-				<g:Label>Panels</g:Label>			
-				<g:Label>Widgets</g:Label>			
-				<g:Label>Server Communication</g:Label>			
-				<m:ListItem disabled="true" showArrow="false"><g:Label>Themes</g:Label></m:ListItem>			
+			<m:ListPanel ui:field="list" showArrow="false">
+				<g:Label>RPC</g:Label>
+				<g:Label>REST</g:Label>
+				<g:Label>JSONP</g:Label>
 			</m:ListPanel>
 		</m:ScrollPanel>
 		
