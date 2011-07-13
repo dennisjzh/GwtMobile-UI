@@ -35,7 +35,7 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
     protected int _current = 0;
     protected SlideProvider _slideProvider = null;
     protected ArrayList<Widget> _slides = new ArrayList<Widget>();
-
+    protected boolean _rotate = false;
 
     public SlidePanel() {
         initWidget(_panel);
@@ -107,7 +107,11 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
 	
 	public void next() {
 		if (_current >= getSlideCount() - 1) {
-			return;
+			if (!_rotate) {
+				return;
+			} else {
+				_current = -1;
+			}
 		}
 		_current++;
     	Slide to = getSlide(_current);
@@ -118,7 +122,11 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
 
 	public void previous() {
 		if (_current <= 0) {
-			return;
+			if (!_rotate) {
+				return;
+			} else {
+				_current = getSlideCount();
+			}
 		}
 		_current--;
 		Slide to = getSlide(_current);
@@ -158,6 +166,17 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
 	public boolean remove(Widget w) {
 		return _slides.remove(w);
 	}
+	
+	public void setRotate(boolean rotate)
+	{
+		_rotate = rotate;
+	}
+	
+	public boolean isRotate()
+	{
+	    return _rotate;
+	}
+	
 	
 	/********************* interface SlideProvider *******************/
 
