@@ -27,10 +27,12 @@ import com.google.gwt.user.client.ui.HTML;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
+import com.gwtmobile.ui.client.event.SwipeEvent;
+import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 import com.gwtmobile.ui.client.utils.Utils;
 
 public class FlipSwitch extends WidgetBase 
-	implements DragEventsHandler, ClickHandler, HasValueChangeHandlers<Boolean> {
+	implements DragEventsHandler, ClickHandler, HasValueChangeHandlers<Boolean>, SwipeEventsHandler {
 
 	protected boolean _value = true;
 	protected HTML _html = new HTML();
@@ -65,6 +67,7 @@ public class FlipSwitch extends WidgetBase
     @Override
     public void onDragStart(DragEvent e) {
     	DragController.get().captureDragEvents(this);
+    	DragController.get().captureSwipeEvents(this);
     	Utils.setTransitionDuration(getFilpElement(), 0);
     }
 
@@ -90,6 +93,7 @@ public class FlipSwitch extends WidgetBase
     @Override
     public void onDragEnd(DragEvent e) {
     	DragController.get().releaseDragCapture(this);
+    	DragController.get().releaseSwipeCapture(this);
     	Element flip = getFilpElement();
     	int x = Utils.getTranslateX(flip);
     	int onPosition = getOnPosition();
@@ -164,5 +168,14 @@ public class FlipSwitch extends WidgetBase
 	public HandlerRegistration addValueChangeHandler(
 			ValueChangeHandler<Boolean> handler) {
 		return this.addHandler(handler, ValueChangeEvent.getType());
+	}
+
+	// The swipe event handler is just for capturing swipe events.
+	@Override
+	public void onSwipeVertical(SwipeEvent e) {
+	}
+
+	@Override
+	public void onSwipeHorizontal(SwipeEvent e) {
 	}
 }
