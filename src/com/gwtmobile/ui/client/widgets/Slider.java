@@ -71,7 +71,7 @@ public class Slider extends WidgetBase
 
     @Override
     public void onDragEnd(DragEvent e) {
-    	DragController.get().releaseCapture(this);
+    	DragController.get().releaseDragCapture(this);
     }
     
     public void setValue(int value) {

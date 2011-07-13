@@ -37,6 +37,7 @@ public abstract class DragController implements EventListener {
     private List<DragEventsHandler> _dragEventHandlers = new ArrayList<DragEventsHandler>();
     private List<SwipeEventsHandler> _swipeEventHandlers = new ArrayList<SwipeEventsHandler>();
     protected DragEventsHandler _capturingDragEventsHandler = null;
+    protected SwipeEventsHandler _capturingSwipeEventsHandler = null;
     protected Widget _source;
 	private boolean _isDown = false;
 	private boolean _suppressNextClick = false;
@@ -197,6 +198,10 @@ public abstract class DragController implements EventListener {
     }
 
     protected void fireSwipeEvent(SwipeEvent e) {
+    	if (_capturingSwipeEventsHandler != null) {
+    		e.dispatch(_capturingSwipeEventsHandler);
+    		return;
+    	}
         EventTarget target = e.getNativeEvent().getEventTarget();
         Node node = Node.as(target);        
         if (!Element.is(node)) {
@@ -255,7 +260,7 @@ public abstract class DragController implements EventListener {
     	return true;
     }
     
-    public boolean releaseCapture(DragEventsHandler cachingHandler) {
+    public boolean releaseDragCapture(DragEventsHandler cachingHandler) {
     	if (_capturingDragEventsHandler == null) {
     		return true;
     	}
@@ -265,4 +270,25 @@ public abstract class DragController implements EventListener {
     	_capturingDragEventsHandler = null;
     	return true;
     }
+    
+    public boolean captureSwipeEvents(SwipeEventsHandler cachingHandler) {
+    	if (_capturingSwipeEventsHandler != null) {
+    		return false;
+    	}
+    	_capturingSwipeEventsHandler = cachingHandler;
+    	return true;
+    }
+    
+    public boolean releaseSwipeCapture(SwipeEventsHandler cachingHandler) {
+    	if (_capturingSwipeEventsHandler == null) {
+    		return true;
+    	}
+    	if (_capturingSwipeEventsHandler != cachingHandler) {
+    		return false;
+    	}
+    	_capturingSwipeEventsHandler = null;
+    	return true;
+    }
+    
+
 }
