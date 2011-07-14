@@ -202,6 +202,9 @@ public abstract class DragController implements EventListener {
     		e.dispatch(_capturingSwipeEventsHandler);
     		return;
     	}
+    	if (_capturingDragEventsHandler != null) {
+    		return;
+    	}
         EventTarget target = e.getNativeEvent().getEventTarget();
         Node node = Node.as(target);        
         if (!Element.is(node)) {

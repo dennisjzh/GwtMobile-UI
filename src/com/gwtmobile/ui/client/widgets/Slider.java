@@ -27,11 +27,9 @@ import com.google.gwt.user.client.ui.HTML;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
-import com.gwtmobile.ui.client.event.SwipeEvent;
-import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 
 public class Slider extends WidgetBase 
-	implements DragEventsHandler, HasValueChangeHandlers<Integer>, SwipeEventsHandler {
+	implements DragEventsHandler, HasValueChangeHandlers<Integer> {
 
 	protected int _value = 0;
 	protected FlowPanel _panel = new FlowPanel();	
@@ -60,7 +58,6 @@ public class Slider extends WidgetBase
     @Override
     public void onDragStart(DragEvent e) {
     	DragController.get().captureDragEvents(this);
-    	DragController.get().captureSwipeEvents(this);
     	int value = computeNewValue(e);
    		setValue(value);
     }
@@ -75,7 +72,6 @@ public class Slider extends WidgetBase
     @Override
     public void onDragEnd(DragEvent e) {
     	DragController.get().releaseDragCapture(this);
-    	DragController.get().releaseSwipeCapture(this);
     }
     
     public void setValue(int value) {
@@ -127,14 +123,5 @@ public class Slider extends WidgetBase
 
 	private Element getSliderElement() {
     	return (Element) _slider.getElement().getChild(1);
-	}
-
-	// The swipe event handler is just for capturing swipe events.
-	@Override
-	public void onSwipeVertical(SwipeEvent e) {
-	}
-
-	@Override
-	public void onSwipeHorizontal(SwipeEvent e) {
 	}
 }
