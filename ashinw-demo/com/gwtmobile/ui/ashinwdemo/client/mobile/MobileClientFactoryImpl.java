@@ -44,8 +44,6 @@ public class MobileClientFactoryImpl implements ClientFactory {
 			@Override
 			public void execute() {
 				PageHistory.startUp(null);
-//				Page page = appMapper.getPage(PageNames.HOME_NAME);
-//				Page.load(page);
 			}
 		});
 	}

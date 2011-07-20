@@ -1,6 +1,5 @@
 package com.gwtmobile.ui.client.widgets;
 
-import com.gwtmobile.ui.client.utils.Utils;
 
 /**
  * An enhanced SlidePanel that has the ability to cycle backwards and forwards
@@ -8,13 +7,6 @@ import com.gwtmobile.ui.client.utils.Utils;
  * show.
  */
 public class CyclicSlidePanel extends SlidePanel {
-	
-	@Override
-	public Slide getSlide(int i) {
-		Utils.Console("CyclicSlidePanel.getSlide#i=" + i);
-		return super.getSlide(i);
-	}
-	
 	@Override
 	public void next() {
 		if (_current >= getSlideCount() - 1) 
@@ -42,7 +34,6 @@ public class CyclicSlidePanel extends SlidePanel {
 			return;
 		_current = idx;
 		cycleBackwards(); // force a slide effect
-		Utils.Console("CyclicSlidePanel.setCurrentSlideIndex#current=" + _current);
 		next();
 	}
 }

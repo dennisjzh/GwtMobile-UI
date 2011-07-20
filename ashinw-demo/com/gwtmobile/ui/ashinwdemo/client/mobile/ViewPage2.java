@@ -36,7 +36,6 @@ public class ViewPage2 extends AbstractPage implements SlideProvider {
 	
 	@Override
 	protected void initNavigationalState(String stateInfo) {
-		Utils.Console("ViewPage2#_initNavigationalState:" + stateInfo);
 		if (stateInfo == null)
 			stateInfo = "10,0";
 		String params[] = stateInfo.split(",");
@@ -65,7 +64,6 @@ public class ViewPage2 extends AbstractPage implements SlideProvider {
 			nextSlide = switcher[0];
 		
 		nextSlide.quote.setHTML("This is slide: " + index);
-		Utils.Console("loading slide: " + index);
 		return nextSlide;
 	}
 	
