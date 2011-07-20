@@ -1,0 +1,95 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
+
+	<ui:with type="com.gwtmobile.ui.ashinwdemo.client.mobile.PageResources"
+		field="r"></ui:with>
+
+	<ui:style>
+		.buttons {
+			padding: 0em;
+			width: 36px;
+			height: 32px;
+		}
+		
+		.label {
+			min-width: 2em;
+		}
+	</ui:style>
+
+	<g:HTMLPanel>
+		<m:HeaderPanel>
+			<g:HTML>
+				ashinw DEMO
+			</g:HTML>
+		</m:HeaderPanel>
+
+		<m:ScrollPanel>
+			<m:ListPanel selectable="false">
+				<m:ListItem>
+					<g:Label>Page 1:</g:Label>
+					<m:ButtonPanel ui:field="gotoPage1Btn" addStyleNames="{style.buttons}">
+						<g:Image resource="{r.sym_keyboard_return}" styleName="{style.buttons}" />
+					</m:ButtonPanel>
+					<g:Label>Page 2:</g:Label>
+					<m:ButtonPanel ui:field="gotoPage2Btn" addStyleNames="{style.buttons}">
+						<g:Image resource="{r.sym_keyboard_shift_locked}"
+							styleName="{style.buttons}" />
+					</m:ButtonPanel>
+				</m:ListItem>
+
+				<g:HTML wordWrap="true" ui:field="welcomeLbl" styleName="{r.style.normalText}">
+					<p>Use the slider below to set how many slides to shuffle through
+						on the 2nd page. Also, setting a value greater than 5 will cause
+						the FlipSwitch to be enabled.</p>
+				</g:HTML>
+
+				<m:ListItem>
+					<g:Label ui:field="value1" styleName="{style.label}">No of slides: 2</g:Label>
+					<m:Slider ui:field="slider1" displayValue="false"></m:Slider>
+				</m:ListItem>
+
+				<m:ListItem>
+					<g:Label>Start slides from 5</g:Label>
+					<m:FlipSwitch ui:field="switch1" />
+				</m:ListItem>
+
+				<m:AccordionPanel>
+					<m:AccordionStack>
+						<m:AccordionHeader>
+							<g:Label styleName="{r.style.normalText}">Demo info</g:Label>
+						</m:AccordionHeader>
+						<m:AccordionContent>
+							<g:HTML wordWrap="true" styleName="{r.style.smallerText}">
+								<p> The purpose of this demo is to only demonstrate the
+									modified features to gwtmobile.
+									Dennis has done a great job of
+									demonstrating all other features. The
+									modified features
+									are:</p>
+								<ul>
+									<li>Page history: This demo enables the user to bookmark urls
+										and jump directly to those pages.
+										It also supports the
+										browser's back and forward buttons. In this
+										sample the no of
+										slides are passed as history token params.</li>
+									<li>ButtonPanel: The buttons above have embedded images. I
+										didn't have time to figure out why
+										gwt widgets (eg. PushButton)
+										was having its mouse events eaten by
+										gwtmobile.</li>
+									<li>FlipSwitch: This widget didn't support the enable/disable
+										property. The above switch will get enabled when the no of
+										slides exceeds 5.</li>
+									<li>SlidePanel: The slide panel didn't support slide cycling.
+										Now you can keep going next.</li>
+								</ul>
+							</g:HTML>
+						</m:AccordionContent>
+					</m:AccordionStack>
+				</m:AccordionPanel>
+			</m:ListPanel>
+		</m:ScrollPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

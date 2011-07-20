@@ -16,30 +16,28 @@
 
 package com.gwtmobile.ui.client.page;
 
-import java.util.Stack;
+import com.google.gwt.core.client.GWT;
 
 public class PageHistory {
-
-	private static Stack<Page> _history = new Stack<Page>();
+	final private static HistoryNavigation HN_IMPL = GWT.create(SerialHistoryNavigationImpl.class); 
+	
 	private static Object _returnValue; 
 	
 	public static void add(Page page) {
-		_history.push(page);
+		HN_IMPL.add(page);
+	}
+	
+	public static void navigateTo(String pageName, String params) {
+		String token = pageName + (params == null? "" : ":" + params);
+		HN_IMPL.navigate(token);
 	}
 	
 	public static Page current() {
-		if (_history.isEmpty()) {
-			return null;
-		}
-		return _history.peek();
+		return HN_IMPL.current();
 	}
 	
 	public static Page from() {
-		int size =_history.size();
-		if (size < 2) {
-			return null;
-		}
-		return _history.elementAt(size - 2);
+		return HN_IMPL.from();
 	}
     
 	public static Page back(Object returnValue) {
@@ -48,11 +46,12 @@ public class PageHistory {
     }
     
 	public static Page back() {
-        if (_history.isEmpty()) {
-            return null;
-        }
-        return _history.pop();
+		return HN_IMPL.back();
     }
+	
+	public static void goBack(Page fromPage, Object returnValue) {
+		HN_IMPL.goBack(fromPage, returnValue);
+	}
     
 	public static void setReturnValue(Object returnValue) {
         _returnValue = returnValue;
@@ -61,4 +60,12 @@ public class PageHistory {
 	public static Object getReturnValue() {
         return _returnValue;
     }
+	
+	public static void setMapper(HistoryNavigation.Mapper mapper) {
+		HN_IMPL.setMapper(mapper);
+	}
+	
+	public static void startUp(Object param) {
+		HN_IMPL.startUp(param);
+	}
 }

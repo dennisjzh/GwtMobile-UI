@@ -26,9 +26,10 @@ import com.gwtmobile.ui.client.widgets.WidgetBase;
 
 //FIXME: extends PanelBase?
 public abstract class Page extends WidgetBase {
-
+	final static private String CONSUMED_TOKEN = "#?#";
 	private Transition _transition;
 	private static Transition _defaultTransition = Transition.SLIDE;
+	protected String tokenStateInfo = CONSUMED_TOKEN;
 
 	@Override
 	protected void initWidget(Widget widget) {
@@ -45,6 +46,18 @@ public abstract class Page extends WidgetBase {
 			addStyleName("Desktop");
 		}
 	}
+	
+	/**
+	 * Gives the page an opportunity to load state that was sent as part of the
+	 * history token prior to display.
+	 * 
+	 * @see PageHistory#navigateTo(String, String)
+	 * @see BrowserHistoryNavigationImpl#onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)
+	 * 
+	 * @param stateInfo
+	 */
+	protected void initNavigationalState(String stateInfo) {
+	}
 
 	@Override
 	public void onTransitionEnd() {
@@ -59,6 +72,7 @@ public abstract class Page extends WidgetBase {
 				@Override
 				public void run() {
 					to.onNavigateTo();
+					to.initNavigationIfRequired();
 				}
 			};
 			timer.schedule(1);
@@ -72,10 +86,18 @@ public abstract class Page extends WidgetBase {
 				@Override
 				public void run() {
 					to.onNavigateBack(from, PageHistory.getReturnValue());
+					to.initNavigationIfRequired();
 				}
 			};
 			timer.schedule(1);
 		}       
+	}
+
+	protected void initNavigationIfRequired() {
+		if (!CONSUMED_TOKEN.equals(tokenStateInfo)) {
+			initNavigationalState(tokenStateInfo);
+			tokenStateInfo = CONSUMED_TOKEN;
+		}
 	}
 
 	protected void onNavigateTo() {
@@ -98,22 +120,7 @@ public abstract class Page extends WidgetBase {
 	}
 
 	public void goBack(Object returnValue) {
-		final Page fromPage = this;
-		PageHistory.setReturnValue(returnValue);
-		final Page toPage = PageHistory.from();
-		if (toPage == null) {
-			// exit app here.
-			return;
-		}
-		Element focus = Utils.getActiveElement();
-		focus.blur();
-		final Transition transition = fromPage.getTransition();
-		if (transition != null) {
-			transition.start(fromPage, toPage, RootLayoutPanel.get(), true);
-		}
-		else {
-			Transition.start(fromPage, toPage, RootLayoutPanel.get());
-		}
+		PageHistory.goBack(this, returnValue);
 	}
 
 	void setTransition(Transition transition) {
