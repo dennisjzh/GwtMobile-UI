@@ -621,14 +621,14 @@ html {
 	border-top-left-radius: .3em;
 	border-bottom-left-radius: .3em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
-		from(darkGreen), color-stop(0.1, #298C08), color-stop(0.5, #lightGreen), to(lightGreen));
+		from(darkGreen), color-stop(0.1, #298C08), color-stop(0.5, lightGreen), to(lightGreen));
 }
 
 .FlipSwitch > div:nth-child(2) {
 	border-top-right-radius: .3em;
 	border-bottom-right-radius: .3em;
 	background: white -webkit-gradient(linear, 0% 0%, 0% 100%, 
-		from(#gray), color-stop(0.1, lightgray), color-stop(0.5, white), to(white));
+		from(gray), color-stop(0.1, lightgray), color-stop(0.5, white), to(white));
 }
 
 
