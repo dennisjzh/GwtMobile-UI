@@ -32,6 +32,7 @@ import com.gwtmobile.ui.client.utils.Utils;
 public class FlipSwitch extends WidgetBase 
 	implements DragEventsHandler, ClickHandler, HasValueChangeHandlers<Boolean> {
 
+	protected boolean _enabled = true;
 	protected boolean _value = true;
 	protected HTML _html = new HTML();
 	
@@ -64,12 +65,16 @@ public class FlipSwitch extends WidgetBase
     
     @Override
     public void onDragStart(DragEvent e) {
+    	if (!_enabled)
+    		return;
     	DragController.get().captureDragEvents(this);
     	Utils.setTransitionDuration(getFilpElement(), 0);
     }
 
     @Override
     public void onDragMove(DragEvent e) {
+    	if (!_enabled)
+    		return;
     	e.stopPropagation();
     	Element flip = getFilpElement();
     	int x = Utils.getTranslateX(flip);
@@ -89,35 +94,42 @@ public class FlipSwitch extends WidgetBase
 
     @Override
     public void onDragEnd(DragEvent e) {
+    	if (!_enabled)
+    		return;
     	DragController.get().releaseDragCapture(this);
     	Element flip = getFilpElement();
     	int x = Utils.getTranslateX(flip);
     	int onPosition = getOnPosition();
     	int offPosition = getOffPosition();
     	if (x == onPosition) {
-    		setValue(true, false, 0);
+    		setValue(true, false, 0, true);
     	}
     	else if (x == offPosition) {
-    		setValue(false, false, 0);
+    		setValue(false, false, 0, true);
     	}
     	else {
     		float ratio = (float)x / (float)(offPosition - onPosition);
 	    	boolean newValue = ratio < 0.5;
 	    	int duration = (int) ((0.5 - Math.abs(ratio - 0.5)) * 200);
 	    	Utils.Console("ratio " + ratio + " duration " + duration);
-	    	setValue(newValue, true,  duration);
+	    	setValue(newValue, true,  duration, true);
     	}
     }
 
-    public void setValue(boolean value) {
-    	setValue(value, false, 200);
+    public void setValue(boolean value, boolean fireEvent) {
+    	setValue(value, false, 200, fireEvent);
     }
     
-    private void setValue(boolean value, boolean forceUpdateFlipPosition, int duration) {
+    public void setValue(boolean value) {
+    	setValue(value, true);
+    }
+    
+    private void setValue(boolean value, boolean forceUpdateFlipPosition, int duration, boolean fireEvent) {
     	if (_value != value) {
         	_value = value;
-        	updateFlipPosition(duration);    	
-    		ValueChangeEvent.fire(this, _value);
+        	updateFlipPosition(duration);
+        	if (fireEvent)
+        		ValueChangeEvent.fire(this, _value);
     	}
     	else if (forceUpdateFlipPosition) {
         	updateFlipPosition(duration);    	
@@ -128,9 +140,24 @@ public class FlipSwitch extends WidgetBase
     	return _value;
     }
 
+    public boolean isEnabled() {
+    	return _enabled;
+    }
+    
+    public void setEnabled(boolean enabled) {
+    	if (enabled == _enabled)
+    		return;
+		if (enabled) 
+			removeStyleName("Disabled");
+		else 
+			addStyleName("Disabled");
+		_enabled = enabled;
+	}
+    
 	@Override
 	public void onClick(ClickEvent event) {
-		setValue(!_value);
+		if (_enabled)
+			setValue(!_value);
 	}
 	
 	private void updateFlipPosition(int duration) {

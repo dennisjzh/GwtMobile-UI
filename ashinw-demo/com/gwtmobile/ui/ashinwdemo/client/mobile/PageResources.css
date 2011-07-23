@@ -1,0 +1,61 @@
+@external .Desktop, .iOS, .Android;
+@external .HeaderPanel;
+
+@sprite .sym_keyboard_return {
+	gwt-image: "sym_keyboard_return";
+}
+
+@sprite .sym_keyboard_shift_locked {
+	gwt-image: "sym_keyboard_shift_locked";
+}
+
+.Desktop .normalText, .iOS .normalText {
+  font-size: 90%;
+}
+
+.Android .normalText {
+  font-size: 80%;
+}
+
+.Desktop .smallerText, .iOS .smallerText {
+  font-size: 80%;
+}
+
+.Android .smallerText, .Android .HeaderPanel {
+  font-size: 70%;
+}
+
+.catalogueItem {
+  color: white;
+  font-size: 80%;
+}
+
+.slideContent {
+   display: -webkit-box;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-box-orient: vertical;
+  color: gray;
+  background: white;
+  -webkit-box-flex: 1;
+  border-radius: 0.4em;
+  -webkit-box-shadow: white 0em 0em 0.1em;
+  overflow: hidden;
+}
+
+.slideContent > div {
+  margin: .5em;
+  text-align: center;
+}
+
+.Desktop .slideContent > div {
+  font-size: 150%;
+}
+
+.iOS .slideContent > div {
+  font-size: 120%;
+}
+
+.Android .slideContent > div {
+  font-size: 90%;
+}
