@@ -602,6 +602,10 @@ html {
 
 /******************* Flip Switch *************/
 
+.FlipSwitch.Disabled {
+  opacity: .3;
+}
+
 .FlipSwitch {
 	position: relative;
 	border-radius: .3em;

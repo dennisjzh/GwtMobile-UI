@@ -90,7 +90,9 @@ public class Utils {
     	}
     	String FromControls = "BUTTON INPUT SELECT TEXTAREA";
     	String nodeName = ele.getNodeName().toUpperCase();
+    	String roleName = ele.getAttribute("role").toUpperCase();
     	return FromControls.contains(nodeName) 
+    		|| roleName.length() > 0 && FromControls.contains(roleName)
     		|| isHtmlFormControl(ele.getParentElement());
     }
     
