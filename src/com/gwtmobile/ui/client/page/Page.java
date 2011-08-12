@@ -150,7 +150,7 @@ public abstract class Page extends WidgetBase {
 	}
 
 	private static void setPageResolution() {
-		int ratio = getDevicePixelRatio();
+		double ratio = getDevicePixelRatio();
 		if (ratio == 2) { // iphone 4. screen size on iphone does not change
 							// despite the dp ratio.
 			Document.get().getDocumentElement().setClassName("HVGA");
@@ -163,7 +163,7 @@ public abstract class Page extends WidgetBase {
 		}
 	}
 
-	public static native int getDevicePixelRatio() /*-{
+	public static native double getDevicePixelRatio() /*-{
 		return $wnd.devicePixelRatio;
 	}-*/;
 
