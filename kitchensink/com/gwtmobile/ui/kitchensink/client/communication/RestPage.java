@@ -49,8 +49,10 @@ public class RestPage extends Page {
     }
 
 	private void makeRestCall() {
-		String url = "http://gwtmobile-services.appspot.com/rest/World";
+		String url = "http://gwtmobile-services.appspot.com/rest/World?" + 
+				(int)(Math.random() * 10000);	//IO exception if caching.
 		RestServiceProxy restResource = GWT.create(RestServiceProxy.class);
+		//restResource.getClientResource().get(MediaType.APPLICATION_JSON);
 		restResource.getClientResource().setReference(url);
 		restResource.represent(new Result<Greeting>() {
 		    @Override
