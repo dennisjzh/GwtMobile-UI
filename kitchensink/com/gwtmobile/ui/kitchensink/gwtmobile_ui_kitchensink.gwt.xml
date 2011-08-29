@@ -5,6 +5,8 @@
 		
 	<source path="client" />
 	
+	<stylesheet src="kitchensink.css"/>
+	
 	<entry-point class="com.gwtmobile.ui.kitchensink.client.KitchenSink" />
 	
 	<!-- Inherit GWT Mobile UI module -->
