@@ -54,4 +54,6 @@
         </all>
     </replace-with-->
 	
+	<set-configuration-property name="UiBinder.useSafeHtmlTemplates" value="true" />
+	
 </module>
