@@ -13,7 +13,10 @@
 				<m:ListPanel ui:field="list">
 					<g:Label>Call Server with RPC</g:Label>
 				</m:ListPanel>
-				<g:HTML ui:field="text" styleName="Output">Console</g:HTML>
+				<g:HTML ui:field="text" styleName="Output">
+					To run this demo on the browser, the Same Origin Policy needs to be turned off 
+					on the browser for the communication to work.
+				</g:HTML>
 			</g:HTMLPanel>
 		</m:ScrollPanel>
 	</g:HTMLPanel>
