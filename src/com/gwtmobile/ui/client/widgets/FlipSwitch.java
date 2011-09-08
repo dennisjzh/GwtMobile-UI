@@ -104,29 +104,35 @@ public class FlipSwitch extends WidgetBase
     	int onPosition = getOnPosition();
     	int offPosition = getOffPosition();
     	if (x == onPosition) {
-    		setValue(true, false, 0);
+    		setValue(true, false, 0, true);
     	}
     	else if (x == offPosition) {
-    		setValue(false, false, 0);
+    		setValue(false, false, 0, true);
     	}
     	else {
     		float ratio = (float)x / (float)(offPosition - onPosition);
 	    	boolean newValue = ratio < 0.5;
 	    	int duration = (int) ((0.5 - Math.abs(ratio - 0.5)) * 200);
 	    	Utils.Console("ratio " + ratio + " duration " + duration);
-	    	setValue(newValue, true,  duration);
+	    	setValue(newValue, true,  duration, true);
     	}
     }
 
     public void setValue(boolean value) {
-    	setValue(value, false, 200);
+    	setValue(value, false, 200, true);
     }
     
-    private void setValue(boolean value, boolean forceUpdateFlipPosition, int duration) {
+    public void setValue(boolean value, boolean fireEvent) {
+    	setValue(value, false, 200, fireEvent);
+    }
+    
+    private void setValue(boolean value, boolean forceUpdateFlipPosition, int duration, boolean fireEvent) {
     	if (_value != value) {
         	_value = value;
         	updateFlipPosition(duration);
-        	ValueChangeEvent.fire(this, _value);
+        	if (fireEvent) {
+            	ValueChangeEvent.fire(this, _value);
+        	}
     	}
     	else if (forceUpdateFlipPosition) {
         	updateFlipPosition(duration);    	
