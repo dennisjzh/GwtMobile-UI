@@ -3,4 +3,6 @@ classes
 *~
 war/KitchenSink
 war/WEB-INF
+war/com.gwtmobile.ui.gwtmobile_ui
+war/kitchensink.css
 .gwt-tmp
