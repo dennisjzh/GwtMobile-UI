@@ -1,0 +1,37 @@
+package com.gwtmobile.ui.client.CSS;
+
+import com.google.gwt.resources.client.CssResource;
+
+
+
+public interface CssButton extends CssResource {
+
+	@ClassName("BackButton")
+	String backButton();
+
+
+
+	@ClassName("Button")
+	String button();
+
+
+
+	@ClassName("Pressed")
+	String pressed();
+
+
+
+	@ClassName("NextButton")
+	String nextButton();
+
+
+
+	@ClassName("Pointer")
+	String pointer();
+	
+	 @ClassName("Disabled")
+	 String disabled();
+
+	 @ClassName("Hidden")
+	 String hidden();
+}

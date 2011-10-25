@@ -1,0 +1,43 @@
+10
+
+dir
+99
+http://subversion/svn/mobiledevices/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client
+http://subversion/svn/mobiledevices
+
+
+
+2011-09-16T07:43:49.658972Z
+98
+wiese.daniel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fb15842f-6da9-0410-b5bc-9dceb7ac0fe5
+
+utils
+dir
+
+event
+dir
+
+widgets
+dir
+
+CSS
+dir
+
+page
+dir
+

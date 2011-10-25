@@ -1,0 +1,29 @@
+package com.gwtmobile.ui.client.CSS;
+
+import com.google.gwt.resources.client.CssResource;
+
+
+
+/**
+ * Definiert die CSS Ressourcen fuer Transitionen.
+ * 
+ * @author wiese.daniel <br>
+ *         copyright (C) 2011, SWM Services GmbH
+ * 
+ */
+public interface CssPage extends CssResource {
+
+	/** Der Style einer {@link com.gwtmobile.ui.client.page.Page}. */
+	@ClassName("Page")
+	String page();
+
+	@ClassName("DecoratedListItemPanel")
+	String decoratedListItemPanel();
+
+	@ClassName("DecoratedListItemTitle")
+	String decoratedListItemTitle();
+
+	@ClassName("DecoratedListItemSubtitle")
+	String decoratedListItemSubtitle();
+
+}

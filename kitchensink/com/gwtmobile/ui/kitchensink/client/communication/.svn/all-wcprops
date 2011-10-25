@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/mobiledevices/!svn/ver/26/projects/gwtmobile/trunk/kitchensink/com/gwtmobile/ui/kitchensink/client/communication
+END
+RestServiceProxy.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/mobiledevices/!svn/ver/26/projects/gwtmobile/trunk/kitchensink/com/gwtmobile/ui/kitchensink/client/communication/RestServiceProxy.java
+END
+JsonpPage.ui.xml
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/mobiledevices/!svn/ver/26/projects/gwtmobile/trunk/kitchensink/com/gwtmobile/ui/kitchensink/client/communication/JsonpPage.ui.xml
+END
+RpcPage.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/mobiledevices/!svn/ver/26/projects/gwtmobile/trunk/kitchensink/com/gwtmobile/ui/kitchensink/client/communication/RpcPage.java
+END
+CommunicationPage.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/mobiledevices/!svn/ver/26/projects/gwtmobile/trunk/kitchensink/com/gwtmobile/ui/kitchensink/client/communication/CommunicationPage.java
+END
+RpcServiceAsync.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/mobiledevices/!svn/ver/26/projects/gwtmobile/trunk/kitchensink/com/gwtmobile/ui/kitchensink/client/communication/RpcServiceAsync.java
+END
+Greeting.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/mobiledevices/!svn/ver/26/projects/gwtmobile/trunk/kitchensink/com/gwtmobile/ui/kitchensink/client/communication/Greeting.java
+END
+RestPage.ui.xml
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/mobiledevices/!svn/ver/26/projects/gwtmobile/trunk/kitchensink/com/gwtmobile/ui/kitchensink/client/communication/RestPage.ui.xml
+END
+RpcService.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/mobiledevices/!svn/ver/26/projects/gwtmobile/trunk/kitchensink/com/gwtmobile/ui/kitchensink/client/communication/RpcService.java
+END
+JsonpPage.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/mobiledevices/!svn/ver/26/projects/gwtmobile/trunk/kitchensink/com/gwtmobile/ui/kitchensink/client/communication/JsonpPage.java
+END
+RestPage.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/mobiledevices/!svn/ver/26/projects/gwtmobile/trunk/kitchensink/com/gwtmobile/ui/kitchensink/client/communication/RestPage.java
+END
+RpcPage.ui.xml
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/mobiledevices/!svn/ver/26/projects/gwtmobile/trunk/kitchensink/com/gwtmobile/ui/kitchensink/client/communication/RpcPage.ui.xml
+END
+CommunicationPage.ui.xml
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/mobiledevices/!svn/ver/26/projects/gwtmobile/trunk/kitchensink/com/gwtmobile/ui/kitchensink/client/communication/CommunicationPage.ui.xml
+END

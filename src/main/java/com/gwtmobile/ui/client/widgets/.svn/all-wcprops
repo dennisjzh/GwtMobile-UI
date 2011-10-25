@@ -1,0 +1,293 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/mobiledevices/!svn/ver/98/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets
+END
+EmailTextBox.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/EmailTextBox.java
+END
+NumberTextBox.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/mobiledevices/!svn/ver/98/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/NumberTextBox.java
+END
+HeaderPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/HeaderPanel.java
+END
+HorizontalPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/HorizontalPanel.java
+END
+DateTimeParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/mobiledevices/!svn/ver/78/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/DateTimeParser.java
+END
+DropDownItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/mobiledevices/!svn/ver/98/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/DropDownItem.java
+END
+ToolbarElement.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/mobiledevices/!svn/ver/95/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/ToolbarElement.java
+END
+ScrollPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/ScrollPanel.java
+END
+TabHeader.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/TabHeader.java
+END
+UrlTextBox.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/UrlTextBox.java
+END
+ToolbarPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/mobiledevices/!svn/ver/116/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/ToolbarPanel.java
+END
+AccordionStack.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/AccordionStack.java
+END
+DropDownList.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/mobiledevices/!svn/ver/98/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/DropDownList.java
+END
+TextBoxBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/TextBoxBase.java
+END
+IsGwtMobileWidgetHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/IsGwtMobileWidgetHelper.java
+END
+IsGwtMobileWidget.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/IsGwtMobileWidget.java
+END
+DateTextBox.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/mobiledevices/!svn/ver/98/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/DateTextBox.java
+END
+AccordionContent.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/AccordionContent.java
+END
+BackButton.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/mobiledevices/!svn/ver/119/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/BackButton.java
+END
+TextBox.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/TextBox.java
+END
+Slide.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/Slide.java
+END
+TabContent.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/TabContent.java
+END
+TelTextBox.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/TelTextBox.java
+END
+CheckBoxGroup.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/CheckBoxGroup.java
+END
+DecoratedListItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/mobiledevices/!svn/ver/98/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/DecoratedListItem.java
+END
+Tab.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/Tab.java
+END
+RadioButtonGroup.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/RadioButtonGroup.java
+END
+AccordionHeader.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/AccordionHeader.java
+END
+NextButton.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/mobiledevices/!svn/ver/119/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/NextButton.java
+END
+Button.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/Button.java
+END
+ToolbarHeader.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/mobiledevices/!svn/ver/96/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/ToolbarHeader.java
+END
+FlipSwitch.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/FlipSwitch.java
+END
+TextArea.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/TextArea.java
+END
+WidgetBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/WidgetBase.java
+END
+Spinner.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/mobiledevices/!svn/ver/98/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/Spinner.java
+END
+PasswordTextBox.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/PasswordTextBox.java
+END
+SlidePanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/SlidePanel.java
+END
+AccordionPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/AccordionPanel.java
+END
+Slider.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/Slider.java
+END
+BoxBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/mobiledevices/!svn/ver/98/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/BoxBase.java
+END
+CheckBox.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/CheckBox.java
+END
+TabPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/TabPanel.java
+END
+VerticalPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/VerticalPanel.java
+END
+RadioButton.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/RadioButton.java
+END
+PanelBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/PanelBase.java
+END
+ListItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/ListItem.java
+END
+ListPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/mobiledevices/!svn/ver/97/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/ListPanel.java
+END
+ToolbarContent.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/mobiledevices/!svn/ver/96/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/widgets/ToolbarContent.java
+END

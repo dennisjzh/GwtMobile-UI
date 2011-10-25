@@ -1,59 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-         http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.gwtmobile</groupId>
-  <artifactId>gwtmobile-ui</artifactId>
-  <version>0.0.1</version>
-  <packaging>jar</packaging>
-  <name>GWT Mobile UI</name>
-  <description>GWT Mobile UI</description>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <gwt.version>2.3.0</gwt.version>
-  </properties>
-  <build>
-    <sourceDirectory>${project.basedir}/src</sourceDirectory>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>gwt-maven-plugin</artifactId>
-        <version>2.3.0</version> 
-        <executions>
-          <execution>
-            <goals>
-              <goal>resources</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-    <resources>
-      <resource>
-        <directory>src</directory>
-        <includes>
-          <include>**/*.gwt.xml</include>
-          <include>**/*.ui.xml</include>
-          <include>**/*.png</include>
-          <include>**/*.css</include>
-        </includes>
-      </resource>
-    </resources>  
-  </build>
-  <dependencies>
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-dev</artifactId>
-      <version>${gwt.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-user</artifactId>
-      <version>${gwt.version}</version>
-      <scope>provided</scope>
-    </dependency>
-</dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>de.swm.commons</groupId>
+		<artifactId>commons-base</artifactId>
+		<version>3.0</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.swm.commons.gwtmobile</groupId>
+	<artifactId>gwtmobile</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>Mobile-GWT-Bibliothek</name>
+	<description>GWT Bibliothek fuer Mobile Plattformen</description>
+	<inceptionYear>2011</inceptionYear>
+	<properties>
+		<gwt.version>2.4.0-rc1</gwt.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<scm>
+		<connection>scm:svn:http://subversion/svn/commons/swm-gxt-client/trunk/</connection>
+		<developerConnection>scm:svn:http://subversion/svn/commons/swm-gxt-client/trunk/</developerConnection>
+		<url>http://subversion/svn/S-IP-AN-BE_ClientServer/Commons/http://subversion/svn/commons/trunk/</url>
+	</scm>
+	<dependencies>
+		<!-- GWT dependencies (from maven "central" repo) -->
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+			<version>${gwt.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>${gwt.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwt.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>3.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin
+				</artifactId>
+				<configuration>
+					<check>
+						<haltOnFailure>false</haltOnFailure> <!-- optional -->
+						<totalLineRate>0</totalLineRate>
+						<totalBranchRate>0</totalBranchRate>
+					</check>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<!-- Include SOURCE in output artifact for GWT (GWT libraries must include 
+			source) -->
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+	</build>
 </project>

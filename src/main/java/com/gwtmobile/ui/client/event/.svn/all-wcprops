@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/mobiledevices/!svn/ver/98/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/event
+END
+DragEvent.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/event/DragEvent.java
+END
+EventHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/event/EventHandler.java
+END
+DragEventsHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/event/DragEventsHandler.java
+END
+DragController.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/mobiledevices/!svn/ver/98/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/event/DragController.java
+END
+SelectionChangedEvent.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/event/SelectionChangedEvent.java
+END
+Touch.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/event/Touch.java
+END
+TouchEvent.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/event/TouchEvent.java
+END
+DragControllerMobile.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/mobiledevices/!svn/ver/98/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/event/DragControllerMobile.java
+END
+SwipeEvent.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/event/SwipeEvent.java
+END
+SwipeEventsHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/event/SwipeEventsHandler.java
+END
+DragControllerDesktop.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/mobiledevices/!svn/ver/98/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/event/DragControllerDesktop.java
+END
+SelectionChangedHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/event/SelectionChangedHandler.java
+END
+DragControllerOptions.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/mobiledevices/!svn/ver/98/projects/gwtmobile/trunk/src/main/java/com/gwtmobile/ui/client/event/DragControllerOptions.java
+END

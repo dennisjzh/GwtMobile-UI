@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/mobiledevices/!svn/ver/93/projects/gwtmobile/trunk/.settings
+END
+org.eclipse.jdt.core.prefs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/.settings/org.eclipse.jdt.core.prefs
+END
+com.google.gwt.eclipse.core.prefs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/mobiledevices/!svn/ver/93/projects/gwtmobile/trunk/.settings/com.google.gwt.eclipse.core.prefs
+END
+com.google.appengine.eclipse.core.prefs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/.settings/com.google.appengine.eclipse.core.prefs
+END
+org.maven.ide.eclipse.prefs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/.settings/org.maven.ide.eclipse.prefs
+END
+com.google.gdt.eclipse.core.prefs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/mobiledevices/!svn/ver/11/projects/gwtmobile/trunk/.settings/com.google.gdt.eclipse.core.prefs
+END
