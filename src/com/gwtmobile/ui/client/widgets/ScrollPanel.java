@@ -18,6 +18,7 @@ package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -32,9 +33,65 @@ public class ScrollPanel extends PanelBase
 implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 
 	private boolean _hasTextBox = false;
+	private Element _scrollbar;
 	
     public ScrollPanel() {
         setStyleName("ScrollPanel");
+    	this.initScrollbar();
+    }
+    
+    private void initScrollbar(){
+        _scrollbar=DOM.createDiv();
+        _scrollbar.appendChild(DOM.createDiv());
+        _scrollbar.setClassName("Scrollbar");
+        this.getElement().appendChild(_scrollbar);
+		this.hideScrollBar();
+//        this.setScrollbarHeight();
+    }
+    
+    private void adjustScrollbar(double scrollPannerPos){
+		Element widgetEle = getWidget().getElement();
+		int scrollPannelHeight = widgetEle.getOffsetHeight();		
+		double scrollHeight=Utils.getHeight(this._scrollbar);
+		
+    	double scrollbarHeight=(scrollHeight*scrollHeight)/scrollPannelHeight;    	
+    	if(scrollbarHeight>=scrollHeight){
+    		this.hideScrollBar();
+    		return;
+    	}else{
+    		this.showScrollbar();    		
+    	}
+
+    	double scrollbarPos=-scrollHeight*scrollPannerPos/scrollPannelHeight;
+
+    	if(scrollPannerPos>0) {
+    		scrollbarHeight=(scrollbarHeight-scrollPannerPos);
+        	scrollbarPos=0;   	
+    		if(scrollbarHeight<8) scrollbarHeight=8;
+    	}else if((-scrollPannerPos+scrollHeight)>(scrollPannelHeight)){
+    		double outScroll=(-scrollPannerPos+scrollHeight)-scrollPannelHeight;
+    		scrollbarHeight=scrollbarHeight-outScroll;
+    		if(scrollbarHeight<8) {
+    			scrollbarHeight=8;
+//        		scrollbarPos=scrollHeight-scrollbarHeight;
+//    			this._scrollbar.getFirstChildElement().setAttribute("title", scrollbarPos+"");
+    		}else{
+    			scrollbarPos=scrollbarPos+outScroll;
+    		}
+    		scrollbarPos=(scrollbarPos+scrollHeight)>scrollHeight?scrollHeight-scrollbarHeight:scrollbarPos;
+
+    	}
+    	
+		Utils.setHeight(this._scrollbar.getFirstChildElement(), scrollbarHeight);
+    	Utils.setTranslateY(this._scrollbar.getFirstChildElement(),scrollbarPos);
+    }
+    
+    private void showScrollbar(){
+    	this._scrollbar.setAttribute("style", "opacity:1");
+    }
+    
+    private void hideScrollBar(){
+    	this._scrollbar.setAttribute("style", "opacity:0");
     }
     
     public void setHasTextBox(boolean hasTextBox) {    	
@@ -68,12 +125,13 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 	}
 	
 	public void setPostionToTop() {
-        Utils.setTransitionDuration(getWidget().getElement(), 0);
+        Utils.setTransitionDuration(getWidget().getElement(), 0);        
 	    Utils.setTranslateY(getWidget().getElement(), 0);
 	}
 	
 	public void setPositionToBottom() {
         Utils.setTransitionDuration(getWidget().getElement(), 0);
+
         Utils.setTranslateY(getWidget().getElement(), 
                 this.getElement().getClientHeight() - this.getElement().getScrollHeight());
 	}
@@ -86,8 +144,9 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 			Element element = getWidget().getElement();
 			Utils.setTranslateY(element, pos);
 		}
+		this.adjustScrollbar(pos);
 	}
-	
+
 	public int getScrollPosition() {
 		if (_hasTextBox) {
 			return getStyleTop();
@@ -113,12 +172,16 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		int matrix = getScrollToPosition();
 		int current = getScrollPosition();
 		Utils.setTransitionDuration(getWidget().getElement(), 0);
+		Utils.setTransitionDuration(this._scrollbar.getFirstChildElement(), 0);
+
 		if (current != matrix) {  //scroll on going
 			int diff = current - matrix;
 			int offset = diff > 2 ? 2 : diff > -2 ? diff : -2;
 			setScrollPosition(matrix + offset);
 			DragController.get().suppressNextClick();
 		}
+//		this.showScrollbar();
+//		this.setScrollbarHeight();
 	}
 
 	@Override
@@ -146,7 +209,9 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		else {
 			current += e.OffsetY;
 		}
-		setScrollPosition(current);		
+		
+//		this.setScrollbarHeight();
+		setScrollPosition(current);	
 	}
 
 	@Override
@@ -161,12 +226,17 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		if (current > 0 //exceed top boundary
 				|| panelHeight > widgetHeight) {
 			Utils.setTransitionDuration(widgetEle, 500);
+			Utils.setTransitionDuration(this._scrollbar.getFirstChildElement(), 500);
+
 			setScrollPosition(0);
 		}
 		else if (-current + panelHeight > widgetHeight) { //exceed bottom boundary
 			Utils.setTransitionDuration(widgetEle, 500);
+			Utils.setTransitionDuration(this._scrollbar.getFirstChildElement(), 500);
 			setScrollPosition(panelHeight - widgetHeight);
 		}
+		this.hideScrollBar();
+		
 	}
 
 	@Override
@@ -199,7 +269,17 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 			current = bottom;
 		}
 		Utils.setTransitionDuration(widgetEle, time);
+//		this.setScrollbarHeight();
+		Utils.setTransitionDuration(this._scrollbar.getFirstChildElement(), time);
 		setScrollPosition((int) current);
+		
+//	    Timer refreshTimer = new Timer() {
+//		      @Override
+//		      public void run() {
+//		    	  hideScrollBar();
+//		      }
+//		    };
+//		refreshTimer.scheduleRepeating((int)time);
 	}
 
     @Override

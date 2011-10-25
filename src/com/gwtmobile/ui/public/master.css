@@ -174,6 +174,7 @@ html {
 
 /********** Scroll Panel **********/
 .ScrollPanel {
+	position: relative;
 	-webkit-transition-property: -webkit-transform, top;
     -webkit-transition-timing-function: cubic-bezier(0,0,0.25,1);
 	-webkit-box-flex: 10;
@@ -188,6 +189,45 @@ html {
 	position: relative;
 }
 
+.Scrollbar{
+	position: absolute; 
+	z-index: 100; 
+	width: 7px; 
+	bottom: 2px; 
+	top: 0px; 
+	right: 1px; 
+	pointer-events: none; 
+	overflow-x: hidden; 
+	overflow-y: hidden; 
+}
+
+.Scrollbar>div{
+	position: absolute; 
+	z-index: 100; 
+	background-image: initial; 
+	background-attachment: initial; 
+	background-origin: initial; 
+	background-clip: initial; 
+	background-color: rgba(0, 0, 0, 0.496094); 
+	border-top-width: 1px; 
+	border-right-width: 1px; 
+	border-bottom-width: 1px; 
+	border-left-width: 1px; 
+	border-top-style: solid; 
+	border-right-style: solid; 
+	border-bottom-style: solid; 
+	border-left-style: solid; 
+	border-top-color: rgba(255, 255, 255, 0.898438); 
+	border-right-color: rgba(255, 255, 255, 0.898438); 
+	border-bottom-color: rgba(255, 255, 255, 0.898438); 
+	border-left-color: rgba(255, 255, 255, 0.898438); 
+	-webkit-background-clip: padding-box; box-sizing: border-box; 
+	width: 100%; 
+	border-top-left-radius: 3px 3px; 
+	border-top-right-radius: 3px 3px; b
+	order-bottom-right-radius: 3px 3px; 
+	border-bottom-left-radius: 3px 3px; 
+}
 /********** List Panel **********/
 .ListPanel {
 	position:relative;

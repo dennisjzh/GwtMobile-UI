@@ -184,4 +184,8 @@ public class Utils {
     	return false;
     }
 
+	public static native void setHeight(Element ele, double value) /*-{
+		ele.style.height = value+"px";
+	}-*/;
+
 }
