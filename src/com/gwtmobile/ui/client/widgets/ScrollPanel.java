@@ -20,6 +20,8 @@ import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.event.DragController;
@@ -271,15 +273,14 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		Utils.setTransitionDuration(widgetEle, time);
 //		this.setScrollbarHeight();
 		Utils.setTransitionDuration(this._scrollbar.getFirstChildElement(), time);
+		Utils.addEventListenerOnce(this._scrollbar.getFirstChildElement(), 
+				"webkitTransitionEnd", false, new EventListener() {
+					@Override
+					public void onBrowserEvent(Event event) {
+				    	  hideScrollBar();
+					}
+				});
 		setScrollPosition((int) current);
-		
-//	    Timer refreshTimer = new Timer() {
-//		      @Override
-//		      public void run() {
-//		    	  hideScrollBar();
-//		      }
-//		    };
-//		refreshTimer.scheduleRepeating((int)time);
 	}
 
     @Override
