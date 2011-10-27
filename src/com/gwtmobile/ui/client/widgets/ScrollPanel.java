@@ -48,7 +48,6 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
         _scrollbar.setClassName("Scrollbar");
         this.getElement().appendChild(_scrollbar);
 		this.hideScrollBar();
-//        this.setScrollbarHeight();
     }
     
     private void adjustScrollbar(double scrollPannerPos){
@@ -75,8 +74,6 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
     		scrollbarHeight=scrollbarHeight-outScroll;
     		if(scrollbarHeight<8) {
     			scrollbarHeight=8;
-//        		scrollbarPos=scrollHeight-scrollbarHeight;
-//    			this._scrollbar.getFirstChildElement().setAttribute("title", scrollbarPos+"");
     		}else{
     			scrollbarPos=scrollbarPos+outScroll;
     		}
@@ -182,8 +179,6 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 			setScrollPosition(matrix + offset);
 			DragController.get().suppressNextClick();
 		}
-//		this.showScrollbar();
-//		this.setScrollbarHeight();
 	}
 
 	@Override
@@ -212,7 +207,6 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 			current += e.OffsetY;
 		}
 		
-//		this.setScrollbarHeight();
 		setScrollPosition(current);	
 	}
 
@@ -229,7 +223,6 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 				|| panelHeight > widgetHeight) {
 			Utils.setTransitionDuration(widgetEle, 500);
 			Utils.setTransitionDuration(this._scrollbar.getFirstChildElement(), 500);
-
 			setScrollPosition(0);
 		}
 		else if (-current + panelHeight > widgetHeight) { //exceed bottom boundary
@@ -271,7 +264,6 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 			current = bottom;
 		}
 		Utils.setTransitionDuration(widgetEle, time);
-//		this.setScrollbarHeight();
 		Utils.setTransitionDuration(this._scrollbar.getFirstChildElement(), time);
 		Utils.addEventListenerOnce(this._scrollbar.getFirstChildElement(), 
 				"webkitTransitionEnd", false, new EventListener() {
