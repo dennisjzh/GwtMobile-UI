@@ -189,45 +189,31 @@ html {
 	position: relative;
 }
 
-.Scrollbar{
+.Scrollbar {
 	position: absolute; 
 	z-index: 100; 
-	width: 7px; 
-	bottom: 2px; 
-	top: 0px; 
-	right: 1px; 
+	width: 0.5em; 
+	bottom: 0.2em; 
+	top: 0; 
+	right: 0.1em; 
 	pointer-events: none; 
 	overflow-x: hidden; 
 	overflow-y: hidden; 
 }
 
-.Scrollbar>div{
+.Scrollbar > div {
 	position: absolute; 
 	z-index: 100; 
-	background-image: initial; 
-	background-attachment: initial; 
-	background-origin: initial; 
-	background-clip: initial; 
-	background-color: rgba(0, 0, 0, 0.496094); 
-	border-top-width: 1px; 
-	border-right-width: 1px; 
-	border-bottom-width: 1px; 
-	border-left-width: 1px; 
-	border-top-style: solid; 
-	border-right-style: solid; 
-	border-bottom-style: solid; 
-	border-left-style: solid; 
-	border-top-color: rgba(255, 255, 255, 0.898438); 
-	border-right-color: rgba(255, 255, 255, 0.898438); 
-	border-bottom-color: rgba(255, 255, 255, 0.898438); 
-	border-left-color: rgba(255, 255, 255, 0.898438); 
-	-webkit-background-clip: padding-box; box-sizing: border-box; 
+	background-color: rgba(0, 0, 0, 0.6); 
+	border-width: 0.1em; 
+	border-style: solid; 
+	border-color: rgba(255, 255, 255, 0.6); 
+	-webkit-background-clip: padding-box; 
+	box-sizing: border-box; 
 	width: 100%; 
-	border-top-left-radius: 3px 3px; 
-	border-top-right-radius: 3px 3px; b
-	order-bottom-right-radius: 3px 3px; 
-	border-bottom-left-radius: 3px 3px; 
+	border-radius: 0.3em 0.3em; 
 }
+
 /********** List Panel **********/
 .ListPanel {
 	position:relative;
