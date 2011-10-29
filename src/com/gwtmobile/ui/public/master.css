@@ -72,7 +72,7 @@ html {
 }
 
 .HeaderPanel > div:first-child, .HeaderPanel > div:last-child {
-	min-width:3em;
+/*	min-width:3em;*/
 }
 
 .HeaderPanel > div:nth-child(2) {
@@ -316,7 +316,6 @@ html {
 .TabPanel > .Header {	/*tab header panel*/
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
-	-webkit-box-shadow: rgba(0, 0, 0, 1) 0 0 1em;
 	font-size: .8em;
 	background: #333;
 	position: relative;
@@ -324,11 +323,15 @@ html {
 }
 
 .TabPanel.Normal > .Header {	/*tab header panel*/
+	padding-top: .2em;
 	border-bottom: 0.2em solid #BDBDBD;
+	-webkit-box-shadow: rgba(0, 0, 0, .7) 0 .2em .5em;
 }
 
 .TabPanel.Reverse > .Header {	/*tab header panel*/
+	padding-bottom: .2em;
 	border-top: 0.2em solid #BDBDBD;
+	-webkit-box-shadow: rgba(0, 0, 0, .7) 0 -.2em .5em;
 }
 
 .TabPanel > .Header > div {		/*tab header*/

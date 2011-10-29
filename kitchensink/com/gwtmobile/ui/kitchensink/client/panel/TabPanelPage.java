@@ -19,8 +19,10 @@ package com.gwtmobile.ui.kitchensink.client.panel;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.utils.Utils;
@@ -48,6 +50,11 @@ public class TabPanelPage extends Page {
 				Utils.Console("Tab selection " + event.getSelectedItem() );
 			}
 		});
+	}
+
+	@UiHandler("tabsOnBottom")
+	void onValueChangeTabsOnBottom(ValueChangeEvent<Boolean> e) {
+		tab.setTabsOnBottom(e.getValue());
 	}
 
 }

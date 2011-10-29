@@ -3,10 +3,23 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
 	<ui:style>
+		.center {
+			display: -webkit-box;
+			-webkit-box-flex: 1;
+			-webkit-box-pack: center;
+		}
+		.multiline {
+			font-size: 0.6em;
+			max-width: 3.5em;
+			text-align: center;
+		}
+					
 	</ui:style>
 	<g:HTMLPanel>
 		<m:HeaderPanel ui:field="header" leftButton="Back">
-			<g:Label>Tab Panel</g:Label>			
+			<g:Label styleName="{style.center}">Tab Panel</g:Label>
+			<g:Label styleName="{style.multiline}">Tabs On Bottom</g:Label>
+			<m:FlipSwitch ui:field="tabsOnBottom" value="false"/>			
 		</m:HeaderPanel>
 		<m:TabPanel ui:field="tab">
 			<m:Tab>
