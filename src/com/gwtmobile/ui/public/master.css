@@ -192,10 +192,10 @@ html {
 .Scrollbar {
 	position: absolute; 
 	z-index: 100; 
-	width: 0.5em; 
+	width: 0.4em; 
 	bottom: 0.2em; 
 	top: 0; 
-	right: 0.1em; 
+	right: 0; 
 	pointer-events: none; 
 	overflow-x: hidden; 
 	overflow-y: hidden; 
@@ -205,12 +205,12 @@ html {
 	position: absolute; 
 	z-index: 100; 
 	background-color: rgba(0, 0, 0, 0.6); 
-	border-width: 0.1em; 
+	border-width: 1px; 
 	border-style: solid; 
-	border-color: rgba(255, 255, 255, 0.6); 
+	border-color: rgba(102, 102, 102, 1); 
 	-webkit-background-clip: padding-box; 
 	box-sizing: border-box; 
-	width: 100%; 
+	width: 90%; 
 	border-radius: 0.3em 0.3em; 
 }
 
