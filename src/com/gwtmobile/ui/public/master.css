@@ -313,10 +313,9 @@ html {
 	-webkit-box-orient: vertical;
 }
 
-.TabPanel > div:first-child {	/*tab header panel*/
+.TabPanel > .Header {	/*tab header panel*/
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
-	border-bottom: 0.2em solid #BDBDBD;
 	-webkit-box-shadow: rgba(0, 0, 0, 1) 0 0 1em;
 	font-size: .8em;
 	background: #333;
@@ -324,7 +323,15 @@ html {
 	z-index: 1;
 }
 
-.TabPanel > div:first-child > div {		/*tab header*/
+.TabPanel.Normal > .Header {	/*tab header panel*/
+	border-bottom: 0.2em solid #BDBDBD;
+}
+
+.TabPanel.Reverse > .Header {	/*tab header panel*/
+	border-top: 0.2em solid #BDBDBD;
+}
+
+.TabPanel > .Header > div {		/*tab header*/
 	-webkit-box-flex: 1;
 	display: -webkit-box;
 	-webkit-box-align: center;
@@ -332,44 +339,62 @@ html {
 	min-height: 2em;
 	border-left: 1px solid #666666;
 	border-top: 1px solid #666666;
-	border-bottom: 1px solid #333333;
 	margin: 0 0.2em 0 0.2em;
 	color: gray;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
+}
+
+.TabPanel.Normal > .Header > div {		/*tab header*/
+	border-bottom: 1px solid #333333;
 	border-top-left-radius: 0.3em 0.3em;
 	border-top-right-radius: 0.3em 0.3em;
 }
 
-.TabPanel > div:first-child > div.Selected {
+.TabPanel.Reverse > .Header > div {		/*tab header*/
+	border-top: 1px solid #333333;
+	border-bottom-left-radius: 0.3em 0.3em;
+	border-bottom-right-radius: 0.3em 0.3em;
+}
+
+.TabPanel > .Header > div.Selected {
 	color:black;
 	text-shadow: white 0 .1em .1em;
 	border-left: 1px solid white;
+}
+
+.TabPanel.Normal > .Header > div.Selected {
 	border-top: 1px solid white;
 	border-bottom: 1px solid #BDBDBD;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#BDBDBD));
 }
 
-.TabPanel > div:first-child > div.Selected .gwt-Image {
+.TabPanel.Reverse > .Header > div.Selected {
+	border-top: 1px solid #BDBDBD;
+	border-bottom: 1px solid white;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BDBDBD), to(white));
+}
+
+.TabPanel > .Header > div.Selected .gwt-Image {
 	opacity: 1;
 }
 
-.TabPanel > div:first-child > div .gwt-Image {
+.TabPanel > .Header > div .gwt-Image {
 	opacity: 0.5;
 }
 
-.TabPanel > div:last-child {			/*tab content panel*/
+.TabPanel > .Content {			/*tab content panel*/
 	position: relative;
 	-webkit-box-flex: 1;
 }
 
-.TabPanel > div:last-child > div {		/*tab content*/
+.TabPanel > .Content > div {		/*tab content*/
 	position:absolute;
 	display: -webkit-box;
 	height: 100%;
 	width: 100%;
 }
 
-.Android .TabPanel > div:first-child > div {		/*tab header*/
+.Android .TabPanel > .Header > div {		/*tab header*/
 	-webkit-box-shadow: #BDBDBD 0 0 .1em;	/* antialias workaround */
 }
 
@@ -861,3 +886,4 @@ html {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 }
+

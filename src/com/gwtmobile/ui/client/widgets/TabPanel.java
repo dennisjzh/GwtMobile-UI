@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 Zhihua (Dennis) Jiang
+ * Copyright (c) 2010-2011 Zhihua (Dennis) Jiang
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -39,12 +39,16 @@ public class TabPanel extends WidgetBase implements HasWidgets, HasSelectionHand
     private FlowPanel _tabHeaderPanel = new FlowPanel();
     private FlowPanel _tabContentPanel = new FlowPanel();
     private int _selectedTabIndex = -1;
+    private boolean _tabsOnBottom = false;
     
     public TabPanel() {
         initWidget(_panel);
         setStyleName("TabPanel");
+        addStyleName("Normal");
         _panel.add(_tabHeaderPanel);
         _panel.add(_tabContentPanel);
+        _tabHeaderPanel.setStyleName("Header");
+        _tabContentPanel.setStyleName("Content");
         _tabHeaderPanel.addDomHandler(this, ClickEvent.getType());
     }
     
@@ -141,6 +145,23 @@ public class TabPanel extends WidgetBase implements HasWidgets, HasSelectionHand
 	public HandlerRegistration addSelectionHandler(
 			SelectionHandler<Integer> handler) {
 		return this.addHandler(handler, SelectionEvent.getType());
+	}
+	
+	public void setTabsOnBottom(boolean tabsOnBottom) {
+		this._tabsOnBottom = tabsOnBottom;
+		if (_tabsOnBottom && _panel.getWidget(0) == _tabHeaderPanel) {
+			_panel.clear();
+			_panel.add(_tabContentPanel);
+			_panel.add(_tabHeaderPanel);
+			addStyleName("Reverse");
+			removeStyleName("Normal");
+		} else if(!_tabsOnBottom && _panel.getWidget(0) == _tabContentPanel){
+			_panel.clear();
+			_panel.add(_tabHeaderPanel);
+			_panel.add(_tabContentPanel);
+			addStyleName("Normal");
+			removeStyleName("Reverse");
+		}
 	}
 
 }
