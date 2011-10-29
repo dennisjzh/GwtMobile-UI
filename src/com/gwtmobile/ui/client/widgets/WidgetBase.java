@@ -28,14 +28,17 @@ public class WidgetBase extends Composite implements IsGwtMobileWidget {
     	_widgetHelper.CheckInitialLoad(this);
     }
 
-    public void onInitialLoad() {
+    @Override
+	public void onInitialLoad() {
     }
     
     //FIXME: shouldn't this method be on PageBase/PanelBase?
-    public void onTransitionEnd() {    	
+    @Override
+	public void onTransitionEnd() {    	
     }
     
-    public void setSecondaryStyle(String style) {
+    @Override
+	public void setSecondaryStyle(String style) {
     	_widgetHelper.setSecondaryStyle(this, style);
     }
 }
