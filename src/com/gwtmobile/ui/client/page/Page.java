@@ -16,9 +16,12 @@
 
 package com.gwtmobile.ui.client.page;
 
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.utils.Utils;
@@ -30,6 +33,7 @@ public abstract class Page extends WidgetBase {
 	private Transition _transition;
 	private static Transition _defaultTransition = Transition.SLIDE;
 	protected String tokenStateInfo = CONSUMED_TOKEN;
+	private static boolean _hideAddressBar = false;
 
 	@Override
 	protected void initWidget(Widget widget) {
@@ -43,6 +47,31 @@ public abstract class Page extends WidgetBase {
 		} else {
 			addStyleName("Desktop");
 		}
+	}
+
+	public static void hideAddressBar(boolean hide) {
+		_hideAddressBar = hide;
+		if (hide) {
+			int barHeight = Utils.isIOS() ? 60 : 90;
+			RootLayoutPanel.get().setHeight(Window.getClientHeight() + barHeight + "px");
+		}
+	}
+	
+	@Override
+	public void onLoad() {
+		super.onLoad();
+		if (_hideAddressBar) {
+			hideAddressBar();
+		}
+	}
+	
+	private void hideAddressBar() {
+		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+			@Override
+			public void execute() {
+				Window.scrollTo(0, 1);
+			}
+		});
 	}
 
 	/**

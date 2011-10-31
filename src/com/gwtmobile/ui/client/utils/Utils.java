@@ -105,8 +105,10 @@ public class Utils {
     }
     
     public static boolean isIOS() {
-    	return Window.Navigator.getUserAgent().contains("iPhone") || 
-    			Window.Navigator.getUserAgent().contains("iPod");
+    	String ua = Window.Navigator.getUserAgent();
+    	return ua.contains("iPhone") || 
+    			ua.contains("iPod") || 
+    			ua.contains("iPad");
     }
     
     public static boolean isWVGA() {
