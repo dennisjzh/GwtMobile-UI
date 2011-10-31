@@ -164,4 +164,14 @@ public class TabPanel extends WidgetBase implements HasWidgets, HasSelectionHand
 		}
 	}
 
+	public void setNavBarPanel(boolean isNavBarPanel) {
+		if (isNavBarPanel) {
+//			removeStyleName("TabPanel");
+			addStyleName("NavBarPanel");
+		}
+		else {
+			removeStyleName("NavBarPanel");
+//			addStyleName("TabPanel");
+		}
+	}
 }

@@ -417,6 +417,7 @@ html {
 	margin: 0;
 	border-radius: 0;
 	border: 0;
+	-webkit-box-shadow: black 0 0 0 !important;
 }
 
 .TabPanel.NavBarPanel > .Header > div.Selected {
