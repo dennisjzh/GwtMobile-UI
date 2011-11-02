@@ -13,6 +13,7 @@
 				<g:Label>Accordion Panel</g:Label>
 				<g:Label>Header Panel</g:Label>
 				<g:Label>List Panel</g:Label>
+				<g:Label>NavBar Panel</g:Label>
 				<g:Label>Scroll Panel</g:Label>
 				<g:Label>Slide Panel</g:Label>
 				<g:Label>Tab Panel</g:Label>

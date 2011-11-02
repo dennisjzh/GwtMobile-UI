@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 Zhihua (Dennis) Jiang
+ * Copyright (c) 2011 Zhihua (Dennis) Jiang
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -27,18 +27,18 @@ import com.gwtmobile.ui.client.utils.Utils;
 import com.gwtmobile.ui.client.widgets.HeaderPanel;
 import com.gwtmobile.ui.client.widgets.TabPanel;
 
-public class TabPanelPage extends Page {
+public class NavBarPanelPage extends Page {
 
 	@UiField HeaderPanel header;
 	@UiField TabPanel tab;
 	
-	private static TabPanelPageUiBinder uiBinder = GWT
-			.create(TabPanelPageUiBinder.class);
+	private static NavBarPanelPageUiBinder uiBinder = GWT
+			.create(NavBarPanelPageUiBinder.class);
 
-	interface TabPanelPageUiBinder extends UiBinder<Widget, TabPanelPage> {
+	interface NavBarPanelPageUiBinder extends UiBinder<Widget, NavBarPanelPage> {
 	}
 
-	public TabPanelPage() {
+	public NavBarPanelPage() {
 		initWidget(uiBinder.createAndBindUi(this));				
 		
 		tab.addSelectionHandler(new SelectionHandler<Integer>() {
@@ -49,5 +49,4 @@ public class TabPanelPage extends Page {
 			}
 		});
 	}
-
 }

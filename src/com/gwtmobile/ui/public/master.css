@@ -72,7 +72,7 @@ html {
 }
 
 .HeaderPanel > div:first-child, .HeaderPanel > div:last-child {
-/*	min-width:3em;*/
+	min-width:3em;
 }
 
 .HeaderPanel > div:nth-child(2) {

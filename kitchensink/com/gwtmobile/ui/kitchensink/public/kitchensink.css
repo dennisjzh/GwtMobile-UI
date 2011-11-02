@@ -8,7 +8,8 @@
 	-webkit-box-flex: 1;
 	border-radius: 0.4em;
 	-webkit-box-shadow: white 0em 0em 0.1em;	
-	overflow: hidden;				
+	overflow: hidden;
+	text-align: center;				
 }
 
 .Normal .Tab-Content {
