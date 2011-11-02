@@ -111,6 +111,10 @@ public class Utils {
     			ua.contains("iPad");
     }
     
+    public static boolean isDesktop() {
+    	return !Window.Navigator.getUserAgent().toLowerCase().contains("mobile");
+    }
+    
     public static boolean isWVGA() {
 		return Document.get().getDocumentElement().getClassName().contains("WVGA");
     }
@@ -188,6 +192,10 @@ public class Utils {
 
 	public static native void setHeight(Element ele, double value) /*-{
 		ele.style.height = value+"px";
+	}-*/;
+
+	public static native boolean hasPhoneGap() /*-{
+		return $wnd.PhoneGap != null;
 	}-*/;
 
 }

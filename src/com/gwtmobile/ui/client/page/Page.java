@@ -33,8 +33,13 @@ public abstract class Page extends WidgetBase {
 	private Transition _transition;
 	private static Transition _defaultTransition = Transition.SLIDE;
 	protected String tokenStateInfo = CONSUMED_TOKEN;
-	private static boolean _hideAddressBar = false;
 
+	static {
+		if (!Utils.isDesktop() && !Utils.hasPhoneGap()) {
+			hideAddressBar();
+		}
+	}
+	
 	@Override
 	protected void initWidget(Widget widget) {
 		super.initWidget(widget);
@@ -49,10 +54,9 @@ public abstract class Page extends WidgetBase {
 		}
 	}
 
-	public static void hideAddressBar(boolean hide) {
-		_hideAddressBar = hide;
-		if (hide) {
-			int barHeight = Utils.isIOS() ? 60 : 90;
+	private static void hideAddressBar() {
+		int barHeight = Utils.isIOS() ? 60 : Utils.isAndroid() ? 90 : 0;
+		if (barHeight > 0) {
 			RootLayoutPanel.get().setHeight(Window.getClientHeight() + barHeight + "px");
 		}
 	}
@@ -60,12 +64,12 @@ public abstract class Page extends WidgetBase {
 	@Override
 	public void onLoad() {
 		super.onLoad();
-		if (_hideAddressBar) {
-			hideAddressBar();
+		if (!Utils.isDesktop() && !Utils.hasPhoneGap()) {
+			scrollToHideAddressBar();
 		}
 	}
 	
-	private void hideAddressBar() {
+	private void scrollToHideAddressBar() {
 		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 			@Override
 			public void execute() {
