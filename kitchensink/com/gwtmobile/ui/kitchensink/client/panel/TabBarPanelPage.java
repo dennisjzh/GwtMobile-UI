@@ -27,18 +27,18 @@ import com.gwtmobile.ui.client.utils.Utils;
 import com.gwtmobile.ui.client.widgets.HeaderPanel;
 import com.gwtmobile.ui.client.widgets.TabPanel;
 
-public class NavBarPanelPage extends Page {
+public class TabBarPanelPage extends Page {
 
 	@UiField HeaderPanel header;
 	@UiField TabPanel tab;
 	
-	private static NavBarPanelPageUiBinder uiBinder = GWT
-			.create(NavBarPanelPageUiBinder.class);
+	private static TabBARPanelPageUiBinder uiBinder = GWT
+			.create(TabBARPanelPageUiBinder.class);
 
-	interface NavBarPanelPageUiBinder extends UiBinder<Widget, NavBarPanelPage> {
+	interface TabBARPanelPageUiBinder extends UiBinder<Widget, TabBarPanelPage> {
 	}
 
-	public NavBarPanelPage() {
+	public TabBarPanelPage() {
 		initWidget(uiBinder.createAndBindUi(this));				
 		
 		tab.addSelectionHandler(new SelectionHandler<Integer>() {

@@ -55,20 +55,20 @@ public class PanelsPage extends Page {
     		goTo(listPanelPage);
     		break;
     	case 3:
-    		NavBarPanelPage navBarPanelPage = new NavBarPanelPage();
-    		goTo(navBarPanelPage);
-    		break;
-    	case 4:
     		ScrollPanelPage scrollPanelPage = new ScrollPanelPage();
     		goTo(scrollPanelPage);
     		break;
-    	case 5:
+    	case 4:
     		SlidePanelPage slidePanelPage = new SlidePanelPage();
     		goTo(slidePanelPage);
     		break;
-    	case 6:
+    	case 5:
     		TabPanelPage tabPanelPage = new TabPanelPage();
     		goTo(tabPanelPage);
+    		break;
+    	case 6:
+    		TabBarPanelPage tabBarPanelPage = new TabBarPanelPage();
+    		goTo(tabBarPanelPage);
     		break;
     	}
     }

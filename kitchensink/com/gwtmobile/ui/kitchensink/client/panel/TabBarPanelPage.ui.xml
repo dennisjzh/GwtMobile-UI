@@ -6,9 +6,9 @@
 	</ui:style>
 	<g:HTMLPanel>
 		<m:HeaderPanel ui:field="header" leftButton="Back">
-			<g:Label>NavBar Panel</g:Label>
+			<g:Label>TabBar Panel</g:Label>
 		</m:HeaderPanel>
-		<m:TabPanel ui:field="tab" navBarPanel="true">
+		<m:TabPanel ui:field="tab" tabBarPanel="true">
 			<m:Tab>
 				<m:TabHeader>
 					<g:Label>Tab1</g:Label>
@@ -16,7 +16,7 @@
 				<m:TabContent>
 					<g:HTMLPanel styleName="Tab-Content">
 					<g:Label>Tabs On Top</g:Label>
-					<g:Label>1. NavBar Panel is simply Tab Panel with navBarPanel="true".</g:Label>
+					<g:Label>1. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
 					</g:HTMLPanel>
 				</m:TabContent>
 			</m:Tab>
@@ -27,7 +27,7 @@
 				<m:TabContent>
 					<g:HTMLPanel styleName="Tab-Content">
 					<g:Label>Tabs On Top</g:Label>
-					<g:Label>2. NavBar Panel is simply Tab Panel with navBarPanel="true".</g:Label>
+					<g:Label>2. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
 					</g:HTMLPanel>
 				</m:TabContent>
 			</m:Tab>
@@ -38,13 +38,13 @@
 				<m:TabContent>
 					<g:HTMLPanel styleName="Tab-Content">
 					<g:Label>Tabs On Top</g:Label>
-					<g:Label>3. NavBar Panel is simply Tab Panel with navBarPanel="true".</g:Label>
+					<g:Label>3. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
 					</g:HTMLPanel>
 				</m:TabContent>
 			</m:Tab>
 		</m:TabPanel>
 		<div style="height:.5em"/>		
-		<m:TabPanel ui:field="tab2" navBarPanel="true" tabsOnBottom="true">
+		<m:TabPanel ui:field="tab2" tabBarPanel="true" tabsOnBottom="true">
 			<m:Tab>
 				<m:TabHeader>
 					<g:Label>Tab1</g:Label>
@@ -52,7 +52,7 @@
 				<m:TabContent>
 					<g:HTMLPanel styleName="Tab-Content">
 					<g:Label>Tabs On Bottom</g:Label>
-					<g:Label>1. NavBar Panel is simply Tab Panel with navBarPanel="true".</g:Label>
+					<g:Label>1. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
 					</g:HTMLPanel>
 				</m:TabContent>
 			</m:Tab>
@@ -63,7 +63,7 @@
 				<m:TabContent>
 					<g:HTMLPanel styleName="Tab-Content">
 					<g:Label>Tabs On Bottom</g:Label>
-					<g:Label>2. NavBar Panel is simply Tab Panel with navBarPanel="true".</g:Label>
+					<g:Label>2. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
 					</g:HTMLPanel>
 				</m:TabContent>
 			</m:Tab>
@@ -74,7 +74,7 @@
 				<m:TabContent>
 					<g:HTMLPanel styleName="Tab-Content">
 					<g:Label>Tabs On Bottom</g:Label>
-					<g:Label>3. NavBar Panel is simply Tab Panel with navBarPanel="true".</g:Label>
+					<g:Label>3. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
 					</g:HTMLPanel>
 				</m:TabContent>
 			</m:Tab>

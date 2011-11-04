@@ -402,14 +402,14 @@ html {
 	-webkit-box-shadow: #BDBDBD 0 0 .1em;	/* antialias workaround */
 }
 
-/********** NavBar Panel **********/
+/********** TabBar Panel **********/
 
-.TabPanel.NavBarPanel > .Header {
+.TabPanel.TabBarPanel > .Header {
 	border: 0;
 	padding: 0;
 }
 
-.TabPanel.NavBarPanel > .Header > div {		/*tab header*/
+.TabPanel.TabBarPanel > .Header > div {		/*tab header*/
 	color: gray;
  	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 	 	from(#2e2e2e), color-stop(0.02, #2e2e2e), color-stop(0.5, #151515), 
@@ -420,7 +420,7 @@ html {
 	-webkit-box-shadow: black 0 0 0 !important;
 }
 
-.TabPanel.NavBarPanel > .Header > div.Selected {
+.TabPanel.TabBarPanel > .Header > div.Selected {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(#434343), color-stop(0.02, #434343), 
 		color-stop(0.5, #363636), color-stop(0.5, #252525), to(#252525) );
