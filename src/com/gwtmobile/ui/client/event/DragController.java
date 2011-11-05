@@ -16,6 +16,7 @@
 
 package com.gwtmobile.ui.client.event;
 
+import java.beans.Beans;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,7 +33,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.utils.Point;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public abstract class DragController implements EventListener {
+public class DragController implements EventListener {
 
     private List<DragEventsHandler> _dragEventHandlers = new ArrayList<DragEventsHandler>();
     private List<SwipeEventsHandler> _swipeEventHandlers = new ArrayList<SwipeEventsHandler>();
@@ -51,9 +52,9 @@ public abstract class DragController implements EventListener {
     protected JavaScriptObject _dragMoveListener;
     protected JavaScriptObject _dragEndListener;
 
+	private static DragController INSTANCE = Beans.isDesignTime() ? 
+			new DragController() : 	(DragController)GWT.create(DragController.class);
 	
-	protected static DragController INSTANCE = GWT.create(DragController.class);
-
 	DragController() {
 	    Utils.Console("New DragController instance created");
 	    init();
