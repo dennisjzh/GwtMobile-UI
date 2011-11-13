@@ -20,6 +20,8 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -37,7 +39,14 @@ public abstract class Page extends WidgetBase {
 	static {
 		if (!Utils.isDesktop() && !Utils.hasPhoneGap()) {
 			hideAddressBar();
-		}
+			Window.addResizeHandler(new ResizeHandler() { 
+				@Override 
+				public void onResize(ResizeEvent event) { 
+					hideAddressBar();
+					scrollToHideAddressBar();
+				} 
+			}); 
+		} 
 	}
 	
 	@Override
@@ -61,15 +70,7 @@ public abstract class Page extends WidgetBase {
 		}
 	}
 	
-	@Override
-	public void onLoad() {
-		super.onLoad();
-		if (!Utils.isDesktop() && !Utils.hasPhoneGap()) {
-			scrollToHideAddressBar();
-		}
-	}
-	
-	private void scrollToHideAddressBar() {
+	private static void scrollToHideAddressBar() {
 		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 			@Override
 			public void execute() {
@@ -78,6 +79,14 @@ public abstract class Page extends WidgetBase {
 		});
 	}
 
+	@Override
+	public void onLoad() {
+		super.onLoad();
+		if (!Utils.isDesktop() && !Utils.hasPhoneGap()) {
+			scrollToHideAddressBar();
+		}
+	}
+	
 	/**
 	 * Gives the page an opportunity to load state that was sent as part of the
 	 * history token prior to display.
