@@ -64,7 +64,7 @@ public abstract class Page extends WidgetBase {
 	}
 
 	private static void hideAddressBar() {
-		int barHeight = Utils.isIOS() ? 60 : Utils.isAndroid() ? 90 : 0;
+		int barHeight = Utils.isIOS() ? 60 : Utils.isAndroid() ? 1 : 0;
 		if (barHeight > 0) {
 			RootLayoutPanel.get().setHeight(Window.getClientHeight() + barHeight + "px");
 		}
