@@ -20,16 +20,15 @@ import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.Document;
 import com.gwtmobile.ui.client.utils.Utils;
 
-
 public class RadioButton extends com.google.gwt.user.client.ui.RadioButton 
 	implements IsGwtMobileWidget {
 
-    private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
+    private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
 	
 	public RadioButton() {
 		super(null);
 		if (Utils.isAndroid() && Utils.isWVGA()) {
-			setStyleName("RadioButton");
+			setStyleName("gwtm-RadioButton");
 			DivElement div = Document.get().createDivElement();
 			this.getElement().insertFirst(div);
 		}
@@ -38,7 +37,7 @@ public class RadioButton extends com.google.gwt.user.client.ui.RadioButton
 	@Override
 	protected void onLoad() {
 		super.onLoad();
-		_widgetHelper.CheckInitialLoad(this);
+		widgetHelper.CheckInitialLoad(this);
 	}
 
 	@Override
@@ -71,7 +70,7 @@ public class RadioButton extends com.google.gwt.user.client.ui.RadioButton
 
 	@Override
 	public void setSecondaryStyle(String style) {
-		_widgetHelper.setSecondaryStyle(this, style);
+		widgetHelper.setSecondaryStyle(this, style);
 	}
 
 }

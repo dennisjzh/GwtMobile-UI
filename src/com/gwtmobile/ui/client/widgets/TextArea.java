@@ -29,10 +29,10 @@ import com.gwtmobile.ui.client.utils.Utils;
 public class TextArea extends com.google.gwt.user.client.ui.TextArea 
 	implements FocusHandler, BlurHandler, KeyUpHandler, IsGwtMobileWidget {
 
-    private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
+    private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
 
 	TextArea() {
-		setStyleName("TextArea");
+		setStyleName("gwtm-TextArea");
 		addFocusHandler(this);
 		addBlurHandler(this);
 		addKeyUpHandler(this);
@@ -41,7 +41,7 @@ public class TextArea extends com.google.gwt.user.client.ui.TextArea
 	@Override
 	protected void onLoad() {
 		super.onLoad();
-		_widgetHelper.CheckInitialLoad(this);
+		widgetHelper.CheckInitialLoad(this);
 	}
 	
 	@Override
@@ -76,7 +76,7 @@ public class TextArea extends com.google.gwt.user.client.ui.TextArea
 
 	@Override
 	public void setSecondaryStyle(String style) {
-		_widgetHelper.setSecondaryStyle(this, style);
+		widgetHelper.setSecondaryStyle(this, style);
 	}
 
 }

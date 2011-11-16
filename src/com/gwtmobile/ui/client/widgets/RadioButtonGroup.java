@@ -24,18 +24,18 @@ import com.gwtmobile.ui.client.utils.Utils;
 
 public class RadioButtonGroup extends CheckBoxGroup {
 
-    private String _name = null;
+    private String name = null;
     
     public RadioButtonGroup() {
     	super();
-    	setStyleName("RadioButtonGroup");
+    	setStyleName("gwtm-RadioButtonGroup");
     	addStyleName("Vertical");
     }
 
     @Override
     public void onInitialLoad() {
     	super.onInitialLoad();
-    	assert _name != null
+    	assert name != null
 			: "Attribute 'name' must be set on RadioButtonGroup";
     }
     
@@ -62,7 +62,7 @@ public class RadioButtonGroup extends CheckBoxGroup {
         }
         else if (targetTagName.equals("INPUT")) {
     		super.onClick(e);
-        	for (int i = 0; i < _panel.getWidgetCount(); i++) {
+        	for (int i = 0; i < getWidgetCount(); i++) {
 				RadioButton radio = (RadioButton) getWidget(i);
 				radio.setValue(radio.getValue());
 			}
@@ -70,8 +70,8 @@ public class RadioButtonGroup extends CheckBoxGroup {
     }
     
     public int getCheckedIndex() {
-        for (int i = 0; i < _panel.getWidgetCount(); i++) {
-            RadioButton radio = (RadioButton) _panel.getWidget(i);
+        for (int i = 0; i < getWidgetCount(); i++) {
+            RadioButton radio = (RadioButton) getWidget(i);
             if (radio.getValue()) {
             	return i;
             }
@@ -92,23 +92,23 @@ public class RadioButtonGroup extends CheckBoxGroup {
     	assert w instanceof RadioButton 
     		: "Can only contain RadioButton widgets in RadioButtonGroup";
     	RadioButton radio = (RadioButton) w;
-    	if (_name != null) {
-    		radio.setName(_name);
+    	if (name != null) {
+    		radio.setName(name);
     	}
-        _panel.add(radio);
+        add(radio);
 		radio.addValueChangeHandler(this);
     }
     
     public void setName(String name) {
-    	_name = name;
-    	for (int i = 0; i < _panel.getWidgetCount(); i++) {
-    		RadioButton radio = (RadioButton) _panel.getWidget(i);
-    		radio.setName(_name);
+    	this.name = name;
+    	for (int i = 0; i < getWidgetCount(); i++) {
+    		RadioButton radio = (RadioButton) getWidget(i);
+    		radio.setName(name);
     	}
     }
     
     public String getName() {
-    	return _name;
+    	return name;
     }
     
 }

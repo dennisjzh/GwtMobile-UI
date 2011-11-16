@@ -29,23 +29,23 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.panels.FlowPanel;
 import com.gwtmobile.ui.client.utils.Utils;
 
-
-public class DropDownList extends PanelBase 
+public class DropDownList extends FlowPanel 
 	implements FocusHandler, BlurHandler, ChangeHandler, HasValueChangeHandlers<String> {
-
+	
 	ListBox _listBox = new ListBox();
 	
 	public DropDownList() {
 		super();
-		_panel.add(_listBox);
+		add(_listBox);
 		if (!Utils.isIOS()) {
-			_panel.add(new HTMLPanel(""));
-			_panel.add(new HTMLPanel(""));
-			_panel.add(new HTMLPanel(""));
+			add(new HTMLPanel(""));
+			add(new HTMLPanel(""));
+			add(new HTMLPanel(""));
 		}
-		setStyleName("DropDownList");
+		setStyleName("gwtm-DropDownList");
 		_listBox.addFocusHandler(this);
 		_listBox.addBlurHandler(this);
 		_listBox.addChangeHandler(this);

@@ -22,18 +22,31 @@ import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
 
-class TextBoxBase extends com.google.gwt.user.client.ui.TextBoxBase 
+public class TextBoxBase extends com.google.gwt.user.client.ui.TextBoxBase 
 	implements FocusHandler, BlurHandler, IsGwtMobileWidget {
 
     private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
+    private String type = "TextBox";
 
-	TextBoxBase(String type) {
-	    super(createNumberInputElement(type));
-		setStyleName("TextBox " + capitalize(type));
+	public TextBoxBase(String type) {
+	    super(createInputElement(type));
+	    setStyleName("gwtm-InputField");
+	    setType(type);
 		addFocusHandler(this);
 		addBlurHandler(this);
 	}
 	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		if (this.type == null) return;
+		this.removeStyleName(this.type);
+		this.type = type;
+		this.addStyleName(this.type);
+	}
+
 	@Override
 	protected void onLoad() {
 		super.onLoad();
@@ -51,17 +64,17 @@ class TextBoxBase extends com.google.gwt.user.client.ui.TextBoxBase
 		this.removeStyleName("Focus");
 	}
 
-	private static native InputElement createNumberInputElement(String type)  /*-{
+	private static native InputElement createInputElement(String type)  /*-{
 		var e = $doc.createElement("INPUT");
 		e.type = type;
 		return e;
 	}-*/;
-	
-	private String capitalize(String input) {
-		return input.substring(0, 1).toUpperCase() + 
-				input.substring(1).toLowerCase();
 
-	}
+	// might be useful
+//	private String capitalize(String input) {
+//		return input.substring(0, 1).toUpperCase() + 
+//				input.substring(1).toLowerCase();
+//	}
 
 	@Override
 	public void onInitialLoad() {
