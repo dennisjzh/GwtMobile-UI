@@ -21,13 +21,13 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.page.Page;
-import com.gwtmobile.ui.client.widgets.AccordionPanel;
-import com.gwtmobile.ui.client.widgets.HeaderPanel;
+import com.gwtmobile.ui.client.panels.StackPanel;
+import com.gwtmobile.ui.client.panels.HeaderPanel;
 
 public class AccordionPanelPage extends Page {
 
 	@UiField HeaderPanel header;
-	@UiField AccordionPanel accordion;
+	@UiField StackPanel accordion;
 	
 	private static AccordionPanelPageUiBinder uiBinder = GWT
 			.create(AccordionPanelPageUiBinder.class);

@@ -24,10 +24,10 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.page.Page;
-import com.gwtmobile.ui.client.widgets.HeaderPanel;
-import com.gwtmobile.ui.client.widgets.SlidePanel;
-import com.gwtmobile.ui.client.widgets.Slide;
-import com.gwtmobile.ui.client.widgets.SlidePanel.SlideProvider;
+import com.gwtmobile.ui.client.panels.HeaderPanel;
+import com.gwtmobile.ui.client.panels.SlidePanel;
+import com.gwtmobile.ui.client.panels.Slide;
+import com.gwtmobile.ui.client.panels.SlidePanel.SlideProvider;
 
 public class SlidePanelPage extends Page implements SlideProvider{
 

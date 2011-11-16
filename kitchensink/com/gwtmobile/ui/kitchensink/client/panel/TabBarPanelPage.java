@@ -24,8 +24,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.utils.Utils;
-import com.gwtmobile.ui.client.widgets.HeaderPanel;
-import com.gwtmobile.ui.client.widgets.TabPanel;
+import com.gwtmobile.ui.client.panels.HeaderPanel;
+import com.gwtmobile.ui.client.panels.TabPanel;
 
 public class TabBarPanelPage extends Page {
 

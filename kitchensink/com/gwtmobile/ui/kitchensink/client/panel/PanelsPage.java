@@ -23,7 +23,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.page.Page;
-import com.gwtmobile.ui.client.widgets.ListPanel;
+import com.gwtmobile.ui.client.panels.ListPanel;
 
 public class PanelsPage extends Page {
 
