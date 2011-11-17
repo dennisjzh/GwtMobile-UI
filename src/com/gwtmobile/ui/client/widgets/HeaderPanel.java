@@ -16,45 +16,40 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import java.util.Iterator;
-
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
-public class HeaderPanel extends WidgetBase implements HasWidgets {
+public class HeaderPanel extends FlowPanel {
    
 	ClickHandler _leftButtonClickHandler;
 	ClickHandler _rightButtonClickHandler;
 	
     public HeaderPanel() {
-    	FlowPanel container = new FlowPanel();
-    	container.add(new SimplePanel());	//left button placeholder
-    	container.add(new FlowPanel());		//contents
-    	container.add(new SimplePanel());	//right button placeholder
-        initWidget(container);
+    	super.add(new SimplePanel());	//left button placeholder
+    	super.add(new FlowPanel());		//contents
+    	super.add(new SimplePanel());	//right button placeholder
         setStyleName(Primary.HeaderPanel);
     }
     
     @Override
     public void add(Widget w) {
-    	FlowPanel contents = ((FlowPanel)((FlowPanel)getWidget()).getWidget(1));
+    	FlowPanel contents = (FlowPanel)getWidget(1);
     	contents.add(w);
     }
     
     public void setCaption(String caption) {
-    	FlowPanel contents = ((FlowPanel)((FlowPanel)getWidget()).getWidget(1));
+    	FlowPanel contents = (FlowPanel)getWidget(1);
     	contents.clear();
     	contents.add(new HTML(caption));
     }
     
     public String getCaption() {
-    	FlowPanel contents = ((FlowPanel)((FlowPanel)getWidget()).getWidget(1));
+    	FlowPanel contents = (FlowPanel)getWidget(1);
     	if (contents.getWidgetCount() > 0) {
         	HTML w = (HTML) contents.getWidget(0);
         	return w.getHTML();
@@ -63,7 +58,7 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
     }
     
     public void setLeftButton(String buttonName) {
-    	SimplePanel leftButton = ((SimplePanel)((FlowPanel)getWidget()).getWidget(0));
+    	SimplePanel leftButton = (SimplePanel)getWidget(0);
     	ClickHandler clickHandler = new ClickHandler() {				
 			@Override
 			public void onClick(ClickEvent event) {
@@ -79,7 +74,7 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
     }
     
     public void setRightButton(String buttonName) {
-    	SimplePanel rightButton = ((SimplePanel)((FlowPanel)getWidget()).getWidget(2));
+    	SimplePanel rightButton = (SimplePanel)getWidget(2);
     	ClickHandler clickHandler = new ClickHandler() {				
 			@Override
 			public void onClick(ClickEvent event) {
@@ -95,12 +90,12 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
     }
     
     public Button getLeftButton() {
-    	SimplePanel leftButton = ((SimplePanel)((FlowPanel)getWidget()).getWidget(0));
+    	SimplePanel leftButton = (SimplePanel)getWidget(0);
     	return (Button) leftButton.getWidget();
     }
     
     public Button getRightButton() {
-    	SimplePanel rightButton = ((SimplePanel)((FlowPanel)getWidget()).getWidget(2));
+    	SimplePanel rightButton = (SimplePanel)getWidget(2);
     	return (Button) rightButton.getWidget();
     }
     
@@ -128,24 +123,6 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
     
     public void setRightButtonClickHandler(ClickHandler handler) {
     	_rightButtonClickHandler = handler;
-    }
-    
-    @Override
-    public void clear() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public Iterator<Widget> iterator() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public boolean remove(Widget w) {
-        // TODO Auto-generated method stub
-        return false;
     }
     
 }
