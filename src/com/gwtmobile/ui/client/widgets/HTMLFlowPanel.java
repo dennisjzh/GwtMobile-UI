@@ -53,10 +53,12 @@ public class HTMLFlowPanel extends FlowPanel {
 			return intPanel.remove(w);
 		}
 
+		@Override
 		public Widget getWidget(int index) {
 			return intPanel.getWidget(index);
 		}
 		
+		@Override
 		public int getWidgetCount() {
 			return intPanel.getWidgetCount();
 		}
@@ -66,12 +68,12 @@ public class HTMLFlowPanel extends FlowPanel {
 //	    	intPanel.add(w);
 //	    }
 	    
-	    private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
-	    
-	    @Override
-	    public void onLoad() {
-	    	super.onLoad();
-	    	_widgetHelper.CheckInitialLoad(this);
-	    }
+//	    private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
+//	    
+//	    @Override
+//	    public void onLoad() {
+//	    	super.onLoad();
+//	    	_widgetHelper.CheckInitialLoad(this);
+//	    }
 
 }
