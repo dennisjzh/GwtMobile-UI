@@ -18,6 +18,8 @@ package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
+import com.gwtmobile.ui.client.widgets.ListPanel.Chevron;
 
 public class ListItem extends FlowPanel{
 
@@ -26,11 +28,12 @@ public class ListItem extends FlowPanel{
 	private boolean enabled = true;
 
 	public ListItem() {
-    	setStyleName("gwtm-ListItem");
+		// there is no named style role for list item. 
+    	//setStyleName("gwtm-ListItem");
     }
 
+	//Need this method to keep the setter consistent with ListPanel.
 	public void setDisplayArrow(boolean display) {
-		//TODO: need to make this setter consistent with ListPanel.
 		setDisplayArrow(display ? ShowArrow.Visible : ShowArrow.Hidden);
 	}
 
@@ -43,7 +46,7 @@ public class ListItem extends FlowPanel{
 		int last = getWidgetCount() - 1;
 		if (last >=0) {
 			Widget widget = getWidget(last);
-			if (widget.getClass().toString().endsWith(".Chevron")) {
+			if (widget.getClass() == Chevron.class) {
 				if (!show) {
 					remove(last);
 				}
@@ -63,9 +66,9 @@ public class ListItem extends FlowPanel{
 	public void setEnabled(boolean disabled) {
 		this.enabled = disabled;
 		if (!isEnabled()) {
-			addStyleName("Disabled");
+			addStyleName(Secondary.Disabled);
 		} else {
-			removeStyleName("Disabled");
+			removeStyleName(Secondary.Disabled);
 		}
 	}
 	

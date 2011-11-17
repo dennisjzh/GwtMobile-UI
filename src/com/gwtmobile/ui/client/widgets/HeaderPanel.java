@@ -25,6 +25,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
 public class HeaderPanel extends WidgetBase implements HasWidgets {
    
@@ -37,7 +38,7 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
     	container.add(new FlowPanel());		//contents
     	container.add(new SimplePanel());	//right button placeholder
         initWidget(container);
-        setStyleName("gwtm-HeaderPanel");
+        setStyleName(Primary.HeaderPanel);
     }
     
     @Override

@@ -22,6 +22,8 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
@@ -37,7 +39,7 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
 	
     public ListPanel() { 
         addDomHandler(this, ClickEvent.getType());
-        setStyleName("gwtm-ListPanel");
+        setStyleName(Primary.ListPanel);
     }
 
     public HandlerRegistration addSelectionChangedHandler(SelectionChangedHandler handler) {
@@ -57,18 +59,19 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
 
     @Override
     public void add(Widget w) {
-    	if (w.getClass().toString().endsWith(".ListItem")) {
+    	if (w.getClass() == ListItem.class) {
     		super.add(w);
     	}
     	else {
-    		assert false : "Only ListItem can be added to ListPanel.";
-//        	ListItem listItem = new ListItem();
-//        	super.add(listItem);    	
-//        	listItem.add(w);
-//        	if (_showArrow) {
-//	        	Chevron chevron = new Chevron();
-//	        	listItem.add(chevron);
-//        	}
+    		//TODO: check with joao if this is causing problem with gwt designer.
+//    		assert false : "Only ListItem can be added to ListPanel.";
+        	ListItem listItem = new ListItem();
+        	super.add(listItem);    	
+        	listItem.add(w);
+        	if (showArrow) {
+	        	Chevron chevron = new Chevron();
+	        	listItem.add(chevron);
+        	}
     	}
     }
 
@@ -80,7 +83,7 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
 	            SelectionChangedEvent selectionChangedEvent = new SelectionChangedEvent(selected, 
 	            	e.getNativeEvent().getEventTarget());
 	            this.fireEvent(selectionChangedEvent);
-	        	item.removeStyleName("Pressed");
+	        	item.removeStyleName(Secondary.Pressed);
     		}
     		selected = -1;
         }
@@ -121,7 +124,7 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
 				    	if (selected >= 0) {
 				    		ListItem item = (ListItem) getWidget(selected);
 				    		if (item.isEnabled()) {
-					        	getWidget(selected).addStyleName("Pressed");
+					        	getWidget(selected).addStyleName(Secondary.Pressed);
 				    		}
 				    	}
 					}
@@ -133,7 +136,7 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
     @Override
     public void onDragMove(DragEvent e) {
     	if (selected >= 0) {
-        	getWidget(selected).removeStyleName("Pressed");
+        	getWidget(selected).removeStyleName(Secondary.Pressed);
     		selected = -1;
     	}
     }
@@ -141,7 +144,7 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
     @Override
     public void onDragEnd(DragEvent e) {
     	if (selected >= 0) {
-        	getWidget(selected).removeStyleName("Pressed");
+        	getWidget(selected).removeStyleName(Secondary.Pressed);
     		//_selected = -1; need to keep the selected value for click event.
     	}
     }

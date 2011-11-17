@@ -24,6 +24,8 @@ import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
@@ -39,7 +41,7 @@ public class ScrollPanel extends HTMLFlowPanel implements HasWidgets, DragEvents
 	private Element scrollbar;
 	
     public ScrollPanel() {
-        setStyleName("gwtm-ScrollPanel");
+        setStyleName(Primary.ScrollPanel);
         setWithPadding(withPadding);
         this.initScrollbar();
     }
@@ -51,9 +53,9 @@ public class ScrollPanel extends HTMLFlowPanel implements HasWidgets, DragEvents
 	public void setWithPadding(boolean withPadding) {
 		this.withPadding = withPadding;
 		if (withPadding){
-			addStyleName("WithPanning");
+			addStyleName(Secondary.WithPadding);
 		} else {
-			removeStyleName("WithPanning");
+			removeStyleName(Secondary.WithPadding);
 		}
 		
 	}
@@ -61,7 +63,7 @@ public class ScrollPanel extends HTMLFlowPanel implements HasWidgets, DragEvents
     private void initScrollbar(){
         scrollbar=DOM.createDiv();
         scrollbar.appendChild(DOM.createDiv());
-        scrollbar.setClassName("gwtm-Scrollbar");
+        scrollbar.setClassName(Primary.ScrollBar);
         this.getElement().insertFirst(scrollbar);
 		this.hideScrollBar();
     }
@@ -76,7 +78,7 @@ public class ScrollPanel extends HTMLFlowPanel implements HasWidgets, DragEvents
     		this.hideScrollBar();
     		return;
     	}else{
-    		this.showScrollbar();    		
+    		this.showScrollBar();    		
     	}
 
     	double scrollbarPos=-scrollHeight*scrollPannerPos/scrollPannelHeight;
@@ -101,7 +103,7 @@ public class ScrollPanel extends HTMLFlowPanel implements HasWidgets, DragEvents
     	Utils.setTranslateY(this.scrollbar.getFirstChildElement(),scrollbarPos);
     }
     
-    private void showScrollbar(){
+    private void showScrollBar(){
     	this.scrollbar.setAttribute("style", "opacity:1");
     }
     

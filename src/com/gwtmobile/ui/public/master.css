@@ -48,7 +48,7 @@ html {
 
 /********************* Header Panel ****************/
 
-.HeaderPanel {
+.gwtm-HeaderPanel {
 	position:relative;
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
@@ -62,20 +62,20 @@ html {
 }
 
 /* needed this to get around the android browser bug when scroll, causing controls to disapear.*/
-.HeaderPanel * {
+.gwtm-HeaderPanel * {
 	z-index: 1;
 }
 
 /* TODO: fix me! */
-.HeaderPanel > div > div.gwt-Label {
+.gwtm-HeaderPanel > div > div.gwt-Label {
 	font-weight: bold;
 }
 
-.HeaderPanel > div:first-child, .HeaderPanel > div:last-child {
+.gwtm-HeaderPanel > div:first-child, .gwtm-HeaderPanel > div:last-child {
 	min-width:3em;
 }
 
-.HeaderPanel > div:nth-child(2) {
+.gwtm-HeaderPanel > div:nth-child(2) {
 	-webkit-box-flex: 1;
 	display: -webkit-box;
 	-webkit-box-pack: center;
@@ -173,7 +173,7 @@ html {
 }
 
 /********** Scroll Panel **********/
-.ScrollPanel {
+.gwtm-ScrollPanel {
 	position: relative;
 	-webkit-transition-property: -webkit-transform, top;
     -webkit-transition-timing-function: cubic-bezier(0,0,0.25,1);
@@ -181,15 +181,22 @@ html {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
-	padding-top: .3em;
-	padding-bottom: .5em;
 }
 
-.ScrollPanel > * {
+.gwtm-ScrollPanel.WithPadding {
+	padding: .5em 0 0.5em 0; /* left and right should not have padding */
+}
+
+.gwtm-ScrollPanel > * {
 	position: relative;
 }
 
-.Scrollbar {
+.gwtm-ScrollPanel.FullHeight, .gwtm-ScrollPanel.FullHeight .gwtm-HTMLPanel {
+	height: 100%;
+}
+
+
+.gwtm-ScrollBar {
 	position: absolute; 
 	z-index: 100; 
 	width: 0.4em; 
@@ -201,7 +208,7 @@ html {
 	overflow-y: hidden; 
 }
 
-.Scrollbar > div {
+.gwtm-ScrollBar > div {
 	position: absolute; 
 	z-index: 100; 
 	background-color: rgba(0, 0, 0, 0.6); 
@@ -215,13 +222,13 @@ html {
 }
 
 /********** List Panel **********/
-.ListPanel {
+.gwtm-ListPanel {
 	position:relative;
 	display: -webkit-box;
 	-webkit-box-orient: vertical; 
 }
 
-.ListPanel > div {
+.gwtm-ListPanel > div {
 	border-bottom:1px solid #333333;
 	border-top:1px solid #666666;
 	padding: 0.5em 0.5em 0.5em 0.5em;
@@ -233,35 +240,35 @@ html {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
 } 
 
-.ListPanel > div:first-child {
+.gwtm-ListPanel > div:first-child {
 	border-top:0px;
 	border-top-left-radius: 0.4em 0.4em;
 	border-top-right-radius: 0.4em 0.4em;
 	-webkit-box-shadow: rgba(0, 0, 0, .5) 0em -.2em 0.2em;
 } 
 
-.ListPanel > div:last-child {
+.gwtm-ListPanel > div:last-child {
 	border-bottom:0px;
 	border-bottom-left-radius: 0.4em 0.4em;
 	border-bottom-right-radius: 0.4em 0.4em;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0em 0.2em 0.2em;
 } 
 
-.ListPanel > div:only-child {
+.gwtm-ListPanel > div:only-child {
 	-webkit-box-shadow: rgba(0, 0, 0, 1) 0em 0em 0.5em;
 }
 
-.ListPanel > div.Pressed {
+.gwtm-ListPanel > div.Pressed {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
 }
 
-.ListPanel > div.Disabled {
+.gwtm-ListPanel > div.Disabled {
 	color: gray;
 }
 
 /* anti-flickering */
-.iOS .ScrollPanel > .ListPanel > div {
+.iOS .gwtm-ScrollPanel > .gwtm-ListPanel > div {
     -webkit-transform: translate3d(0px, 0px, 0px);
 }
 
