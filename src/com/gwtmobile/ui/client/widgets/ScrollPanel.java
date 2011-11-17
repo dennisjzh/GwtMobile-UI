@@ -22,7 +22,6 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
@@ -33,7 +32,7 @@ import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public class ScrollPanel extends HTMLFlowPanel implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
+public class ScrollPanel extends HTMLFlowPanel implements DragEventsHandler, SwipeEventsHandler {
 
 	private boolean withPadding = true;
 	private boolean hasTextBox = false;
