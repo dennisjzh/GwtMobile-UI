@@ -9,7 +9,7 @@
 			<g:Label>Panels</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel>
-			<m:ListPanel ui:field="list" showArrow="true">
+			<m:ListPanel ui:field="list" displayArrow="true">
 				<g:Label>Accordion Panel</g:Label>
 				<g:Label>Header Panel</g:Label>
 				<g:Label>List Panel</g:Label>

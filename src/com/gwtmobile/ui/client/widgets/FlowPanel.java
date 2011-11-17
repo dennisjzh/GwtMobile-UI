@@ -14,11 +14,9 @@
  * the License.
  */
 
-package com.gwtmobile.ui.client.panels;
+package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.user.client.ui.HasWidgets;
-import com.gwtmobile.ui.client.widgets.IsGwtMobileWidget;
-import com.gwtmobile.ui.client.widgets.IsGwtMobileWidgetHelper;
 
 public class FlowPanel extends com.google.gwt.user.client.ui.FlowPanel implements HasWidgets, IsGwtMobileWidget {
 	    

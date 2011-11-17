@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.gwtmobile.ui.client.panels;
+package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -28,6 +28,11 @@ public class ListItem extends FlowPanel{
 	public ListItem() {
     	setStyleName("gwtm-ListItem");
     }
+
+	public void setDisplayArrow(boolean display) {
+		//TODO: need to make this setter consistent with ListPanel.
+		setDisplayArrow(display ? ShowArrow.Visible : ShowArrow.Hidden);
+	}
 
 	public void setDisplayArrow(ShowArrow showA) {
 		this.displayArrow = showA;

@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.gwtmobile.ui.client.panels;
+package com.gwtmobile.ui.client.widgets;
 
 
 public class StackContent extends FlowPanel {

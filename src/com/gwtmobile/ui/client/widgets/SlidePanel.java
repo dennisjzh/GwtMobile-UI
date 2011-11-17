@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.gwtmobile.ui.client.panels;
+package com.gwtmobile.ui.client.widgets;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,7 +30,6 @@ import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 import com.gwtmobile.ui.client.page.Transition;
-import com.gwtmobile.ui.client.widgets.WidgetBase;
 
 //FIXME: inherit from PanelBase
 public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHandler, HasValueChangeHandlers<Boolean> {

@@ -1,4 +1,4 @@
-package com.gwtmobile.ui.client.panels;
+package com.gwtmobile.ui.client.widgets;
 
 import java.beans.Beans;
 

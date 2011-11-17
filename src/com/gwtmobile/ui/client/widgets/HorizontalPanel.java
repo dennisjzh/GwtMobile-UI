@@ -14,13 +14,13 @@
  * the License.
  */
 
-package com.gwtmobile.ui.client.panels;
+package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.gwtmobile.ui.client.resources.MobileResources.StyleVariants;
 
 
-public class VerticalPanel extends FlowPanel implements HasWidgets {
+public class HorizontalPanel extends FlowPanel implements HasWidgets {
 
 	public enum BoxPack {start, end, center, baseline, stretch, justify};
 	private BoxPack boxPack = BoxPack.baseline;
@@ -29,12 +29,13 @@ public class VerticalPanel extends FlowPanel implements HasWidgets {
 	private boolean withVPadding = false;
 	private boolean forceFullWidth = false; // in some cases we might need to force width=100%
 
-	public VerticalPanel() {
-		setStyleName("gwtm-VerticalPanel");
+	public HorizontalPanel() {
+		setStyleName("gwtm-HorizontalPanel");
 		setBoxPack(boxPack);
 		setWithHPadding(withHPadding);
 		setWithVPadding(withVPadding);
 		setStyleVariants(styleVariants);
+		updateUi();
 	}
 	
 	public BoxPack getBoxPack() {
@@ -50,26 +51,27 @@ public class VerticalPanel extends FlowPanel implements HasWidgets {
 		return withHPadding;
 	}
 
-	public void setWithHPadding(boolean defaultPadding) {
-		this.withHPadding = defaultPadding;
+	public void setWithHPadding(boolean withHPadding) {
+		this.withHPadding = withHPadding;
 		updateUi();
 	}
-	
+
 	public boolean isWithVPadding() {
 		return withVPadding;
 	}
 
-	public void setWithVPadding(boolean withVPadding) {
-		this.withVPadding = withVPadding;
+	public void setWithVPadding(boolean defaultPadding) {
+		this.withVPadding = defaultPadding;
 		updateUi();
 	}
-
+	
 	public boolean isForceFullWidth() {
 		return forceFullWidth;
 	}
 
 	public void setForceFullWidth(boolean forceFullWidth) {
 		this.forceFullWidth = forceFullWidth;
+		updateUi();
 	}
 
 	public StyleVariants getStyleVariants() {
@@ -83,7 +85,7 @@ public class VerticalPanel extends FlowPanel implements HasWidgets {
 	}
 
 	private void updateUi(){
-		getElement().setAttribute("style", "-webkit-box-pack: "+boxPack.toString()+";"+(withVPadding?"padding-right: .5em; padding-left: .5em;":"")+(withHPadding?"padding-top: .5em; padding-bottom: .5em;":"")+(forceFullWidth?";width: 100%":""));
+		getElement().setAttribute("style", "-webkit-box-pack: "+boxPack.toString()+";"+(withVPadding?"padding-left: .5em; padding-right: .5em;":"")+(withHPadding?"padding-top: .5em; padding-bottom: .5em;":"")+(forceFullWidth?";width: 100%":""));
 	}
 	
 }

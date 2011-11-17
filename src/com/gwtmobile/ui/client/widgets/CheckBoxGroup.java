@@ -35,7 +35,6 @@ import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
 import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.event.SelectionChangedHandler;
-import com.gwtmobile.ui.client.panels.FlowPanel;
 import com.gwtmobile.ui.client.utils.Utils;
 
 public class CheckBoxGroup extends FlowPanel

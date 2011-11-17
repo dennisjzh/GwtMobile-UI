@@ -9,12 +9,12 @@
 			<g:Label>Hello GWT Mobile UI!</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel>
-			<m:ListPanel ui:field="list" showArrow="true">
+			<m:ListPanel ui:field="list" displayArrow="true">
 				<g:Label>Animations</g:Label>			
 				<g:Label>Panels</g:Label>			
 				<g:Label>Widgets</g:Label>			
 				<g:Label>Server Communication</g:Label>			
-				<m:ListItem disabled="true" showArrow="false"><g:Label>Themes</g:Label></m:ListItem>			
+				<m:ListItem enabled="false" displayArrow="false"><g:Label>Themes</g:Label></m:ListItem>			
 			</m:ListPanel>
 		</m:ScrollPanel>
 		

@@ -9,7 +9,7 @@
 			<g:Label>Transition</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel>
-			<m:ListPanel ui:field="list" showArrow="false">
+			<m:ListPanel ui:field="list" displayArrow="false">
 				<g:Label>Hope it is smooth</g:Label>			
 				<g:Label>Hope it is smooth</g:Label>			
 				<g:Label>Hope it is smooth</g:Label>			

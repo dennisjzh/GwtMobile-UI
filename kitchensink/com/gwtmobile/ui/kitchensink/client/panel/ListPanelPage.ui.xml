@@ -10,20 +10,20 @@
 		</m:HeaderPanel>
 		<m:ScrollPanel>
 			<g:HTMLPanel>
-				<m:ListPanel ui:field="list1" showArrow="false">
+				<m:ListPanel ui:field="list1" displayArrow="false">
 					<g:Label>List 1, default to not show arrow</g:Label>
 					<g:Label>List 1, default to not show arrow</g:Label>
-					<m:ListItem showArrow="true"><g:Label>override show arrow setting on ListItem</g:Label></m:ListItem>
-					<m:ListItem showArrow="true"><g:Label>override show arrow setting on ListItem</g:Label></m:ListItem>
+					<m:ListItem displayArrow="true"><g:Label>override show arrow setting on ListItem</g:Label></m:ListItem>
+					<m:ListItem displayArrow="true"><g:Label>override show arrow setting on ListItem</g:Label></m:ListItem>
 					<g:Label>List 1, default to not show arrow</g:Label>
 					<g:Label>List 1, default to not show arrow</g:Label>
 				</m:ListPanel>
 				<br/>
-				<m:ListPanel ui:field="list2" showArrow="true">
+				<m:ListPanel ui:field="list2" displayArrow="true">
 					<g:Label>List 2, default to show arrow</g:Label>
 					<g:Label>List 2, default to show arrow</g:Label>
-					<m:ListItem showArrow="false"><g:Label>override show arrow setting on ListItem</g:Label></m:ListItem>
-					<m:ListItem showArrow="false"><g:Label>override show arrow setting on ListItem</g:Label></m:ListItem>
+					<m:ListItem displayArrow="false"><g:Label>override show arrow setting on ListItem</g:Label></m:ListItem>
+					<m:ListItem displayArrow="false"><g:Label>override show arrow setting on ListItem</g:Label></m:ListItem>
 					<g:Label>List 2, default to show arrow</g:Label>
 					<g:Label>List 2, default to show arrow</g:Label>
 				</m:ListPanel>

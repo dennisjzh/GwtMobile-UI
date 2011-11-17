@@ -14,18 +14,26 @@
  * the License.
  */
 
-package com.gwtmobile.ui.client.panels;
+package com.gwtmobile.ui.client.widgets;
 
+import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.utils.Utils;
 
-
-public class StackPanel extends FlowPanel {
-
-	public StackPanel() {
-		setStyleName("gwtm-StackPanel");
+public class TabContent extends FlowPanel implements HasWidgets {
+	
+	public TabContent() {
+		setStyleName("gwtm-TabContent");
 	}
-
-	public Stack getStack(int index) {
-        return (Stack) this.getWidget(index);
-    }
+	
+	@Override
+	public void onTransitionEnd() {
+		for (int i = 0; i < getWidgetCount(); i++) {
+			Widget w = getWidget(i);
+			if (Utils.isSubclassOf(w.getClass(), FlowPanel.class)) {
+				((FlowPanel) w).onTransitionEnd();
+			}
+		}
+	}
 
 }

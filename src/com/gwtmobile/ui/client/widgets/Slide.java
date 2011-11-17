@@ -14,14 +14,13 @@
  * the License.
  */
 
-package com.gwtmobile.ui.client.panels;
+package com.gwtmobile.ui.client.widgets;
 
 import java.util.Iterator;
 
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtmobile.ui.client.widgets.WidgetBase;
 
 public class Slide extends WidgetBase implements HasWidgets {
 

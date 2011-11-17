@@ -9,7 +9,7 @@
 			<g:Label>Transitions</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel>
-			<m:ListPanel ui:field="list" showArrow="false">
+			<m:ListPanel ui:field="list" displayArrow="false">
 				<g:Label>Slide</g:Label>			
 				<g:Label>Slide Up</g:Label>			
 				<g:Label>Slide Down</g:Label>			

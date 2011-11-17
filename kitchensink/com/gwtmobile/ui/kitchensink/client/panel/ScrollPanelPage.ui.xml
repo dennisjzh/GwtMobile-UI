@@ -9,7 +9,7 @@
 			<g:Label>Scroll Panel</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel>
-			<m:ListPanel ui:field="list" showArrow="false">
+			<m:ListPanel ui:field="list" displayArrow="false">
 				<g:Label>Scroll Me 01</g:Label>
 				<g:Label>Scroll Me 02</g:Label>
 				<g:Label>Scroll Me 03</g:Label>

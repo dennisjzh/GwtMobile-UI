@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.gwtmobile.ui.client.panels;
+package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -86,7 +86,7 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
         }
     }
     
-    public void setShowArrow(boolean show) {
+    public void setDisplayArrow(boolean show) {
     	showArrow = show;
     	for (int i = 0; i < getWidgetCount(); i++) {
     		ListItem listItem = (ListItem) getWidget(i);
@@ -94,11 +94,15 @@ public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHand
 		}
     }
     
-    public boolean getShowArrow() {
+    public boolean getDisplayArrow() {
     	return showArrow;
     }
     
     public void isSelectable(boolean selectable) {
+    	this.selectable  = selectable;
+    }
+    
+    public void setSelectable(boolean selectable) {
     	this.selectable  = selectable;
     }
     

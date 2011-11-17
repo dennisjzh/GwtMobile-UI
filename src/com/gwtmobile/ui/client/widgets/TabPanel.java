@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.gwtmobile.ui.client.panels;
+package com.gwtmobile.ui.client.widgets;
 
 import java.beans.Beans;
 
@@ -189,6 +189,10 @@ public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandl
 		return tabsPosition;
 	}
 
+	public void setTabsOnBottom(boolean tabsOnBottom) {
+		//TODO: this is just to make the kitchensink to compile.
+	}
+	
 	public void setTabsPosition(TabsPosition tabsPosition) {
 		this.tabsPosition = tabsPosition;
 		if (tabsPosition == TabsPosition.Reverse && getWidget(0) == tabHeaderPanel) {
@@ -227,4 +231,12 @@ public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandl
 		}
 	}
 
+	public void setTabBarPanel(boolean isNavBarPanel) {
+		if (isNavBarPanel) {
+			addStyleName("TabBarPanel");
+		}
+		else {
+			removeStyleName("TabBarPanel");
+		}
+	}
 }

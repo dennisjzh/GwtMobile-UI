@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.gwtmobile.ui.client.panels;
+package com.gwtmobile.ui.client.widgets;
 
 import java.util.Iterator;
 
@@ -25,10 +25,6 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtmobile.ui.client.widgets.BackButton;
-import com.gwtmobile.ui.client.widgets.Button;
-import com.gwtmobile.ui.client.widgets.NextButton;
-import com.gwtmobile.ui.client.widgets.WidgetBase;
 
 public class HeaderPanel extends WidgetBase implements HasWidgets {
    

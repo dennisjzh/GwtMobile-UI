@@ -29,7 +29,6 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtmobile.ui.client.panels.FlowPanel;
 import com.gwtmobile.ui.client.utils.Utils;
 
 public class DropDownList extends FlowPanel 

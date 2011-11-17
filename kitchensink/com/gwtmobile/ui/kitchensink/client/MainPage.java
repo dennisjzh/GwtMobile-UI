@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.utils.Utils;
-import com.gwtmobile.ui.client.panels.ListPanel;
+import com.gwtmobile.ui.client.widgets.ListPanel;
 import com.gwtmobile.ui.kitchensink.client.communication.CommunicationPage;
 import com.gwtmobile.ui.kitchensink.client.panel.PanelsPage;
 import com.gwtmobile.ui.kitchensink.client.transition.TransitionsPage;

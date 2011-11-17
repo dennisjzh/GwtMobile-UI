@@ -1,4 +1,4 @@
-package com.gwtmobile.ui.client.panels;
+package com.gwtmobile.ui.client.widgets;
 
 public class HTMLPanel extends com.google.gwt.user.client.ui.HTMLPanel {
 
