@@ -8,17 +8,19 @@ html, body {
 }
 
 body {
-	font-size: 62.5%;	/* 1em = 10px */
-	background-color: white;
+	font-size: 62.5%;	 /*1em = 10px */
+	background-color: #fff;
+	
 }
 
 html {
-	color: black;
+	color: #000;
 	font: normal 1.6em Helvetica, Arial, sans-serif; /* desktop:1.6em; androidwvga:2.4em */
 }
 
 .Android * {
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Android */
+	/*-webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/ 
+	/* Android */
 }
 	
 /********************* Page Zoom ****************/
@@ -48,7 +50,7 @@ html {
 
 /********************* Header Panel ****************/
 
-.HeaderPanel {
+.gwtm-HeaderPanel {
 	position:relative;
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
@@ -62,118 +64,81 @@ html {
 }
 
 /* needed this to get around the android browser bug when scroll, causing controls to disapear.*/
-.HeaderPanel * {
+.gwtm-HeaderPanel * {
 	z-index: 1;
 }
 
-/* TODO: fix me! */
-.HeaderPanel > div > div.gwt-Label {
-	font-weight: bold;
-}
-
-.HeaderPanel > div:first-child, .HeaderPanel > div:last-child {
-	min-width:3em;
-}
-
-.HeaderPanel > div:nth-child(2) {
-	-webkit-box-flex: 1;
-	display: -webkit-box;
-	-webkit-box-pack: center;
-	-webkit-box-align: center;
-}
-
 /************** Button **************/
-.Button {
-	color: #fff;
+.gwtm-Button {
+	position: relative;
+	zoom:1;
+	color: #333;
 	text-decoration: none;
 	display: block;
-	padding: 0.3em 0.5em 0.5em 0.5em;
-	-webkit-border-radius: 0.3em;
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#838383), color-stop(0.5, #444), color-stop(0.5, #303030), to(#333));
-	border: solid 0px rgba(79, 79, 79, 0.75);
-	height:1em;	
+	margin: .4em;
+	padding: .4em;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dddddd), color-stop(0.98, #ededed), color-stop(0.98, #dddddd), to(#ededed));
+	border: solid 1px #bbb;
+	height:1.6em;
 	text-align: center;
-	text-shadow: rgba(0, 0, 0, 1) 0 -0.1em 0.1em;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0.1em 0.1em 0.1em;
+	text-shadow: rgba(220, 220, 220, 0.1) 0em .1em .1em;
+	-webkit-box-shadow: rgba(100, 100, 100, 0.3) 0em 0em .2em;
+	-webkit-box-align: center;
+	-webkit-border-radius: 0.5em;
 }
 
-.Button.Pressed, .BackButton.Pressed > span.Button, .NextButton.Pressed > span.Button {
-	text-shadow: darkgreen 0 -0.1em 0.1em;
+.gwtm-Button.Pressed {
+	text-shadow: #ccc 0 -0.1em 0.1em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
-		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
+		from(#aaa), color-stop(0.5, #ddd), to(#aaa));
 }
 
-.BackButton {
+.gwtm-Button.ButtonLeft, .gwtm-Button.ButtonRight {
+	height: 1.6em;
+}
+
+.gwtm-Button.ButtonMiddleTop, .gwtm-Button.ButtonMiddleBottom  {
+	height: 2.6em;
+}
+
+.gwtm-Button .ButtonCaption {
 	position: relative;
-	margin-left: 0.8em;
+	overflow: hidden;
+	white-space: nowrap;
+	font-weight: bold;
+	margin: 0em;
+	height: 100%;
+	z-index: 1;
 }
-
-.BackButton > span.Button {
-	padding-left: 0;
-	-webkit-border-top-left-radius: 0;
-	-webkit-border-bottom-left-radius: 0;
-	border-left: 0 !important;
-}
-
-.BackButton > span.Pointer {
-	position: absolute;
-	display: block;
-	height: 1.3em;
-	width: 1.3em;
-	left: -0.65em;
-	top: 0.25em;
-	border-top: 0;
-	border-right: 0;
-	background-image: -webkit-gradient(linear, left top, right bottom, from(#838383), color-stop(0.5, #444), color-stop(0.5, #303030), to(#333));
-	-webkit-transform: rotate(45deg);
-	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0.1em 0.1em 0.1em;
-	z-index: -1;
-}
-
-.BackButton.Pressed > span.Pointer {
-	background: -webkit-gradient(linear, left top, right bottom, 
-		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
-}
-
-.NextButton {
+/*  */
+.gwtm-Button .ButtonCaptionVisible{ 
+	display: inline;
 	position: relative;
-	margin-right: 0.8em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.gwtm-Button .ButtonCaptionHidden{ display:none; }
+
+.gwtm-Button .ButtonCaption .ButtonCaptionVisible { top: .2em; padding-left: 5px; padding-right: 5px;}
+.gwtm-Button.ButtonMiddleTop .ButtonCaption .ButtonCaptionVisible{ position: relative; top: 1.5em;}
+.gwtm-Button.ButtonMiddleBottom .ButtonCaption  .ButtonCaptionVisible{ position: relative; }
+
+.gwtm-Button.ButtonNone .ButtonIconNone { display: block; height: 100%; margin: 0em .3em;}
+.gwtm-Button.ButtonLeft .ButtonIconLeft { float: left; height: 100%; margin: 0em .3em;}
+.gwtm-Button.ButtonRight .ButtonIconRight { float: right; height: 100%; margin: 0em .3em;}
+.gwtm-Button.ButtonMiddleTop .ButtonIconMiddleTop { position: absolute; top:.2em ;left: 50%; height: 45%; margin-left: -9px;}
+.ButtonMiddleBottom .ButtonIconMiddleBottom { position: absolute; top:1.5em ;left: 50%; margin-left: -9px; height: 45%;}
+
+.gwtm-Button.Disabled {
+	color: #bbb;
 }
 
-.NextButton > span.Button {
-	padding-right: 0;
-	-webkit-border-top-right-radius: 0;
-	-webkit-border-bottom-right-radius: 0;
-	border-right: 0 !important;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.4) -0.1em 0.1em 0.1em;
-}
-
-.NextButton > span.Pointer {
-	position: absolute;
-	display: block;
-	height: 1.3em;
-	width: 1.3em;
-	right: -0.65em;
-	top: 0.25em;
-	border-top: 0;
-	border-left: 0;
-	background-image: -webkit-gradient(linear, left top, right bottom, from(#838383), color-stop(0.5, #444), color-stop(0.5, #303030), to(#333));
-	-webkit-transform: rotate(45deg);
-	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0.1em 0.1em 0.1em;
-	z-index: -1;
-}
-
-.NextButton.Pressed > span.Pointer {
-	background: -webkit-gradient(linear, left top, right bottom, 
-		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
-}
-
-.Button.Disabled {
-	color: gray;
+.gwtm-Button.Disabled > div > img {
+	opacity:0.3;
 }
 
 /********** Scroll Panel **********/
-.ScrollPanel {
+.gwtm-ScrollPanel {
 	position: relative;
 	-webkit-transition-property: -webkit-transform, top;
     -webkit-transition-timing-function: cubic-bezier(0,0,0.25,1);
@@ -181,15 +146,21 @@ html {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
-	padding-top: .5em;
-	padding-bottom: .5em;
 }
 
-.ScrollPanel > * {
+.gwtm-ScrollPanel.WithPanning {
+	padding: .5em;
+}
+
+.gwtm-ScrollPanel > * {
 	position: relative;
 }
 
-.Scrollbar {
+.gwtm-ScrollPanel.fullHeight, .gwtm-ScrollPanel.fullHeight .gwtm-HTMLPanel {
+	height: 100%;
+}
+
+.gwtm-Scrollbar {
 	position: absolute; 
 	z-index: 100; 
 	width: 0.4em; 
@@ -201,7 +172,7 @@ html {
 	overflow-y: hidden; 
 }
 
-.Scrollbar > div {
+.gwtm-Scrollbar > div {
 	position: absolute; 
 	z-index: 100; 
 	background-color: rgba(0, 0, 0, 0.6); 
@@ -215,54 +186,54 @@ html {
 }
 
 /********** List Panel **********/
-.ListPanel {
+.gwtm-ListPanel {
 	position:relative;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
-	padding: 0.5em 0.5em 0.5em 0.5em;
 }
 
-.ListPanel > div {
+.gwtm-ListPanel > div {
 	border-bottom:1px solid #ababab;
 	border-top:1px solid #bbbbbb;
 	padding: 0.5em 0.5em 0.5em 0.5em;
 	vertical-align:middle !important;
-	display: -webkit-box;
+	display: block;
 	-webkit-box-orient: horizontal;
 	-webkit-box-pack: justify;
 	-webkit-box-align: center;
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dbdbdb), to(#cbcbcb));
-} 
+	-webkit-box-shadow: rgba(0, 0, 0, .3) 0em 0em 0.1em;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eee), color-stop(0.5, #fafafa), to(#eee));
+}
 
-.ListPanel > div:first-child {
+.gwtm-ListPanel > div:first-child {
 	border-top:0px;
 	border-top-left-radius: 0.2em 0.2em;
 	border-top-right-radius: 0.2em 0.2em;
 	-webkit-box-shadow: rgba(0, 0, 0, .3) 0em -.1em 0.1em;
 } 
 
-.ListPanel > div:last-child {
+.gwtm-ListPanel > div:last-child {
 	border-bottom:0px;
 	border-bottom-left-radius: 0.2em 0.2em;
 	border-bottom-right-radius: 0.2em 0.2em;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0em 0.1em 0.1em;
 } 
 
-.ListPanel > div:only-child {
+.gwtm-ListPanel > div:only-child {
 	-webkit-box-shadow: rgba(0, 0, 0, 1) 0em 0em 0.5em;
 }
 
-.ListPanel > div.Pressed {
+.gwtm-ListPanel > div.Pressed {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
-		from(lightgreen), color-stop(0.5, lightgreen), color-stop(0.5, lightgreen), to(lightgreen));
+		from(#aaa), color-stop(0.5, #ddd), to(#aaa));
 }
 
-.ListPanel > div.Disabled {
+.gwtm-ListPanel > div.Disabled {
 	color: gray;
 }
 
 /* anti-flickering */
-.iOS .ScrollPanel > .ListPanel > div {
+.iOS .gwtm-ScrollPanel > .gwtm-ListPanel > div {
     -webkit-transform: translate3d(0px, 0px, 0px);
 }
 
@@ -307,99 +278,111 @@ html {
 
 /********** Tab Panel **********/
 
-.TabPanel {
+.gwtm-TabPanel {
 	width:100%;
 	-webkit-box-flex: 1;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 }
 
-.TabPanel > .Header {	/*tab header panel*/
+.gwtm-TabPanel.fullHeight, .gwtm-TabPanel.fullHeight .gwtm-TabContentPanel {
+	height: 100%;
+}
+
+.gwtm-TabPanel > .gwtm-TabHeaderPanel {	/*tab header panel*/
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
-	font-size: .8em;
-	background: #333;
+	font-size: .9em;
+	font-weight: bold;
 	position: relative;
 	z-index: 1;
 	min-height: 3em;
 }
 
-.TabPanel.Normal > .Header {	/*tab header panel*/
+.gwtm-TabPanel.Normal > .gwtm-TabHeaderPanel {	/*tab header panel*/
 	padding-top: .2em;
-	border-bottom: 0.2em solid #BDBDBD;
-	-webkit-box-shadow: rgba(0, 0, 0, .7) 0 .2em .5em;
+	border-bottom: 0.2em solid #ddd;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ccc), to(#ddd));
+	-webkit-box-shadow: rgba(0, 0, 0, .5) 0 .2em .5em;
 }
 
-.TabPanel.Reverse > .Header {	/*tab header panel*/
+.gwtm-TabPanel.Reverse > .gwtm-TabHeaderPanel {	/*tab header panel*/
 	padding-bottom: .2em;
 	border-top: 0.2em solid #BDBDBD;
 	-webkit-box-shadow: rgba(0, 0, 0, .7) 0 -.2em .5em;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ddd), to(#ccc));
 }
 
-.TabPanel > .Header > div {		/*tab header*/
+.gwtm-TabPanel > .gwtm-TabHeaderPanel > div {		/*tab header*/
 	-webkit-box-flex: 1;
 	display: -webkit-box;
 	-webkit-box-align: center;
 	-webkit-box-pack: center;
 	min-height: 2em;
-	border-left: 1px solid #666666;
-	border-top: 1px solid #666666;
+	border-left: 1px solid #888;
+	border-top: 1px solid #888;
 	margin: 0 0.2em 0 0.2em;
-	color: gray;
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
+	color: #333;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#a9a9a9), to(#c9c9c9));
 }
 
-.TabPanel.Normal > .Header > div {		/*tab header*/
-	border-bottom: 1px solid #333333;
+.gwtm-TabPanel.Normal > .gwtm-TabHeaderPanel > div {		/*tab header*/
+	border-bottom: 1px solid #aaa;
 	border-top-left-radius: 0.3em 0.3em;
 	border-top-right-radius: 0.3em 0.3em;
 }
 
-.TabPanel.Reverse > .Header > div {		/*tab header*/
-	border-top: 1px solid #333333;
+.gwtm-TabPanel.Reverse > .gwtm-TabHeaderPanel > div {		/*tab header*/
+	border-top: 1px solid #aaa;
 	border-bottom-left-radius: 0.3em 0.3em;
 	border-bottom-right-radius: 0.3em 0.3em;
 }
 
-.TabPanel > .Header > div.Selected {
+.gwtm-TabPanel > .gwtm-TabHeaderPanel > div.Selected {
 	color:black;
 	text-shadow: white 0 .1em .1em;
 	border-left: 1px solid white;
 }
 
-.TabPanel.Normal > .Header > div.Selected {
+.gwtm-TabPanel.Normal > .gwtm-TabHeaderPanel > div.Selected {
 	border-top: 1px solid white;
 	border-bottom: 1px solid #BDBDBD;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#BDBDBD));
 }
 
-.TabPanel.Reverse > .Header > div.Selected {
+.gwtm-TabPanel.Reverse > .gwtm-TabHeaderPanel > div.Selected {
 	border-top: 1px solid #BDBDBD;
 	border-bottom: 1px solid white;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BDBDBD), to(white));
 }
 
-.TabPanel > .Header > div.Selected .gwt-Image {
+.gwtm-TabPanel > .gwtm-TabHeader > div.Selected img {
 	opacity: 1;
 }
 
-.TabPanel > .Header > div .gwt-Image {
+.gwtm-TabPanel > .gwtm-TabHeader > div img {
 	opacity: 0.5;
 }
 
-.TabPanel > .Content {			/*tab content panel*/
+.gwtm-TabPanel > .gwtm-TabContentPanel {			/*tab content panel*/
 	position: relative;
 	-webkit-box-flex: 1;
 }
 
-.TabPanel > .Content > div {		/*tab content*/
-	position:absolute;
+.gwtm-TabPanel > .gwtm-TabContentPanel > div.Selected {		/*tab content*/
+	/*position:absolute;*/
 	display: -webkit-box;
 	height: 100%;
 	width: 100%;
+	background-color: #eee;
+	border-bottom: 1px solid #aaa;
 }
 
-.Android .TabPanel > .Header > div {		/*tab header*/
+.gwtm-TabPanel > .gwtm-TabContentPanel > div {
+	display: none;
+}
+
+.Android .gwtm-TabPanel > .gwtm-TabHeader > div {		/*tab header*/
 	-webkit-box-shadow: #BDBDBD 0 0 .1em;	/* antialias workaround */
 }
 
@@ -431,64 +414,69 @@ html {
 }
 
 
-/********** Accordion Panel **********/
+/********** Stack Panel **********/
 
-.Accordion > div {		/* stack */
+.gwtm-StackPanel {
+	padding: 0.5em 0.5em 0.5em 0.5em;
 }
 
-.Accordion > div > div:first-child { /* header */
+.gwtm-StackPanel > div {		/* stack */
+}
+
+.gwtm-StackPanel > div > div:first-child { /* header */
 	display:-webkit-box;
 	-webkit-box-orient: horizontal;
 	-webkit-box-align: center;
 	cursor: pointer;
 	padding:.5em .5em .5em 0em;
-	border-bottom:1px solid #333333;
-	border-top: 1px solid #666666;
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
+	border-bottom:1px solid #ababab;
+	border-top: 1px solid #bbbbbb;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ddd), color-stop(0.5, #eaeaea), to(#ddd));
 }
 
-.Accordion > div > div:first-child.Pressed {
+.gwtm-StackPanel > div > div:first-child.Pressed {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
-		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
+		from(#aaa), color-stop(0.5, #ddd), to(#aaa));
 }
 
-.Accordion > div:first-child > div:first-child {
+.gwtm-StackPanel > div:first-child > div:first-child {
 	border-top:0;
-	border-top-left-radius: 0.4em 0.4em;
-	border-top-right-radius: 0.4em 0.4em;
-	-webkit-box-shadow: rgba(0, 0, 0, 1) 0em 0em 0.5em;
+	border-top-left-radius: 0.2em 0.2em;
+	border-top-right-radius: 0.2em 0.2em;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0em 0.1em 0.1em;
 }
 
-.Accordion > div:last-child.Collapse > div:first-child {
+.gwtm-StackPanel > div:last-child.Collapsed > div:first-child {
 	border-bottom:0;
-	border-bottom-left-radius: 0.4em 0.4em;
-	border-bottom-right-radius: 0.4em 0.4em;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0em 0.2em 0.2em;
+	border-bottom-left-radius: 0.2em 0.2em;
+	border-bottom-right-radius: 0.2em 0.2em;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0em 0.1em 0.1em;
 }
 
-.Accordion > div > div:last-child { /* content */
+.gwtm-StackPanel > div > div:last-child { /* content */
 	overflow: hidden;
 	padding:.5em;
 	color: black;
-	background:#e3e3e3;
+	background:#fafafa;
 	-webkit-transition-property: height;
 	-webkit-transition-duration: 200ms;
 	-webkit-transition-timing-function: ease;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0em 0.1em 0.1em;
 }
 
-.Accordion > div:last-child.Expand > div:last-child { /* content */
-	border-bottom-left-radius: 0.4em 0.4em;
-	border-bottom-right-radius: 0.4em 0.4em;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0em 0.2em 0.2em;
+.gwtm-StackPanel > div:last-child.Expanded > div:last-child { /* content */
+	border-bottom-left-radius: 0.2em 0.2em;
+	border-bottom-right-radius: 0.2em 0.2em;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0em 0.1em 0.1em;
 }
 
-.Accordion > div.Collapse > div:last-child {
+.gwtm-StackPanel > div.Collapsed > div:last-child {
 	padding-top: 0;
 	padding-bottom: 0;
 	height: 0 !important;
 }
 
-.AccordionArrow {
+.gwtm-StackPanel .StackArrow {
 	border: .4em solid gray;
 	border-right-color: transparent;
 	border-top-color: transparent;
@@ -498,7 +486,7 @@ html {
 	margin-left: .5em;
 }
 
-.Accordion > div.Expand > div > .AccordionArrow {
+.gwtm-StackPanel > div.Expanded > div > .StackArrow {
 	position: relative;
 	top: .3em;
 	left: -.2em;
@@ -509,25 +497,33 @@ html {
 
 /********** TextBox **********/
 
-.TextBox, .TextArea {
+.gwtm-InputBox {
 	padding: .4em;
-	border: 1px solid black;
+	border-radius: .5em;
+	border: 1px solid #ccc;
+	display: -webkit-box;
+	-webkit-box-shadow: 0 0 .6em #cbcbcb;
+}
+
+.gwtm-InputBox.TextBox, .gwtm-InputBox.TextArea {
+/*	padding: .4em; */
+/*	border: 1px solid black; */
 	-webkit-appearance: none;						/* iOS */
 }
 
-.TextBox.Focus, .TextArea.Focus {
-	-webkit-box-shadow: lightgreen 0em 0em .4em;
+.gwtm-InputBox.Focus {
+	-webkit-box-shadow: #333 0em 0em .5em;
 }
 
 /******************* Radio Button *************/
 
-.CheckBoxGroup, .RadioButtonGroup {
+.gwtm-CheckBoxGroup, .gwtm-RadioButtonGroup {
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
 	width: 100%;
 }
 
-.CheckBoxGroup > span, .RadioButtonGroup > span {
+.gwtm-CheckBoxGroup > span, .gwtm-RadioButtonGroup > span {
 	-webkit-box-flex: 1;
 	display: -webkit-box;
 	-webkit-box-align: center;
@@ -540,75 +536,75 @@ html {
 	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#666), to(#555));	
 }
 
-.CheckBoxGroup.Horizontal > span.Selected,
-.RadioButtonGroup.Horizontal > span.Selected {
+.gwtm-CheckBoxGroup.Horizontal > span.Selected,
+.gwtm-RadioButtonGroup.Horizontal > span.Selected {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightGreen), to(darkGreen));
 	border-left-color: lightGreen;
 	border-right-color: darkGreen;
 }
 
-.CheckBoxGroup.Horizontal > span > input, 
-.CheckBoxGroup.Horizontal > span > div,
-.RadioButtonGroup.Horizontal > span > input, 
-.RadioButtonGroup.Horizontal > span > div {
+.gwtm-CheckBoxGroup.Horizontal > span > input, 
+.gwtm-CheckBoxGroup.Horizontal > span > div,
+.gwtm-RadioButtonGroup.Horizontal > span > input, 
+.gwtm-RadioButtonGroup.Horizontal > span > div {
 	display: none;
 }
 
-.CheckBoxGroup > span:first-child,
-.RadioButtonGroup > span:first-child {
+.gwtm-CheckBoxGroup > span:first-child,
+.gwtm-RadioButtonGroup > span:first-child {
 	border-left: 0px;
 	border-bottom-left-radius: 0.4em 0.4em;
 	border-top-left-radius: 0.4em 0.4em;
 }
 
-.CheckBoxGroup > span:last-child,
-.RadioButtonGroup > span:last-child {
+.gwtm-CheckBoxGroup > span:last-child,
+.gwtm-RadioButtonGroup > span:last-child {
 	border-right: 0px;
 	border-bottom-right-radius: 0.4em 0.4em;
 	border-top-right-radius: 0.4em 0.4em;
 }
 
-.CheckBoxGroup.Vertical,
-.RadioButtonGroup.Vertical {
+.gwtm-CheckBoxGroup.Vertical,
+.gwtm-RadioButtonGroup.Vertical {
 	-webkit-box-orient: vertical;
 }
 
-.CheckBoxGroup.Vertical > span,
-.RadioButtonGroup.Vertical > span {
+.gwtm-CheckBoxGroup.Vertical > span,
+.gwtm-RadioButtonGroup.Vertical > span {
 	-webkit-box-pack: start;
 	border: 0;
 }
 
-.CheckBoxGroup.Vertical > span.Pressed,
-.RadioButtonGroup.Vertical > span.Pressed {
+.gwtm-CheckBoxGroup.Vertical > span.Pressed,
+.gwtm-RadioButtonGroup.Vertical > span.Pressed {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightGreen), to(darkGreen));
 }
 
-.CheckBoxGroup.Vertical > span:first-child,
-.RadioButtonGroup.Vertical > span:first-child {
+.gwtm-CheckBoxGroup.Vertical > span:first-child,
+.gwtm-RadioButtonGroup.Vertical > span:first-child {
 	border-bottom-left-radius: 0;
 	border-top-right-radius: 0.4em 0.4em;
 }
 
-.CheckBoxGroup.Vertical > span:last-child,
-.RadioButtonGroup.Vertical > span:last-child {
+.gwtm-CheckBoxGroup.Vertical > span:last-child,
+.gwtm-RadioButtonGroup.Vertical > span:last-child {
 	border-bottom-left-radius: 0.4em 0.4em;
 	border-top-right-radius: 0;
 }
 
-.Android .CheckBoxGroup > span,
-.Android .RadioButtonGroup > span {
+.Android .gwtm-CheckBoxGroup > span,
+.Android .gwtm-RadioButtonGroup > span {
 	-webkit-box-shadow: 0 0 1px #666;	/* android radius antialias workaround */	
 }
 
 /* Android native check box and radio button are too small in WVGA resolution */
 
-.WVGA .CheckBoxGroup > span > input,
-.WVGA .RadioButton > input {
+.WVGA .gwtm-CheckBoxGroup > span > input,
+.WVGA .gwtm-RadioButton > input {
 	display: none;
 }
 
-.WVGA .RadioButton > div {
+.WVGA .gwtm-RadioButton > div {
 	width: 1.2em;
 	height: 1.2em;
 	margin: 0 .4em 0 .4em;
@@ -621,7 +617,7 @@ html {
 	-webkit-box-shadow:0 0 .1em #444;
 }
 
-.WVGA .RadioButton.Selected > div {
+.WVGA .gwtm-RadioButton.Selected > div {
 	background-image:
 		-webkit-gradient(radial, 50% 50%, 0, 50% 50%, 16,
 			from(lightgreen),
@@ -629,12 +625,12 @@ html {
 	-webkit-box-shadow:0 0 .1em darkgreen;
 }
 	
-.WVGA .CheckBoxIndicator {
+.WVGA .gwtm-CheckBoxIndicator {
 	position: relative;
 	margin: 0 .4em 0 .4em;
 }
 
-.WVGA .CheckBoxIndicator > div:first-child {
+.WVGA .gwtm-CheckBoxIndicator > div:first-child {
 	width: .8em;
 	height: .8em;
 	padding: .1em;	
@@ -644,22 +640,22 @@ html {
 	border-radius: .2em;
 }
 
-.WVGA .CheckBoxIndicator > div:first-child > div {
+.WVGA .gwtm-CheckBoxIndicator > div:first-child > div {
 	width: .65em;
 	height: .65em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(gray));
 	border: .1em solid #333;
 }
 
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(2),
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(3),
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(4) {
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(2),
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(3),
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(4) {
 	position: absolute;
 	background: #00CC00;
 	border: .1em solid #111;
 }
 	
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(2) {
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(2) {
 	width: .2em;
 	height: .3em;
 	top: .35em;
@@ -668,7 +664,7 @@ html {
 	border-bottom: 0;
 }
 
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(3) {
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(3) {
 	width: .2em;
 	height: 1em;
 	top: -.1em;
@@ -677,7 +673,7 @@ html {
 	border-bottom: 0;
 }
 
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(4) {
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(4) {
 	width: .2em;
 	height: .4em;
 	top: .5em;
@@ -689,11 +685,11 @@ html {
 
 /******************* Flip Switch *************/
 
-.FlipSwitch.Disabled {
+.gwtm-FlipSwitch.Disabled {
   opacity: .3;
 }
 
-.FlipSwitch {
+.gwtm-FlipSwitch {
 	position: relative;
 	border-radius: .3em;
 	overflow: hidden;
@@ -701,21 +697,22 @@ html {
 	-webkit-box-shadow: 0px 0px .1em #333;
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
+	width: 6em;
 }
 
-.FlipSwitch > div:first-child, .FlipSwitch > div:nth-child(2) {
+.gwtm-FlipSwitch > div:first-child, .FlipSwitch > div:nth-child(2) {
 	width: 3em;
 	height: 1.75em;	
 }
 
-.FlipSwitch > div:first-child {
+.gwtm-FlipSwitch > div:first-child {
 	border-top-left-radius: .3em;
 	border-bottom-left-radius: .3em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(darkGreen), color-stop(0.1, #298C08), color-stop(0.5, lightGreen), to(lightGreen));
 }
 
-.FlipSwitch > div:nth-child(2) {
+.gwtm-FlipSwitch > div:nth-child(2) {
 	border-top-right-radius: .3em;
 	border-bottom-right-radius: .3em;
 	background: white -webkit-gradient(linear, 0% 0%, 0% 100%, 
@@ -723,7 +720,7 @@ html {
 }
 
 
-.FlipSwitch > div:last-child {
+.gwtm-FlipSwitch > div:last-child {
 	position: absolute;
 	left: 0;
 	overflow: hidden;
@@ -731,7 +728,7 @@ html {
 	height: 100%;
 }
 
-.FlipSwitch > div:last-child > div {
+.gwtm-FlipSwitch > div:last-child > div {
 	position: relative;
 	display: -webkit-box;
 	height: 100%;
@@ -739,25 +736,25 @@ html {
 	-webkit-transition-timing-function: linear;
 }
 
-.FlipSwitch > div:last-child > div > div {
+.gwtm-FlipSwitch > div:last-child > div > div {
 	display: -webkit-box;
 	-webkit-box-align: center;
 	-webkit-box-pack: center;
 	font-weight: bold;
 }
 
-.FlipSwitch > div:last-child > div > div:first-child {
+.gwtm-FlipSwitch > div:last-child > div > div:first-child {
 	width: 3em;
 	text-shadow: #093B5C 0px 1px 1px;
 }
 
-.FlipSwitch > div:last-child > div > div:last-child {
+.gwtm-FlipSwitch > div:last-child > div > div:last-child {
 	width: 2.8125em;
 	color: darkgray;
 	text-shadow: black 0px 1px 1px;
 }
 
-.FlipSwitch > div:last-child > div > div:nth-child(2) {
+.gwtm-FlipSwitch > div:last-child > div > div:nth-child(2) {
 	width: 3.1em;
 	margin-left: -.1875em;
 	border: 1px solid #E5E5E5;
@@ -832,17 +829,17 @@ html {
 
 /******************* Drop Down List *************/
 
-.Desktop .DropDownList,
-.Android .DropDownList {
+.Desktop .gwtm-DropDownList,
+.Android .gwtm-DropDownList {
 	display: -webkit-box;	
 }
 
-.iOS .DropDownList > select {
+.iOS .gwtm-DropDownList > select {
 	font-size: .8em;
 }
 
-.Desktop .DropDownList > select,
-.Android .DropDownList > select {
+.Desktop .gwtm-DropDownList > select,
+.Android .gwtm-DropDownList > select {
 	-webkit-appearance: none;
 	height: 1.5em;
 	min-width: 10em;
@@ -854,12 +851,12 @@ html {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(gray));
 }
 
-.Desktop .DropDownList > select {	/* bug in Desktop Chrome? */
+.Desktop .gwtm-DropDownList > select {	/* bug in Desktop Chrome? */
 	height: 24px;
 }
 
-.Desktop .DropDownList > div:nth-child(2),
-.Android .DropDownList > div:nth-child(2) {
+.Desktop .gwtm-DropDownList > div:nth-child(2),
+.Android .gwtm-DropDownList > div:nth-child(2) {
 	position: relative;
 	border: 0;
 	width: 1.5em;
@@ -870,8 +867,8 @@ html {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BBB), to(#666));
 }
 
-.Desktop .DropDownList > div:nth-child(3),
-.Android .DropDownList > div:nth-child(3) {
+.Desktop .gwtm-DropDownList > div:nth-child(3),
+.Android .gwtm-DropDownList > div:nth-child(3) {
 	position: relative;
 	border: .4em solid black;
 	border-right-color: transparent;
@@ -883,8 +880,8 @@ html {
 	top: .6em;
 }
 
-.Desktop .DropDownList > div:nth-child(4),
-.Android .DropDownList > div:nth-child(4) {
+.Desktop .gwtm-DropDownList > div:nth-child(4),
+.Android .gwtm-DropDownList > div:nth-child(4) {
 	position: relative;
 	border: .4em solid white;
 	border-right-color: transparent;
@@ -896,26 +893,69 @@ html {
 	top: .55em;
 }
 
-.Desktop .DropDownList.Focus > select,
-.Android .DropDownList.Focus > select {
+.Desktop .gwtm-DropDownList.Focus > select,
+.Android .gwtm-DropDownList.Focus > select {
 	-webkit-box-shadow: lightgreen 0em 0em .4em;
 }
 
-.Desktop .DropDownList.Focus > div:nth-child(2),
-.Android .DropDownList.Focus > div:nth-child(2) {
+.Desktop .gwtm-DropDownList.Focus > div:nth-child(2),
+.Android .gwtm-DropDownList.Focus > div:nth-child(2) {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightgreen), to(darkgreen));
 }
 
 /******************* Horizontal Panel *************/
-.HorizontalPanel {
+.gwtm-HorizontalPanel {
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
 	-webkit-box-align: center;
 }
 
-
 /******************* Vertical Panel *************/
-.VerticalPanel {
+.gwtm-VerticalPanel {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 }
+
+/* horizontal and vertical variants */
+
+.gwtm-VerticalPanel.Var1, .gwtm-HorizontalPanel.Var1{
+	background-color: #fbfbfb;
+	border: solid 1px #ebebeb;
+	-webkit-box-shadow: rgba(100, 100, 100, 0.3) 0em 0em .2em;
+	-webkit-border-radius: 0.5em;
+}
+
+.gwtm-VerticalPanel.Var2, .gwtm-HorizontalPanel.Var2{
+	background-color: #ebebeb;
+	border: solid 1px #dbdbdb;
+	-webkit-box-shadow: rgba(100, 100, 100, 0.3) 0em 0em .2em;
+	-webkit-border-radius: 0.5em;
+}
+
+/***** Label and variants ****************/
+.gwtm-Label.wordWrap {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.gwtm-Label.withHPadding {
+	padding-left: 1em; padding-right: 1em;
+}
+.gwtm-Label.withVPadding {
+	padding-top: 1em; padding-bottom: 1em;
+}
+.gwtm-Label.Default {}
+.gwtm-Label.Header1 { font-weight: bold; font-size: 1.2em;}
+.gwtm-Label.Header2 { font-size: 1.1em;}
+.gwtm-Label.Emphasised { font-weight: bold; }
+.gwtm-Label.Small {font-size: 0.8em;}
+.gwtm-Label.SmallEmphasised {font-weight: bold; font-size: 0.8em;}
+.gwtm-Label.Legend {font-size: 0.7em;}
+
+.gwtm-Label.None {}
+.gwtm-Label.Var1 { background-color: #eee;}
+.gwtm-Label.Var2 { background-color: #ccc;}
+.gwtm-Label.Var3 { background-color: #bbb;}
+.gwtm-Label.Var4 { background-color: #aaa;}
+.gwtm-Label.Var5 { background-color: #222; color: #eee;}
+
