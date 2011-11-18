@@ -20,6 +20,7 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.utils.Utils;
 
 public class Stack extends FlowPanel {
@@ -34,15 +35,12 @@ public class Stack extends FlowPanel {
     
 	@Override
 	public void onInitialLoad() {
-		addStyleName("gwtm-Stack");
+		//addStyleName("gwtm-Stack");
 		if (initialState == StackInitialState.Collapsed){
 			collapse();
 		} else {
 			expand();
 		}
-       // if (this.getStyleName().indexOf("Expanded") == -1) {
-       // 	collapse();
-       // }
 	}
 	
     @Override
@@ -66,12 +64,18 @@ public class Stack extends FlowPanel {
 //	            content = (AccordionContent) w;
 //	        }
 //    	}
+        if (w instanceof StackHeader) {
+        	header = (StackHeader) w;
+        }
+        else if (w instanceof StackContent) {
+        	content = (StackContent) w;
+        }
         super.add(w);
     }
 
     public void collapse() {
-        this.addStyleName("Collapsed");
-		this.removeStyleName("Expanded");
+        this.addStyleName(Secondary.Collapsed);
+		this.removeStyleName(Secondary.Expanded);
 		Element focus = Utils.getActiveElement();
 		focus.blur();
 		Scheduler.get().scheduleDeferred(new ScheduledCommand() {			
@@ -87,8 +91,8 @@ public class Stack extends FlowPanel {
     	if (isExpended()) {
     		return;
     	}
-        this.addStyleName("Expanded");
-        this.removeStyleName("Collapsed");
+        this.addStyleName(Secondary.Expanded);
+        this.removeStyleName(Secondary.Collapsed);
 		Scheduler.get().scheduleDeferred(new ScheduledCommand() {			
 			@Override
 			public void execute() {
@@ -108,7 +112,7 @@ public class Stack extends FlowPanel {
     }
     
     public boolean isExpended() {
-    	return this.getStyleName().indexOf("Expanded") > -1;
+    	return this.getStyleName().indexOf(Secondary.Expanded) > -1;
     }
     
     public StackHeader getHeader() {

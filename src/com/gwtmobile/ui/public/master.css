@@ -437,12 +437,12 @@ html {
 }
 
 
-/********** Accordion Panel **********/
+/********** Stack Panel **********/
 
-.Accordion > div {		/* stack */
+.gwtm-StackPanel > div {		/* stack */
 }
 
-.Accordion > div > div:first-child { /* header */
+.gwtm-StackPanel > div > div:first-child { /* header */
 	display:-webkit-box;
 	-webkit-box-orient: horizontal;
 	-webkit-box-align: center;
@@ -453,26 +453,26 @@ html {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
 }
 
-.Accordion > div > div:first-child.Pressed {
+.gwtm-StackPanel > div > div:first-child.Pressed {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
 }
 
-.Accordion > div:first-child > div:first-child {
+.gwtm-StackPanel > div:first-child > div:first-child {
 	border-top:0;
 	border-top-left-radius: 0.4em 0.4em;
 	border-top-right-radius: 0.4em 0.4em;
 	-webkit-box-shadow: rgba(0, 0, 0, 1) 0em 0em 0.5em;
 }
 
-.Accordion > div:last-child.Collapse > div:first-child {
+.gwtm-StackPanel > div:last-child.Collapsed > div:first-child {
 	border-bottom:0;
 	border-bottom-left-radius: 0.4em 0.4em;
 	border-bottom-right-radius: 0.4em 0.4em;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0em 0.2em 0.2em;
 }
 
-.Accordion > div > div:last-child { /* content */
+.gwtm-StackPanel > div > div:last-child { /* content */
 	overflow: hidden;
 	padding:.5em;
 	color: black;
@@ -482,19 +482,19 @@ html {
 	-webkit-transition-timing-function: ease;
 }
 
-.Accordion > div:last-child.Expand > div:last-child { /* content */
+.gwtm-StackPanel > div:last-child.Expanded > div:last-child { /* content */
 	border-bottom-left-radius: 0.4em 0.4em;
 	border-bottom-right-radius: 0.4em 0.4em;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0em 0.2em 0.2em;
 }
 
-.Accordion > div.Collapse > div:last-child {
+.gwtm-StackPanel > div.Collapsed > div:last-child {
 	padding-top: 0;
 	padding-bottom: 0;
 	height: 0 !important;
 }
 
-.AccordionArrow {
+.gwtm-StackPanel .gwtm-StackArrow {
 	border: .4em solid gray;
 	border-right-color: transparent;
 	border-top-color: transparent;
@@ -504,7 +504,7 @@ html {
 	margin-left: .5em;
 }
 
-.Accordion > div.Expand > div > .AccordionArrow {
+.gwtm-StackPanel > div.Expanded > div > .gwtm-StackArrow {
 	position: relative;
 	top: .3em;
 	left: -.2em;

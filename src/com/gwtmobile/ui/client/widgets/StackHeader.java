@@ -19,6 +19,8 @@ package com.gwtmobile.ui.client.widgets;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
@@ -31,7 +33,7 @@ public class StackHeader extends FlowPanel implements ClickHandler, DragEventsHa
 	private boolean enabled = true;
 	
 	public StackHeader() {
-		addStyleName("gwtm-StackHeader");
+		//addStyleName("gwtm-StackHeader");
 	    this.addDomHandler(this, ClickEvent.getType());    
         this.add(stackArrow);
 
@@ -57,6 +59,7 @@ public class StackHeader extends FlowPanel implements ClickHandler, DragEventsHa
 		return enabled;
 	}
 
+	//TODO: fix me
 	public void setEnabled(boolean enabled) {
 		removeStyleName(""+this.enabled);
 		this.enabled = enabled;
@@ -85,23 +88,23 @@ public class StackHeader extends FlowPanel implements ClickHandler, DragEventsHa
     
 	@Override
 	public void onDragEnd(DragEvent e) {
-		if (isEnabled()) removeStyleName("Pressed");
+		if (isEnabled()) removeStyleName(Secondary.Pressed);
 	}
 
 	@Override
 	public void onDragMove(DragEvent e) {
-		if (isEnabled()) removeStyleName("Pressed");
+		if (isEnabled()) removeStyleName(Secondary.Pressed);
 	}
 
 	@Override
 	public void onDragStart(DragEvent e) {
-		if (isEnabled()) addStyleName("Pressed");		
+		if (isEnabled()) addStyleName(Secondary.Pressed);		
 	}
 
 	
     static class StackArrow extends HTML {    	
     	public StackArrow() {
-    		setStyleName("StackArrow");
+    		setStyleName(Primary.StackArrow);
     	}
     }
 

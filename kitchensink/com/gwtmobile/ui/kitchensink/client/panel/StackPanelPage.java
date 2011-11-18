@@ -24,18 +24,18 @@ import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.widgets.HeaderPanel;
 import com.gwtmobile.ui.client.widgets.StackPanel;
 
-public class AccordionPanelPage extends Page {
+public class StackPanelPage extends Page {
 
 	@UiField HeaderPanel header;
 	@UiField StackPanel stack;
 	
-	private static AccordionPanelPageUiBinder uiBinder = GWT
-			.create(AccordionPanelPageUiBinder.class);
+	private static StackPanelPageUiBinder uiBinder = GWT
+			.create(StackPanelPageUiBinder.class);
 
-	interface AccordionPanelPageUiBinder extends UiBinder<Widget, AccordionPanelPage> {
+	interface StackPanelPageUiBinder extends UiBinder<Widget, StackPanelPage> {
 	}
 
-	public AccordionPanelPage() {
+	public StackPanelPage() {
 		initWidget(uiBinder.createAndBindUi(this));				
 	}
 

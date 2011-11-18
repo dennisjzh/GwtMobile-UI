@@ -12,40 +12,40 @@
 		<m:StackPanel ui:field="stack">
 			<m:Stack>
 				<m:StackHeader>
-					<g:Label>Stack Stack 1</g:Label>
+					<g:Label>Stack 1</g:Label>
 				</m:StackHeader>
 				<m:StackContent>
-					<g:Label>Stack Stack 1 Content</g:Label>
+					<g:Label>Stack 1 Content</g:Label>
 				</m:StackContent>
 			</m:Stack>
 			<m:Stack>
 				<m:StackHeader>
-					<g:Label>Stack Stack 2</g:Label>
+					<g:Label>Stack 2</g:Label>
 				</m:StackHeader>
 				<m:StackContent>
-					<g:Label>Stack Stack 2 Content</g:Label>
-					<g:Label>Stack Stack 2 Content</g:Label>
+					<g:Label>Stack 2 Content</g:Label>
+					<g:Label>Stack 2 Content</g:Label>
 				</m:StackContent>
 			</m:Stack>
 			<m:Stack>
 				<m:StackHeader>
-					<g:Label>Stack Stack 3</g:Label>
+					<g:Label>Stack 3</g:Label>
 				</m:StackHeader>
 				<m:StackContent>
-					<g:Label>Stack Stack 3 Content</g:Label>
-					<g:Label>Stack Stack 3 Content</g:Label>
-					<g:Label>Stack Stack 3 Content</g:Label>
+					<g:Label>Stack 3 Content</g:Label>
+					<g:Label>Stack 3 Content</g:Label>
+					<g:Label>Stack 3 Content</g:Label>
 				</m:StackContent>
 			</m:Stack>
 			<m:Stack>
 				<m:StackHeader>
-					<g:Label>Stack Stack 4</g:Label>
+					<g:Label>Stack 4</g:Label>
 				</m:StackHeader>
 				<m:StackContent>
-					<g:Label>Stack Stack 4 Content</g:Label>
-					<g:Label>Stack Stack 4 Content</g:Label>
-					<g:Label>Stack Stack 4 Content</g:Label>
-					<g:Label>Stack Stack 4 Content</g:Label>
+					<g:Label>Stack 4 Content</g:Label>
+					<g:Label>Stack 4 Content</g:Label>
+					<g:Label>Stack 4 Content</g:Label>
+					<g:Label>Stack 4 Content</g:Label>
 				</m:StackContent>
 			</m:Stack>
 		</m:StackPanel>

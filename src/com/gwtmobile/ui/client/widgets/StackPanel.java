@@ -16,12 +16,14 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+
 
 
 public class StackPanel extends FlowPanel {
 
 	public StackPanel() {
-		setStyleName("gwtm-StackPanel");
+		setStyleName(Primary.StackPanel);
 	}
 
 	public Stack getStack(int index) {

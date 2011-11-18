@@ -12,8 +12,6 @@ public interface StyleNames {
 		String iOS = "iOS";
 		String Desktop = "Desktop";
 
-		String Accordion = "Accordion";
-		String AccordionArrow = "AccordionArrow";
 		String BackButton = "BackButton";
 		String Button = "Button";
 		String Chevron = "Chevron";
@@ -34,6 +32,8 @@ public interface StyleNames {
 		String Slider = "Slider";
 		String ScrollPanel = "gwtm-ScrollPanel";
 		String ScrollBar = "gwtm-ScrollBar";
+		String StackPanel = "gwtm-StackPanel";
+		String StackArrow = "gwtm-StackArrow";
 		String TabPanel = "TabPanel";
 		String TextArea = "TextArea";
 		String TextBox = "TextBox";
@@ -42,7 +42,9 @@ public interface StyleNames {
 	}
 	
 	public interface Secondary {
+		String Collapsed = "Collapsed";
 		String Disabled = "Disabled";
+		String Expanded = "Expanded";
 		String Pressed = "Pressed";
 		String WithPadding = "WithPadding";		
 	}

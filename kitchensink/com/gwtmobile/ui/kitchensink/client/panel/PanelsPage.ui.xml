@@ -10,7 +10,7 @@
 		</m:HeaderPanel>
 		<m:ScrollPanel>
 			<m:ListPanel ui:field="list" displayArrow="true">
-				<g:Label>Accordion Panel</g:Label>
+				<g:Label>Stack Panel</g:Label>
 				<g:Label>Header Panel</g:Label>
 				<g:Label>List Panel</g:Label>
 				<g:Label>Scroll Panel</g:Label>
