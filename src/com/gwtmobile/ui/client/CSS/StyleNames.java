@@ -35,6 +35,7 @@ public interface StyleNames {
 		String StackPanel = "gwtm-StackPanel";
 		String StackArrow = "gwtm-StackArrow";
 		String TabPanel = "gwtm-TabPanel";
+		String TabBarPanel = "gwtm-TabBarPanel";
 		String TabHeaderPanel = "gwtm-TabHeaderPanel";
 		String TabHeader = "gwtm-TabHeader";
 		String TabContentPanel = "gwtm-TabContentPanel";

@@ -229,12 +229,12 @@ public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandl
 		}
 	}
 
-	public void setTabBarPanel(boolean isNavBarPanel) {
-		if (isNavBarPanel) {
-			addStyleName("TabBarPanel");
+	public void setTabBarPanel(boolean isTabBarPanel) {
+		if (isTabBarPanel) {
+			addStyleName(Primary.TabBarPanel);
 		}
 		else {
-			removeStyleName("TabBarPanel");
+			removeStyleName(Primary.TabBarPanel);
 		}
 	}
 }

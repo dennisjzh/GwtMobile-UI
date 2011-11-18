@@ -9,75 +9,71 @@
 			<g:Label>TabBar Panel</g:Label>
 		</m:HeaderPanel>
 		<m:TabPanel ui:field="tab" tabBarPanel="true">
-			<m:Tab>
+			<m:TabHeaderPanel>
 				<m:TabHeader>
 					<g:Label>Tab1</g:Label>
 				</m:TabHeader>
-				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-					<g:Label>Tabs On Top</g:Label>
-					<g:Label>1. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
-					</g:HTMLPanel>
-				</m:TabContent>
-			</m:Tab>
-			<m:Tab>
 				<m:TabHeader>
 					<g:Label>Tab2</g:Label>
 				</m:TabHeader>
-				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-					<g:Label>Tabs On Top</g:Label>
-					<g:Label>2. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
-					</g:HTMLPanel>
-				</m:TabContent>
-			</m:Tab>
-			<m:Tab>
 				<m:TabHeader>
 					<g:Label>Tab3</g:Label>
 				</m:TabHeader>
+			</m:TabHeaderPanel>
+			<m:TabContentPanel>	
 				<m:TabContent>
 					<g:HTMLPanel styleName="Tab-Content">
-					<g:Label>Tabs On Top</g:Label>
-					<g:Label>3. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
+						<g:Label>Tabs On Top</g:Label>
+						<g:Label>1. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
 					</g:HTMLPanel>
 				</m:TabContent>
-			</m:Tab>
+				<m:TabContent>
+					<g:HTMLPanel styleName="Tab-Content">
+						<g:Label>Tabs On Top</g:Label>
+						<g:Label>2. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
+					</g:HTMLPanel>
+				</m:TabContent>
+				<m:TabContent>
+					<g:HTMLPanel styleName="Tab-Content">
+						<g:Label>Tabs On Top</g:Label>
+						<g:Label>3. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
+					</g:HTMLPanel>
+				</m:TabContent>
+			</m:TabContentPanel>	
 		</m:TabPanel>
 		<div style="height:.5em"/>		
 		<m:TabPanel ui:field="tab2" tabBarPanel="true" tabPosition="Bottom">
-			<m:Tab>
+			<m:TabHeaderPanel>
 				<m:TabHeader>
 					<g:Label>Tab1</g:Label>
 				</m:TabHeader>
-				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-					<g:Label>Tabs On Bottom</g:Label>
-					<g:Label>1. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
-					</g:HTMLPanel>
-				</m:TabContent>
-			</m:Tab>
-			<m:Tab>
 				<m:TabHeader>
 					<g:Label>Tab2</g:Label>
 				</m:TabHeader>
-				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-					<g:Label>Tabs On Bottom</g:Label>
-					<g:Label>2. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
-					</g:HTMLPanel>
-				</m:TabContent>
-			</m:Tab>
-			<m:Tab>
 				<m:TabHeader>
 					<g:Label>Tab3</g:Label>
 				</m:TabHeader>
+			</m:TabHeaderPanel>
+			<m:TabContentPanel>	
 				<m:TabContent>
 					<g:HTMLPanel styleName="Tab-Content">
-					<g:Label>Tabs On Bottom</g:Label>
-					<g:Label>3. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
+						<g:Label>Tabs On Bottom</g:Label>
+						<g:Label>1. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
 					</g:HTMLPanel>
 				</m:TabContent>
-			</m:Tab>
+				<m:TabContent>
+					<g:HTMLPanel styleName="Tab-Content">
+						<g:Label>Tabs On Bottom</g:Label>
+						<g:Label>2. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
+					</g:HTMLPanel>
+				</m:TabContent>
+				<m:TabContent>
+					<g:HTMLPanel styleName="Tab-Content">
+						<g:Label>Tabs On Bottom</g:Label>
+						<g:Label>3. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
+					</g:HTMLPanel>
+				</m:TabContent>
+			</m:TabContentPanel>	
 		</m:TabPanel>
 	</g:HTMLPanel>	
 </ui:UiBinder> 
