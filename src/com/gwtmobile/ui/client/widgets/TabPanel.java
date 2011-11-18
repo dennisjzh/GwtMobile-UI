@@ -29,6 +29,8 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.utils.Utils;
 
 public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandlers<Integer>, ClickHandler {
@@ -43,7 +45,7 @@ public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandl
     private TabsPosition tabsPosition = TabsPosition.Normal;
 
 	public TabPanel() {
-        setStyleName("gwtm-TabPanel");
+        setStyleName(Primary.TabPanel);
         addStyleName(tabsPosition.toString());
         tabHeaderPanel = null;
         tabContentPanel = null;
@@ -95,8 +97,8 @@ public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandl
         TabHeader to = (TabHeader) tabHeaderPanel.getWidget(index);
         TabContent toContent = (TabContent) tabContentPanel.getWidget(index);
         
-        to.addStyleName("Selected");
-        toContent.addStyleName("Selected");
+        to.addStyleName(Secondary.Selected);
+        toContent.addStyleName(Secondary.Selected);
         
         if (from == null || fromContent == null) {
         	//tabContentPanel.add(toContent);
@@ -134,7 +136,7 @@ public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandl
     		return null;
     	}
     	TabHeader tab = getSelectedTab();
-    	tab.removeStyleName("Selected");
+    	tab.removeStyleName(Secondary.Selected);
         return tab;
     }
     
@@ -143,7 +145,7 @@ public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandl
     		return null;
     	}
     	TabContent tabC = getSelectedTabContent();
-    	tabC.removeStyleName("Selected");
+    	tabC.removeStyleName(Secondary.Selected);
         return tabC;
     }
 
@@ -189,10 +191,6 @@ public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandl
 		return tabsPosition;
 	}
 
-	public void setTabsOnBottom(boolean tabsOnBottom) {
-		//TODO: this is just to make the kitchensink to compile.
-	}
-	
 	public void setTabsPosition(TabsPosition tabsPosition) {
 		this.tabsPosition = tabsPosition;
 		if (tabsPosition == TabsPosition.Reverse && getWidget(0) == tabHeaderPanel) {
@@ -225,9 +223,9 @@ public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandl
 	public void setFullHeight(boolean fullHeight) {
 		this.fullHeight = fullHeight;
 		if (fullHeight){
-			addStyleName("fullHeight");
+			addStyleName(Secondary.FullHeight);
 		} else { 
-			removeStyleName("fullHeight");
+			removeStyleName(Secondary.FullHeight);
 		}
 	}
 

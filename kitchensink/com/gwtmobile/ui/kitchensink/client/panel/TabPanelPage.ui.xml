@@ -9,75 +9,71 @@
 			<g:Label>Tab Panel</g:Label>
 		</m:HeaderPanel>
 		<m:TabPanel ui:field="tab">
-			<m:Tab>
+			<m:TabHeaderPanel>
 				<m:TabHeader>
 					<g:Label>Tab1</g:Label>
 				</m:TabHeader>
+				<m:TabHeader>
+					<g:Label>Tab2</g:Label>
+				</m:TabHeader>
+				<m:TabHeader>
+					<g:Label>Tab3</g:Label>
+				</m:TabHeader>
+			</m:TabHeaderPanel>
+			<m:TabContentPanel>	
 				<m:TabContent>
 					<g:HTMLPanel styleName="Tab-Content">
 						<g:Label>Tabs On Top</g:Label>
 						<g:Label>Tab1 Content</g:Label>
 					</g:HTMLPanel>
 				</m:TabContent>
-			</m:Tab>
-			<m:Tab>
-				<m:TabHeader>
-					<g:Label>Tab2</g:Label>
-				</m:TabHeader>
 				<m:TabContent>
 					<g:HTMLPanel styleName="Tab-Content">
 						<g:Label>Tabs On Top</g:Label>
 						<g:Label>Tab2 Content</g:Label>
 					</g:HTMLPanel>
 				</m:TabContent>
-			</m:Tab>
-			<m:Tab>
-				<m:TabHeader>
-					<g:Label>Tab3</g:Label>
-				</m:TabHeader>
 				<m:TabContent>
 					<g:HTMLPanel styleName="Tab-Content">
 						<g:Label>Tabs On Top</g:Label>
 						<g:Label>Tab3 Content</g:Label>
 					</g:HTMLPanel>
 				</m:TabContent>
-			</m:Tab>
+			</m:TabContentPanel>	
 		</m:TabPanel>
 		<div style="height:.5em"/>		
-		<m:TabPanel ui:field="tab2" tabsOnBottom="true">
-			<m:Tab>
+		<m:TabPanel ui:field="tab2" tabsPosition="Reverse">
+			<m:TabHeaderPanel>
 				<m:TabHeader>
 					<g:Label>Tab1</g:Label>
 				</m:TabHeader>
+				<m:TabHeader>
+					<g:Label>Tab2</g:Label>
+				</m:TabHeader>
+				<m:TabHeader>
+					<g:Label>Tab3</g:Label>
+				</m:TabHeader>
+			</m:TabHeaderPanel>
+			<m:TabContentPanel>	
 				<m:TabContent>
 					<g:HTMLPanel styleName="Tab-Content">
 						<g:Label>Tabs On Bottom</g:Label>
 						<g:Label>Tab1 Content</g:Label>
 					</g:HTMLPanel>
 				</m:TabContent>
-			</m:Tab>
-			<m:Tab>
-				<m:TabHeader>
-					<g:Label>Tab2</g:Label>
-				</m:TabHeader>
 				<m:TabContent>
 					<g:HTMLPanel styleName="Tab-Content">
 						<g:Label>Tabs On Bottom</g:Label>
 						<g:Label>Tab2 Content</g:Label>
 					</g:HTMLPanel>
 				</m:TabContent>
-			</m:Tab>
-			<m:Tab>
-				<m:TabHeader>
-					<g:Label>Tab3</g:Label>
-				</m:TabHeader>
 				<m:TabContent>
 					<g:HTMLPanel styleName="Tab-Content">
 						<g:Label>Tabs On Bottom</g:Label>
 						<g:Label>Tab3 Content</g:Label>
 					</g:HTMLPanel>
 				</m:TabContent>
-			</m:Tab>
+			</m:TabContentPanel>	
 		</m:TabPanel>
 	</g:HTMLPanel>	
 </ui:UiBinder> 

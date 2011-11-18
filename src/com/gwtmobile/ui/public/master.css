@@ -313,14 +313,18 @@ html {
 
 /********** Tab Panel **********/
 
-.TabPanel {
+.gwtm-TabPanel {
 	width:100%;
 	-webkit-box-flex: 1;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 }
 
-.TabPanel > .Header {	/*tab header panel*/
+.gwtm-TabPanel.fullHeight, .gwtm-TabPanel.fullHeight .gwtm-TabContentPanel {
+	height: 100%;
+}
+
+.gwtm-TabPanel > .gwtm-TabHeaderPanel {	/*tab header panel*/
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
 	font-size: .8em;
@@ -330,19 +334,19 @@ html {
 	min-height: 3em;
 }
 
-.TabPanel.Normal > .Header {	/*tab header panel*/
+.gwtm-TabPanel.Normal > .gwtm-TabHeaderPanel {	/*tab header panel*/
 	padding-top: .2em;
 	border-bottom: 0.2em solid #BDBDBD;
 	-webkit-box-shadow: rgba(0, 0, 0, .7) 0 .2em .5em;
 }
 
-.TabPanel.Reverse > .Header {	/*tab header panel*/
+.gwtm-TabPanel.Reverse > .gwtm-TabHeaderPanel {	/*tab header panel*/
 	padding-bottom: .2em;
 	border-top: 0.2em solid #BDBDBD;
 	-webkit-box-shadow: rgba(0, 0, 0, .7) 0 -.2em .5em;
 }
 
-.TabPanel > .Header > div {		/*tab header*/
+.gwtm-TabPanel > .gwtm-TabHeaderPanel > div {		/*tab header*/
 	-webkit-box-flex: 1;
 	display: -webkit-box;
 	-webkit-box-align: center;
@@ -355,68 +359,80 @@ html {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
 }
 
-.TabPanel.Normal > .Header > div {		/*tab header*/
+.gwtm-TabPanel.Normal > .gwtm-TabHeaderPanel > div {		/*tab header*/
 	border-bottom: 1px solid #333333;
 	border-top-left-radius: 0.3em 0.3em;
 	border-top-right-radius: 0.3em 0.3em;
 }
 
-.TabPanel.Reverse > .Header > div {		/*tab header*/
+.gwtm-TabPanel.Reverse > .gwtm-TabHeaderPanel > div {		/*tab header*/
 	border-top: 1px solid #333333;
 	border-bottom-left-radius: 0.3em 0.3em;
 	border-bottom-right-radius: 0.3em 0.3em;
 }
 
-.TabPanel > .Header > div.Selected {
+.gwtm-TabPanel > .gwtm-TabHeaderPanel > div.Selected {
 	color:black;
 	text-shadow: white 0 .1em .1em;
 	border-left: 1px solid white;
 }
 
-.TabPanel.Normal > .Header > div.Selected {
+.gwtm-TabPanel.Normal > .gwtm-TabHeaderPanel > div.Selected {
 	border-top: 1px solid white;
 	border-bottom: 1px solid #BDBDBD;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#BDBDBD));
 }
 
-.TabPanel.Reverse > .Header > div.Selected {
+.gwtm-TabPanel.Reverse > .gwtm-TabHeaderPanel > div.Selected {
 	border-top: 1px solid #BDBDBD;
 	border-bottom: 1px solid white;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BDBDBD), to(white));
 }
 
-.TabPanel > .Header > div.Selected .gwt-Image {
+.gwtm-TabPanel > .gwtm-TabHeader > div.Selected img {
 	opacity: 1;
 }
 
-.TabPanel > .Header > div .gwt-Image {
+.gwtm-TabPanel > .gwtm-TabHeader > div img {
 	opacity: 0.5;
 }
 
-.TabPanel > .Content {			/*tab content panel*/
+.gwtm-TabPanel > .gwtm-TabContentPanel {			/*tab content panel*/
 	position: relative;
+	-webkit-box-flex: 1;
+	background: white;
+	display:-webkit-box;
+}
+
+.gwtm-TabPanel.Normal > .gwtm-TabContentPanel {
+	border-radius: 0 0 .4em .4em;
+}
+
+.gwtm-TabPanel.Reverse > .gwtm-TabContentPanel {
+	border-radius: .4em .4em 0 0;
+}
+
+.gwtm-TabPanel > .gwtm-TabContentPanel > div.Selected {		/*tab content*/
+	display: -webkit-box;
 	-webkit-box-flex: 1;
 }
 
-.TabPanel > .Content > div {		/*tab content*/
-	position:absolute;
-	display: -webkit-box;
-	height: 100%;
-	width: 100%;
+.gwtm-TabPanel > .gwtm-TabContentPanel > div {
+	display: none;
 }
 
-.Android .TabPanel > .Header > div {		/*tab header*/
+.Android .gwtm-TabPanel > .gwtm-TabHeader > div {		/*tab header*/
 	-webkit-box-shadow: #BDBDBD 0 0 .1em;	/* antialias workaround */
 }
 
 /********** TabBar Panel **********/
 
-.TabPanel.TabBarPanel > .Header {
+.gwtm-TabPanel.gwtm-TabBarPanel > .gwtm-TabHeaderPanel {
 	border: 0;
 	padding: 0;
 }
 
-.TabPanel.TabBarPanel > .Header > div {		/*tab header*/
+.gwtm-TabPanel.gwtm-TabBarPanel > .gwtm-TabHeaderPanel > div {		/*tab header*/
 	color: gray;
  	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 	 	from(#2e2e2e), color-stop(0.02, #2e2e2e), color-stop(0.5, #151515), 
@@ -427,7 +443,7 @@ html {
 	-webkit-box-shadow: black 0 0 0 !important;
 }
 
-.TabPanel.TabBarPanel > .Header > div.Selected {
+.gwtm-TabPanel.gwtm-TabBarPanel > .gwtm-TabHeaderPanel > div.Selected {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(#434343), color-stop(0.02, #434343), 
 		color-stop(0.5, #363636), color-stop(0.5, #252525), to(#252525) );

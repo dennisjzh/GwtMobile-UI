@@ -5,13 +5,14 @@ import java.beans.Beans;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
 
 
 public class TabContentPanel extends FlowPanel implements HasWidgets {
 
 	public TabContentPanel(){
-		setStyleName("gwtm-TabContentPanel");
+		setStyleName(Primary.TabContentPanel);
 	}
 	
     @Override

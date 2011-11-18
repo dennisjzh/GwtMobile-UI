@@ -34,7 +34,11 @@ public interface StyleNames {
 		String ScrollBar = "gwtm-ScrollBar";
 		String StackPanel = "gwtm-StackPanel";
 		String StackArrow = "gwtm-StackArrow";
-		String TabPanel = "TabPanel";
+		String TabPanel = "gwtm-TabPanel";
+		String TabHeaderPanel = "gwtm-TabHeaderPanel";
+		String TabHeader = "gwtm-TabHeader";
+		String TabContentPanel = "gwtm-TabContentPanel";
+		String TabContent = "gwtm-TabContent";
 		String TextArea = "TextArea";
 		String TextBox = "TextBox";
 		String ToolbarPanel = "ToolbarPanel";
@@ -45,8 +49,10 @@ public interface StyleNames {
 		String Collapsed = "Collapsed";
 		String Disabled = "Disabled";
 		String Expanded = "Expanded";
+		String FullHeight = "FullHeight";		
 		String Pressed = "Pressed";
-		String WithPadding = "WithPadding";		
+		String Selected = "Selected";
+		String WithPadding = "WithPadding";
 	}
 
 }

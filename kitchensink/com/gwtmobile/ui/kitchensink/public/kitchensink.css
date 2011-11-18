@@ -12,14 +12,6 @@
 	text-align: center;				
 }
 
-.Normal .Tab-Content {
-	border-radius: 0 0 .4em .4em;
-}		
-
-.Reverse .Tab-Content {
-	border-radius: .4em .4em 0 0;
-}
-
 .Container {
 	-webkit-box-flex: 1;
 	display: -webkit-box;
