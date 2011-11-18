@@ -46,12 +46,14 @@ public interface StyleNames {
 	}
 	
 	public interface Secondary {
+		String Bottom = "Bottom";
 		String Collapsed = "Collapsed";
 		String Disabled = "Disabled";
 		String Expanded = "Expanded";
 		String FullHeight = "FullHeight";		
 		String Pressed = "Pressed";
 		String Selected = "Selected";
+		String Top = "Top";
 		String WithPadding = "WithPadding";
 	}
 

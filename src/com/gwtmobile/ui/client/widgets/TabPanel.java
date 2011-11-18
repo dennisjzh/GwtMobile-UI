@@ -36,17 +36,17 @@ import com.gwtmobile.ui.client.utils.Utils;
 public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandlers<Integer>, ClickHandler {
 
 
-	public enum TabsPosition {Normal, Reverse}; // todo: LeftTabs, RightTabs
+	public enum TabPosition {Top, Bottom}; // todo: LeftTabs, RightTabs
     private TabHeaderPanel tabHeaderPanel;
     private TabContentPanel tabContentPanel;
     private int selectedTabIndex = -1;
     private int defaultTabIndex = 0;
     private boolean fullHeight = false;
-    private TabsPosition tabsPosition = TabsPosition.Normal;
+    private TabPosition tabPosition = TabPosition.Top;
 
 	public TabPanel() {
         setStyleName(Primary.TabPanel);
-        addStyleName(tabsPosition.toString());
+        addStyleName(tabPosition.toString());
         tabHeaderPanel = null;
         tabContentPanel = null;
     }
@@ -187,24 +187,24 @@ public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandl
 //		}
 //	}
 
-	public TabsPosition getTabsPosition() {
-		return tabsPosition;
+	public TabPosition getTabPosition() {
+		return tabPosition;
 	}
 
-	public void setTabsPosition(TabsPosition tabsPosition) {
-		this.tabsPosition = tabsPosition;
-		if (tabsPosition == TabsPosition.Reverse && getWidget(0) == tabHeaderPanel) {
+	public void setTabPosition(TabPosition tabsPosition) {
+		this.tabPosition = tabsPosition;
+		if (tabsPosition == TabPosition.Bottom && getWidget(0) == tabHeaderPanel) {
 			super.clear();
 			super.add(tabContentPanel);
 			super.add(tabHeaderPanel);
-			addStyleName(tabsPosition.toString());
-			removeStyleName("Normal");
-		} else if(tabsPosition == TabsPosition.Normal && getWidget(0) == tabContentPanel){
+			addStyleName(Secondary.Bottom);
+			removeStyleName(Secondary.Top);
+		} else if(tabsPosition == TabPosition.Top && getWidget(0) == tabContentPanel){
 			super.clear();
 			super.add(tabHeaderPanel);
 			super.add(tabContentPanel);
-			addStyleName(tabsPosition.toString());
-			removeStyleName("Reverse");
+			addStyleName(Secondary.Top);
+			removeStyleName(Secondary.Bottom);
 		}
 	}
 	

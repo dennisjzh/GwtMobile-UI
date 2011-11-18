@@ -44,7 +44,7 @@
 			</m:Tab>
 		</m:TabPanel>
 		<div style="height:.5em"/>		
-		<m:TabPanel ui:field="tab2" tabBarPanel="true" tabsPosition="Reverse">
+		<m:TabPanel ui:field="tab2" tabBarPanel="true" tabPosition="Bottom">
 			<m:Tab>
 				<m:TabHeader>
 					<g:Label>Tab1</g:Label>

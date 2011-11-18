@@ -334,13 +334,13 @@ html {
 	min-height: 3em;
 }
 
-.gwtm-TabPanel.Normal > .gwtm-TabHeaderPanel {	/*tab header panel*/
+.gwtm-TabPanel.Top > .gwtm-TabHeaderPanel {	/*tab header panel*/
 	padding-top: .2em;
 	border-bottom: 0.2em solid #BDBDBD;
 	-webkit-box-shadow: rgba(0, 0, 0, .7) 0 .2em .5em;
 }
 
-.gwtm-TabPanel.Reverse > .gwtm-TabHeaderPanel {	/*tab header panel*/
+.gwtm-TabPanel.Bottom > .gwtm-TabHeaderPanel {	/*tab header panel*/
 	padding-bottom: .2em;
 	border-top: 0.2em solid #BDBDBD;
 	-webkit-box-shadow: rgba(0, 0, 0, .7) 0 -.2em .5em;
@@ -359,13 +359,13 @@ html {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
 }
 
-.gwtm-TabPanel.Normal > .gwtm-TabHeaderPanel > div {		/*tab header*/
+.gwtm-TabPanel.Top > .gwtm-TabHeaderPanel > div {		/*tab header*/
 	border-bottom: 1px solid #333333;
 	border-top-left-radius: 0.3em 0.3em;
 	border-top-right-radius: 0.3em 0.3em;
 }
 
-.gwtm-TabPanel.Reverse > .gwtm-TabHeaderPanel > div {		/*tab header*/
+.gwtm-TabPanel.Bottom > .gwtm-TabHeaderPanel > div {		/*tab header*/
 	border-top: 1px solid #333333;
 	border-bottom-left-radius: 0.3em 0.3em;
 	border-bottom-right-radius: 0.3em 0.3em;
@@ -377,13 +377,13 @@ html {
 	border-left: 1px solid white;
 }
 
-.gwtm-TabPanel.Normal > .gwtm-TabHeaderPanel > div.Selected {
+.gwtm-TabPanel.Top > .gwtm-TabHeaderPanel > div.Selected {
 	border-top: 1px solid white;
 	border-bottom: 1px solid #BDBDBD;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#BDBDBD));
 }
 
-.gwtm-TabPanel.Reverse > .gwtm-TabHeaderPanel > div.Selected {
+.gwtm-TabPanel.Bottom > .gwtm-TabHeaderPanel > div.Selected {
 	border-top: 1px solid #BDBDBD;
 	border-bottom: 1px solid white;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BDBDBD), to(white));
@@ -404,11 +404,11 @@ html {
 	display:-webkit-box;
 }
 
-.gwtm-TabPanel.Normal > .gwtm-TabContentPanel {
+.gwtm-TabPanel.Top > .gwtm-TabContentPanel {
 	border-radius: 0 0 .4em .4em;
 }
 
-.gwtm-TabPanel.Reverse > .gwtm-TabContentPanel {
+.gwtm-TabPanel.Bottom > .gwtm-TabContentPanel {
 	border-radius: .4em .4em 0 0;
 }
 
