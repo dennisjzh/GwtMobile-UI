@@ -62,7 +62,7 @@ public class BrowserPageHistory extends SerialPageHistory implements ValueChange
 	}
 
 	@Override
-	public void goBack(Page fromPage, Object returnValue) {
+	public void goBack(Object returnValue) {
 		History.back();
 	}
 
@@ -72,7 +72,7 @@ public class BrowserPageHistory extends SerialPageHistory implements ValueChange
 	}
 	
 	@Override
-	public void startUp(Object param) {
+	public void startUp(Page startUpPage) {
 		String token = History.getToken();
 		loadPage(token);
 	}

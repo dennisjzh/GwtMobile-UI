@@ -31,6 +31,23 @@ public interface PageHistory {
 	
 	public static PageHistory Instance = GWT.create(SerialPageHistory.class);
 	
+	public static class NavigateInfo {
+		private Page fromPage;
+		private Object value;
+		public void setFromPage(Page fromPage) {
+			this.fromPage = fromPage;
+		}
+		public Page getFromPage() {
+			return fromPage;
+		}
+		public void setValue(Object value) {
+			this.value = value;
+		}
+		public Object getValue() {
+			return value;
+		}
+	}
+
 	/**
 	 * Light-weight page mapping interface that is used to retrieve page
 	 * implementations as required. Note, implementations are required
@@ -40,8 +57,6 @@ public interface PageHistory {
 		public Page getPage(String pageName);
 	}
 
-	public void add(Page page);
-	
 	public void navigate(String token);
 	
 	public void navigate(String pageName, String params);
@@ -50,16 +65,14 @@ public interface PageHistory {
 
 	public Page from();
 
-	public Page back();
+	public void startUp(Page startUpPage);
 	
-	public void goBack(Page fromPage, Object returnValue);
+	public void goTo(Page toPage, Object params, Transition transition);
+	
+	public void goBack(Object returnValue);
 
 	public void setMapper(Mapper mapper);
-	
-	public void startUp(Object param);
-	
-	public void setReturnValue(Object returnValue);
-    
-	public Object getReturnValue();
+		    
+	public NavigateInfo getNavigateInfo();
 
 }
