@@ -125,9 +125,9 @@ public class ScrollPanel extends HTMLFlowPanel implements DragEventsHandler, Swi
 	public void setFullHeight(boolean fullHeight) {
 		this.fullHeight = fullHeight;
 		if (fullHeight){
-			addStyleName("fullHeight");
+			addStyleName(Secondary.FullHeight);
 		} else { 
-			removeStyleName("fullHeight");
+			removeStyleName(Secondary.FullHeight);
 		}
 	}	
 	

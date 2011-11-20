@@ -47,8 +47,6 @@ public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandl
 	public TabPanel() {
         setStyleName(Primary.TabPanel);
         addStyleName(tabPosition.toString());
-        tabHeaderPanel = null;
-        tabContentPanel = null;
     }
     
     @Override
@@ -81,10 +79,9 @@ public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandl
     
     @Override
 	public void onInitialLoad() {
-    
-	    	if (tabHeaderPanel.getWidgetCount() > 0) {
-	            selectTab(defaultTabIndex);
-	    	}
+    	if (tabHeaderPanel != null && tabHeaderPanel.getWidgetCount() > 0) {
+            selectTab(defaultTabIndex);
+    	}
     }
     
     public void selectTab(int index) {
@@ -95,7 +92,10 @@ public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandl
         TabHeader from = unselectCurrentTab();
         TabContent fromContent = unSelectCurrentTabContent();
         TabHeader to = (TabHeader) tabHeaderPanel.getWidget(index);
-        TabContent toContent = (TabContent) tabContentPanel.getWidget(index);
+        TabContent toContent = (TabContent) tabContentPanel.selectTab(index);
+        if (to == null || toContent == null) {
+        	return;
+        }
         
         to.addStyleName(Secondary.Selected);
         toContent.addStyleName(Secondary.Selected);
@@ -120,7 +120,7 @@ public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandl
     }
     
     public TabContent getSelectedTabContent() {
-    	return (TabContent) tabContentPanel.getWidget(selectedTabIndex);
+    	return tabContentPanel.getSelectedTabContent();
     }
     
 	@Override

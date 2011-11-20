@@ -320,8 +320,8 @@ html {
 	-webkit-box-orient: vertical;
 }
 
-.gwtm-TabPanel.fullHeight, .gwtm-TabPanel.fullHeight .gwtm-TabContentPanel {
-	height: 100%;
+.gwtm-TabPanel.FullHeight, .gwtm-TabPanel.FullHeight .gwtm-TabContentPanel {
+	height:100%;
 }
 
 .gwtm-TabPanel > .gwtm-TabHeaderPanel {	/*tab header panel*/
@@ -398,8 +398,8 @@ html {
 }
 
 .gwtm-TabPanel > .gwtm-TabContentPanel {			/*tab content panel*/
-	position: relative;
 	-webkit-box-flex: 1;
+	color: black;
 	background: white;
 	display:-webkit-box;
 }

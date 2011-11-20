@@ -18,6 +18,7 @@ package com.gwtmobile.ui.client.widgets;
 
 
 public interface IsGwtMobileWidget {
+	//FIX ME: static final
 	public IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
 	void onInitialLoad();
     void onTransitionEnd();
