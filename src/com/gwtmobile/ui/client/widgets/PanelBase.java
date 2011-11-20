@@ -16,13 +16,13 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import com.google.gwt.user.client.ui.HasWidgets;
 
-public class FlowPanel extends com.google.gwt.user.client.ui.FlowPanel implements IsGwtMobileWidget {
+
+public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implements IsGwtMobilePanel {
 	    
 	    private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
 	    
-	    public FlowPanel(){
+	    public PanelBase(){
 	    	setStyleName("gtwm-FlowPanel");
 	    }
 	    
@@ -36,9 +36,13 @@ public class FlowPanel extends com.google.gwt.user.client.ui.FlowPanel implement
 		public void onInitialLoad() {
 	    }
 	    
-	    //FIXME: shouldn't this method be on PageBase/PanelBase?
 	    @Override
-		public void onTransitionEnd() {    	
+		public void onTransitionEnd(TransitionDirection direction) {
+//	    	for (Widget widget : this.getChildren()) {
+//				if (widget instanceof IsGwtMobilePanel) {
+//					((IsGwtMobilePanel) widget).onTransitionEnd();
+//				}
+//			}
 	    }
 	    
 	    @Override

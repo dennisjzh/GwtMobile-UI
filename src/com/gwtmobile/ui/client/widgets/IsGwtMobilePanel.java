@@ -17,7 +17,7 @@
 package com.gwtmobile.ui.client.widgets;
 
 
-public interface IsGwtMobileWidget {
-	void onInitialLoad();
-    void setSecondaryStyle(String style);
+public interface IsGwtMobilePanel extends IsGwtMobileWidget {
+	enum TransitionDirection {From, To};
+    void onTransitionEnd(TransitionDirection direction);
 }

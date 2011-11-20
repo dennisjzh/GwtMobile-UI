@@ -20,25 +20,20 @@ import com.google.gwt.user.client.ui.Composite;
 
 public class WidgetBase extends Composite implements IsGwtMobileWidget {
 
-    private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
+    private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
     
     @Override
     public void onLoad() {
     	super.onLoad();
-    	_widgetHelper.CheckInitialLoad(this);
+    	widgetHelper.CheckInitialLoad(this);
     }
 
     @Override
 	public void onInitialLoad() {
     }
     
-    //FIXME: shouldn't this method be on PageBase/PanelBase?
-    @Override
-	public void onTransitionEnd() {    	
-    }
-    
     @Override
 	public void setSecondaryStyle(String style) {
-    	_widgetHelper.setSecondaryStyle(this, style);
+    	widgetHelper.setSecondaryStyle(this, style);
     }
 }
