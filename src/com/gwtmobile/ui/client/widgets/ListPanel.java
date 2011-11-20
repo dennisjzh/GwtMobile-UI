@@ -31,7 +31,7 @@ import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.event.SelectionChangedHandler;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public class ListPanel extends FlowPanel implements ClickHandler, DragEventsHandler{
+public class ListPanel extends PanelBase implements ClickHandler, DragEventsHandler{
 
 	private boolean showArrow;
 	private int selected = -1;

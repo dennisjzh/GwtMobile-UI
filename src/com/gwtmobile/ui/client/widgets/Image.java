@@ -26,7 +26,7 @@ public class Image extends com.google.gwt.user.client.ui.Image
 	private IconImages iconImages = IconImages.None;
 
 
-	private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
+	private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
 
 	public Image() {
 		super();
@@ -49,7 +49,7 @@ public class Image extends com.google.gwt.user.client.ui.Image
 	@Override
 	protected void onLoad() {
 		super.onLoad();
-		_widgetHelper.CheckInitialLoad(this);
+		widgetHelper.CheckInitialLoad(this);
 	}
 
 	@Override
@@ -57,12 +57,8 @@ public class Image extends com.google.gwt.user.client.ui.Image
 	}
 
 	@Override
-	public void onTransitionEnd() {
-	}
-
-	@Override
 	public void setSecondaryStyle(String style) {
-		_widgetHelper.setSecondaryStyle(this, style);
+		widgetHelper.setSecondaryStyle(this, style);
 	}
 
 }

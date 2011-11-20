@@ -2,14 +2,13 @@ package com.gwtmobile.ui.client.widgets;
 
 import java.beans.Beans;
 
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
 
 
-public class TabHeaderPanel extends FlowPanel implements HasWidgets {
+public class TabHeaderPanel extends PanelBase {
 
 	public TabHeaderPanel(){
 		setStyleName(Primary.TabHeaderPanel);

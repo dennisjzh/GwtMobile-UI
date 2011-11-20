@@ -26,7 +26,7 @@ import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
 
 
-public class StackHeader extends FlowPanel implements ClickHandler, DragEventsHandler {
+public class StackHeader extends PanelBase implements ClickHandler, DragEventsHandler {
 
 	private StackArrow stackArrow = new StackArrow();
 	private boolean showArrow = true;

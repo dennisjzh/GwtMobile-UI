@@ -20,7 +20,7 @@ import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
 
 
-public class StackPanel extends FlowPanel {
+public class StackPanel extends PanelBase {
 
 	public StackPanel() {
 		setStyleName(Primary.StackPanel);

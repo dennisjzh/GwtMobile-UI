@@ -24,7 +24,10 @@ import com.google.gwt.event.dom.client.FocusHandler;
 import com.gwtmobile.ui.client.utils.HTML5InputElement;
 
 
-public class InputBox extends com.google.gwt.user.client.ui.TextBoxBase implements FocusHandler, BlurHandler, IsGwtMobileWidget {
+public class InputBox extends com.google.gwt.user.client.ui.TextBoxBase 
+	implements FocusHandler, BlurHandler, IsGwtMobileWidget {
+
+	private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
 
 	public enum InputTypes {button, checkbox, file, hidden, image, password, radio, reset, submit, text, email, url, number, range, date, month, week, time, datetime, search, color};
 	public enum BoxTypes { TextBox, PasswordBox, EmailBox, NumberTextBox, PasswordTextBox, TelephoneTextBox, UrlTextBox};
@@ -68,7 +71,7 @@ public class InputBox extends com.google.gwt.user.client.ui.TextBoxBase implemen
 	@Override
 	protected void onLoad() {
 		super.onLoad();
-		_widgetHelper.CheckInitialLoad(this);
+		widgetHelper.CheckInitialLoad(this);
 		
 	}
 	
@@ -93,12 +96,8 @@ public class InputBox extends com.google.gwt.user.client.ui.TextBoxBase implemen
 	}
 
 	@Override
-	public void onTransitionEnd() {
-	}
-
-	@Override
 	public void setSecondaryStyle(String style) {
-		_widgetHelper.setSecondaryStyle(this, style);
+		widgetHelper.setSecondaryStyle(this, style);
 	}
 	
 }

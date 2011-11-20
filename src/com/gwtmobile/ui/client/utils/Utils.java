@@ -180,15 +180,16 @@ public class Utils {
         return index;
     }
     
-    public static boolean isSubclassOf(Class<?> class1, Class<?> class2) {
-    	while (class1 != null) {
-    		if (class1 == class2) {
-    			return true;
-    		}
-    		class1 = class1.getSuperclass();
-    	}
-    	return false;
-    }
+// this was before I knew the instanceof operator...    
+//    public static boolean isSubclassOf(Class<?> class1, Class<?> class2) {
+//    	while (class1 != null) {
+//    		if (class1 == class2) {
+//    			return true;
+//    		}
+//    		class1 = class1.getSuperclass();
+//    	}
+//    	return false;
+//    }
 
 	public static native void setHeight(Element ele, double value) /*-{
 		ele.style.height = value+"px";

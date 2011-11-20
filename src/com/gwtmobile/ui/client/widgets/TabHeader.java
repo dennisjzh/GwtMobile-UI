@@ -16,10 +16,9 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
-public class TabHeader extends FlowPanel {
+public class TabHeader extends PanelBase {
 	
 	public TabHeader(){
 		setStyleName(Primary.TabHeader);

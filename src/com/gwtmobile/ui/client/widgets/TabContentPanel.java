@@ -3,15 +3,13 @@ package com.gwtmobile.ui.client.widgets;
 import java.beans.Beans;
 import java.util.ArrayList;
 
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
-import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 
 
 
-public class TabContentPanel extends FlowPanel {
+public class TabContentPanel extends PanelBase {
 
 	ArrayList<TabContent> contentArray = new ArrayList<TabContent>();
 	public TabContentPanel(){

@@ -71,10 +71,6 @@ public class TextArea extends com.google.gwt.user.client.ui.TextArea
 	}
 
 	@Override
-	public void onTransitionEnd() {
-	}
-
-	@Override
 	public void setSecondaryStyle(String style) {
 		widgetHelper.setSecondaryStyle(this, style);
 	}

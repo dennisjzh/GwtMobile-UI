@@ -33,7 +33,7 @@ import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public class TabPanel extends FlowPanel implements HasWidgets, HasSelectionHandlers<Integer>, ClickHandler {
+public class TabPanel extends PanelBase implements HasWidgets, HasSelectionHandlers<Integer>, ClickHandler {
 
 
 	public enum TabPosition {Top, Bottom}; // todo: LeftTabs, RightTabs

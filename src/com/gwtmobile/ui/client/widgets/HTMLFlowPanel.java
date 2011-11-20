@@ -20,7 +20,7 @@ import java.util.Iterator;
 
 import com.google.gwt.user.client.ui.Widget;
 
-public class HTMLFlowPanel extends FlowPanel {
+public class HTMLFlowPanel extends PanelBase {
 
 	protected HTMLPanel intPanel = new HTMLPanel("");
 		

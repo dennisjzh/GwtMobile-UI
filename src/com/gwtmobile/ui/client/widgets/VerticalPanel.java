@@ -20,7 +20,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.gwtmobile.ui.client.resources.MobileResources.StyleVariants;
 
 
-public class VerticalPanel extends FlowPanel implements HasWidgets {
+public class VerticalPanel extends PanelBase implements HasWidgets {
 
 	public enum BoxPack {start, end, center, baseline, stretch, justify};
 	private BoxPack boxPack = BoxPack.baseline;

@@ -37,7 +37,7 @@ import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.event.SelectionChangedHandler;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public class CheckBoxGroup extends FlowPanel
+public class CheckBoxGroup extends PanelBase
 	implements HasWidgets, ClickHandler, DragEventsHandler, ValueChangeHandler<Boolean> {
 
 	private int pressed = -1;

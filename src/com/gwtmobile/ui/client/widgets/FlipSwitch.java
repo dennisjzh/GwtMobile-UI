@@ -31,8 +31,11 @@ import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
 import com.gwtmobile.ui.client.utils.Utils;
 
+//FIXEME: extends WidgetBase?
 public class FlipSwitch extends HTML 
 	implements IsGwtMobileWidget, DragEventsHandler, ClickHandler, HasValueChangeHandlers<Boolean> {
+
+	private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
 
 	private final static String HTML_CONTENT = "<div></div><div></div><div><div><div>ON</div><div></div><div>OFF</div></div></div>";
 	protected boolean enabled = true;
@@ -232,13 +235,8 @@ public class FlipSwitch extends HTML
 	}
 
 	@Override
-	public void onTransitionEnd() {
-
-	}
-
-	@Override
 	public void setSecondaryStyle(String style) {
-		_widgetHelper.setSecondaryStyle(this, style);
+		widgetHelper.setSecondaryStyle(this, style);
 	}
 
 }

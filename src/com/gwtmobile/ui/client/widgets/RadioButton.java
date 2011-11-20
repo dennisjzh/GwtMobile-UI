@@ -65,10 +65,6 @@ public class RadioButton extends com.google.gwt.user.client.ui.RadioButton
 	}
 
 	@Override
-	public void onTransitionEnd() {
-	}
-
-	@Override
 	public void setSecondaryStyle(String style) {
 		widgetHelper.setSecondaryStyle(this, style);
 	}

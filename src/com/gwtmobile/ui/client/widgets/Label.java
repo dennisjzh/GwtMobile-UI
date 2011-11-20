@@ -106,10 +106,6 @@ public class Label extends com.google.gwt.user.client.ui.Label
 	}
 
 	@Override
-	public void onTransitionEnd() {
-	}
-
-	@Override
 	public void setSecondaryStyle(String style) {
 		widgetHelper.setSecondaryStyle(this, style);
 	}

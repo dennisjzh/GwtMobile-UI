@@ -31,7 +31,7 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public class DropDownList extends FlowPanel 
+public class DropDownList extends PanelBase 
 	implements FocusHandler, BlurHandler, ChangeHandler, HasValueChangeHandlers<String> {
 	
 	ListBox _listBox = new ListBox();

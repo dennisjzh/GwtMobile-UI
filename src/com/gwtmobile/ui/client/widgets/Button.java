@@ -27,8 +27,11 @@ import com.gwtmobile.ui.client.event.DragEventsHandler;
 import com.gwtmobile.ui.client.resources.MobileResources;
 import com.gwtmobile.ui.client.resources.MobileResources.IconImages;
 
+//FIXME: extends Widgetbase?
 public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget {
 	
+	private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
+
 	public enum IconPositions { None, Left, Right, MiddleTop, MiddleBottom };
 	
 	private boolean enabled = true;
@@ -76,7 +79,8 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     	super.setHTML("<div class=\"ButtonCaption\"><div class=\"ButtonCaption"+(isShowCaption()?"Visible":"Hidden")+"\">"+getCaption()+"</div>"+butIcon.toString()+"</div>");
     }
     
-    public String getHTML(){
+    @Override
+	public String getHTML(){
     	if (Beans.isDesignTime())
     		return caption;
     	return super.getHTML();
@@ -86,7 +90,7 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     public void onLoad() {
         super.onLoad();
         DragController.get().addDragEventsHandler(this);
-        _widgetHelper.CheckInitialLoad(this);
+        widgetHelper.CheckInitialLoad(this);
     }
     
     @Override
@@ -193,12 +197,8 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
 	}
 
 	@Override
-	public void onTransitionEnd() {
-	}
-
-	@Override
 	public void setSecondaryStyle(String style) {
-		_widgetHelper.setSecondaryStyle(this, style);
+		widgetHelper.setSecondaryStyle(this, style);
 	}
 
 }

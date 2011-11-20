@@ -17,7 +17,7 @@
 package com.gwtmobile.ui.client.widgets;
 
 
-public class StackContent extends FlowPanel {
+public class StackContent extends PanelBase {
 	
 	public StackContent(){
 		//addStyleName("gwtm-StackContent");

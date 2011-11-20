@@ -16,25 +16,23 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
-import com.gwtmobile.ui.client.utils.Utils;
 
-public class TabContent extends FlowPanel implements HasWidgets {
+public class TabContent extends PanelBase {
 	
 	public TabContent() {
 		setStyleName(Primary.TabContent);
 	}
 	
+	//FIXME: why need to pass transition end event to children?
 	@Override
-	public void onTransitionEnd() {
-		for (int i = 0; i < getWidgetCount(); i++) {
-			Widget w = getWidget(i);
-			if (Utils.isSubclassOf(w.getClass(), FlowPanel.class)) {
-				((FlowPanel) w).onTransitionEnd();
+	public void onTransitionEnd(TransitionDirection direction) {
+    	for (Widget widget : this.getChildren()) {
+			if (widget instanceof IsGwtMobilePanel) {
+				((IsGwtMobilePanel) widget).onTransitionEnd(direction);
 			}
-		}
+    	}
 	}
 
 }

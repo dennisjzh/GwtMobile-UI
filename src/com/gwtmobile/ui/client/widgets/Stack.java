@@ -23,7 +23,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public class Stack extends FlowPanel {
+public class Stack extends PanelBase {
 
     StackHeader header;
     StackContent content;

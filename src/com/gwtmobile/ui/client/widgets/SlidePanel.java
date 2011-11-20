@@ -23,18 +23,14 @@ import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 import com.gwtmobile.ui.client.page.Transition;
 
-//FIXME: inherit from PanelBase
-public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHandler, HasValueChangeHandlers<Boolean> {
+public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValueChangeHandlers<Boolean> {
 
-    protected FlowPanel _panel = new FlowPanel();
     protected int _count = 0;
     protected int _current = 0;
     protected SlideProvider _slideProvider = null;
@@ -42,7 +38,6 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
     protected boolean _rotate = false;
 
     public SlidePanel() {
-        initWidget(_panel);
         setStyleName("SlidePanel");
     }
 
@@ -68,7 +63,7 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
 		_current = 0;
     	Slide slide = getSlide(_current);
 		if (slide != null) {
-			_panel.add(slide);
+			this.add(slide);
 		}
     }
 
@@ -123,10 +118,10 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
 
 	protected void moveNext() {
 		Slide to = getSlide(_current);
-    	Slide from = (Slide) _panel.getWidget(0);
+    	Slide from = (Slide) this.getWidget(0);
     	Transition transition = Transition.SLIDE;
     	ValueChangeEvent.fire(this, true);
-    	transition.start(from, to, _panel, false);
+    	transition.start(from, to, this, false);
 	}
 
 	public void previous() {
@@ -143,16 +138,18 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
 
 	protected void movePrevious() {
 		Slide to = getSlide(_current);
-    	Slide from = (Slide) _panel.getWidget(0);
+    	Slide from = (Slide) this.getWidget(0);
     	Transition transition = Transition.SLIDE;
     	ValueChangeEvent.fire(this, false);
-    	transition.start(from, to, _panel, true);
+    	transition.start(from, to, this, true);
 	}
 
 	@Override
-	public void onTransitionEnd() {
-		super.onTransitionEnd();
-		_panel.remove(0);
+	public void onTransitionEnd(TransitionDirection direction) {
+		super.onTransitionEnd(direction);
+		if (direction == TransitionDirection.To) {
+			this.remove(0);
+		}
 	}
 	
 	public int getCurrentSlideIndex() {
