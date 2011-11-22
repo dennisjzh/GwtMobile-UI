@@ -21,8 +21,7 @@ public class TestDemo implements EntryPoint {
 					Utils.Console("Loading main ui...");
 					mainPage = new MainPage();
 					Page.load(mainPage);
-				}
-				else {
+				}else {
 					this.cancel();
 				}
 			}

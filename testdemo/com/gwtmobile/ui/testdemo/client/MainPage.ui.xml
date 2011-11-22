@@ -19,7 +19,7 @@
 
 		<m:ScrollPanel>
 			
-			<m:ListPanel ui:field="list" showArrow="true">
+			<m:ListPanel ui:field="list" displayArrow="Visible">
 				<m:ListItem displayArrow="Hidden">
 					<m:HorizontalPanel boxPack="justify">
 						<m:HorizontalPanel withVPadding="true">
