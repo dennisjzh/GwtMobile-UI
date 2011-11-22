@@ -33,7 +33,8 @@ import com.gwtmobile.ui.client.utils.Utils;
 
 public class ListPanel extends PanelBase implements ClickHandler, DragEventsHandler{
 
-	private boolean showArrow;
+	public enum ShowArrow { Visible, Hidden };
+	private ShowArrow showArrow;
 	private int selected = -1;
 	private boolean selectable = true;
 	
@@ -64,11 +65,13 @@ public class ListPanel extends PanelBase implements ClickHandler, DragEventsHand
     	}
     	else {
     		//TODO: check with joao if this is causing problem with gwt designer.
+    		// yes, this asserts are causing some issues, for inntance, an emply panel on gwt designer
+    		// will have a child Label saying that the panel is empty. With this assert we cant use gwtd
 //    		assert false : "Only ListItem can be added to ListPanel.";
         	ListItem listItem = new ListItem();
         	super.add(listItem);    	
         	listItem.add(w);
-        	if (showArrow) {
+        	if (showArrow == ShowArrow.Visible) {
 	        	Chevron chevron = new Chevron();
 	        	listItem.add(chevron);
         	}
@@ -89,7 +92,7 @@ public class ListPanel extends PanelBase implements ClickHandler, DragEventsHand
         }
     }
     
-    public void setDisplayArrow(boolean show) {
+    public void setDisplayArrow(ShowArrow show) {
     	showArrow = show;
     	for (int i = 0; i < getWidgetCount(); i++) {
     		ListItem listItem = (ListItem) getWidget(i);
@@ -97,7 +100,7 @@ public class ListPanel extends PanelBase implements ClickHandler, DragEventsHand
 		}
     }
     
-    public boolean getDisplayArrow() {
+    public ShowArrow getDisplayArrow() {
     	return showArrow;
     }
     

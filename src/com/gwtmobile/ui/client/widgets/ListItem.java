@@ -32,10 +32,11 @@ public class ListItem extends FlowPanel{
     	//setStyleName("gwtm-ListItem");
     }
 
-	//Need this method to keep the setter consistent with ListPanel.
-	public void setDisplayArrow(boolean display) {
-		setDisplayArrow(display ? ShowArrow.Visible : ShowArrow.Hidden);
-	}
+	// denis: Need this method to keep the setter consistent with ListPanel.
+	// joao: this method is causing infinit loop, commenting for now
+//	public void setDisplayArrow(boolean display) {
+//		setDisplayArrow(display ? ShowArrow.Visible : ShowArrow.Hidden);
+//	}
 
 	public void setDisplayArrow(ShowArrow showA) {
 		this.displayArrow = showA;
@@ -76,10 +77,10 @@ public class ListItem extends FlowPanel{
 		return this.enabled;
 	}
 	
-	void setDisplayArrowFromParent(boolean show) {
+	void setDisplayArrowFromParent(ListPanel.ShowArrow show) {
 		// Parent can only override if it has not been set.
 		if (this.displayArrow == ShowArrow.InheritFromParent) {
-			setDisplayArrow(show?ShowArrow.Visible:ShowArrow.Hidden);
+			setDisplayArrow(ShowArrow.valueOf(show.toString()));
 		}
 	}
 
