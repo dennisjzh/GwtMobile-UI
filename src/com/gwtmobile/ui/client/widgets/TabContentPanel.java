@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.page.Transition;
 
 
 
@@ -20,8 +21,12 @@ public class TabContentPanel extends PanelBase {
     public void add(Widget w) {
     
     	if (w instanceof TabContent) {
-    		//super.add(w);
-    		contentArray.add((TabContent) w);
+    		if (!contentArray.contains(w)) {	//load time
+        		contentArray.add((TabContent) w);
+    		}
+    		else {								//run time
+    			super.add(w);
+    		}
     	} else if (Beans.isDesignTime() && w instanceof Label) {
     		// allow Label during designtime
     	} else {
@@ -35,17 +40,18 @@ public class TabContentPanel extends PanelBase {
     	return (TabContent) getWidget(0);
     }
 
-    public TabContent selectTab(int index) {
-    	if (index < 0 || contentArray.size() <= index) {
-    		return null;
+    public void selectTab(int fromIndex, int toIndex) {
+    	if (toIndex < 0 || contentArray.size() <= toIndex) {
+    		return;
     	}
-    	TabContent tabContent = contentArray.get(index);
-    	
-    	//TODO: transition goes here.
-    	this.clear();
-    	super.add(tabContent);
-        return tabContent;
+    	TabContent to = contentArray.get(toIndex);    	
+    	if (getWidgetCount() > 0) {
+    		TabContent from = (TabContent) getWidget(0);
+        	Transition transition = Transition.SLIDE;
+        	transition.start(from, to, this, fromIndex > toIndex);
+    	}
+    	else {
+        	super.add(to);
+    	}
     }
-
-	
 }

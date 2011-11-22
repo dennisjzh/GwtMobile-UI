@@ -9,7 +9,6 @@ import com.gwtmobile.ui.client.CSS.CSS;
 import com.gwtmobile.ui.client.utils.Utils;
 import com.gwtmobile.ui.client.widgets.IsGwtMobilePanel;
 import com.gwtmobile.ui.client.widgets.IsGwtMobilePanel.TransitionDirection;
-import com.gwtmobile.ui.client.widgets.WidgetBase;
 
 public class Transition implements EventListener {
 	
@@ -49,7 +48,7 @@ public class Transition implements EventListener {
 		}.schedule(1);
 	}
 	
-	public void start(WidgetBase from, WidgetBase to, HasWidgets parent, boolean reverse) {
+	public void start(Widget from, Widget to, HasWidgets parent, boolean reverse) {
 		_from = from;
 		_to = to;
 		_parent = parent;

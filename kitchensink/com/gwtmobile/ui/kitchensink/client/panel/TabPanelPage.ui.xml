@@ -3,12 +3,20 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
 	<ui:style>
+		.Page {
+			display:-webkit-box;
+			-webkit-box-orient: vertical;			
+		}
+		.FixedHeight {
+			min-height: 16em;
+			max-height: 16em;
+		}
 	</ui:style>
-	<g:HTMLPanel>
+	<g:HTMLPanel styleName="{style.Page}">
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>Tab Panel</g:Label>
 		</m:HeaderPanel>
-		<m:TabPanel ui:field="tab">
+		<m:TabPanel ui:field="tab" defaultTabIndex="2" secondaryStyle="{style.FixedHeight}">
 			<m:TabHeaderPanel>
 				<m:TabHeader>
 					<g:Label>Tab1</g:Label>
@@ -22,27 +30,23 @@
 			</m:TabHeaderPanel>
 			<m:TabContentPanel>	
 				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-						<g:Label>Tabs On Top</g:Label>
-						<g:Label>Tab1 Content</g:Label>
-					</g:HTMLPanel>
+					<g:Label>Tabs On Top</g:Label>
+					<g:Label>Tab1 Content</g:Label>
 				</m:TabContent>
 				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-						<g:Label>Tabs On Top</g:Label>
-						<g:Label>Tab2 Content</g:Label>
-					</g:HTMLPanel>
+					<g:Label>Tabs On Top</g:Label>
+					<g:Label>Tab2 Content</g:Label>
 				</m:TabContent>
 				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-						<g:Label>Tabs On Top</g:Label>
-						<g:Label>Tab3 Content</g:Label>
-					</g:HTMLPanel>
+					<g:Label>Tabs On Top</g:Label>
+					<g:Label>Tab3 Content</g:Label>
+					<g:Label text="height test"/>
+					<g:Label text="New Label"/>
 				</m:TabContent>
 			</m:TabContentPanel>	
 		</m:TabPanel>
 		<div style="height:.5em"/>		
-		<m:TabPanel ui:field="tab2" tabPosition="Bottom">
+		<m:TabPanel ui:field="tab2" tabPosition="Bottom" defaultTabIndex="1">
 			<m:TabHeaderPanel>
 				<m:TabHeader>
 					<g:Label>Tab1</g:Label>
@@ -56,22 +60,20 @@
 			</m:TabHeaderPanel>
 			<m:TabContentPanel>	
 				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-						<g:Label>Tabs On Bottom</g:Label>
-						<g:Label>Tab1 Content</g:Label>
-					</g:HTMLPanel>
+					<g:Label>Tabs On Bottom</g:Label>
+					<g:Label>Tab1 Content</g:Label>
 				</m:TabContent>
 				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-						<g:Label>Tabs On Bottom</g:Label>
-						<g:Label>Tab2 Content</g:Label>
-					</g:HTMLPanel>
+					<g:Label>Tabs On Bottom</g:Label>
+					<g:Label>Tab2 Content</g:Label>
 				</m:TabContent>
 				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-						<g:Label>Tabs On Bottom</g:Label>
-						<g:Label>Tab3 Content</g:Label>
-					</g:HTMLPanel>
+					<g:Label>Tabs On Bottom</g:Label>
+					<g:Label>Tab3 Content</g:Label>
+					<g:Label>Tab3 Content</g:Label>
+					<g:Label>Tab3 Content</g:Label>
+					<g:Label>Tab3 Content</g:Label>
+					<g:Label>Tab3 Content</g:Label>
 				</m:TabContent>
 			</m:TabContentPanel>	
 		</m:TabPanel>

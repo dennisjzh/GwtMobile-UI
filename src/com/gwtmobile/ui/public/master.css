@@ -402,6 +402,7 @@ html {
 	color: black;
 	background: white;
 	display:-webkit-box;
+	position: relative; /* needed for transition */
 }
 
 .gwtm-TabPanel.Top > .gwtm-TabContentPanel {
@@ -412,13 +413,11 @@ html {
 	border-radius: .4em .4em 0 0;
 }
 
-.gwtm-TabPanel > .gwtm-TabContentPanel > div.Selected {		/*tab content*/
+.gwtm-TabPanel > .gwtm-TabContentPanel > div {		/*tab content*/
 	display: -webkit-box;
-	-webkit-box-flex: 1;
-}
-
-.gwtm-TabPanel > .gwtm-TabContentPanel > div {
-	display: none;
+	width: 100%;
+	-webkit-box-orient: vertical;
+	-webkit-box-align: center;
 }
 
 .Android .gwtm-TabPanel > .gwtm-TabHeader > div {		/*tab header*/

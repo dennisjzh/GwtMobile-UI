@@ -18,22 +18,19 @@ package com.gwtmobile.ui.client.widgets;
 
 import java.beans.Beans;
 
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
-import com.gwtmobile.ui.client.utils.Utils;
 
-public class TabPanel extends PanelBase implements HasWidgets, HasSelectionHandlers<Integer>, ClickHandler {
+public class TabPanel extends PanelBase 
+	implements HasSelectionHandlers<Integer>, ClickHandler {
 
 
 	public enum TabPosition {Top, Bottom}; // todo: LeftTabs, RightTabs
@@ -89,24 +86,11 @@ public class TabPanel extends PanelBase implements HasWidgets, HasSelectionHandl
     	if (selectedTabIndex == index) {
         	return;
         }
-        TabHeader from = unselectCurrentTab();
-        TabContent fromContent = unSelectCurrentTabContent();
-        TabHeader to = (TabHeader) tabHeaderPanel.getWidget(index);
-        TabContent toContent = (TabContent) tabContentPanel.selectTab(index);
-        if (to == null || toContent == null) {
-        	return;
-        }
-        
-        to.addStyleName(Secondary.Selected);
-        toContent.addStyleName(Secondary.Selected);
-        
-        if (from == null || fromContent == null) {
-        	//tabContentPanel.add(toContent);
-        } else {
-//        	Transition transition = Transition.SLIDE;
-//        	transition.start(fromContent, toContent, tabContentPanel, 
-//        			index < selectedTabIndex);
-        }
+    	if (selectedTabIndex != -1) {
+        	tabHeaderPanel.unSelectHeader(selectedTabIndex);
+    	}
+        tabHeaderPanel.selectHeader(index);
+        tabContentPanel.selectTab(selectedTabIndex, index);
         selectedTabIndex = index;
         SelectionEvent.fire(this, selectedTabIndex);
     }
@@ -125,68 +109,18 @@ public class TabPanel extends PanelBase implements HasWidgets, HasSelectionHandl
     
 	@Override
 	public void onClick(ClickEvent event) {
-		int index = getClickedTabHeaderIndex(event);
+		int index = tabHeaderPanel.getClickedTabHeaderIndex(event);
 		if (index != -1) {
             selectTab(index);
 		}
 	}
     
-    private TabHeader unselectCurrentTab() {
-    	if (selectedTabIndex == -1) {
-    		return null;
-    	}
-    	TabHeader tab = getSelectedTab();
-    	tab.removeStyleName(Secondary.Selected);
-        return tab;
-    }
-    
-    private TabContent unSelectCurrentTabContent(){
-    	if (selectedTabIndex == -1) {
-    		return null;
-    	}
-    	TabContent tabC = getSelectedTabContent();
-    	tabC.removeStyleName(Secondary.Selected);
-        return tabC;
-    }
-
-    private int getClickedTabHeaderIndex(ClickEvent e) {
-        Element div = Element.as(e.getNativeEvent().getEventTarget());
-        if (div == tabHeaderPanel.getElement()) {
-        	Utils.Console("Is click on tab header working? " + e.toString());
-        	return -1;
-        }
-        while (div.getParentElement() != tabHeaderPanel.getElement()) {
-            div = div.getParentElement();
-        }
-        int index = DOM.getChildIndex(
-        		(com.google.gwt.user.client.Element)tabHeaderPanel.getElement(), 
-        		(com.google.gwt.user.client.Element)div);
-        return index;
-    }
-
 	@Override
 	public HandlerRegistration addSelectionHandler(
 			SelectionHandler<Integer> handler) {
 		return this.addHandler(handler, SelectionEvent.getType());
 	}
 	
-//	public void setTabsOnBottom(boolean tabsOnBottom) {
-//		this.tabsOnBottom = tabsOnBottom;
-//		if (tabsOnBottom && getWidget(0) == tabHeaderPanel) {
-//			super.clear();
-//			super.add(tabContentPanel);
-//			super.add(tabHeaderPanel);
-//			addStyleName("Reverse");
-//			removeStyleName("Normal");
-//		} else if(!tabsOnBottom && getWidget(0) == tabContentPanel){
-//			super.clear();
-//			super.add(tabHeaderPanel);
-//			super.add(tabContentPanel);
-//			addStyleName("Normal");
-//			removeStyleName("Reverse");
-//		}
-//	}
-
 	public TabPosition getTabPosition() {
 		return tabPosition;
 	}
