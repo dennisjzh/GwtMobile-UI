@@ -904,6 +904,16 @@ html {
 }
 
 /******************* Horizontal Panel *************/
+.gwtm-GridPanel {
+	display: block;
+}
+.gwtm-GridPanel > div {
+	display: inline;
+	float: left;
+	width: 4.5em;
+}
+
+/******************* Horizontal Panel *************/
 .gwtm-HorizontalPanel {
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
