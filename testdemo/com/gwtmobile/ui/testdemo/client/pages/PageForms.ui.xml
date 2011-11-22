@@ -1,0 +1,96 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+	xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets"
+	>
+	<ui:style>
+	</ui:style>
+	<m:HTMLPanel>
+		<m:HeaderPanel>
+			<m:HorizontalPanel>
+				<m:VerticalPanel>
+					<m:Label text="GWT Mobile" labelTemplate="Emphasised"/>
+					<m:Label labelTemplate="Legend" text="Demo for Form elements"/>
+				</m:VerticalPanel>
+			</m:HorizontalPanel>
+			<m:Button caption="Back" iconImage="Back" iconPosition="Left" ui:field="backButton">Back</m:Button>
+		</m:HeaderPanel>
+		<m:ScrollPanel>
+			<m:VerticalPanel styleVariants="Var1" withHPadding="true" withVPadding="true">
+				<m:HorizontalPanel boxPack="justify">
+				<m:Label text="Name" horizontalAlignment="ALIGN_RIGHT"/>
+				<m:InputBox type="text"/>
+		
+			</m:HorizontalPanel>
+				<m:HorizontalPanel boxPack="justify">
+				<m:Label text="Password"/>
+				<m:InputBox type="password" boxTypes="PasswordBox"/>
+
+			</m:HorizontalPanel>
+				<m:HorizontalPanel boxPack="justify">
+				<m:Label text="Email"/>
+				<m:InputBox boxTypes="EmailBox" type="email"/>
+
+			</m:HorizontalPanel>
+				<m:HorizontalPanel boxPack="justify">
+				<m:Label text="Age"/>
+				<m:InputBox boxTypes="NumberTextBox" type="number"/>
+	
+			</m:HorizontalPanel>
+				<m:HorizontalPanel boxPack="justify">
+				<m:Label text="Mobile"/>
+				<m:InputBox boxTypes="TelephoneTextBox"/>
+		
+			</m:HorizontalPanel>
+				<m:HorizontalPanel boxPack="justify">
+				<m:Label text="Website"/>
+				<m:InputBox boxTypes="UrlTextBox" type="url"/>
+		
+			</m:HorizontalPanel>
+			</m:VerticalPanel>
+			<m:VerticalPanel withHPadding="true">
+				<m:Label text="Name" labelTemplate="Small" labelBackgroundVariant="Var1"/>
+				<m:InputBox/>
+				<m:Label labelBackgroundVariant="Var1" labelTemplate="Small" text="Password"/>
+				<m:InputBox/>
+			</m:VerticalPanel>
+			<m:VerticalPanel>
+				<m:Label labelBackgroundVariant="Var2" labelTemplate="SmallEmphasised" text="Input Buttons" withVPadding="true"/>
+				<m:HorizontalPanel boxPack="justify" withHPadding="true">
+				<m:InputBox type="submit" text="Submit Button"/>
+				<m:InputBox text="Input Button" type="button"/>
+				<m:InputBox text="Reset Button" type="reset"/>
+			</m:HorizontalPanel>
+			</m:VerticalPanel>
+			<m:VerticalPanel>
+				<m:Label text="Radio Buttons Horizontal" labelTemplate="SmallEmphasised" withVPadding="true" labelBackgroundVariant="Var1"/>
+				<m:RadioButtonGroup name="rad0" vertical="false">
+					<m:RadioButton name="rad0" text="opt1"/>
+					<m:RadioButton name="rad0" text="opt2"/>
+					<m:RadioButton name="rad0" text="opt3"/>
+				</m:RadioButtonGroup>
+				<m:Label text="Radio Buttons Vertical" withVPadding="true" labelTemplate="SmallEmphasised" labelBackgroundVariant="Var2"/>
+				<m:RadioButtonGroup name="rad1" vertical="true">
+					<m:RadioButton name="rad1" text="sdsdsd"/>
+					<m:RadioButton name="rad1" text="dddddd"/>
+					<m:RadioButton text="sdsdsd" name="rad1"/>
+				</m:RadioButtonGroup>
+			</m:VerticalPanel>
+			<m:VerticalPanel>
+				<m:Label text="CheckBox Group Horizontal" labelTemplate="SmallEmphasised" labelBackgroundVariant="Var2" withVPadding="true"/>
+				<m:CheckBoxGroup vertical="false">
+					<m:CheckBox name="ck1" text="ck_opt1"/>
+					<m:CheckBox name="ck1" text="ck_opt2"/>
+					<m:CheckBox name="ck1" text="ck_opt3"/>
+				</m:CheckBoxGroup>
+				<m:Label labelBackgroundVariant="Var2" labelTemplate="SmallEmphasised" text="CheckBox Group Vertical"/>
+				<m:CheckBoxGroup vertical="true">
+					<m:CheckBox name="ck2" text="ck_001"/>
+					<m:CheckBox name="ck2" text="ck_002"/>
+					<m:CheckBox name="ck2" text="ck_003"/>
+				</m:CheckBoxGroup>
+			</m:VerticalPanel>
+			
+		</m:ScrollPanel>
+	</m:HTMLPanel>	
+</ui:UiBinder> 

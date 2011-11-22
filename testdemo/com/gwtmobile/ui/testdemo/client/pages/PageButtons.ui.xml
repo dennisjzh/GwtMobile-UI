@@ -1,0 +1,70 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+	xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets" 
+	>
+	<ui:style>
+	</ui:style>
+	<m:HTMLPanel>
+		<m:HeaderPanel>
+			<m:HorizontalPanel>
+				<m:VerticalPanel>
+					<m:Label text="GWT Mobile" labelTemplate="Emphasised"/>
+					<m:Label text="Demo for Buttons" labelTemplate="Legend"/>
+				</m:VerticalPanel>
+			</m:HorizontalPanel>
+			<m:Button caption="Back" iconImage="Back" iconPosition="Left" ui:field="backButton">Back</m:Button>
+		</m:HeaderPanel>
+		<m:ScrollPanel height="683px">
+			<m:VerticalPanel>
+				<m:Label text="Normal Buttons with Icons"/>
+				<m:HorizontalPanel boxPack="center">
+					<m:Button caption="Normal"/>
+					<m:Button iconImage="Info" showCaption="false"/>
+					<m:Button caption="Icon Left" iconPosition="Left" iconImage="Gear"/>
+				</m:HorizontalPanel>
+				<m:Label text="Disabled Buttons"/>
+				<m:HorizontalPanel boxPack="center">
+					<m:Button caption="Normal" enabled="false"/>
+					<m:Button caption="Icon Right" horizontalAlignment="ALIGN_LEFT" iconImage="Grid" iconPosition="Right" enabled="false"/>
+					<m:Button iconImage="Info" enabled="false" showCaption="false"/>
+				</m:HorizontalPanel>
+				<m:Label text="Buttons with icons in the middle"/>
+				<m:HorizontalPanel boxPack="center">
+					<m:Button caption="Icon on Top" iconImage="Refresh" iconPosition="MiddleTop"/>
+					<m:Button caption="Icon on Bottom" iconPosition="MiddleBottom" iconImage="Info"/>
+				</m:HorizontalPanel>
+				<m:Label text="Full Width Buttons"/>
+				<m:HorizontalPanel>
+					<m:VerticalPanel>
+						<m:Button caption="Full with button without Icon" direction="RTL" horizontalAlignment="ALIGN_CENTER"/>
+						<m:Button caption="Full width button w/ icon Right" iconPosition="Right" iconImage="Delete"/>
+					</m:VerticalPanel>
+				</m:HorizontalPanel>
+			</m:VerticalPanel>
+			<m:Label text="Buttons aligned on Right - directly on ScrollPanel"/>
+			<m:HorizontalPanel boxPack="end">
+				<m:Button caption="Logout"/>
+				<m:Button caption="Login"/>
+			</m:HorizontalPanel>
+			<m:Label text="Buttons aligned on Left - directly on ScrollPanel"/>
+			<m:HorizontalPanel boxPack="start">
+				<m:Button caption="Logoff"/>
+				<m:Button caption="Sign in" iconImage="Star" iconPosition="Left"/>
+				<m:Button caption="Hello!" />
+			</m:HorizontalPanel>
+			<m:HorizontalPanel boxPack="justify" withVPadding="true">
+				<m:Label text="Flip switch with text"/>
+				<m:FlipSwitch/>
+			</m:HorizontalPanel>
+			<m:HorizontalPanel boxPack="justify" withVPadding="true">
+				<m:Label text="Flip switch without text"/>
+				<m:FlipSwitch showText="false"/>
+			</m:HorizontalPanel>
+			
+	
+
+			
+		</m:ScrollPanel>
+	</m:HTMLPanel>	
+</ui:UiBinder> 

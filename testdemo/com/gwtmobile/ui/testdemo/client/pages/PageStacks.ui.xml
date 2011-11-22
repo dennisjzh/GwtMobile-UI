@@ -1,0 +1,63 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+	xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets" 
+	>
+	<ui:style>
+	</ui:style>
+	<m:HTMLPanel>
+		<m:HeaderPanel>
+			<m:VerticalPanel>
+				<m:Label text="GWT Mobile" labelTemplate="Emphasised"/>
+				<m:Label text="Demo for Stack Panel" labelTemplate="Legend"/>
+			</m:VerticalPanel>
+			<m:Button caption="Back" iconImage="Back" iconPosition="Left" ui:field="backButton">Back</m:Button>
+		</m:HeaderPanel>
+		<m:ScrollPanel height="100%">
+			<m:StackPanel>
+				<m:Stack>
+					<m:StackHeader>
+						<m:Label text="Stack1 default"/>
+						
+					</m:StackHeader>
+					<m:StackContent>
+						<m:Label text="Dummy text"/>
+						<m:Label text="More text"/>
+						
+					</m:StackContent>
+				</m:Stack>
+				<m:Stack initialState="Expanded" freezeState="true">
+					<m:StackHeader>
+						<m:Label text="Expanded Stack with Emphase frozen state" labelTemplate="Emphasised"/>
+					</m:StackHeader>
+					<m:StackContent>
+						<m:Label text="dummy text"/>
+					</m:StackContent>
+				</m:Stack>
+				<m:Stack>
+					<m:StackHeader showArrow="false">
+						<m:HorizontalPanel boxPack="justify" forceFullWidth="true">
+							<m:Label text="Stack without Arrow but with an image" labelTemplate="Small"/>
+							<m:Image iconImages="Gear"/>
+						</m:HorizontalPanel>
+					</m:StackHeader>
+					<m:StackContent>
+						<m:Label text="dummy text"/>
+					</m:StackContent>
+				</m:Stack>
+				<m:Stack initialState="Expanded">
+					<m:StackHeader showArrow="false" enabled="false">
+						<m:HorizontalPanel boxPack="justify" forceFullWidth="true">
+							<m:Label text="Static Stack with Flip" labelTemplate="SmallEmphasised"/>
+							<m:FlipSwitch/>
+						</m:HorizontalPanel>
+					</m:StackHeader>
+					<m:StackContent>
+						<m:Label text="This stack is disabled and without Arrow" labelTemplate="Small"/>
+						<m:Label text="At the same time, it contains a flipswitch" labelTemplate="Small"/>
+					</m:StackContent>
+				</m:Stack>
+			</m:StackPanel>
+		</m:ScrollPanel>
+	</m:HTMLPanel>	
+</ui:UiBinder> 
