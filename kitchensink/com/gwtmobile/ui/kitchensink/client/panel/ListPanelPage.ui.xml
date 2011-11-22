@@ -4,7 +4,7 @@
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
 	<ui:style>
 	</ui:style>
-	<g:HTMLPanel>
+	<m:PagePanel>
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>List Panel</g:Label>			
 		</m:HeaderPanel>
@@ -29,5 +29,5 @@
 				</m:ListPanel>
 			</g:HTMLPanel>
 		</m:ScrollPanel>
-	</g:HTMLPanel>	
+	</m:PagePanel>	
 </ui:UiBinder> 

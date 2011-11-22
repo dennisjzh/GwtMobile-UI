@@ -3,12 +3,16 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
 	<ui:style>
+		.FixedHeight {
+			min-height: 16em;
+			max-height: 16em;
+		}
 	</ui:style>
-	<g:HTMLPanel>
+	<m:PagePanel>
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>TabBar Panel</g:Label>
 		</m:HeaderPanel>
-		<m:TabPanel ui:field="tab" tabBarPanel="true">
+		<m:TabPanel ui:field="tab" tabBarPanel="true" secondaryStyle="{style.FixedHeight}">
 			<m:TabHeaderPanel>
 				<m:TabHeader>
 					<g:Label>Tab1</g:Label>
@@ -22,22 +26,16 @@
 			</m:TabHeaderPanel>
 			<m:TabContentPanel>	
 				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-						<g:Label>Tabs On Top</g:Label>
-						<g:Label>1. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
-					</g:HTMLPanel>
+					<g:Label>Tabs On Top</g:Label>
+					<g:Label>1. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
 				</m:TabContent>
 				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-						<g:Label>Tabs On Top</g:Label>
-						<g:Label>2. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
-					</g:HTMLPanel>
+					<g:Label>Tabs On Top</g:Label>
+					<g:Label>2. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
 				</m:TabContent>
 				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-						<g:Label>Tabs On Top</g:Label>
-						<g:Label>3. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
-					</g:HTMLPanel>
+					<g:Label>Tabs On Top</g:Label>
+					<g:Label>3. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
 				</m:TabContent>
 			</m:TabContentPanel>	
 		</m:TabPanel>
@@ -56,24 +54,18 @@
 			</m:TabHeaderPanel>
 			<m:TabContentPanel>	
 				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-						<g:Label>Tabs On Bottom</g:Label>
-						<g:Label>1. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
-					</g:HTMLPanel>
+					<g:Label>Tabs On Bottom</g:Label>
+					<g:Label>1. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
 				</m:TabContent>
 				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-						<g:Label>Tabs On Bottom</g:Label>
-						<g:Label>2. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
-					</g:HTMLPanel>
+					<g:Label>Tabs On Bottom</g:Label>
+					<g:Label>2. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
 				</m:TabContent>
 				<m:TabContent>
-					<g:HTMLPanel styleName="Tab-Content">
-						<g:Label>Tabs On Bottom</g:Label>
-						<g:Label>3. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
-					</g:HTMLPanel>
+					<g:Label>Tabs On Bottom</g:Label>
+					<g:Label>3. TabBar Panel is simply Tab Panel with tabBarPanel="true".</g:Label>
 				</m:TabContent>
 			</m:TabContentPanel>	
 		</m:TabPanel>
-	</g:HTMLPanel>	
+	</m:PagePanel>	
 </ui:UiBinder> 

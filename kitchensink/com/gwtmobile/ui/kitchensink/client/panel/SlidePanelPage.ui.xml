@@ -4,7 +4,7 @@
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
 	<ui:style>
 	</ui:style>
-	<g:HTMLPanel>
+	<m:PagePanel>
 		<m:HeaderPanel ui:field="header" leftButton="Back" rightButton="Next">
 			<g:Label>Slide Panel</g:Label>			
 		</m:HeaderPanel>
@@ -17,7 +17,6 @@
 				<g:HTML>Slide Me!</g:HTML>
 				<g:HTML>Static Slide 1</g:HTML>
 			</m:Slide>	
-		</m:SlidePanel>
-		
-	</g:HTMLPanel>	
+		</m:SlidePanel>		
+	</m:PagePanel>	
 </ui:UiBinder> 
