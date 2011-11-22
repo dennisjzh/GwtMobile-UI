@@ -16,12 +16,15 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import java.util.Iterator;
+
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
@@ -32,14 +35,16 @@ import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public class ScrollPanel extends HTMLFlowPanel implements DragEventsHandler, SwipeEventsHandler {
+public class ScrollPanel extends PanelBase implements DragEventsHandler, SwipeEventsHandler {
 
 	private boolean withPadding = true;
 	private boolean hasTextBox = false;
 	private boolean fullHeight = false;
 	private Element scrollbar;
+	protected HTMLPanel intPanel = new HTMLPanel("");
 	
     public ScrollPanel() {
+		super.add(intPanel);
         setStyleName(Primary.ScrollPanel);
         setWithPadding(withPadding);
         this.initScrollbar();
@@ -312,7 +317,7 @@ public class ScrollPanel extends HTMLFlowPanel implements DragEventsHandler, Swi
 	@Override
 	public void add(Widget w) {
 		//assert _panel.getWidgetCount()  == 0 : "Can only add one widget to ScrollPanel.";
-		super.add(w);
+		intPanel.add(w);
 		if (Utils.isIOS()) {
 			Utils.setTranslateY(w.getElement(), 0); //anti-flickering on iOS.
 		}
@@ -334,4 +339,33 @@ public class ScrollPanel extends HTMLFlowPanel implements DragEventsHandler, Swi
 		style.setTop(top, Unit.PX);
 	}
 	
+	public Widget getIntPanel(){
+		return intPanel;
+	}
+	
+	@Override
+	public void clear() {
+		intPanel.clear();
+	}
+
+	@Override
+	public Iterator<Widget> iterator() {
+		return intPanel.iterator();
+	}
+
+	@Override
+	public boolean remove(Widget w) {
+		return intPanel.remove(w);
+	}
+
+	@Override
+	public Widget getWidget(int index) {
+		return intPanel.getWidget(index);
+	}
+	
+	@Override
+	public int getWidgetCount() {
+		return intPanel.getWidgetCount();
+	}
+
 }
