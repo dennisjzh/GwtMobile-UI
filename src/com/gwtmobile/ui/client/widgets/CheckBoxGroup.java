@@ -134,11 +134,15 @@ public class CheckBoxGroup extends PanelBase
     
     @Override
     public void add(Widget w) {
-    	assert w instanceof CheckBox 
+    	assert w instanceof CheckBox
     		: "Can only contain CheckBox widgets in CheckBoxGroup";
     	CheckBox checkbox = (CheckBox) w;
-        add(checkbox);
+        super.add(checkbox);
 		checkbox.addValueChangeHandler(this);
+    }
+    
+    public void addWidgetToPanel(Widget w) {
+        super.add(w);
     }
     
     public void setVertical(boolean vertical) {

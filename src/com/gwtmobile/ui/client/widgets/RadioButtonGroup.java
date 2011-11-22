@@ -95,7 +95,7 @@ public class RadioButtonGroup extends CheckBoxGroup {
     	if (name != null) {
     		radio.setName(name);
     	}
-        add(radio);
+        super.addWidgetToPanel(radio);
 		radio.addValueChangeHandler(this);
     }
     

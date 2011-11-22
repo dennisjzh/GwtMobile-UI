@@ -38,11 +38,11 @@ public class DropDownList extends PanelBase
 	
 	public DropDownList() {
 		super();
-		add(_listBox);
+		super.add(_listBox);
 		if (!Utils.isIOS()) {
-			add(new HTMLPanel(""));
-			add(new HTMLPanel(""));
-			add(new HTMLPanel(""));
+			super.add(new HTMLPanel(""));
+			super.add(new HTMLPanel(""));
+			super.add(new HTMLPanel(""));
 		}
 		setStyleName("gwtm-DropDownList");
 		_listBox.addFocusHandler(this);
