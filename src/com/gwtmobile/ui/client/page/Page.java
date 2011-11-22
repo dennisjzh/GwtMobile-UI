@@ -25,6 +25,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 import com.gwtmobile.ui.client.page.PageHistory.NavigateInfo;
 import com.gwtmobile.ui.client.utils.Utils;
 import com.gwtmobile.ui.client.widgets.IsGwtMobilePanel;
@@ -52,7 +53,7 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 	@Override
 	protected void initWidget(Widget widget) {
 		super.initWidget(widget);
-		setStyleName("Page");
+		setStyleName(Primary.PagePanel);
 		// TODO: use permutation instead?
 		if (Utils.isAndroid()) {
 			addStyleName("Android");

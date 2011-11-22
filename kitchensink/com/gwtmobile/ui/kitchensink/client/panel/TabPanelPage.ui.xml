@@ -3,16 +3,12 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
 	<ui:style>
-		.Page {
-			display:-webkit-box;
-			-webkit-box-orient: vertical;			
-		}
 		.FixedHeight {
 			min-height: 16em;
 			max-height: 16em;
 		}
 	</ui:style>
-	<g:HTMLPanel styleName="{style.Page}">
+	<m:PagePanel>
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>Tab Panel</g:Label>
 		</m:HeaderPanel>
@@ -77,5 +73,5 @@
 				</m:TabContent>
 			</m:TabContentPanel>	
 		</m:TabPanel>
-	</g:HTMLPanel>	
+	</m:PagePanel>	
 </ui:UiBinder> 

@@ -34,8 +34,8 @@ html {
 	font-size: 1em;
 }
 
-/********************* Page ****************/
-.Page {
+/********************* Page Panel ****************/
+.gwtm-PagePanel {
 	position:relative;
 	z-index: 0;
 	display: -webkit-box;

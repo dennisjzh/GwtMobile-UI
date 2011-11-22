@@ -23,7 +23,7 @@ public interface StyleNames {
 		String HorizontalPanel = "HorizontalPanel";
 		String ListPanel = "gwtm-ListPanel";
 		String NextButton = "NextButton";
-		String Page = "Page";
+		String PagePanel = "gwtm-PagePanel";
 		String Pointer = "Pointer";
 		String RadioButton = "RadioButton";
 		String RadioButtonGroup = "RadioButtonGroup";
