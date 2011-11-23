@@ -170,6 +170,7 @@ html {
 
 .gwtm-Button.Disabled {
 	color: gray;
+}
 
 .gwtm-Button.Disabled > div > img {
 	opacity:0.3;
@@ -545,13 +546,13 @@ html {
 
 /******************* Radio Button *************/
 
-.CheckBoxGroup, .RadioButtonGroup {
+.gwtm-CheckBoxGroup, .gwtm-RadioButtonGroup {
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
 	width: 100%;
 }
 
-.CheckBoxGroup > span, .RadioButtonGroup > span {
+.gwtm-CheckBoxGroup > span, .gwtm-RadioButtonGroup > span {
 	-webkit-box-flex: 1;
 	display: -webkit-box;
 	-webkit-box-align: center;
@@ -564,75 +565,75 @@ html {
 	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#666), to(#555));	
 }
 
-.CheckBoxGroup.Horizontal > span.Selected,
-.RadioButtonGroup.Horizontal > span.Selected {
+.gwtm-CheckBoxGroup.Horizontal > span.Selected,
+.gwtm-RadioButtonGroup.Horizontal > span.Selected {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightGreen), to(darkGreen));
 	border-left-color: lightGreen;
 	border-right-color: darkGreen;
 }
 
-.CheckBoxGroup.Horizontal > span > input, 
-.CheckBoxGroup.Horizontal > span > div,
-.RadioButtonGroup.Horizontal > span > input, 
-.RadioButtonGroup.Horizontal > span > div {
+.gwtm-CheckBoxGroup.Horizontal > span > input, 
+.gwtm-CheckBoxGroup.Horizontal > span > div,
+.gwtm-RadioButtonGroup.Horizontal > span > input, 
+.gwtm-RadioButtonGroup.Horizontal > span > div {
 	display: none;
 }
 
-.CheckBoxGroup > span:first-child,
-.RadioButtonGroup > span:first-child {
+.gwtm-CheckBoxGroup > span:first-child,
+.gwtm-RadioButtonGroup > span:first-child {
 	border-left: 0px;
 	border-bottom-left-radius: 0.4em 0.4em;
 	border-top-left-radius: 0.4em 0.4em;
 }
 
-.CheckBoxGroup > span:last-child,
-.RadioButtonGroup > span:last-child {
+.gwtm-CheckBoxGroup > span:last-child,
+.gwtm-RadioButtonGroup > span:last-child {
 	border-right: 0px;
 	border-bottom-right-radius: 0.4em 0.4em;
 	border-top-right-radius: 0.4em 0.4em;
 }
 
-.CheckBoxGroup.Vertical,
-.RadioButtonGroup.Vertical {
+.gwtm-CheckBoxGroup.Vertical,
+.gwtm-RadioButtonGroup.Vertical {
 	-webkit-box-orient: vertical;
 }
 
-.CheckBoxGroup.Vertical > span,
-.RadioButtonGroup.Vertical > span {
+.gwtm-CheckBoxGroup.Vertical > span,
+.gwtm-RadioButtonGroup.Vertical > span {
 	-webkit-box-pack: start;
 	border: 0;
 }
 
-.CheckBoxGroup.Vertical > span.Pressed,
-.RadioButtonGroup.Vertical > span.Pressed {
+.gwtm-CheckBoxGroup.Vertical > span.Pressed,
+.gwtm-RadioButtonGroup.Vertical > span.Pressed {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightGreen), to(darkGreen));
 }
 
-.CheckBoxGroup.Vertical > span:first-child,
-.RadioButtonGroup.Vertical > span:first-child {
+.gwtm-CheckBoxGroup.Vertical > span:first-child,
+.gwtm-RadioButtonGroup.Vertical > span:first-child {
 	border-bottom-left-radius: 0;
 	border-top-right-radius: 0.4em 0.4em;
 }
 
-.CheckBoxGroup.Vertical > span:last-child,
-.RadioButtonGroup.Vertical > span:last-child {
+.gwtm-CheckBoxGroup.Vertical > span:last-child,
+.gwtm-RadioButtonGroup.Vertical > span:last-child {
 	border-bottom-left-radius: 0.4em 0.4em;
 	border-top-right-radius: 0;
 }
 
-.Android .CheckBoxGroup > span,
-.Android .RadioButtonGroup > span {
+.Android .gwtm-CheckBoxGroup > span,
+.Android .gwtm-RadioButtonGroup > span {
 	-webkit-box-shadow: 0 0 1px #666;	/* android radius antialias workaround */	
 }
 
 /* Android native check box and radio button are too small in WVGA resolution */
 
-.WVGA .CheckBoxGroup > span > input,
-.WVGA .RadioButton > input {
+.WVGA .gwtm-CheckBoxGroup > span > input,
+.WVGA .gwtm-RadioButton > input {
 	display: none;
 }
 
-.WVGA .RadioButton > div {
+.WVGA .gwtm-RadioButton > div {
 	width: 1.2em;
 	height: 1.2em;
 	margin: 0 .4em 0 .4em;
@@ -645,7 +646,7 @@ html {
 	-webkit-box-shadow:0 0 .1em #444;
 }
 
-.WVGA .RadioButton.Selected > div {
+.WVGA .gwtm-RadioButton.Selected > div {
 	background-image:
 		-webkit-gradient(radial, 50% 50%, 0, 50% 50%, 16,
 			from(lightgreen),
@@ -653,12 +654,12 @@ html {
 	-webkit-box-shadow:0 0 .1em darkgreen;
 }
 	
-.WVGA .CheckBoxIndicator {
+.WVGA .gwtm-CheckBoxIndicator {
 	position: relative;
 	margin: 0 .4em 0 .4em;
 }
 
-.WVGA .CheckBoxIndicator > div:first-child {
+.WVGA .gwtm-CheckBoxIndicator > div:first-child {
 	width: .8em;
 	height: .8em;
 	padding: .1em;	
@@ -668,22 +669,22 @@ html {
 	border-radius: .2em;
 }
 
-.WVGA .CheckBoxIndicator > div:first-child > div {
+.WVGA .gwtm-CheckBoxIndicator > div:first-child > div {
 	width: .65em;
 	height: .65em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(gray));
 	border: .1em solid #333;
 }
 
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(2),
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(3),
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(4) {
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(2),
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(3),
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(4) {
 	position: absolute;
 	background: #00CC00;
 	border: .1em solid #111;
 }
 	
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(2) {
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(2) {
 	width: .2em;
 	height: .3em;
 	top: .35em;
@@ -692,7 +693,7 @@ html {
 	border-bottom: 0;
 }
 
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(3) {
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(3) {
 	width: .2em;
 	height: 1em;
 	top: -.1em;
@@ -701,7 +702,7 @@ html {
 	border-bottom: 0;
 }
 
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(4) {
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(4) {
 	width: .2em;
 	height: .4em;
 	top: .5em;

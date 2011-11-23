@@ -20,6 +20,8 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.utils.Utils;
 
 public class RadioButtonGroup extends CheckBoxGroup {
@@ -28,8 +30,8 @@ public class RadioButtonGroup extends CheckBoxGroup {
     
     public RadioButtonGroup() {
     	super();
-    	setStyleName("gwtm-RadioButtonGroup");
-    	addStyleName("Vertical");
+    	setStyleName(Primary.RadioButtonGroup);
+    	addStyleName(Secondary.Vertical);
     }
 
     @Override

@@ -30,6 +30,8 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
@@ -45,8 +47,8 @@ public class CheckBoxGroup extends PanelBase
     public CheckBoxGroup() {
     	super();
         addDomHandler(this, ClickEvent.getType());
-        setStyleName("gwtm-CheckBoxGroup");
-		addStyleName("Vertical");
+        setStyleName(Primary.CheckBoxGroup);
+		addStyleName(Secondary.Vertical);
     }
     
     @Override
@@ -147,12 +149,12 @@ public class CheckBoxGroup extends PanelBase
     
     public void setVertical(boolean vertical) {
     	if (vertical) {
-    		addStyleName("Vertical");
-    		removeStyleName("Horizontal");
+    		addStyleName(Secondary.Vertical);
+    		removeStyleName(Secondary.Horizontal);
     	}
     	else {
-    		addStyleName("Horizontal");
-    		removeStyleName("Vertical");
+    		addStyleName(Secondary.Horizontal);
+    		removeStyleName(Secondary.Vertical);
     	}
     }
     
@@ -166,7 +168,7 @@ public class CheckBoxGroup extends PanelBase
 		pressed = Utils.getTargetItemIndex(getElement(), e.getNativeEvent().getEventTarget());
     	if (pressed >= 0) {
     		Widget item = getWidget(pressed);
-    		item.addStyleName("Pressed");
+    		item.addStyleName(Secondary.Pressed);
     	}
 	}
 	
@@ -174,7 +176,7 @@ public class CheckBoxGroup extends PanelBase
 	public void onDragMove(DragEvent e) {
 		if (pressed >= 0) {
     		Widget item = getWidget(pressed);
-    		item.removeStyleName("Pressed");
+    		item.removeStyleName(Secondary.Pressed);
     		pressed = -1;
 		}
 	}
