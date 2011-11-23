@@ -12,8 +12,8 @@ public interface StyleNames {
 		String iOS = "iOS";
 		String Desktop = "Desktop";
 
-		String BackButton = "BackButton";
-		String Button = "Button";
+		String BackButton = "gwtm-BackButton";
+		String Button = "gwtm-Button";
 		String Chevron = "Chevron";
 		String CheckBoxGroup = "CheckBoxGroup";
 		String CheckBoxIndicator = "CheckBoxIndicator";
@@ -22,7 +22,7 @@ public interface StyleNames {
 		String HeaderPanel = "gwtm-HeaderPanel";
 		String HorizontalPanel = "HorizontalPanel";
 		String ListPanel = "gwtm-ListPanel";
-		String NextButton = "NextButton";
+		String NextButton = "gwtm-NextButton";
 		String PagePanel = "gwtm-PagePanel";
 		String Pointer = "Pointer";
 		String RadioButton = "RadioButton";

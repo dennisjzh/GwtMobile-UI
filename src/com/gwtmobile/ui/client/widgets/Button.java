@@ -21,6 +21,8 @@ import java.beans.Beans;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
@@ -32,12 +34,12 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
 	
 	private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
 
-	public enum IconPositions { None, Left, Right, MiddleTop, MiddleBottom };
+	public enum IconPosition { None, Left, Right, MiddleTop, MiddleBottom };
 	
 	private boolean enabled = true;
 	private boolean showCaption = true;
 	
-	private IconPositions iconPosition = IconPositions.None;
+	private IconPosition iconPosition = IconPosition.None;
 	private IconImages iconImage = IconImages.None;
 
 	private String caption = "";
@@ -46,7 +48,7 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
 	private String imageUrl = "";
 	
 	public Button() {
-        setStyleName("gwtm-Button");
+        setStyleName(Primary.Button);
     }
     
     public Button(String caption, ClickHandler handler) {
@@ -101,7 +103,7 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     @Override
     public void onDragStart(DragEvent e) {
     	if (isEnabled()) {
-            addStyleName("Pressed");
+            addStyleName(Secondary.Pressed);
     	}
         e.stopPropagation();
     }
@@ -109,7 +111,7 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     @Override
     public void onDragMove(DragEvent e) {
     	if (isEnabled()) {
-    		removeStyleName("Pressed");       
+    		removeStyleName(Secondary.Pressed);       
     	}
         e.stopPropagation();
     }
@@ -117,7 +119,7 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     @Override
     public void onDragEnd(DragEvent e) {
     	if (isEnabled()) {
-    		removeStyleName("Pressed");
+    		removeStyleName(Secondary.Pressed);
     	}
     	else {
     		DragController.get().suppressNextClick();
@@ -128,9 +130,9 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     public void setEnabled(boolean enabled){
     	this.enabled = enabled;
     	if (isEnabled()){
-    		removeStyleName("Disabled");
+    		removeStyleName(Secondary.Disabled);
     	} else {
-    		addStyleName("Disabled");
+    		addStyleName(Secondary.Disabled);
     	}
     }
     
@@ -138,11 +140,11 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     	return this.enabled;
     }
     
-    public IconPositions getIconPosition() {
+    public IconPosition getIconPosition() {
 		return this.iconPosition;
 	}
 
-	public void setIconPosition(IconPositions iconPosition) {
+	public void setIconPosition(IconPosition iconPosition) {
 		this.iconPosition = iconPosition;
 		updateUi();
 	}

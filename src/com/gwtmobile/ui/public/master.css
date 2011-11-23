@@ -83,7 +83,7 @@ html {
 }
 
 /************** Button **************/
-.Button {
+.gwtm-Button {
 	color: #fff;
 	text-decoration: none;
 	display: block;
@@ -97,25 +97,25 @@ html {
 	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0.1em 0.1em 0.1em;
 }
 
-.Button.Pressed, .BackButton.Pressed > span.Button, .NextButton.Pressed > span.Button {
+.gwtm-Button.Pressed, .gwtm-BackButton.Pressed > span.gwtm-Button, .gwtm-NextButton.Pressed > span.gwtm-Button {
 	text-shadow: darkgreen 0 -0.1em 0.1em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
 }
 
-.BackButton {
+.gwtm-BackButton {
 	position: relative;
 	margin-left: 0.8em;
 }
 
-.BackButton > span.Button {
+.gwtm-BackButton > span.gwtm-Button {
 	padding-left: 0;
 	-webkit-border-top-left-radius: 0;
 	-webkit-border-bottom-left-radius: 0;
 	border-left: 0 !important;
 }
 
-.BackButton > span.Pointer {
+.gwtm-BackButton > span.Pointer {
 	position: absolute;
 	display: block;
 	height: 1.3em;
@@ -130,17 +130,17 @@ html {
 	z-index: -1;
 }
 
-.BackButton.Pressed > span.Pointer {
+.gwtm-BackButton.Pressed > span.Pointer {
 	background: -webkit-gradient(linear, left top, right bottom, 
 		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
 }
 
-.NextButton {
+.gwtm-NextButton {
 	position: relative;
 	margin-right: 0.8em;
 }
 
-.NextButton > span.Button {
+.gwtm-NextButton > span.gwtm-Button {
 	padding-right: 0;
 	-webkit-border-top-right-radius: 0;
 	-webkit-border-bottom-right-radius: 0;
@@ -148,7 +148,7 @@ html {
 	-webkit-box-shadow: rgba(0, 0, 0, 0.4) -0.1em 0.1em 0.1em;
 }
 
-.NextButton > span.Pointer {
+.gwtm-NextButton > span.Pointer {
 	position: absolute;
 	display: block;
 	height: 1.3em;
@@ -163,13 +163,16 @@ html {
 	z-index: -1;
 }
 
-.NextButton.Pressed > span.Pointer {
+.gwtm-NextButton.Pressed > span.Pointer {
 	background: -webkit-gradient(linear, left top, right bottom, 
 		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
 }
 
-.Button.Disabled {
+.gwtm-Button.Disabled {
 	color: gray;
+
+.gwtm-Button.Disabled > div > img {
+	opacity:0.3;
 }
 
 /********** Scroll Panel **********/
