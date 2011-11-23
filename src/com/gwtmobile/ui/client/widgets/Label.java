@@ -39,6 +39,11 @@ public class Label extends com.google.gwt.user.client.ui.Label
 		setWithVPadding(withVPadding);
 	}
 	
+	public Label(String text) {
+		this();
+		setText(text);
+	}
+	
 	public LabelVariants getLabelTemplate() {
 		return labelTemplate;
 	}
