@@ -18,9 +18,9 @@ public interface StyleNames {
 		String CheckBoxGroup = "gwtm-CheckBoxGroup";
 		String CheckBoxIndicator = "gwtm-CheckBoxIndicator";
 		String DropDownList = "DropDownList";
-		String FlipSwitch = "gwt-FlipSwitch";
+		String FlipSwitch = "gwtm-FlipSwitch";
 		String HeaderPanel = "gwtm-HeaderPanel";
-		String HorizontalPanel = "gwt-HorizontalPanel";
+		String HorizontalPanel = "gwtm-HorizontalPanel";
 		String ListPanel = "gwtm-ListPanel";
 		String NextButton = "gwtm-NextButton";
 		String PagePanel = "gwtm-PagePanel";
@@ -29,7 +29,7 @@ public interface StyleNames {
 		String RadioButtonGroup = "gwtm-RadioButtonGroup";
 		String SlidePanel = "SlidePanel";
 		String Slide = "Slide";
-		String Slider = "gwt-Slider";
+		String Slider = "gwtm-Slider";
 		String ScrollPanel = "gwtm-ScrollPanel";
 		String ScrollBar = "gwtm-ScrollBar";
 		String StackPanel = "gwtm-StackPanel";
