@@ -12,21 +12,21 @@ public interface StyleNames {
 		String iOS = "iOS";
 		String Desktop = "Desktop";
 
-		String BackButton = "BackButton";
-		String Button = "Button";
+		String BackButton = "gwtm-BackButton";
+		String Button = "gwtm-Button";
 		String Chevron = "Chevron";
-		String CheckBoxGroup = "CheckBoxGroup";
-		String CheckBoxIndicator = "CheckBoxIndicator";
+		String CheckBoxGroup = "gwtm-CheckBoxGroup";
+		String CheckBoxIndicator = "gwtm-CheckBoxIndicator";
 		String DropDownList = "DropDownList";
 		String FlipSwitch = "FlipSwitch";
 		String HeaderPanel = "gwtm-HeaderPanel";
 		String HorizontalPanel = "HorizontalPanel";
 		String ListPanel = "gwtm-ListPanel";
-		String NextButton = "NextButton";
+		String NextButton = "gwtm-NextButton";
 		String PagePanel = "gwtm-PagePanel";
 		String Pointer = "Pointer";
-		String RadioButton = "RadioButton";
-		String RadioButtonGroup = "RadioButtonGroup";
+		String RadioButton = "gwtm-RadioButton";
+		String RadioButtonGroup = "gwtm-RadioButtonGroup";
 		String SlidePanel = "SlidePanel";
 		String Slide = "Slide";
 		String Slider = "gwt-Slider";
@@ -52,9 +52,11 @@ public interface StyleNames {
 		String Disabled = "Disabled";
 		String Expanded = "Expanded";
 		String FullHeight = "FullHeight";		
+		String Horizontal = "Horizontal";
 		String Pressed = "Pressed";
 		String Selected = "Selected";
 		String Top = "Top";
+		String Vertical = "Vertical";
 		String WithPadding = "WithPadding";
 	}
 
