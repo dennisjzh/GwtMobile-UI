@@ -158,7 +158,8 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	
 	@Override
 	public void add(Widget w) {
-		assert (w instanceof Slide) : "Can only add Slide widgets to SlidePanel.";
+		//assert (w instanceof Slide) : "Can only add Slide widgets to SlidePanel.";
+		// we can't assert because gwtdesign adds a Label by default
 		_slides.add(w);
 	}
 
