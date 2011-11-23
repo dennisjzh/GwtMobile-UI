@@ -36,8 +36,8 @@ html {
 	font-size: 1em;
 }
 
-/********************* Page ****************/
-.Page {
+/********************* Page Panel ****************/
+.gwtm-PagePanel {
 	position:relative;
 	z-index: 0;
 	display: -webkit-box;
@@ -148,8 +148,8 @@ html {
 	overflow: hidden;
 }
 
-.gwtm-ScrollPanel.WithPanning {
-	padding: .5em;
+.gwtm-ScrollPanel.WithPadding {
+	padding: .5em 0 0.5em 0; /* left and right should not have padding */
 }
 
 .gwtm-ScrollPanel > * {
@@ -197,7 +197,7 @@ html {
 	border-top:1px solid #bbbbbb;
 	padding: 0.5em 0.5em 0.5em 0.5em;
 	vertical-align:middle !important;
-	display: block;
+	display: -webkit-box;
 	-webkit-box-orient: horizontal;
 	-webkit-box-pack: justify;
 	-webkit-box-align: center;
@@ -285,8 +285,8 @@ html {
 	-webkit-box-orient: vertical;
 }
 
-.gwtm-TabPanel.fullHeight, .gwtm-TabPanel.fullHeight .gwtm-TabContentPanel {
-	height: 100%;
+.gwtm-TabPanel.FullHeight, .gwtm-TabPanel.FullHeight .gwtm-TabContentPanel {
+	height:100%;
 }
 
 .gwtm-TabPanel > .gwtm-TabHeaderPanel {	/*tab header panel*/
@@ -306,7 +306,7 @@ html {
 	-webkit-box-shadow: rgba(0, 0, 0, .5) 0 .2em .5em;
 }
 
-.gwtm-TabPanel.Reverse > .gwtm-TabHeaderPanel {	/*tab header panel*/
+.gwtm-TabPanel.Bottom > .gwtm-TabHeaderPanel {	/*tab header panel*/
 	padding-bottom: .2em;
 	border-top: 0.2em solid #BDBDBD;
 	-webkit-box-shadow: rgba(0, 0, 0, .7) 0 -.2em .5em;
@@ -344,13 +344,13 @@ html {
 	border-left: 1px solid white;
 }
 
-.gwtm-TabPanel.Normal > .gwtm-TabHeaderPanel > div.Selected {
+.gwtm-TabPanel.Top > .gwtm-TabHeaderPanel > div.Selected {
 	border-top: 1px solid white;
 	border-bottom: 1px solid #BDBDBD;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#BDBDBD));
 }
 
-.gwtm-TabPanel.Reverse > .gwtm-TabHeaderPanel > div.Selected {
+.gwtm-TabPanel.Bottom > .gwtm-TabHeaderPanel > div.Selected {
 	border-top: 1px solid #BDBDBD;
 	border-bottom: 1px solid white;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BDBDBD), to(white));
@@ -365,35 +365,49 @@ html {
 }
 
 .gwtm-TabPanel > .gwtm-TabContentPanel {			/*tab content panel*/
-	position: relative;
+
 	-webkit-box-flex: 1;
+	color: black;
+	background: white;
+	display:-webkit-box;
+	position: relative; /* needed for transition */
+}
+
+
+.gwtm-TabPanel.Top > .gwtm-TabContentPanel {
+	/* border-radius: 0 0 .4em .4em; */
+}
+
+.gwtm-TabPanel.Bottom > .gwtm-TabContentPanel {
+	/* border-radius: .4em .4em 0 0; */
 }
 
 .gwtm-TabPanel > .gwtm-TabContentPanel > div.Selected {		/*tab content*/
-	/*position:absolute;*/
 	display: -webkit-box;
-	height: 100%;
 	width: 100%;
+	-webkit-box-orient: vertical;
+	-webkit-box-align: center;
 	background-color: #eee;
 	border-bottom: 1px solid #aaa;
 }
 
+/*
 .gwtm-TabPanel > .gwtm-TabContentPanel > div {
 	display: none;
 }
-
+*/
 .Android .gwtm-TabPanel > .gwtm-TabHeader > div {		/*tab header*/
 	-webkit-box-shadow: #BDBDBD 0 0 .1em;	/* antialias workaround */
 }
 
 /********** NavBar Panel **********/
 
-.TabPanel.NavBarPanel > .Header {
+.gwtm-TabPanel.gwtm-TabBarPanel > .gwtm-TabHeaderPanel {
 	border: 0;
 	padding: 0;
 }
 
-.TabPanel.NavBarPanel > .Header > div {		/*tab header*/
+.gwtm-TabPanel.gwtm-TabBarPanel > .gwtm-TabHeaderPanel > div {		/*tab header*/
 	color: gray;
  	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 	 	from(#2e2e2e), color-stop(0.02, #2e2e2e), color-stop(0.5, #151515), 
@@ -404,7 +418,7 @@ html {
 	-webkit-box-shadow: black 0 0 0 !important;
 }
 
-.TabPanel.NavBarPanel > .Header > div.Selected {
+.gwtm-TabPanel.gwtm-TabBarPanel > .gwtm-TabHeaderPanel > div.Selected {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(#434343), color-stop(0.02, #434343), 
 		color-stop(0.5, #363636), color-stop(0.5, #252525), to(#252525) );
@@ -476,7 +490,7 @@ html {
 	height: 0 !important;
 }
 
-.gwtm-StackPanel .StackArrow {
+.gwtm-StackPanel .gwtm-StackArrow {
 	border: .4em solid gray;
 	border-right-color: transparent;
 	border-top-color: transparent;
@@ -486,7 +500,7 @@ html {
 	margin-left: .5em;
 }
 
-.gwtm-StackPanel > div.Expanded > div > .StackArrow {
+.gwtm-StackPanel > div.Expanded > div > .gwtm-StackArrow {
 	position: relative;
 	top: .3em;
 	left: -.2em;
@@ -903,7 +917,7 @@ html {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightgreen), to(darkgreen));
 }
 
-/******************* Horizontal Panel *************/
+/******************* Grid Panel *************/
 .gwtm-GridPanel {
 	display: block;
 }
@@ -919,6 +933,7 @@ html {
 	-webkit-box-orient: horizontal;
 	-webkit-box-align: center;
 }
+
 
 /******************* Vertical Panel *************/
 .gwtm-VerticalPanel {

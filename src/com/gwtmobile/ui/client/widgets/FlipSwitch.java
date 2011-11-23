@@ -26,6 +26,7 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HTML;
+import com.gwtmobile.ui.client.CSS.StyleNames;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
@@ -45,7 +46,7 @@ public class FlipSwitch extends HTML
 	public FlipSwitch() {
     	super(HTML_CONTENT);
         addClickHandler(this);
-        setStyleName("gwtm-FlipSwitch");
+        setStyleName(StyleNames.Primary.FlipSwitch);
     }
     
     @Override

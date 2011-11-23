@@ -17,6 +17,7 @@
 package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.gwtmobile.ui.client.CSS.StyleNames;
 import com.gwtmobile.ui.client.resources.MobileResources.StyleVariants;
 
 
@@ -30,7 +31,7 @@ public class VerticalPanel extends PanelBase implements HasWidgets {
 	private boolean forceFullWidth = false; // in some cases we might need to force width=100%
 
 	public VerticalPanel() {
-		setStyleName("gwtm-VerticalPanel");
+		setStyleName(StyleNames.Primary.VerticalPanel);
 		setBoxPack(boxPack);
 		setWithHPadding(withHPadding);
 		setWithVPadding(withVPadding);
