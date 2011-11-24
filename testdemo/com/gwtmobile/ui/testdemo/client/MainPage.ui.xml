@@ -1,12 +1,13 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets" 
+	xmlns:x="urn:import:com.gwtmobile.ui.testdemo.client.widgets"
 	>
 	<ui:style>
 	</ui:style>
-	<m:HTMLPanel>
-		<m:HeaderPanel>
-			<m:HorizontalPanel boxPack="start" forceFullWidth="true" withVPadding="true">
+	<m:PagePanel>
+		<m:HeaderSimplePanel>
+			<m:HorizontalPanel boxPack="start" forceFullWidth="true">
 				<m:Image url="logo.png"/>
 				<m:VerticalPanel>
 					<m:Label horizontalAlignment="ALIGN_LEFT" text="GWT Mobile" labelTemplate="Header1">Hello GWT Mobile UI!</m:Label>
@@ -15,94 +16,71 @@
 			</m:HorizontalPanel>
 				
 			
-		</m:HeaderPanel>
+		</m:HeaderSimplePanel>
 
 		<m:ScrollPanel>
-			
-			<m:ListPanel ui:field="list" displayArrow="Visible">
+			<m:VerticalPanel withVPadding="true">
+				<m:ListPanel ui:field="list" displayArrow="Visible">
 				<m:ListItem displayArrow="Hidden">
-					<m:HorizontalPanel boxPack="justify">
+					<m:HorizontalPanel boxPack="justify" forceFullWidth="true">
 						<m:HorizontalPanel withVPadding="true">
 							<m:Image iconImages="Home" height="2em"/>
 							<m:Label text="Buttons &amp; Flip Switch" withHPadding="true">Buttons</m:Label>
 						</m:HorizontalPanel>
 						<m:Image iconImages="ArrowRight" height="1.2em"/>
 					</m:HorizontalPanel></m:ListItem>		
-									<m:ListItem displayArrow="Hidden">
+									<m:ListItem>
 					<m:HorizontalPanel boxPack="justify">
-						<m:HorizontalPanel withVPadding="true">
-							<m:Image iconImages="Delete" height="2em"/>
-							<m:Label text="Labels Variants" withHPadding="true">Panels</m:Label>
-						</m:HorizontalPanel>
-						<m:Image iconImages="ArrowRight" height="1.2em"/>
+						<m:Image iconImages="Delete" height="2em"/>
+						<m:Label text="Labels Variants" withHPadding="true">Panels</m:Label>
 					</m:HorizontalPanel></m:ListItem>			
-				<m:ListItem displayArrow="Hidden">
+				<m:ListItem>
 					<m:HorizontalPanel boxPack="justify">
-						<m:HorizontalPanel withVPadding="true">
-							<m:Image iconImages="Search" height="2em"/>
-							<m:Label text="Tabs on Top" withHPadding="true"/>
-						</m:HorizontalPanel>
-						<m:Image height="1.2em" iconImages="ArrowRight"/>
+						<m:Image iconImages="Search" height="2em"/>
+						<m:Label text="Tabs on Top" withHPadding="true"/>
 					</m:HorizontalPanel></m:ListItem>
-				<m:ListItem displayArrow="Hidden">
+				<m:ListItem>
 					<m:HorizontalPanel boxPack="justify">
-						<m:HorizontalPanel withVPadding="true">
-							<m:Image iconImages="Check" height="2em"/>
-							<m:Label text="Tabs on Bottom" withHPadding="true"/>
-						</m:HorizontalPanel>
-						<m:Image height="1.2em" iconImages="ArrowRight"/>
+						<m:Image iconImages="Check" height="2em"/>
+						<m:Label text="Tabs on Bottom" withHPadding="true"/>
 					</m:HorizontalPanel>
 				</m:ListItem>
-				<m:ListItem displayArrow="Hidden">
+				<m:ListItem>
 					<m:HorizontalPanel boxPack="justify">
-						<m:HorizontalPanel withVPadding="true">
-							<m:Image iconImages="Refresh" height="2em"/>
-							<m:Label text="Stack List" withHPadding="true"/>
-						</m:HorizontalPanel>
-						<m:Image height="1.2em" iconImages="ArrowRight"/>
+						<m:Image iconImages="Refresh" height="2em"/>
+						<m:Label text="Stack List" withHPadding="true"/>
 					</m:HorizontalPanel>
 				</m:ListItem>
-				<m:ListItem displayArrow="Hidden">
+				<m:ListItem displayArrow="Visible">
 					<m:HorizontalPanel boxPack="justify">
-						<m:HorizontalPanel withVPadding="true">
-							<m:Image height="2em" iconImages="Star"/>
-							<m:Label text="Forms" withHPadding="true"/>
-						</m:HorizontalPanel>
-						<m:Image height="1.2em" iconImages="ArrowRight"/>
+						<m:Image height="2em" iconImages="Star"/>
+						<m:Label text="Forms" withHPadding="true"/>
 					</m:HorizontalPanel>
 				</m:ListItem>
-				<m:ListItem displayArrow="Hidden">
+				<m:ListItem>
 					<m:HorizontalPanel boxPack="justify">
-						<m:HorizontalPanel withVPadding="true">
-							<m:Image height="2em" iconImages="Alert"/>
-							<m:Label text="Slides" withHPadding="true"/>
-						</m:HorizontalPanel>
-						<m:Image height="1.2em" iconImages="ArrowRight"/>
+						<m:Image height="2em" iconImages="Alert"/>
+						<m:Label text="Slides" withHPadding="true"/>
 					</m:HorizontalPanel>
 				</m:ListItem>
-				<m:ListItem displayArrow="Hidden">
+				<m:ListItem displayArrow="Visible">
 					<m:HorizontalPanel boxPack="justify">
-						<m:HorizontalPanel withVPadding="true">
-							<m:Image height="2em" iconImages="Grid"/>
-							<m:Label text="Grid Panel" withHPadding="true"/>
-						</m:HorizontalPanel>
-						<m:Image height="1.2em" iconImages="ArrowRight"/>
+						<m:Image height="2em" iconImages="Grid"/>
+						<m:Label text="Grid Panel" withHPadding="true"/>
 					</m:HorizontalPanel>
 				</m:ListItem>
-				<m:ListItem displayArrow="Hidden">
+				<m:ListItem>
 					<m:HorizontalPanel boxPack="justify">
-						<m:HorizontalPanel withVPadding="true">
-							<m:Image height="2em" iconImages="Grid"/>
-							<m:Label text="Charts" withHPadding="true"/>
-						</m:HorizontalPanel>
-						<m:Image height="1.2em" iconImages="ArrowRight"/>
+						<m:Image height="2em" iconImages="Plus"/>
+						<m:Label text="Charts" withHPadding="true"/>
 					</m:HorizontalPanel>
 				</m:ListItem>		
 			</m:ListPanel>
+			</m:VerticalPanel>
 
 
 		</m:ScrollPanel>
 		
 
-	</m:HTMLPanel>	
+	</m:PagePanel>	
 </ui:UiBinder> 

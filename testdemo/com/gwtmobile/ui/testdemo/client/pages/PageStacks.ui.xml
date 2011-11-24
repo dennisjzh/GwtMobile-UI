@@ -2,17 +2,18 @@
 <ui:UiBinder 
 	xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets" 
+	xmlns:x="urn:import:com.gwtmobile.ui.testdemo.client.widgets"
 	>
 	<ui:style>
 	</ui:style>
-	<m:HTMLPanel>
-		<m:HeaderPanel>
+	<m:PagePanel>
+		<m:HeaderSimplePanel>
 			<m:VerticalPanel>
 				<m:Label text="GWT Mobile" labelTemplate="Emphasised"/>
 				<m:Label text="Demo for Stack Panel" labelTemplate="Legend"/>
 			</m:VerticalPanel>
 			<m:Button caption="Back" iconImage="Back" iconPosition="Left" ui:field="backButton">Back</m:Button>
-		</m:HeaderPanel>
+		</m:HeaderSimplePanel>
 		<m:ScrollPanel height="100%">
 			<m:StackPanel>
 				<m:Stack>
@@ -59,5 +60,5 @@
 				</m:Stack>
 			</m:StackPanel>
 		</m:ScrollPanel>
-	</m:HTMLPanel>	
+	</m:PagePanel>	
 </ui:UiBinder> 

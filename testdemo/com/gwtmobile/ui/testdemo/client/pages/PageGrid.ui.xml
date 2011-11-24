@@ -2,11 +2,12 @@
 <ui:UiBinder 
 	xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets"
+	xmlns:x="urn:import:com.gwtmobile.ui.testdemo.client.widgets"
 	>
 	<ui:style>
 	</ui:style>
-	<m:HTMLPanel>
-		<m:HeaderPanel>
+	<m:PagePanel>
+		<m:HeaderSimplePanel>
 			<m:HorizontalPanel>
 				<m:VerticalPanel>
 					<m:Label text="GWT Mobile" labelTemplate="Emphasised"/>
@@ -14,7 +15,7 @@
 				</m:VerticalPanel>
 			</m:HorizontalPanel>
 			<m:Button caption="Back" iconImage="Back" iconPosition="Left" ui:field="backButton">Back</m:Button>
-		</m:HeaderPanel>
+		</m:HeaderSimplePanel>
 		<m:ScrollPanel height="683px">
 			<m:GridPanel>
 				<m:Button caption="Option1" iconPosition="MiddleTop" iconImage="Forward" secondaryStyle="noback"/>
@@ -29,5 +30,5 @@
 				<m:Button iconPosition="MiddleTop" iconImage="ArrowLeft" caption="Option10" secondaryStyle="noback"/>
 			</m:GridPanel>
 		</m:ScrollPanel>
-	</m:HTMLPanel>	
+	</m:PagePanel>	
 </ui:UiBinder> 

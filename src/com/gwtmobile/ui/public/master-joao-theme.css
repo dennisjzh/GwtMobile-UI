@@ -299,7 +299,7 @@ html {
 	min-height: 3em;
 }
 
-.gwtm-TabPanel.Normal > .gwtm-TabHeaderPanel {	/*tab header panel*/
+.gwtm-TabPanel.Top > .gwtm-TabHeaderPanel {	/*tab header panel*/
 	padding-top: .2em;
 	border-bottom: 0.2em solid #ddd;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ccc), to(#ddd));
@@ -326,13 +326,13 @@ html {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#a9a9a9), to(#c9c9c9));
 }
 
-.gwtm-TabPanel.Normal > .gwtm-TabHeaderPanel > div {		/*tab header*/
+.gwtm-TabPanel.Top > .gwtm-TabHeaderPanel > div {		/*tab header*/
 	border-bottom: 1px solid #aaa;
 	border-top-left-radius: 0.3em 0.3em;
 	border-top-right-radius: 0.3em 0.3em;
 }
 
-.gwtm-TabPanel.Reverse > .gwtm-TabHeaderPanel > div {		/*tab header*/
+.gwtm-TabPanel.Bottom > .gwtm-TabHeaderPanel > div {		/*tab header*/
 	border-top: 1px solid #aaa;
 	border-bottom-left-radius: 0.3em 0.3em;
 	border-bottom-right-radius: 0.3em 0.3em;
@@ -382,7 +382,7 @@ html {
 	/* border-radius: .4em .4em 0 0; */
 }
 
-.gwtm-TabPanel > .gwtm-TabContentPanel > div.Selected {		/*tab content*/
+.gwtm-TabPanel > .gwtm-TabContentPanel > div {		/*tab content*/
 	display: -webkit-box;
 	width: 100%;
 	-webkit-box-orient: vertical;

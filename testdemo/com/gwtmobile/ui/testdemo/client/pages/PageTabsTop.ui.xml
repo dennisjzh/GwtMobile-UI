@@ -2,11 +2,12 @@
 <ui:UiBinder 
 	xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets" 
+	xmlns:x="urn:import:com.gwtmobile.ui.testdemo.client.widgets"
 	>
 	<ui:style>
 	</ui:style>
-	<m:HTMLPanel>
-		<m:HeaderPanel>
+	<m:PagePanel>
+		<m:HeaderSimplePanel>
 			<m:HorizontalPanel>
 				<m:VerticalPanel>
 					<m:Label text="GWT Mobile" labelTemplate="Emphasised"/>
@@ -14,28 +15,28 @@
 				</m:VerticalPanel>
 			</m:HorizontalPanel>
 			<m:Button caption="Back" iconImage="Back" iconPosition="Left" ui:field="backButton">Back</m:Button>
-		</m:HeaderPanel>
-		<m:TabPanel height="" fullHeight="true">
-				<m:TabHeaderPanel>
-					<m:TabHeader>
-						<m:Label text="tab1-head"/>
-					</m:TabHeader>
-					<m:TabHeader>
-						<m:Label text="tab2-head"/>
-					</m:TabHeader>
-				</m:TabHeaderPanel>
-				<m:TabContentPanel height="">
-					<m:TabContent>
-						<m:ScrollPanel height="" withPadding="false">
-							<m:Label text="tabcontent1"/>
-						</m:ScrollPanel>
-					</m:TabContent>
-					<m:TabContent>
-						<m:Label text="tbcontent2"/>
-					</m:TabContent>
+		</m:HeaderSimplePanel>
+		<m:TabPanel height="" fullHeight="true" tabBarPanel="false">
+					<m:TabHeaderPanel>
+						<m:TabHeader>
+							<m:Label text="tab1-head"/>
+						</m:TabHeader>
+						<m:TabHeader>
+							<m:Label text="tab2-head"/>
+						</m:TabHeader>
+					</m:TabHeaderPanel>
+					<m:TabContentPanel height="">
+						<m:TabContent>
+							<m:ScrollPanel height="" withPadding="false" width="100%">
+								<m:Label text="tabcontent1"/>
+							</m:ScrollPanel>
+						</m:TabContent>
+						<m:TabContent>
+							<m:Label text="tbcontent2"/>
+						</m:TabContent>
+						
+					</m:TabContentPanel>
 					
-				</m:TabContentPanel>
-				
-			</m:TabPanel>
-	</m:HTMLPanel>	
+				</m:TabPanel>
+		</m:PagePanel>	
 </ui:UiBinder> 
