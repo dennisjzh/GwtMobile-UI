@@ -83,7 +83,7 @@ html {
 }
 
 /************** Button **************/
-.Button {
+.gwtm-Button {
 	color: #fff;
 	text-decoration: none;
 	display: block;
@@ -97,25 +97,25 @@ html {
 	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0.1em 0.1em 0.1em;
 }
 
-.Button.Pressed, .BackButton.Pressed > span.Button, .NextButton.Pressed > span.Button {
+.gwtm-Button.Pressed, .gwtm-BackButton.Pressed > span.gwtm-Button, .gwtm-NextButton.Pressed > span.gwtm-Button {
 	text-shadow: darkgreen 0 -0.1em 0.1em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
 }
 
-.BackButton {
+.gwtm-BackButton {
 	position: relative;
 	margin-left: 0.8em;
 }
 
-.BackButton > span.Button {
+.gwtm-BackButton > span.gwtm-Button {
 	padding-left: 0;
 	-webkit-border-top-left-radius: 0;
 	-webkit-border-bottom-left-radius: 0;
 	border-left: 0 !important;
 }
 
-.BackButton > span.Pointer {
+.gwtm-BackButton > span.Pointer {
 	position: absolute;
 	display: block;
 	height: 1.3em;
@@ -130,17 +130,17 @@ html {
 	z-index: -1;
 }
 
-.BackButton.Pressed > span.Pointer {
+.gwtm-BackButton.Pressed > span.Pointer {
 	background: -webkit-gradient(linear, left top, right bottom, 
 		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
 }
 
-.NextButton {
+.gwtm-NextButton {
 	position: relative;
 	margin-right: 0.8em;
 }
 
-.NextButton > span.Button {
+.gwtm-NextButton > span.gwtm-Button {
 	padding-right: 0;
 	-webkit-border-top-right-radius: 0;
 	-webkit-border-bottom-right-radius: 0;
@@ -148,7 +148,7 @@ html {
 	-webkit-box-shadow: rgba(0, 0, 0, 0.4) -0.1em 0.1em 0.1em;
 }
 
-.NextButton > span.Pointer {
+.gwtm-NextButton > span.Pointer {
 	position: absolute;
 	display: block;
 	height: 1.3em;
@@ -163,13 +163,17 @@ html {
 	z-index: -1;
 }
 
-.NextButton.Pressed > span.Pointer {
+.gwtm-NextButton.Pressed > span.Pointer {
 	background: -webkit-gradient(linear, left top, right bottom, 
 		from(lightgreen), color-stop(0.5, #298C08), color-stop(0.5, darkgreen), to(darkgreen));
 }
 
-.Button.Disabled {
+.gwtm-Button.Disabled {
 	color: gray;
+}
+
+.gwtm-Button.Disabled > div > img {
+	opacity:0.3;
 }
 
 /********** Scroll Panel **********/
@@ -542,13 +546,13 @@ html {
 
 /******************* Radio Button *************/
 
-.CheckBoxGroup, .RadioButtonGroup {
+.gwtm-CheckBoxGroup, .gwtm-RadioButtonGroup {
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
 	width: 100%;
 }
 
-.CheckBoxGroup > span, .RadioButtonGroup > span {
+.gwtm-CheckBoxGroup > span, .gwtm-RadioButtonGroup > span {
 	-webkit-box-flex: 1;
 	display: -webkit-box;
 	-webkit-box-align: center;
@@ -561,75 +565,75 @@ html {
 	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#666), to(#555));	
 }
 
-.CheckBoxGroup.Horizontal > span.Selected,
-.RadioButtonGroup.Horizontal > span.Selected {
+.gwtm-CheckBoxGroup.Horizontal > span.Selected,
+.gwtm-RadioButtonGroup.Horizontal > span.Selected {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightGreen), to(darkGreen));
 	border-left-color: lightGreen;
 	border-right-color: darkGreen;
 }
 
-.CheckBoxGroup.Horizontal > span > input, 
-.CheckBoxGroup.Horizontal > span > div,
-.RadioButtonGroup.Horizontal > span > input, 
-.RadioButtonGroup.Horizontal > span > div {
+.gwtm-CheckBoxGroup.Horizontal > span > input, 
+.gwtm-CheckBoxGroup.Horizontal > span > div,
+.gwtm-RadioButtonGroup.Horizontal > span > input, 
+.gwtm-RadioButtonGroup.Horizontal > span > div {
 	display: none;
 }
 
-.CheckBoxGroup > span:first-child,
-.RadioButtonGroup > span:first-child {
+.gwtm-CheckBoxGroup > span:first-child,
+.gwtm-RadioButtonGroup > span:first-child {
 	border-left: 0px;
 	border-bottom-left-radius: 0.4em 0.4em;
 	border-top-left-radius: 0.4em 0.4em;
 }
 
-.CheckBoxGroup > span:last-child,
-.RadioButtonGroup > span:last-child {
+.gwtm-CheckBoxGroup > span:last-child,
+.gwtm-RadioButtonGroup > span:last-child {
 	border-right: 0px;
 	border-bottom-right-radius: 0.4em 0.4em;
 	border-top-right-radius: 0.4em 0.4em;
 }
 
-.CheckBoxGroup.Vertical,
-.RadioButtonGroup.Vertical {
+.gwtm-CheckBoxGroup.Vertical,
+.gwtm-RadioButtonGroup.Vertical {
 	-webkit-box-orient: vertical;
 }
 
-.CheckBoxGroup.Vertical > span,
-.RadioButtonGroup.Vertical > span {
+.gwtm-CheckBoxGroup.Vertical > span,
+.gwtm-RadioButtonGroup.Vertical > span {
 	-webkit-box-pack: start;
 	border: 0;
 }
 
-.CheckBoxGroup.Vertical > span.Pressed,
-.RadioButtonGroup.Vertical > span.Pressed {
+.gwtm-CheckBoxGroup.Vertical > span.Pressed,
+.gwtm-RadioButtonGroup.Vertical > span.Pressed {
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightGreen), to(darkGreen));
 }
 
-.CheckBoxGroup.Vertical > span:first-child,
-.RadioButtonGroup.Vertical > span:first-child {
+.gwtm-CheckBoxGroup.Vertical > span:first-child,
+.gwtm-RadioButtonGroup.Vertical > span:first-child {
 	border-bottom-left-radius: 0;
 	border-top-right-radius: 0.4em 0.4em;
 }
 
-.CheckBoxGroup.Vertical > span:last-child,
-.RadioButtonGroup.Vertical > span:last-child {
+.gwtm-CheckBoxGroup.Vertical > span:last-child,
+.gwtm-RadioButtonGroup.Vertical > span:last-child {
 	border-bottom-left-radius: 0.4em 0.4em;
 	border-top-right-radius: 0;
 }
 
-.Android .CheckBoxGroup > span,
-.Android .RadioButtonGroup > span {
+.Android .gwtm-CheckBoxGroup > span,
+.Android .gwtm-RadioButtonGroup > span {
 	-webkit-box-shadow: 0 0 1px #666;	/* android radius antialias workaround */	
 }
 
 /* Android native check box and radio button are too small in WVGA resolution */
 
-.WVGA .CheckBoxGroup > span > input,
-.WVGA .RadioButton > input {
+.WVGA .gwtm-CheckBoxGroup > span > input,
+.WVGA .gwtm-RadioButton > input {
 	display: none;
 }
 
-.WVGA .RadioButton > div {
+.WVGA .gwtm-RadioButton > div {
 	width: 1.2em;
 	height: 1.2em;
 	margin: 0 .4em 0 .4em;
@@ -642,7 +646,7 @@ html {
 	-webkit-box-shadow:0 0 .1em #444;
 }
 
-.WVGA .RadioButton.Selected > div {
+.WVGA .gwtm-RadioButton.Selected > div {
 	background-image:
 		-webkit-gradient(radial, 50% 50%, 0, 50% 50%, 16,
 			from(lightgreen),
@@ -650,12 +654,12 @@ html {
 	-webkit-box-shadow:0 0 .1em darkgreen;
 }
 	
-.WVGA .CheckBoxIndicator {
+.WVGA .gwtm-CheckBoxIndicator {
 	position: relative;
 	margin: 0 .4em 0 .4em;
 }
 
-.WVGA .CheckBoxIndicator > div:first-child {
+.WVGA .gwtm-CheckBoxIndicator > div:first-child {
 	width: .8em;
 	height: .8em;
 	padding: .1em;	
@@ -665,22 +669,22 @@ html {
 	border-radius: .2em;
 }
 
-.WVGA .CheckBoxIndicator > div:first-child > div {
+.WVGA .gwtm-CheckBoxIndicator > div:first-child > div {
 	width: .65em;
 	height: .65em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(gray));
 	border: .1em solid #333;
 }
 
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(2),
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(3),
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(4) {
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(2),
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(3),
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(4) {
 	position: absolute;
 	background: #00CC00;
 	border: .1em solid #111;
 }
 	
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(2) {
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(2) {
 	width: .2em;
 	height: .3em;
 	top: .35em;
@@ -689,7 +693,7 @@ html {
 	border-bottom: 0;
 }
 
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(3) {
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(3) {
 	width: .2em;
 	height: 1em;
 	top: -.1em;
@@ -698,7 +702,7 @@ html {
 	border-bottom: 0;
 }
 
-.WVGA .Selected .CheckBoxIndicator > div:nth-child(4) {
+.WVGA .Selected .gwtm-CheckBoxIndicator > div:nth-child(4) {
 	width: .2em;
 	height: .4em;
 	top: .5em;
@@ -710,11 +714,11 @@ html {
 
 /******************* Flip Switch *************/
 
-.FlipSwitch.Disabled {
+.gwtm-FlipSwitch.Disabled {
   opacity: .3;
 }
 
-.FlipSwitch {
+.gwtm-FlipSwitch {
 	position: relative;
 	border-radius: .3em;
 	overflow: hidden;
@@ -724,19 +728,19 @@ html {
 	-webkit-box-orient: horizontal;
 }
 
-.FlipSwitch > div:first-child, .FlipSwitch > div:nth-child(2) {
+.gwtm-FlipSwitch > div:first-child, .FlipSwitch > div:nth-child(2) {
 	width: 3em;
 	height: 1.75em;	
 }
 
-.FlipSwitch > div:first-child {
+.gwtm-FlipSwitch > div:first-child {
 	border-top-left-radius: .3em;
 	border-bottom-left-radius: .3em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(darkGreen), color-stop(0.1, #298C08), color-stop(0.5, lightGreen), to(lightGreen));
 }
 
-.FlipSwitch > div:nth-child(2) {
+.gwtm-FlipSwitch > div:nth-child(2) {
 	border-top-right-radius: .3em;
 	border-bottom-right-radius: .3em;
 	background: white -webkit-gradient(linear, 0% 0%, 0% 100%, 
@@ -744,7 +748,7 @@ html {
 }
 
 
-.FlipSwitch > div:last-child {
+.gwtm-FlipSwitch > div:last-child {
 	position: absolute;
 	left: 0;
 	overflow: hidden;
@@ -752,7 +756,7 @@ html {
 	height: 100%;
 }
 
-.FlipSwitch > div:last-child > div {
+.gwtm-FlipSwitch > div:last-child > div {
 	position: relative;
 	display: -webkit-box;
 	height: 100%;
@@ -760,25 +764,25 @@ html {
 	-webkit-transition-timing-function: linear;
 }
 
-.FlipSwitch > div:last-child > div > div {
+.gwtm-FlipSwitch > div:last-child > div > div {
 	display: -webkit-box;
 	-webkit-box-align: center;
 	-webkit-box-pack: center;
 	font-weight: bold;
 }
 
-.FlipSwitch > div:last-child > div > div:first-child {
+.gwtm-FlipSwitch > div:last-child > div > div:first-child {
 	width: 3em;
 	text-shadow: #093B5C 0px 1px 1px;
 }
 
-.FlipSwitch > div:last-child > div > div:last-child {
+.gwtm-FlipSwitch > div:last-child > div > div:last-child {
 	width: 2.8125em;
 	color: darkgray;
 	text-shadow: black 0px 1px 1px;
 }
 
-.FlipSwitch > div:last-child > div > div:nth-child(2) {
+.gwtm-FlipSwitch > div:last-child > div > div:nth-child(2) {
 	width: 3.1em;
 	margin-left: -.1875em;
 	border: 1px solid #E5E5E5;
@@ -790,22 +794,22 @@ html {
 
 /******************* Slider *************/
 
-.Slider {
+.gwtm-Slider {
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
 }
 
-.Slider > div:first-child {		/* label */
+.gwtm-Slider > div:first-child {		/* label */
 	min-width: 2em;
 	display: -webkit-box;
 	-webkit-box-align: center;
 }
 
-.Slider > div:first-child.Hide {
+.gwtm-Slider > div:first-child.Hide {
 	display: none;
 }
 
-.Slider > div:last-child {		/* slider */
+.gwtm-Slider > div:last-child {		/* slider */
 	position: relative;
 	height: 1.8em;
 	min-width: 10em;
@@ -814,13 +818,13 @@ html {
 	-webkit-box-flex: 1;
 }
 
-.Slider > div:last-child > div {
+.gwtm-Slider > div:last-child > div {
 	border: 1px solid #333;
 	height: 1em;
 	-webkit-background-clip: content !important;
 }
 
-.Slider > div:last-child > div:first-child {
+.gwtm-Slider > div:last-child > div:first-child {
 	position: absolute;
 	top: .4em;
 	width: 100%;
@@ -829,7 +833,7 @@ html {
 		from(gray), to(white));
 }
 
-.Slider > div:last-child > div:nth-child(2) {
+.gwtm-Slider > div:last-child > div:nth-child(2) {
 	position: relative;
 	top: .4em;
 	border-top-left-radius: .3em;
@@ -839,7 +843,7 @@ html {
 }
 
 
-.Slider > div:last-child > div:last-child {
+.gwtm-Slider > div:last-child > div:last-child {
 	position: relative;
 	margin-left: -.5em;
 	width: 1em;
@@ -927,8 +931,18 @@ html {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightgreen), to(darkgreen));
 }
 
+/******************* Grid Panel *************/
+.gwtm-GridPanel {
+	display: block;
+}
+.gwtm-GridPanel > div {
+	display: inline;
+	float: left;
+	width: 4.5em;
+}
+
 /******************* Horizontal Panel *************/
-.HorizontalPanel {
+.gwtm-HorizontalPanel {
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
 	-webkit-box-align: center;
@@ -936,7 +950,7 @@ html {
 
 
 /******************* Vertical Panel *************/
-.VerticalPanel {
+.gwtm-VerticalPanel {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 }

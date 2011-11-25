@@ -18,6 +18,23 @@
 		</m:HeaderSimplePanel>
 		<m:ScrollPanel height="683px">
 			<m:VerticalPanel>
+				<m:Label text="Flavored Buttons - Back &amp; Next"/>
+				<m:HorizontalPanel boxPack="justify">
+					<m:Button buttonFlavor="ButtonBack" caption="Back" iconPosition="Left"/>
+					<m:Button buttonFlavor="ButtonNext" caption="Next"/>
+				</m:HorizontalPanel>
+				<m:HorizontalPanel boxPack="justify">
+					<m:Button buttonFlavor="ButtonBack" caption="Back" enabled="false" iconImage="Check" iconPosition="Left"/>
+					<m:Button buttonFlavor="ButtonNext" caption="Next" iconImage="Refresh" iconPosition="Right"/>
+				</m:HorizontalPanel>
+				<m:HorizontalPanel boxPack="justify">
+					<m:Button buttonFlavor="ButtonBack" caption="Back" iconImage="Grid" iconPosition="MiddleTop"/>
+					<m:Button buttonFlavor="ButtonNext" caption="Next" iconImage="Refresh" iconPosition="MiddleBottom"/>
+				</m:HorizontalPanel>
+				<m:HorizontalPanel boxPack="justify">
+					<m:Button caption="Back" buttonFlavor="ButtonBack" iconPosition="MiddleBottom" iconImage="Grid" />
+					<m:Button caption="Next" buttonFlavor="ButtonNext" iconImage="Refresh" iconPosition="MiddleTop"/>
+				</m:HorizontalPanel>
 				<m:Label text="Normal Buttons with Icons"/>
 				<m:HorizontalPanel boxPack="center">
 					<m:Button caption="Normal"/>
