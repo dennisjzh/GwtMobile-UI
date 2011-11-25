@@ -18,6 +18,7 @@ public class PageButtons  extends Page {
 	
 	public PageButtons(){
 		initWidget(uiBinder.createAndBindUi(this));
+		
 	}
 	
     @UiHandler("backButton")

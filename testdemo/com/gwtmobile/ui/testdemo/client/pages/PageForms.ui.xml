@@ -16,7 +16,7 @@
 			</m:HorizontalPanel>
 			<m:Button caption="Back" iconImage="Back" iconPosition="Left" ui:field="backButton">Back</m:Button>
 		</m:HeaderSimplePanel>
-		<m:ScrollPanel>
+		<m:ScrollPanel withPadding="false">
 			<m:VerticalPanel styleVariants="Var1" withHPadding="true" withVPadding="true">
 				<m:HorizontalPanel boxPack="justify">
 				<m:Label text="Name" horizontalAlignment="ALIGN_RIGHT"/>
