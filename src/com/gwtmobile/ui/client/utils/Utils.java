@@ -198,5 +198,27 @@ public class Utils {
 	public static native boolean hasPhoneGap() /*-{
 		return $wnd.PhoneGap != null;
 	}-*/;
-
+	
+	public static native void setLinkHref(String linkElementId, String url) /*-{
+        var link = $doc.getElementById(linkElementId);
+        if (link != null && link != undefined) {
+            link.href = url;
+        }
+    }-*/;
+	
+	public static native void setCssHref(String url) /*-{
+	    var link = $doc.getElementsByTagName("link")[0];
+	    if (link != null && link != undefined) {
+	        link.href = url;
+	    }
+	}-*/;
+	
+	public static native String getCssHref() /*-{
+	    var link = $doc.getElementsByTagName("link")[0];
+	    if (link != null && link != undefined) {
+	        return link.href;
+	    }
+	    return null;
+	}-*/;
+	
 }
