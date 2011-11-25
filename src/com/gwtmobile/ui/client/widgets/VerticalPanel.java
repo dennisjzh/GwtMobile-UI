@@ -17,6 +17,7 @@
 package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.gwtmobile.ui.client.CSS.CSS;
 import com.gwtmobile.ui.client.CSS.StyleNames;
 import com.gwtmobile.ui.client.resources.MobileResources.StyleVariants;
 
@@ -26,16 +27,23 @@ public class VerticalPanel extends PanelBase implements HasWidgets {
 	public enum BoxPack {start, end, center, baseline, stretch, justify};
 	private BoxPack boxPack = BoxPack.baseline;
 	private StyleVariants styleVariants = StyleVariants.None;
-	private boolean withHPadding = false;
-	private boolean withVPadding = false;
-	private boolean forceFullWidth = false; // in some cases we might need to force width=100%
 
+    // 6 attributes very common to change and tryout within gwtdesigner
+    // especially to accomodate widgets into panels for multiple layouts
+    // on some panels, we might want to block users from playing with this, but 
+    // this brings more flexibility and if we don't have
+    private boolean withHPadding = false;
+	private boolean withVPadding = false;
+    private boolean withHMargin = false;
+	private boolean withVMargin = false;
+	private boolean forceFullWidth = false;
+	private boolean forceFullHeight = false;	
+	
 	public VerticalPanel() {
 		setStyleName(StyleNames.Primary.VerticalPanel);
 		setBoxPack(boxPack);
-		setWithHPadding(withHPadding);
-		setWithVPadding(withVPadding);
 		setStyleVariants(styleVariants);
+		this.updateUi();
 	}
 	
 	public BoxPack getBoxPack() {
@@ -45,32 +53,6 @@ public class VerticalPanel extends PanelBase implements HasWidgets {
 	public void setBoxPack(BoxPack boxPack) {
 		this.boxPack = boxPack;
 		updateUi();
-	}
-	
-	public boolean isWithHPadding() {
-		return withHPadding;
-	}
-
-	public void setWithHPadding(boolean defaultPadding) {
-		this.withHPadding = defaultPadding;
-		updateUi();
-	}
-	
-	public boolean isWithVPadding() {
-		return withVPadding;
-	}
-
-	public void setWithVPadding(boolean withVPadding) {
-		this.withVPadding = withVPadding;
-		updateUi();
-	}
-
-	public boolean isForceFullWidth() {
-		return forceFullWidth;
-	}
-
-	public void setForceFullWidth(boolean forceFullWidth) {
-		this.forceFullWidth = forceFullWidth;
 	}
 
 	public StyleVariants getStyleVariants() {
@@ -83,8 +65,69 @@ public class VerticalPanel extends PanelBase implements HasWidgets {
 		addStyleName(this.styleVariants.toString());
 	}
 
+	public boolean isWithHPadding() {
+		return withHPadding;
+	}
+
+	public void setWithHPadding(boolean withHPadding) {
+		this.withHPadding = withHPadding;
+		this.updateUi();
+	}
+
+	public boolean isWithVPadding() {
+		return withVPadding;
+	}
+
+	public void setWithVPadding(boolean withVPadding) {
+		this.withVPadding = withVPadding;
+		this.updateUi();
+	}
+	
+	public boolean isForceFullWidth() {
+		return forceFullWidth;
+	}
+
+	public void setForceFullWidth(boolean forceFullWidth) {
+		this.forceFullWidth = forceFullWidth;
+		this.updateUi();
+	}
+	
+	public boolean isWithHMargin() {
+		return withHMargin;
+	}
+
+	public void setWithHMargin(boolean withHMargin) {
+		this.withHMargin = withHMargin;
+		this.updateUi();
+	}
+
+	public boolean isWithVMargin() {
+		return withVMargin;
+	}
+
+	public void setWithVMargin(boolean withVMargin) {
+		this.withVMargin = withVMargin;
+		this.updateUi();
+	}
+
+	public boolean isForceFullHeight() {
+		return forceFullHeight;
+	}
+
+	public void setForceFullHeight(boolean forceFullHeight) {
+		this.forceFullHeight = forceFullHeight;
+		this.updateUi();
+	}	
+	
 	private void updateUi(){
-		getElement().setAttribute("style", "-webkit-box-pack: "+boxPack.toString()+";"+(withVPadding?"padding-right: .5em; padding-left: .5em;":"")+(withHPadding?"padding-top: .5em; padding-bottom: .5em;":"")+(forceFullWidth?";width: 100%":""));
+		getElement().setAttribute("style", "-webkit-box-pack: "+boxPack.toString()+";"
+				+ (isWithHPadding()?"padding-top: .5em; padding-bottom: .5em;":"")
+				+ (isWithVPadding()?"padding-left: .5em; padding-right: .5em;":"")
+				+ (isWithHMargin()?"margin-top: .5em; margin-bottom: .5em;":"")
+				+ (isWithVMargin()?"margin-left: .5em; margin-right: .5em;":"")
+				+ (isForceFullHeight()?"height: 100%;":"")
+				+ (isForceFullWidth()?"width: 100%;":"")
+			);
 	}
 	
 }
