@@ -16,6 +16,8 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import java.beans.Beans;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -37,8 +39,9 @@ public class RadioButtonGroup extends CheckBoxGroup {
     @Override
     public void onInitialLoad() {
     	super.onInitialLoad();
-    	assert name != null
-			: "Attribute 'name' must be set on RadioButtonGroup";
+// bypass assertions for gwtdesigner reasons
+//    	assert name != null
+//			: "Attribute 'name' must be set on RadioButtonGroup";
     }
     
     @Override
@@ -91,8 +94,12 @@ public class RadioButtonGroup extends CheckBoxGroup {
     
     @Override
     public void add(Widget w) {
-    	assert w instanceof RadioButton 
-    		: "Can only contain RadioButton widgets in RadioButtonGroup";
+// no assertions for gwtdesigner reasons
+//    	assert w instanceof RadioButton 
+//    		: "Can only contain RadioButton widgets in RadioButtonGroup";
+    	if (Beans.isDesignTime() && !(w instanceof RadioButton))
+    		return;
+    	
     	RadioButton radio = (RadioButton) w;
     	if (name != null) {
     		radio.setName(name);
