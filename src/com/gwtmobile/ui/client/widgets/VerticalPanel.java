@@ -17,7 +17,6 @@
 package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.user.client.ui.HasWidgets;
-import com.gwtmobile.ui.client.CSS.CSS;
 import com.gwtmobile.ui.client.CSS.StyleNames;
 import com.gwtmobile.ui.client.resources.MobileResources.StyleVariants;
 
