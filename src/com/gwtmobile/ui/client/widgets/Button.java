@@ -34,6 +34,7 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
 	
 	private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
 
+	public enum ButtonFlavor { ButtonNormal, ButtonBack, ButtonNext};
 	public enum IconPosition { None, Left, Right, MiddleTop, MiddleBottom };
 	
 	private boolean enabled = true;
@@ -41,6 +42,7 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
 	
 	private IconPosition iconPosition = IconPosition.None;
 	private IconImages iconImage = IconImages.None;
+	private ButtonFlavor buttonFlavor = ButtonFlavor.ButtonNormal;
 
 	private String caption = "";
 	private String iconClass = "";
@@ -61,6 +63,7 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     private void updateUi(){
     	
     	addStyleName("Button" + getIconPosition().toString());
+    	addStyleName(getButtonFlavor().toString());
     	
     	String butIconClass = null;
     	if (getIconImage().compareTo(IconImages.Custom) == 0){
@@ -78,7 +81,15 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     			butIcon.getElement().setAttribute("style", "width:0px;margin:0px;");
     		}
     	}
-    	super.setHTML("<div class=\"ButtonCaption\"><div class=\"ButtonCaption"+(isShowCaption()?"Visible":"Hidden")+"\">"+getCaption()+"</div>"+butIcon.toString()+"</div>");
+    	String htmlButtonTemplate = "<div class=\"ButtonCaption\"><div class=\"ButtonCaption"+(isShowCaption()?"Visible":"Hidden")+"\">"+getCaption()+"</div>"+butIcon.toString()+"</div>";
+    	String htmlFlavorTemplate = "<div class=\"Pointer\">&nbsp;</div>";
+    	if (this.buttonFlavor == ButtonFlavor.ButtonBack){
+    		super.setHTML(htmlFlavorTemplate + htmlButtonTemplate);
+    	} else if (this.buttonFlavor == ButtonFlavor.ButtonNext){
+    		super.setHTML(htmlButtonTemplate + htmlFlavorTemplate);
+    	} else {
+    		super.setHTML(htmlButtonTemplate);
+    	}
     }
     
     @Override
@@ -192,6 +203,14 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 		updateUi();
+	}
+
+	public ButtonFlavor getButtonFlavor() {
+		return buttonFlavor;
+	}
+
+	public void setButtonFlavor(ButtonFlavor buttonFlavor) {
+		this.buttonFlavor = buttonFlavor;
 	}
 
 	@Override

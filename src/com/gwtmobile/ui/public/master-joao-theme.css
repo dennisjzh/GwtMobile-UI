@@ -84,7 +84,7 @@ html {
 	text-shadow: rgba(220, 220, 220, 0.1) 0em .1em .1em;
 	-webkit-box-shadow: rgba(100, 100, 100, 0.3) 0em 0em .2em;
 	-webkit-box-align: center;
-	-webkit-border-radius: 0.5em;
+	-webkit-border-radius: 0.3em;
 }
 
 .gwtm-Button.Pressed {
@@ -128,6 +128,115 @@ html {
 .gwtm-Button.ButtonRight .ButtonIconRight { float: right; height: 100%; margin: 0em .3em;}
 .gwtm-Button.ButtonMiddleTop .ButtonIconMiddleTop { position: absolute; top:.2em ;left: 50%; height: 45%; margin-left: -9px;}
 .gwtm-Button.ButtonMiddleBottom .ButtonIconMiddleBottom { position: absolute; top:1.5em ;left: 50%; margin-left: -9px; height: 45%;}
+
+
+/* Back button flavor */
+.gwtm-Button.ButtonBack {
+	margin-left: 1.5em;
+	border-left: 0;
+	-webkit-border-radius: 0.35em;
+	-webkit-box-shadow: none;
+}
+
+.gwtm-Button.ButtonBack > div.Pointer {
+	position: absolute;
+	display: block;
+	height: 1.8em;
+	width: 1.8em;
+	left: -0.75em;
+	top: 0.25em;
+	border-left: solid 1px #bbb;
+	border-bottom: solid 1px #bbb;
+	border-top: 0;
+	border-right: 0;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dddddd), color-stop(0.98, #ededed), color-stop(0.98, #dddddd), to(#ededed));
+	-webkit-transform: rotate(45deg);
+	-webkit-box-shadow: none;
+	-webkit-border-radius: 0.3em;
+	z-index: -1;
+}
+
+.gwtm-Button.ButtonMiddleTop.ButtonBack, .gwtm-Button.ButtonMiddleBottom.ButtonBack {
+	margin-left: 2em;
+	border-left: 0;
+	-webkit-border-radius: 0.35em;
+	-webkit-box-shadow: none;
+}
+
+.gwtm-Button.ButtonMiddleTop.ButtonBack > div.Pointer, .gwtm-Button.ButtonMiddleBottom.ButtonBack > div.Pointer {
+	position: absolute;
+	display: block;
+	height: 2.5em;
+	width: 2.5em;
+	left: -1.15em;
+	top: 0.4em;
+	border-left: solid 1px #bbb;
+	border-bottom: solid 1px #bbb;
+	border-top: 0;
+	border-right: 0;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dddddd), color-stop(0.98, #ededed), color-stop(0.98, #dddddd), to(#ededed));
+	-webkit-transform: rotate(45deg);
+	-webkit-box-shadow: none;
+	-webkit-border-radius: 0.3em;
+	z-index: -1;
+}
+
+/* Next button flavor */
+.gwtm-Button.ButtonNext {
+	margin-right: 1.5em;
+	border-right: 0;
+	-webkit-border-radius: 0.35em;
+	-webkit-box-shadow: none;
+}
+
+.gwtm-Button.ButtonNext > div.Pointer {
+	position: absolute;
+	display: block;
+	height: 1.8em;
+	width: 1.8em;
+	right: -0.75em;
+	top: 0.25em;
+	border-right: solid 1px #bbb;
+	border-top: solid 1px #bbb;
+	border-bottom: 0;
+	border-left: 0;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dddddd), color-stop(0.98, #ededed), color-stop(0.98, #dddddd), to(#ededed));
+	-webkit-transform: rotate(45deg);
+	-webkit-box-shadow: none;
+	-webkit-border-radius: 0.3em;
+	z-index: -1;
+}
+
+.gwtm-Button.ButtonMiddleTop.ButtonNext, .gwtm-Button.ButtonMiddleBottom.ButtonNext {
+	margin-right: 2em;
+	border-right: 0;
+	-webkit-border-radius: 0.35em;
+	-webkit-box-shadow: none;
+}
+
+.gwtm-Button.ButtonMiddleTop.ButtonNext > div.Pointer, .gwtm-Button.ButtonMiddleBottom.ButtonNext > div.Pointer {
+	position: absolute;
+	display: block;
+	height: 2.5em;
+	width: 2.5em;
+	right: -1.15em;
+	top: 0.4em;
+	border-right: solid 1px #bbb;
+	border-top: solid 1px #bbb;
+	border-bottom: 0;
+	border-left: 0;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dddddd), color-stop(0.98, #ededed), color-stop(0.98, #dddddd), to(#ededed));
+	-webkit-transform: rotate(45deg);
+	-webkit-box-shadow: none;
+	-webkit-border-radius: 0.3em;
+	z-index: -1;
+}
+
+.gwtm-Button.Pressed > div.Pointer {
+	text-shadow: #ccc 0 -0.1em 0.1em;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
+		from(#aaa), color-stop(0.6, #ddd), to(#aaa));
+}
 
 .gwtm-Button.Disabled {
 	color: #bbb;
