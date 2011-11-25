@@ -8,7 +8,7 @@ public class HTML5InputElement extends HTML5Element {
 
 	static final String TAG = "input";
 
-	public static enum ValidInputTypes {
+	public static enum InputTypes {
 		button, checkbox, color, date, datetime, datetimeLocal, email, file, hidden, image, month, number, password, radio, range, reset, search, submit, tel, text, time, url, week
 	};
 
@@ -55,14 +55,14 @@ public class HTML5InputElement extends HTML5Element {
 	}
 
 	// attrib TYPE - but using INPUTTYPE instead
-	public final ValidInputTypes getType() {
-		return (getAttribute("type").equals("datetime-local") ? ValidInputTypes.datetimeLocal
-				: ValidInputTypes.valueOf(getAttribute("type")));
+	public final InputTypes getType() {
+		return (getAttribute("type").equals("datetime-local") ? InputTypes.datetimeLocal
+				: InputTypes.valueOf(getAttribute("type")));
 	}
 
-	public final void setType(ValidInputTypes inputType) {
+	public final void setType(InputTypes inputType) {
 		this.setAttribute("type",
-				inputType == ValidInputTypes.datetimeLocal ? "datetime-local"
+				inputType == InputTypes.datetimeLocal ? "datetime-local"
 						: inputType.toString());
 	}
 

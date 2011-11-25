@@ -22,6 +22,7 @@ import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
 import com.gwtmobile.ui.client.utils.HTML5InputElement;
+import com.gwtmobile.ui.client.utils.HTML5InputElement.InputTypes;
 
 
 public class InputBox extends com.google.gwt.user.client.ui.TextBoxBase 
@@ -29,7 +30,6 @@ public class InputBox extends com.google.gwt.user.client.ui.TextBoxBase
 
 	private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
 
-	public enum InputTypes {button, checkbox, file, hidden, image, password, radio, reset, submit, text, email, url, number, range, date, month, week, time, datetime, search, color};
 	public enum BoxTypes { TextBox, PasswordBox, EmailBox, NumberTextBox, PasswordTextBox, TelephoneTextBox, UrlTextBox};
 	
 	private InputTypes type = InputTypes.text;
