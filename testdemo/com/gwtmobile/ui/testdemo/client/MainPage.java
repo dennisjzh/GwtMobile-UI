@@ -22,6 +22,7 @@ import com.gwtmobile.ui.testdemo.client.pages.PageSlides;
 import com.gwtmobile.ui.testdemo.client.pages.PageStacks;
 import com.gwtmobile.ui.testdemo.client.pages.PageTabsBottom;
 import com.gwtmobile.ui.testdemo.client.pages.PageTabsTop;
+import com.gwtmobile.ui.testdemo.client.pages.PageThemes;
 import com.gwtmobile.ui.testdemo.client.resources.AppResources;
 
 
@@ -83,6 +84,10 @@ public class MainPage extends Page {
 		case 8:
 			PageCharts pageCharts = new PageCharts();
 			this.goTo(pageCharts);
+			break;
+		case 9:
+			PageThemes pageThemes = new PageThemes();
+			this.goTo(pageThemes);
 			break;
 		}
 	}

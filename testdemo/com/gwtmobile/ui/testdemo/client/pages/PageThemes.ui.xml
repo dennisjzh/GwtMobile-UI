@@ -1,0 +1,31 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+	xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets"
+	xmlns:x="urn:import:com.gwtmobile.ui.testdemo.client.widgets"
+	>
+	<ui:style>
+	</ui:style>
+	<m:PagePanel>
+		<m:HeaderSimplePanel>
+			<m:HorizontalPanel>
+				<m:VerticalPanel>
+					<m:Label text="GWT Mobile" labelTemplate="Emphasised"/>
+					<m:Label labelTemplate="Legend" text="Demo for Theme Switching"/>
+				</m:VerticalPanel>
+			</m:HorizontalPanel>
+			<m:Button caption="Back" iconImage="Back" iconPosition="Left" ui:field="backButton">Back</m:Button>
+		</m:HeaderSimplePanel>
+		<m:ScrollPanel height="683px">
+			<m:VerticalPanel withVPadding="true">
+				<m:Label text="Theme Switcher" labelBackgroundVariant="Var2" labelTemplate="Header2" horizontalAlignment="ALIGN_RIGHT" withHPadding="true"/>
+				<m:Button ui:field="themeLight">Light</m:Button>
+				<m:Button ui:field="themeDark">Dark</m:Button>
+			</m:VerticalPanel>
+			
+	
+
+			
+		</m:ScrollPanel>
+	</m:PagePanel>	
+</ui:UiBinder> 

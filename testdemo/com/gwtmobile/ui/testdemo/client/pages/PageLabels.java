@@ -8,6 +8,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.page.PageHistory;
+import com.gwtmobile.ui.client.utils.Utils;
 import com.gwtmobile.ui.client.widgets.Button;
 
 public class PageLabels  extends Page {

@@ -74,7 +74,13 @@
 						<m:Image height="2em" iconImages="Plus"/>
 						<m:Label text="Charts" withHPadding="true"/>
 					</m:HorizontalPanel>
-				</m:ListItem>		
+				</m:ListItem>
+				<m:ListItem>
+					<m:HorizontalPanel boxPack="justify">
+						<m:Image height="2em" iconImages="Plus"/>
+						<m:Label text="Themes" withHPadding="true"/>
+					</m:HorizontalPanel>
+				</m:ListItem>	
 			</m:ListPanel>
 			</m:VerticalPanel>
 
