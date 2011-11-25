@@ -12,7 +12,6 @@ import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.utils.Utils;
 import com.gwtmobile.ui.client.widgets.ListPanel;
-import com.gwtmobile.ui.client.resources.MobileResources;
 import com.gwtmobile.ui.testdemo.client.pages.PageButtons;
 import com.gwtmobile.ui.testdemo.client.pages.PageCharts;
 import com.gwtmobile.ui.testdemo.client.pages.PageForms;
@@ -23,7 +22,6 @@ import com.gwtmobile.ui.testdemo.client.pages.PageStacks;
 import com.gwtmobile.ui.testdemo.client.pages.PageTabsBottom;
 import com.gwtmobile.ui.testdemo.client.pages.PageTabsTop;
 import com.gwtmobile.ui.testdemo.client.pages.PageThemes;
-import com.gwtmobile.ui.testdemo.client.resources.AppResources;
 
 
 public class MainPage extends Page {
@@ -35,8 +33,6 @@ public class MainPage extends Page {
 	
 	public MainPage() {
 		initWidget(uiBinder.createAndBindUi(this));
-		
-		MobileResources.IMAGE_MAP.put("bell", AppResources.INSTANCE.iconBell());
 		
 		Window.addResizeHandler(new ResizeHandler() {		
 			@Override

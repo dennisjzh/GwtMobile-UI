@@ -232,7 +232,9 @@ html {
 	z-index: -1;
 }
 
-.gwtm-Button.Pressed > div.Pointer {
+.gwtm-Button.Pressed > div.Pointer,
+.gwtm-Button.ButtonMiddleTop.ButtonBack.Pressed > div.Pointer, .gwtm-Button.ButtonMiddleBottom.ButtonBack.Pressed > div.Pointer,
+.gwtm-Button.ButtonMiddleTop.ButtonNext.Pressed > div.Pointer, .gwtm-Button.ButtonMiddleBottom.ButtonNext.Pressed > div.Pointer {
 	text-shadow: #ccc 0 -0.1em 0.1em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
 		from(#aaa), color-stop(0.6, #ddd), to(#aaa));

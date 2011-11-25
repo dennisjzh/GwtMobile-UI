@@ -14,7 +14,7 @@
 					<m:Label labelTemplate="Legend" text="Demo for Labels with variants"/>
 				</m:VerticalPanel>
 			</m:HorizontalPanel>
-			<m:Button caption="Back" iconImage="Back" iconPosition="Left" ui:field="backButton">Back</m:Button>
+			<m:Button caption="Back" iconImage="Back" iconPosition="Left" ui:field="backButton" buttonFlavor="ButtonBack">Back</m:Button>
 		</m:HeaderSimplePanel>
 		<m:ScrollPanel height="683px">
 			<m:VerticalPanel>

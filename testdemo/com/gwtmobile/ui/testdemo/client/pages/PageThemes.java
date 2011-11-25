@@ -2,7 +2,6 @@ package com.gwtmobile.ui.testdemo.client.pages;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -11,7 +10,6 @@ import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.page.PageHistory;
 import com.gwtmobile.ui.client.utils.Utils;
 import com.gwtmobile.ui.client.widgets.Button;
-import com.gwtmobile.ui.client.widgets.RadioButtonGroup;
 
 public class PageThemes  extends Page {
 
@@ -29,7 +27,6 @@ public class PageThemes  extends Page {
 		} else {
 			themeDark.setEnabled(false);
 		}
-
 	}
 	
     @UiHandler("backButton")

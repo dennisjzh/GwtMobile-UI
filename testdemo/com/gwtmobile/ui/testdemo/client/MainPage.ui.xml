@@ -18,8 +18,8 @@
 			
 		</m:HeaderSimplePanel>
 
-		<m:ScrollPanel>
-			<m:VerticalPanel withVPadding="true">
+		<m:ScrollPanel fullHeight="true">
+			<m:VerticalPanel withVPadding="true" withHPadding="true">
 				<m:ListPanel ui:field="list" displayArrow="Visible">
 				<m:ListItem displayArrow="Hidden">
 					<m:HorizontalPanel boxPack="justify" forceFullWidth="true">
