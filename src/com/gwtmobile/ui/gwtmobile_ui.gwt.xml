@@ -5,7 +5,20 @@
   
     <source path='client'/>
 	
-	<stylesheet src="master.css"/>
+	<!-- Inherit the default GWT style sheet.  You can change       -->
+	<!-- the theme of your GWT application by uncommenting          -->
+	<!-- any one of the following lines.                            -->
+	<!-- This now includes the GWT Mobile bundle themes, dark and light -->
+	<!-- This inherits should be added to the enduser application -->
+	<!-- <inherits name='com.google.gwt.user.theme.clean.Clean'/>   -->
+	<!-- <inherits name='com.google.gwt.user.theme.standard.Standard'/> -->
+	<!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+	<!-- <inherits name='com.gwtmobile.ui.client.themes.Light'/>    -->
+	<!-- <inherits name='com.gwtmobile.ui.client.themes.Dark'/>     -->
+	
+	<!-- this is the old way and it should be deprecated  -->
+	<!-- <stylesheet src="master.css"/> -->
 	
     <!-- Add the mobile.user.agent property -->
     <define-property name="mobile.user.agent" values="mobilesafari, none"/>
