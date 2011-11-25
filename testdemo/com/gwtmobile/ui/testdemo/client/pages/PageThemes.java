@@ -24,7 +24,6 @@ public class PageThemes  extends Page {
 	public PageThemes(){
 		initWidget(uiBinder.createAndBindUi(this));
 		String current_theme = Utils.getCssHref();
-
 		if (current_theme.indexOf("light")!=-1) {
 			themeLight.setEnabled(false);
 		} else {
@@ -54,14 +53,11 @@ public class PageThemes  extends Page {
     
     private void switchTheme(){
 		String current_theme = Utils.getCssHref();
-
-		System.err.println("current theme: " + current_theme);
 		if (current_theme.indexOf("light")!=-1) {
 			current_theme = current_theme.replaceAll("light", "dark");
 		} else {
 			current_theme = current_theme.replaceAll("dark", "light");
 		}
-		System.err.println("current theme: " + current_theme);
 		Utils.setCssHref(current_theme);
     }
     
