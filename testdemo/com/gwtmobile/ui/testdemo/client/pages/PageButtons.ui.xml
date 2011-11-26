@@ -2,7 +2,7 @@
 <ui:UiBinder 
 	xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets"
-	xmlns:x="urn:import:com.gwtmobile.ui.testdemo.client.widgets" 
+	xmlns:x="urn:import:com.gwtmobile.ui.testdemo.client.widgets" xmlns:p1="urn:import:com.google.gwt.user.client.ui" 
 	>
 	<ui:style>
 	</ui:style>
@@ -61,7 +61,7 @@
 				</m:HorizontalPanel>
 			</m:VerticalPanel>
 			<m:Label text="Buttons aligned on Right - directly on ScrollPanel"/>
-			<m:HorizontalPanel boxPack="end">
+			<m:HorizontalPanel boxPack="end" withVPadding="true">
 				<m:Button caption="Logout"/>
 				<m:Button caption="Login"/>
 			</m:HorizontalPanel>

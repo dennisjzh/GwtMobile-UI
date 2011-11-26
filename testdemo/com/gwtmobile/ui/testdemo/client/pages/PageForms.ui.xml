@@ -16,8 +16,8 @@
 			</m:HorizontalPanel>
 			<m:Button caption="Back" iconImage="Back" iconPosition="Left" ui:field="backButton">Back</m:Button>
 		</m:HeaderSimplePanel>
-		<m:ScrollPanel withPadding="false">
-			<m:VerticalPanel styleVariants="Var1" withHPadding="true" withVPadding="true">
+		<m:ScrollPanel>
+			<m:VerticalPanel styleVariants="Var1" withHPadding="true" withVPadding="true" withVMargin="true">
 				<m:HorizontalPanel boxPack="justify">
 				<m:Label text="Name" horizontalAlignment="ALIGN_RIGHT"/>
 				<m:InputBox type="text"/>
@@ -40,7 +40,7 @@
 			</m:HorizontalPanel>
 				<m:HorizontalPanel boxPack="justify">
 				<m:Label text="Mobile"/>
-				<m:InputBox boxTypes="TelephoneTextBox"/>
+				<m:InputBox type="datetime"/>
 		
 			</m:HorizontalPanel>
 				<m:HorizontalPanel boxPack="justify">
