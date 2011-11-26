@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component xmlns="http://www.eclipse.org/wb/WBPComponent">
+	<description>A panel that stacks its children vertically, displaying only one at a time, with a header for
+		each child which the user can click to display.</description>
+
+</component>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component xmlns="http://www.eclipse.org/wb/WBPComponent">
+	<description>A panel that contains HTML, and which can attach child widgets to identified
+		 elements within that HTML.</description>
+
+</component>

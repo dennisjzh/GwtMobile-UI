@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component xmlns="http://www.eclipse.org/wb/WBPComponent">
+	<description>A standard push-button widget.</description>
+	<!-- CREATION -->
+	<creation>
+		<source><![CDATA[new com.gwtmobile.ui.client.widgets.Button("New button")]]></source>
+		<x-content>New Button</x-content>
+	</creation>
+	<creation id="empty">
+		<source><![CDATA[new com.gwtmobile.ui.client.widgets.Button()]]></source>
+	</creation>
+	<!-- CONSTRUCTORS -->
+	<constructors>
+		<constructor>
+			<parameter type="java.lang.String" property="setCaption(java.lang.String)"/>
+		</constructor>
+		<constructor>
+			<parameter type="java.lang.String" property="setCaption(java.lang.String)"/>
+			<parameter type="com.google.gwt.user.client.ui.ClickListener">
+				<tag name="events: add listener method"
+					value="addClickListener(com.google.gwt.user.client.ui.ClickListener)"/>
+			</parameter>
+		</constructor>
+	</constructors>
+	<!-- PROPERTIES -->
+	<properties-hidden names="HTML text"/>
+	<properties-advanced names="HTML text"/>
+	<properties-preferred names="caption"/>
+	<property-tag name="caption" tag="isText" value="true"/>
+	<!-- PARAMETERS -->
+	<parameters>
+		<parameter name="x.double-click.listener">onClick</parameter>
+		<!-- new -->
+		<parameter name="liveComponent.forcedSize.use"><![CDATA[
+			isStrict && isExplorer
+		]]></parameter>
+		<parameter name="liveComponent.forcedSize.width">100px</parameter>
+		<parameter name="liveComponent.forcedSize.height">auto</parameter>
+		<!-- setSize(int,int) tweaks -->
+		<parameter name="setSize.excludeMargin">true</parameter>
+		<parameter name="setSize.excludeBorder">false</parameter>
+		<parameter name="setSize.excludePadding">false</parameter>
+		<!-- related styles -->
+		<parameter name="relatedStyles"><![CDATA[
+			.gwtm-Button { }
+			]]></parameter>
+	</parameters>
+</component>

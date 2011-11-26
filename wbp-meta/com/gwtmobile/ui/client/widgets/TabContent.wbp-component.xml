@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component xmlns="http://www.eclipse.org/wb/WBPComponent">
+	<description>A panel that represents a tabbed set of pages, each of which contains another widget. Its
+		child widgets are shown as the user selects the various tabs associated with them. <p/><b>Note:</b>
+		this widget will <em>only</em> work in standards mode.</description>
+
+</component>
