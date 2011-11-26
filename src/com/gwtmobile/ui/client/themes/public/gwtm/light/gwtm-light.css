@@ -87,12 +87,6 @@ html {
 	-webkit-border-radius: 0.3em;
 }
 
-.gwtm-Button.Pressed {
-	text-shadow: #ccc 0 -0.1em 0.1em;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
-		from(#aaa), color-stop(0.5, #ddd), to(#aaa));
-}
-
 .gwtm-Button.ButtonLeft, .gwtm-Button.ButtonRight {
 	height: 1.6em;
 }
@@ -143,7 +137,7 @@ html {
 	display: block;
 	height: 1.8em;
 	width: 1.8em;
-	left: -0.75em;
+	left: -0.7em;
 	top: 0.25em;
 	border-left: solid 1px #bbb;
 	border-bottom: solid 1px #bbb;
@@ -153,7 +147,7 @@ html {
 	-webkit-transform: rotate(45deg);
 	-webkit-box-shadow: none;
 	-webkit-border-radius: 0.3em;
-	z-index: -1;
+	z-index: 0;
 }
 
 .gwtm-Button.ButtonMiddleTop.ButtonBack, .gwtm-Button.ButtonMiddleBottom.ButtonBack {
@@ -168,7 +162,7 @@ html {
 	display: block;
 	height: 2.5em;
 	width: 2.5em;
-	left: -1.15em;
+	left: -1.10em;
 	top: 0.4em;
 	border-left: solid 1px #bbb;
 	border-bottom: solid 1px #bbb;
@@ -178,7 +172,7 @@ html {
 	-webkit-transform: rotate(45deg);
 	-webkit-box-shadow: none;
 	-webkit-border-radius: 0.3em;
-	z-index: -1;
+	z-index: 0;
 }
 
 /* Next button flavor */
@@ -194,7 +188,7 @@ html {
 	display: block;
 	height: 1.8em;
 	width: 1.8em;
-	right: -0.75em;
+	right: -0.7em;
 	top: 0.25em;
 	border-right: solid 1px #bbb;
 	border-top: solid 1px #bbb;
@@ -204,7 +198,7 @@ html {
 	-webkit-transform: rotate(45deg);
 	-webkit-box-shadow: none;
 	-webkit-border-radius: 0.3em;
-	z-index: -1;
+	z-index: 0;
 }
 
 .gwtm-Button.ButtonMiddleTop.ButtonNext, .gwtm-Button.ButtonMiddleBottom.ButtonNext {
@@ -219,7 +213,7 @@ html {
 	display: block;
 	height: 2.5em;
 	width: 2.5em;
-	right: -1.15em;
+	right: -1.10em;
 	top: 0.4em;
 	border-right: solid 1px #bbb;
 	border-top: solid 1px #bbb;
@@ -229,15 +223,14 @@ html {
 	-webkit-transform: rotate(45deg);
 	-webkit-box-shadow: none;
 	-webkit-border-radius: 0.3em;
-	z-index: -1;
+	z-index: 0;
 }
 
-.gwtm-Button.Pressed > div.Pointer,
+.gwtm-Button.Pressed, .gwtm-Button.Pressed > div.Pointer,
 .gwtm-Button.ButtonMiddleTop.ButtonBack.Pressed > div.Pointer, .gwtm-Button.ButtonMiddleBottom.ButtonBack.Pressed > div.Pointer,
 .gwtm-Button.ButtonMiddleTop.ButtonNext.Pressed > div.Pointer, .gwtm-Button.ButtonMiddleBottom.ButtonNext.Pressed > div.Pointer {
 	text-shadow: #ccc 0 -0.1em 0.1em;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, 
-		from(#aaa), color-stop(0.6, #ddd), to(#aaa));
+	background: #bbb;
 }
 
 .gwtm-Button.Disabled {

@@ -32,6 +32,7 @@ public class MainPage extends Page {
 	@UiField ListPanel list;
 	
 	public MainPage() {
+		
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		Window.addResizeHandler(new ResizeHandler() {		
