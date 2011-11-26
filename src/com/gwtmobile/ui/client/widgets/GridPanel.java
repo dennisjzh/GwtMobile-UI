@@ -16,11 +16,13 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+
 
 public class GridPanel extends PanelBase {
 	    
 	    public GridPanel(){	    	
-	    	setStyleName("gwtm-GridPanel");
+	    	setStyleName(Primary.GridPanel);
 	    }
 	    
 }
