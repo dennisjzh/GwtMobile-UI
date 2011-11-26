@@ -19,6 +19,7 @@ public interface StyleNames {
 		String CheckBoxIndicator = "gwtm-CheckBoxIndicator";
 		String DropDownList = "DropDownList";
 		String FlipSwitch = "gwtm-FlipSwitch";
+		String GridPanel = "gwtm-GridPanel";
 		String HeaderPanel = "gwtm-HeaderPanel";
 		String HorizontalPanel = "gwtm-HorizontalPanel";
 		String ListPanel = "gwtm-ListPanel";

@@ -16,35 +16,11 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import com.google.gwt.user.client.ui.HasWidgets;
-import com.gwtmobile.ui.client.widgets.IsGwtMobileWidget;
-import com.gwtmobile.ui.client.widgets.IsGwtMobileWidgetHelper;
 
-public class GridPanel extends FlowPanel implements HasWidgets, IsGwtMobileWidget {
+public class GridPanel extends PanelBase {
 	    
-	    private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
-	    
-	    public GridPanel(){
+	    public GridPanel(){	    	
 	    	setStyleName("gwtm-GridPanel");
 	    }
 	    
-	    public GridPanel getPanel(){
-	    	return this;
-	    }
-	    
-	    @Override
-	    public void onLoad() {
-	    	super.onLoad();
-	    	widgetHelper.CheckInitialLoad(this);
-	    }
-
-	    @Override
-		public void onInitialLoad() {
-	    }
-	    
-	    @Override
-		public void setSecondaryStyle(String style) {
-	    	widgetHelper.setSecondaryStyle(this, style);
-	    }
-
 }
