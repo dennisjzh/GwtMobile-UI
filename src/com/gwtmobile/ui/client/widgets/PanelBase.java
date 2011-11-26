@@ -23,7 +23,6 @@ public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implement
 	    private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
 	    
 	    public PanelBase(){
-	    	setStyleName("gtwm-FlowPanel");
 	    }
 	    
 	    @Override

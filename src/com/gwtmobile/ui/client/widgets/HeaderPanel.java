@@ -24,7 +24,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
-public class HeaderPanel extends FlowPanel {
+public class HeaderPanel extends PanelBase {
    
 	ClickHandler _leftButtonClickHandler;
 	ClickHandler _rightButtonClickHandler;
