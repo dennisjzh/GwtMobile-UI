@@ -52,10 +52,14 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
 	public Button() {
         setStyleName(Primary.Button);
     }
-    
-    public Button(String caption, ClickHandler handler) {
+
+	public Button(String caption) {
         this();
         this.caption = caption;
+    }
+	
+    public Button(String caption, ClickHandler handler) {
+        this(caption);
         this.addClickHandler(handler);
         this.setHTML(caption);
     }
