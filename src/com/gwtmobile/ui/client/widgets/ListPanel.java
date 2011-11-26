@@ -65,7 +65,7 @@ public class ListPanel extends PanelBase implements ClickHandler, DragEventsHand
     	}
     	else {
     		//TODO: check with joao if this is causing problem with gwt designer.
-    		// yes, this asserts are causing some issues, for inntance, an emply panel on gwt designer
+    		// yes, this asserts are causing some issues, for instance, an empty panel on gwt designer
     		// will have a child Label saying that the panel is empty. With this assert we cant use gwtd
 //    		assert false : "Only ListItem can be added to ListPanel.";
         	ListItem listItem = new ListItem();
