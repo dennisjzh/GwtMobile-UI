@@ -16,7 +16,7 @@ public interface MobileResources extends ClientBundle {
 	
 	public enum StyleVariants { None, Var1, Var2, Var3, Var4, Var5};
 	
-	public enum IconImages { None, Custom, ArrowLeft, ArrowRight, ArrowUp, ArrowDown, Delete, Plus, Minus, Check, Gear, Refresh, Forward, Back, Grid, Star, Alert, Info, Home, Search };
+	public enum IconImages { None, ArrowLeft, ArrowRight, ArrowUp, ArrowDown, Delete, Plus, Minus, Check, Gear, Refresh, Forward, Back, Grid, Star, Alert, Info, Home, Search };
 
 	@Source("icons/clear.cache.gif") ImageResource iconClearCache();
 	
