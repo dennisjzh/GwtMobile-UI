@@ -70,21 +70,17 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     	addStyleName(getButtonFlavor().toString());
     	
     	String butIconClass = null;
-    	if (getIconImage().compareTo(IconImages.Custom) == 0){
-    		butIconClass = getIconClass();
-    	} else if (getIconImage().compareTo(IconImages.None) != 0) {
+    	if (getIconImage().compareTo(IconImages.None) != 0) {
     		butIconClass = "ButtonIcon" + getIconImage().toString();
     	}
     	
-    	Image butIcon = null;
-    	if (getIconImage().compareTo(IconImages.Custom) != 0){
-    		butIcon = new Image(MobileResources.IMAGE_MAP.get(getIconImage().toString()).getSafeUri());
-    		butIcon.setStyleName("ButtonIcon"+getIconPosition().toString());
-    		if (butIconClass!=null) butIcon.addStyleName(butIconClass);
-    		if (getIconImage().compareTo(IconImages.None) == 0){
-    			butIcon.getElement().setAttribute("style", "width:0px;margin:0px;");
-    		}
-    	}
+    	Image butIcon = new Image(MobileResources.IMAGE_MAP.get(getIconImage().toString()).getSafeUri());
+		butIcon.setStyleName("ButtonIcon"+getIconPosition().toString());
+		if (butIconClass!=null) butIcon.addStyleName(butIconClass);
+		if (getIconImage().compareTo(IconImages.None) == 0){
+			butIcon.getElement().setAttribute("style", "width:0px;margin:0px;");
+		}
+    	
     	String htmlButtonTemplate = "<div class=\"ButtonCaption\"><div class=\"ButtonCaption"+(isShowCaption()?"Visible":"Hidden")+"\">"+getCaption()+"</div>"+butIcon.toString()+"</div>";
     	String htmlFlavorTemplate = "<div class=\"Pointer\">&nbsp;</div>";
     	if (this.buttonFlavor == ButtonFlavor.ButtonBack){

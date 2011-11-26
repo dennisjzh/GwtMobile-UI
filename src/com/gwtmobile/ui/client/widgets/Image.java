@@ -25,7 +25,6 @@ public class Image extends com.google.gwt.user.client.ui.Image
 
 	private IconImages iconImages = IconImages.None;
 
-
 	private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
 
 	public Image() {
@@ -39,8 +38,8 @@ public class Image extends com.google.gwt.user.client.ui.Image
 
 	public void setIconImages(IconImages iconImages) {
 		this.iconImages = iconImages;
-		if (iconImages == IconImages.Custom){
-			// todo
+		if (iconImages == IconImages.None) {
+			//setUrl("none"); do nothing for now
 		} else {
 			setUrl(MobileResources.IMAGE_MAP.get(iconImages.toString()).getSafeUri());
 		}
