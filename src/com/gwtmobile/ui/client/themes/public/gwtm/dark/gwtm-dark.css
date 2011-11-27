@@ -277,17 +277,23 @@ html {
 }
 
 /********** Slide Panel **********/
-.SlidePanel {
+.gwtm-SlidePanel {
 	-webkit-box-flex: 1;
 	position: relative;
+	display: -webkit-box;
 	margin: .5em;
 }
 
-.Slide {
-	position:absolute;
+.gwtm-Slide {
 	display: -webkit-box;
-	height: 100%;
-	width: 100%;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	-webkit-box-orient: vertical;			
+	color: black;
+	background: white;
+	-webkit-box-flex: 1;
+	border-radius: 0.4em;
+	-webkit-box-shadow: black 0em 0em 0.5em;	
 }
 
 /********** Chevron (arrow) **********/

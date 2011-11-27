@@ -16,6 +16,8 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import com.google.gwt.user.client.ui.Widget;
+
 
 
 public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implements IsGwtMobilePanel {
@@ -48,5 +50,10 @@ public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implement
 		public void setSecondaryStyle(String style) {
 	    	widgetHelper.setSecondaryStyle(this, style);
 	    }
+
+		@Override
+		public void addToPanel(Widget w) {
+			super.add(w);
+		}
 
 }

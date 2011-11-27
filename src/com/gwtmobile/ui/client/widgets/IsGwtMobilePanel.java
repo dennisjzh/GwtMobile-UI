@@ -16,8 +16,11 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import com.google.gwt.user.client.ui.Widget;
+
 
 public interface IsGwtMobilePanel extends IsGwtMobileWidget {
 	enum TransitionDirection {From, To};
     void onTransitionEnd(TransitionDirection direction);
+    void addToPanel(Widget w);
 }

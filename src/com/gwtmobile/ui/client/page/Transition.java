@@ -36,7 +36,12 @@ public class Transition implements EventListener {
 			@Override
 			public void run() {
 				parent.remove(from);
-				parent.add(to);
+				if (parent instanceof IsGwtMobilePanel) {
+					((IsGwtMobilePanel) parent).addToPanel(to);
+				}
+				else {
+					parent.add(to);
+				}
 				if (from instanceof IsGwtMobilePanel) {
 					((IsGwtMobilePanel) from).onTransitionEnd(TransitionDirection.From);
 				}
@@ -64,7 +69,12 @@ public class Transition implements EventListener {
 			_from.addStyleName(CSS.T.reverse());
 			_to.addStyleName(CSS.T.reverse());
 		}
-		_parent.add(_to);
+		if (_parent instanceof IsGwtMobilePanel) {
+			((IsGwtMobilePanel) _parent).addToPanel(_to);
+		}
+		else {
+			_parent.add(_to);
+		}
 	}
 
 	protected void start() {
@@ -148,7 +158,12 @@ public class Transition implements EventListener {
 			removeTransitionStyles();
 			if (_phase == 0) {
 				_parent.remove(_from);
-				_parent.add(_to);
+				if (_parent instanceof IsGwtMobilePanel) {
+					((IsGwtMobilePanel) _parent).addToPanel(_to);
+				}
+				else {
+					_parent.add(_to);
+				}
 				_phase++;
 				_transitionStyleName = CSS.T.flip1();
 				prepare();
@@ -223,7 +238,12 @@ public class Transition implements EventListener {
 				_to.addStyleName(CSS.T.reverse());
 			}
 			if (_phase == 0) {
-				_parent.add(_to);
+				if (_parent instanceof IsGwtMobilePanel) {
+					((IsGwtMobilePanel) _parent).addToPanel(_to);
+				}
+				else {
+					_parent.add(_to);
+				}
 			}
 		}
 	}

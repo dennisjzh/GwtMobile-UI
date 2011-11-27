@@ -21,14 +21,15 @@ import java.util.Iterator;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
 public class Slide extends WidgetBase implements HasWidgets {
 
-	protected FlowPanel _panel = new FlowPanel();
+	protected FlowPanel _panel = new com.google.gwt.user.client.ui.FlowPanel();
 	
 	public Slide() {
 		initWidget(_panel);
-		setStyleName("Slide");
+		setStyleName(Primary.Slide);
 	}
 	
 	@Override
@@ -50,6 +51,18 @@ public class Slide extends WidgetBase implements HasWidgets {
 	@Override
 	public boolean remove(Widget w) {
 		return _panel.remove(w);
+	}
+	
+	@Override
+	public void onLoad() {
+		// TODO Auto-generated method stub
+		super.onLoad();
+	}
+	
+	@Override
+	protected void onAttach() {
+		// TODO Auto-generated method stub
+		super.onAttach();
 	}
 	
 }

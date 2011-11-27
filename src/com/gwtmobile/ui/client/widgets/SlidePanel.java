@@ -17,13 +17,13 @@
 package com.gwtmobile.ui.client.widgets;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
@@ -31,49 +31,49 @@ import com.gwtmobile.ui.client.page.Transition;
 
 public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValueChangeHandlers<Boolean> {
 
-    protected int _count = 0;
-    protected int _current = 0;
-    protected SlideProvider _slideProvider = null;
-    protected ArrayList<Widget> _slides = new ArrayList<Widget>();
-    protected boolean _rotate = false;
+    protected int count = 0;
+    protected int current = 0;
+    protected SlideProvider slideProvider = null;
+    protected ArrayList<Widget> slides = new ArrayList<Widget>();
+    protected boolean rotate = false;
 
     public SlidePanel() {
-        setStyleName("SlidePanel");
+        setStyleName(Primary.SlidePanel);
     }
 
     public void setSlideCount(int count) {
-    	_count = count;
+    	this.count = count;
     }
     
     public int getSlideCount() {
-    	return _count > 0 ? _count : _slides.size();
+    	return count > 0 ? count : slides.size();
     }
     
     public void setSlideProvider(SlideProvider provider) {
-		_slideProvider = provider;
+		slideProvider = provider;
 	}
 
 	public SlideProvider getSlideProvider() {
-		return _slideProvider;
+		return slideProvider;
 	}
 
 	@Override
 	public void onInitialLoad() {
     	super.onInitialLoad();
-		_current = 0;
-    	Slide slide = getSlide(_current);
+		current = 0;
+    	Slide slide = getSlide(current);
 		if (slide != null) {
-			this.add(slide);
+			super.add(slide);
 		}
     }
 
 	public Slide getSlide(int index) {
 		Slide slide = null;
-    	if (_slideProvider != null) {
-    		slide = _slideProvider.loadSlide(index);
+    	if (slideProvider != null) {
+    		slide = slideProvider.loadSlide(index);
     	}
-		if (slide == null && index < _slides.size() ) {
-			slide = (Slide) _slides.get(index);
+		if (slide == null && index < slides.size() ) {
+			slide = (Slide) slides.get(index);
 		}
 		return slide;
 	}
@@ -105,40 +105,40 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	}
 	
 	public void next() {
-		if (_current >= getSlideCount() - 1) {
-			if (!_rotate) {
+		if (current >= getSlideCount() - 1) {
+			if (!rotate) {
 				return;
 			} else {
-				_current = -1;
+				current = -1;
 			}
 		}
-		_current++;
+		current++;
     	moveNext();
 	}
 
 	protected void moveNext() {
-		Slide to = getSlide(_current);
-    	Slide from = (Slide) this.getWidget(0);
+		Slide to = getSlide(current);
+    	Slide from = (Slide) super.getWidget(0);
     	Transition transition = Transition.SLIDE;
     	ValueChangeEvent.fire(this, true);
     	transition.start(from, to, this, false);
 	}
 
 	public void previous() {
-		if (_current <= 0) {
-			if (!_rotate) {
+		if (current <= 0) {
+			if (!rotate) {
 				return;
 			} else {
-				_current = getSlideCount();
+				current = getSlideCount();
 			}
 		}
-		_current--;
+		current--;
 		movePrevious();
 	}
 
 	protected void movePrevious() {
-		Slide to = getSlide(_current);
-    	Slide from = (Slide) this.getWidget(0);
+		Slide to = getSlide(current);
+    	Slide from = (Slide) super.getWidget(0);
     	Transition transition = Transition.SLIDE;
     	ValueChangeEvent.fire(this, false);
     	transition.start(from, to, this, true);
@@ -148,45 +148,29 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	public void onTransitionEnd(TransitionDirection direction) {
 		super.onTransitionEnd(direction);
 		if (direction == TransitionDirection.To) {
-			this.remove(0);
+			super.remove(0);
 		}
 	}
 	
 	public int getCurrentSlideIndex() {
-		return _current;
+		return current;
 	}
 	
 	@Override
 	public void add(Widget w) {
 		//assert (w instanceof Slide) : "Can only add Slide widgets to SlidePanel.";
 		// we can't assert because gwtdesign adds a Label by default
-		_slides.add(w);
+		slides.add(w);
 	}
 
-	@Override
-	public void clear() {
-		_slides.clear();
-		
-	}
-
-	@Override
-	public Iterator<Widget> iterator() {
-		return _slides.iterator();
-	}
-
-	@Override
-	public boolean remove(Widget w) {
-		return _slides.remove(w);
-	}
-	
 	public void setRotate(boolean rotate)
 	{
-		_rotate = rotate;
+		this.rotate = rotate;
 	}
 	
 	public boolean isRotate()
 	{
-	    return _rotate;
+	    return rotate;
 	}
 	
 	
