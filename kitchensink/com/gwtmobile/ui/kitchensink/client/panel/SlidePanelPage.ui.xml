@@ -8,7 +8,7 @@
 		<m:HeaderPanel ui:field="header" leftButton="Back" rightButton="Next">
 			<g:Label>Slide Panel</g:Label>			
 		</m:HeaderPanel>
-		<m:SlidePanel ui:field="slider">
+		<m:SlidePanel ui:field="slider" currentSlide="1">
 			<m:Slide>
 				<g:HTML>Slide Me!</g:HTML>
 				<g:HTML>Static Slide 0</g:HTML>
@@ -16,6 +16,7 @@
 			<m:Slide>
 				<g:HTML>Slide Me!</g:HTML>
 				<g:HTML>Static Slide 1</g:HTML>
+				<g:Label text="Test"/>
 			</m:Slide>	
 		</m:SlidePanel>		
 	</m:PagePanel>	

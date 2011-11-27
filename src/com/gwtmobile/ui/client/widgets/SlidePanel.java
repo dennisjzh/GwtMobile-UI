@@ -32,7 +32,7 @@ import com.gwtmobile.ui.client.page.Transition;
 public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValueChangeHandlers<Boolean> {
 
     protected int count = 0;
-    protected int current = 0;
+    private int currentSlide = 0;
     protected SlideProvider slideProvider = null;
     protected ArrayList<Widget> slides = new ArrayList<Widget>();
     protected boolean rotate = false;
@@ -60,8 +60,7 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	@Override
 	public void onInitialLoad() {
     	super.onInitialLoad();
-		current = 0;
-    	Slide slide = getSlide(current);
+    	Slide slide = getSlide(currentSlide);
 		if (slide != null) {
 			super.add(slide);
 		}
@@ -105,19 +104,19 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	}
 	
 	public void next() {
-		if (current >= getSlideCount() - 1) {
+		if (currentSlide >= getSlideCount() - 1) {
 			if (!rotate) {
 				return;
 			} else {
-				current = -1;
+				currentSlide = -1;
 			}
 		}
-		current++;
+		currentSlide++;
     	moveNext();
 	}
 
 	protected void moveNext() {
-		Slide to = getSlide(current);
+		Slide to = getSlide(currentSlide);
     	Slide from = (Slide) super.getWidget(0);
     	Transition transition = Transition.SLIDE;
     	ValueChangeEvent.fire(this, true);
@@ -125,19 +124,19 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	}
 
 	public void previous() {
-		if (current <= 0) {
+		if (currentSlide <= 0) {
 			if (!rotate) {
 				return;
 			} else {
-				current = getSlideCount();
+				currentSlide = getSlideCount();
 			}
 		}
-		current--;
+		currentSlide--;
 		movePrevious();
 	}
 
 	protected void movePrevious() {
-		Slide to = getSlide(current);
+		Slide to = getSlide(currentSlide);
     	Slide from = (Slide) super.getWidget(0);
     	Transition transition = Transition.SLIDE;
     	ValueChangeEvent.fire(this, false);
@@ -153,7 +152,7 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	}
 	
 	public int getCurrentSlideIndex() {
-		return current;
+		return currentSlide;
 	}
 	
 	@Override
@@ -172,8 +171,15 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	{
 	    return rotate;
 	}
-	
-	
+
+	public void setCurrentSlide(int currentSlide) {
+		this.currentSlide = currentSlide;
+	}
+
+	public int getCurrentSlide() {
+		return currentSlide;
+	}
+
 	/********************* interface SlideProvider *******************/
 
 	public interface SlideProvider {
