@@ -16,53 +16,12 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import java.util.Iterator;
-
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
-public class Slide extends WidgetBase implements HasWidgets {
+public class Slide extends PanelBase{
 
-	protected FlowPanel _panel = new com.google.gwt.user.client.ui.FlowPanel();
-	
 	public Slide() {
-		initWidget(_panel);
 		setStyleName(Primary.Slide);
-	}
-	
-	@Override
-	public void add(Widget w) {
-		_panel.add(w);
-	}
-
-	@Override
-	public void clear() {
-		_panel.clear();
-		
-	}
-
-	@Override
-	public Iterator<Widget> iterator() {
-		return _panel.iterator();
-	}
-
-	@Override
-	public boolean remove(Widget w) {
-		return _panel.remove(w);
-	}
-	
-	@Override
-	public void onLoad() {
-		// TODO Auto-generated method stub
-		super.onLoad();
-	}
-	
-	@Override
-	protected void onAttach() {
-		// TODO Auto-generated method stub
-		super.onAttach();
 	}
 	
 }
