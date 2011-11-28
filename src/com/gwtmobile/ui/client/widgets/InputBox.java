@@ -21,6 +21,9 @@ import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
+import com.google.gwt.text.shared.testing.PassthroughParser;
+import com.google.gwt.text.shared.testing.PassthroughRenderer;
+import com.google.gwt.user.client.ui.ValueBoxBase;
 import com.gwtmobile.ui.client.utils.HTML5InputElement;
 import com.gwtmobile.ui.client.utils.HTML5InputElement.InputTypes;
 
@@ -35,12 +38,17 @@ public class InputBox extends com.google.gwt.user.client.ui.TextBoxBase
 	private InputTypes type = InputTypes.text;
 	private BoxTypes boxTypes = BoxTypes.TextBox; // allows to have more flexible styles and introduce validators
 	
+	private HTML5InputElement html5Element = null;
+	
 	public InputBox() {
 		this(InputTypes.text, BoxTypes.TextBox, ""); // by default, lets user text type
 	}
 	
 	public InputBox(InputTypes inputType, BoxTypes boxType, String valueText){
-		super(createInputElement(inputType.toString()));
+		super(createInputElement(InputTypes.text.toString()));
+		//super(createInputElement(InputTypes.text.toString()));
+		//setElement(html5Element);
+		html5Element = HTML5InputElement.as(getElement());
 	    setStyleName("gwtm-InputBox");
 	    setBoxTypes(boxType);
 	    setType(inputType);
@@ -68,6 +76,26 @@ public class InputBox extends com.google.gwt.user.client.ui.TextBoxBase
 		this.addStyleName(this.boxTypes.toString());
 	}
 
+	public String getPlaceHolder(){
+		return getHTML5Element().getPlaceholder();
+	}
+	
+	public void setPlaceHolder(String pHolder){
+		getHTML5Element().setPlaceholder(pHolder);
+	}
+	
+	public String getPattern(){
+		return getHTML5Element().getPattern();
+	}
+	
+	public void setPattern(String pattern){
+		getHTML5Element().setPattern(pattern);
+	}
+	
+	private HTML5InputElement getHTML5Element(){
+		return html5Element;
+	}
+	
 	@Override
 	protected void onLoad() {
 		super.onLoad();
