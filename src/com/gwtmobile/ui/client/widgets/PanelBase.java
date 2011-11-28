@@ -16,6 +16,8 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import java.beans.Beans;
+
 import com.google.gwt.user.client.ui.Widget;
 
 
@@ -25,6 +27,43 @@ public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implement
 	    private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
 	    
 	    public PanelBase(){
+			if (Beans.isDesignTime()) {
+				super.add(new DesignTimeMessagePanel(this));
+			}
+	    }
+	    
+	    @Override
+	    public void add(Widget w) {
+			if (Beans.isDesignTime()) {
+				if (getWidgetCount() == 1 && 
+						getWidget(0) instanceof DesignTimeMessagePanel) {
+					DesignTimeMessagePanel designTimePanel = (DesignTimeMessagePanel) getWidget(0);
+					if (!designTimePanel.hasError()) {
+						super.clear();
+					}
+				}
+			}
+			super.add(w);
+	    }
+	    
+	    public void addDesignTimeMessage(String message) {
+			if (Beans.isDesignTime()) {
+				if (getWidgetCount() == 1 && 
+						getWidget(0) instanceof DesignTimeMessagePanel) {
+					DesignTimeMessagePanel designTimePanel = (DesignTimeMessagePanel) getWidget(0);
+					designTimePanel.addMessage(message);
+				}
+			}
+	    }
+	    
+	    public void addDesignTimeError(String error) {
+			if (Beans.isDesignTime()) {
+				if (getWidgetCount() == 1 && 
+						getWidget(0) instanceof DesignTimeMessagePanel) {
+					DesignTimeMessagePanel designTimePanel = (DesignTimeMessagePanel) getWidget(0);
+					designTimePanel.addErrorMessage(error);
+				}
+			}
 	    }
 	    
 	    @Override

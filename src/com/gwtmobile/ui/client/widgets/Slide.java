@@ -16,12 +16,18 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
 public class Slide extends PanelBase{
 
 	public Slide() {
 		setStyleName(Primary.Slide);
+	}
+	
+	@Override
+	public void add(Widget w) {
+		super.add(w);
 	}
 	
 }

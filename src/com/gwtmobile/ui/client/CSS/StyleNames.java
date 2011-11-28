@@ -17,6 +17,7 @@ public interface StyleNames {
 		String Chevron = "Chevron";
 		String CheckBoxGroup = "gwtm-CheckBoxGroup";
 		String CheckBoxIndicator = "gwtm-CheckBoxIndicator";
+		String DesignTimeMessagePanel = "gwtm-DesignTimeMessagePanel";
 		String DropDownList = "DropDownList";
 		String FlipSwitch = "gwtm-FlipSwitch";
 		String GridPanel = "gwtm-GridPanel";
@@ -51,6 +52,7 @@ public interface StyleNames {
 		String Bottom = "Bottom";
 		String Collapsed = "Collapsed";
 		String Disabled = "Disabled";
+		String Error = "Error";
 		String Expanded = "Expanded";
 		String FullHeight = "FullHeight";		
 		String Horizontal = "Horizontal";

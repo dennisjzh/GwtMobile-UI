@@ -280,8 +280,8 @@ html {
 .gwtm-SlidePanel {
 	-webkit-box-flex: 1;
 	position: relative;
-	display: -webkit-box;
 	margin: .5em;
+	display: -webkit-box;
 }
 
 .gwtm-Slide {
@@ -959,4 +959,19 @@ html {
 .gwtm-VerticalPanel {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
+}
+
+/******************* Design Time Message Panel *************/
+.gwtm-DesignTimeMessagePanel {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-flex: 1;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	text-align: center;
+}
+
+.gwtm-DesignTimeMessagePanel .Error {
+	color: red;
+	font-weight: bold;
 }

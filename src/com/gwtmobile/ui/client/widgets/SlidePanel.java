@@ -16,6 +16,7 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import java.beans.Beans;
 import java.util.ArrayList;
 
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
@@ -28,6 +29,7 @@ import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 import com.gwtmobile.ui.client.page.Transition;
+import com.gwtmobile.ui.client.utils.Utils;
 
 public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValueChangeHandlers<Boolean> {
 
@@ -39,6 +41,8 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 
     public SlidePanel() {
         setStyleName(Primary.SlidePanel);
+        addDesignTimeMessage("Add Slides to the panel.");
+        addDesignTimeMessage("Set the 'currentSlide' property to switch slide.");
     }
 
     public void setSlideCount(int count) {
@@ -159,6 +163,13 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	public void add(Widget w) {
 		//assert (w instanceof Slide) : "Can only add Slide widgets to SlidePanel.";
 		// we can't assert because gwtdesign adds a Label by default
+		if (Beans.isDesignTime()) {
+			if (!(w instanceof Slide)) {
+				addDesignTimeError("Can only add Slides to SlidePanel. Remove the " + 
+						Utils.getSimpleName(w.getClass()) + " widget.");
+				return;
+			}
+		}
 		slides.add(w);
 	}
 

@@ -221,4 +221,9 @@ public class Utils {
 	    return null;
 	}-*/;
 	
+	//GWT does not support the getSimpleName() method.
+	public static String getSimpleName(Class<?> clazz) {
+		return clazz.getName().substring(clazz.getName().lastIndexOf('.') + 1);
+	}
+
 }
