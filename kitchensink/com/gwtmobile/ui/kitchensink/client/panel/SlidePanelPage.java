@@ -72,7 +72,6 @@ public class SlidePanelPage extends Page implements SlideProvider{
 			return null;
 		}
 		Slide slide = new Slide();
-		slide.addStyleName("Slide-Content");
 		slide.add(new HTML("Slide Me!"));
 		slide.add(new HTML("Dynamic Slide " + index));
 		return slide;		

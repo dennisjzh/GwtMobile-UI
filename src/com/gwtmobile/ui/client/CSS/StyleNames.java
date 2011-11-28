@@ -28,8 +28,8 @@ public interface StyleNames {
 		String Pointer = "Pointer";
 		String RadioButton = "gwtm-RadioButton";
 		String RadioButtonGroup = "gwtm-RadioButtonGroup";
-		String SlidePanel = "SlidePanel";
-		String Slide = "Slide";
+		String SlidePanel = "gwtm-SlidePanel";
+		String Slide = "gwtm-Slide";
 		String Slider = "gwtm-Slider";
 		String ScrollPanel = "gwtm-ScrollPanel";
 		String ScrollBar = "gwtm-ScrollBar";

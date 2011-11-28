@@ -21,12 +21,7 @@ public class TabContentPanel extends PanelBase {
     public void add(Widget w) {
     
     	if (w instanceof TabContent) {
-    		if (!contentArray.contains(w)) {	//load time
-        		contentArray.add((TabContent) w);
-    		}
-    		else {								//run time
-    			super.add(w);
-    		}
+        	contentArray.add((TabContent) w);
     	} else if (Beans.isDesignTime() && w instanceof Label) {
     		// allow Label during designtime
     	} else {

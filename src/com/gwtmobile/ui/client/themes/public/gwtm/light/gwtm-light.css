@@ -342,13 +342,13 @@ html {
 }
 
 /********** Slide Panel **********/
-.SlidePanel {
+.gwtm-SlidePanel {
 	-webkit-box-flex: 1;
 	position: relative;
 	margin: .5em;
 }
 
-.Slide {
+.gwtm-Slide {
 	position:absolute;
 	display: -webkit-box;
 	height: 100%;

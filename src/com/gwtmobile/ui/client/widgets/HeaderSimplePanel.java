@@ -16,11 +16,9 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
-import com.gwtmobile.ui.client.widgets.FlowPanel;
 
-public class HeaderSimplePanel extends FlowPanel implements HasWidgets {
+public class HeaderSimplePanel extends PanelBase {
 	
     public HeaderSimplePanel() {
         setStyleName(Primary.HeaderPanel);
