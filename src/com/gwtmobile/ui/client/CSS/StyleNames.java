@@ -23,6 +23,7 @@ public interface StyleNames {
 		String GridPanel = "gwtm-GridPanel";
 		String HeaderPanel = "gwtm-HeaderPanel";
 		String HorizontalPanel = "gwtm-HorizontalPanel";
+		String InputBox = "gwtm-InputBox";
 		String ListPanel = "gwtm-ListPanel";
 		String NextButton = "gwtm-NextButton";
 		String PagePanel = "gwtm-PagePanel";

@@ -24,6 +24,7 @@ import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.text.shared.testing.PassthroughParser;
 import com.google.gwt.text.shared.testing.PassthroughRenderer;
 import com.google.gwt.user.client.ui.ValueBoxBase;
+import com.gwtmobile.ui.client.CSS.StyleNames;
 import com.gwtmobile.ui.client.utils.HTML5InputElement;
 import com.gwtmobile.ui.client.utils.HTML5InputElement.InputTypes;
 
@@ -46,10 +47,8 @@ public class InputBox extends com.google.gwt.user.client.ui.TextBoxBase
 	
 	public InputBox(InputTypes inputType, BoxTypes boxType, String valueText){
 		super(createInputElement(InputTypes.text.toString()));
-		//super(createInputElement(InputTypes.text.toString()));
-		//setElement(html5Element);
 		html5Element = HTML5InputElement.as(getElement());
-	    setStyleName("gwtm-InputBox");
+	    setStyleName(StyleNames.Primary.InputBox);
 	    setBoxTypes(boxType);
 	    setType(inputType);
 	    setText(valueText);

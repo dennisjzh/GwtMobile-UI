@@ -19,8 +19,7 @@ html {
 }
 
 .Android * {
-	/*-webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/ 
-	/* Android */
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Android */
 }
 	
 /********************* Page Zoom ****************/
@@ -85,6 +84,7 @@ html {
 	-webkit-box-shadow: rgba(100, 100, 100, 0.3) 0em 0em .2em;
 	-webkit-box-align: center;
 	-webkit-border-radius: 0.3em;
+	font: -webkit-small-control;
 }
 
 .gwtm-Button.ButtonLeft, .gwtm-Button.ButtonRight {
@@ -260,11 +260,12 @@ html {
 	position: relative;
 }
 
-.gwtm-ScrollPanel.fullHeight, .gwtm-ScrollPanel.fullHeight .gwtm-HTMLPanel {
+.gwtm-ScrollPanel.FullHeight, .gwtm-ScrollPanel.FullHeight .gwtm-HTMLPanel {
 	height: 100%;
 }
 
-.gwtm-Scrollbar {
+
+.gwtm-ScrollBar {
 	position: absolute; 
 	z-index: 100; 
 	width: 0.4em; 
@@ -276,7 +277,7 @@ html {
 	overflow-y: hidden; 
 }
 
-.gwtm-Scrollbar > div {
+.gwtm-ScrollBar > div {
 	position: absolute; 
 	z-index: 100; 
 	background-color: rgba(0, 0, 0, 0.6); 
@@ -293,7 +294,7 @@ html {
 .gwtm-ListPanel {
 	position:relative;
 	display: -webkit-box;
-	-webkit-box-orient: vertical;
+	-webkit-box-orient: vertical; 
 }
 
 .gwtm-ListPanel > div {
@@ -475,14 +476,12 @@ html {
 }
 
 .gwtm-TabPanel > .gwtm-TabContentPanel {			/*tab content panel*/
-
 	-webkit-box-flex: 1;
 	color: black;
 	background: white;
 	display:-webkit-box;
 	position: relative; /* needed for transition */
 }
-
 
 .gwtm-TabPanel.Top > .gwtm-TabContentPanel {
 	/* border-radius: 0 0 .4em .4em; */
@@ -501,16 +500,11 @@ html {
 	border-bottom: 1px solid #aaa;
 }
 
-/*
-.gwtm-TabPanel > .gwtm-TabContentPanel > div {
-	display: none;
-}
-*/
 .Android .gwtm-TabPanel > .gwtm-TabHeader > div {		/*tab header*/
 	-webkit-box-shadow: #BDBDBD 0 0 .1em;	/* antialias workaround */
 }
 
-/********** NavBar Panel **********/
+/********** TabBar Panel **********/
 
 .gwtm-TabPanel.gwtm-TabBarPanel > .gwtm-TabHeaderPanel {
 	border: 0;
@@ -539,10 +533,6 @@ html {
 
 
 /********** Stack Panel **********/
-
-.gwtm-StackPanel {
-	padding: 0.5em 0.5em 0.5em 0.5em;
-}
 
 .gwtm-StackPanel > div {		/* stack */
 }
@@ -627,6 +617,7 @@ html {
 	border: 1px solid #ccc;
 	display: -webkit-box;
 	-webkit-box-shadow: 0 0 .6em #cbcbcb;
+	-webkit-appearance: none;
 }
 
 .gwtm-InputBox.TextBox, .gwtm-InputBox.TextArea {
@@ -1108,4 +1099,45 @@ html {
 .gwtm-DesignTimeMessagePanel .Error {
 	color: red;
 	font-weight: bold;
+}
+
+/******************** InputBox - html5 ***************/
+input.gwtm-InputBox:not([type]), 
+input.gwtm-InputBox[type="button"],
+input.gwtm-InputBox[type="submit"],
+input.gwtm-InputBox[type="reset"],
+input.gwtm-InputBox[type="file"],
+input.gwtm-InputBox[type="color"], 
+input.gwtm-InputBox[type="date"], 
+input.gwtm-InputBox[type="datetime"], 
+input.gwtm-InputBox[type="datetime-local"], 
+input.gwtm-InputBox[type="email"], 
+input.gwtm-InputBox[type="month"], 
+input.gwtm-InputBox[type="number"], 
+input.gwtm-InputBox[type="password"], 
+input.gwtm-InputBox[type="tel"], 
+input.gwtm-InputBox[type="text"], 
+input.gwtm-InputBox[type="time"], 
+input.gwtm-InputBox[type="url"], 
+input.gwtm-InputBox[type="week"] {
+	padding: .4em;
+	border-radius: .5em;
+	border: 1px solid #ccc;
+	display: -webkit-box;
+	-webkit-box-shadow: 0 0 .6em #cbcbcb;
+	-webkit-appearance: none;
+}
+
+input.gwtm-InputBox[type="button"],
+input.gwtm-InputBox[type="submit"],
+input.gwtm-InputBox[type="reset"],
+input.gwtm-InputBox[type="file"]
+ {
+	border-radius: .3em;
+	font: -webkit-small-control;
+	font-weight: bold;
+}
+
+input.gwtm-InputBox.Focus {
+	-webkit-box-shadow: #333 0em 0em .5em;
 }
