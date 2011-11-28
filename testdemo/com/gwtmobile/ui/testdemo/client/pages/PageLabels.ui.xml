@@ -6,7 +6,7 @@
 	>
 	<ui:style>
 	</ui:style>
-	<m:PagePanel>
+	<m:PagePanel transitionFlavor="FADE">
 		<m:HeaderSimplePanel>
 			<m:HorizontalPanel>
 				<m:VerticalPanel>

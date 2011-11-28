@@ -277,17 +277,23 @@ html {
 }
 
 /********** Slide Panel **********/
-.SlidePanel {
+.gwtm-SlidePanel {
 	-webkit-box-flex: 1;
 	position: relative;
 	margin: .5em;
+	display: -webkit-box;
 }
 
-.Slide {
-	position:absolute;
+.gwtm-Slide {
 	display: -webkit-box;
-	height: 100%;
-	width: 100%;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	-webkit-box-orient: vertical;			
+	color: black;
+	background: white;
+	-webkit-box-flex: 1;
+	border-radius: 0.4em;
+	-webkit-box-shadow: black 0em 0em 0.5em;	
 }
 
 /********** Chevron (arrow) **********/
@@ -953,4 +959,19 @@ html {
 .gwtm-VerticalPanel {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
+}
+
+/******************* Design Time Message Panel *************/
+.gwtm-DesignTimeMessagePanel {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-flex: 1;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	text-align: center;
+}
+
+.gwtm-DesignTimeMessagePanel .Error {
+	color: red;
+	font-weight: bold;
 }
