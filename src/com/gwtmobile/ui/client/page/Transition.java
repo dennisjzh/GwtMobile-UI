@@ -12,10 +12,31 @@ import com.gwtmobile.ui.client.widgets.IsGwtMobilePanel.TransitionDirection;
 
 public class Transition implements EventListener {
 	
+	String transitionId;
 	String _transitionStyleName;
 	Widget _from, _to;
 	boolean _reverse;
 	HasWidgets _parent;
+	
+	public enum TransitionFlavor {
+			NONE(null),
+			SLIDE(new Transition(CSS.T.slide())), 
+			SLIDE_UP( new Transition(CSS.T.slideup())), 
+			SLIDE_DOWN(new Transition(CSS.T.slidedown())), 
+			FADE(new Transition(CSS.T.fade())), 
+			POP(new Transition(CSS.T.pop())), 
+			FLIP(new FlipTransition()), 
+			SWAP(new SwapTransition());
+	
+			private final Transition transition;
+			private TransitionFlavor(Transition transition){
+				this.transition = transition;
+			}
+			public Transition getTransition(){
+				return this.transition;
+			}
+		
+		};
 	
 	public static Transition SLIDE = new Transition(CSS.T.slide());
 	public static Transition SLIDEUP = new Transition(CSS.T.slideup());
@@ -27,8 +48,14 @@ public class Transition implements EventListener {
 //	public static Transition CUBE = new CubeTransition();
 	
 	public Transition(String transitionStyleName) {
+//		this.transitionId = transId;
 		_transitionStyleName = transitionStyleName;
 	}
+	
+//	public Transition(TransitionFlavor transitionFlavor) {
+//		this(transitionFlavor.);
+//		_transitionStyleName = transitionStyleName;
+//	}
 	
 	// No transition
 	public static void start(final Widget from, final Widget to, final HasWidgets parent) {

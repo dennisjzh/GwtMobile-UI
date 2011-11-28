@@ -29,12 +29,12 @@ import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 import com.gwtmobile.ui.client.page.PageHistory.NavigateInfo;
 import com.gwtmobile.ui.client.utils.Utils;
 import com.gwtmobile.ui.client.widgets.IsGwtMobilePanel;
+import com.gwtmobile.ui.client.widgets.PagePanel;
 import com.gwtmobile.ui.client.widgets.WidgetBase;
 
 public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 	final static private String CONSUMED_TOKEN = "#?#";
-	private Transition _transition;
-	private static Transition _defaultTransition = Transition.SLIDE;
+	private Transition transition = Transition.SLIDE; // assume SLIDE as default transition
 	protected String tokenStateInfo = CONSUMED_TOKEN;
 
 	static {
@@ -54,6 +54,10 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 	protected void initWidget(Widget widget) {
 		super.initWidget(widget);
 		setStyleName(Primary.PagePanel);
+		// we might need to assert that the given widget has to be a PagePanel
+		if (widget.getClass().getName().endsWith("PagePanel"))
+			setTransition(((PagePanel)widget).getTransitionFlavor().getTransition());
+
 		// TODO: use permutation instead?
 		if (Utils.isAndroid()) {
 			addStyleName("Android");
@@ -148,11 +152,11 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 	}
 
 	public void goTo(final Page toPage) {
-		goTo(toPage, _defaultTransition);
+		goTo(toPage, toPage.getTransition());
 	}
 
 	public void goTo(final Page toPage, Object params) {
-		goTo(toPage, params, _defaultTransition);
+		goTo(toPage, params, toPage.getTransition());
 	}
 
 	public void goTo(final Page toPage, final Transition transition) {
@@ -167,12 +171,12 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 		PageHistory.Instance.goBack(returnValue);
 	}
 
-	void setTransition(Transition transition) {
-		_transition = transition;
+	public void setTransition(Transition transition) {
+		this.transition = transition;
 	}
 
-	Transition getTransition() {
-		return _transition;
+	public Transition getTransition() {
+		return transition;
 	}
 
 	public static void load(Page mainPage) {
@@ -180,9 +184,9 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 		PageHistory.Instance.startUp(mainPage);
 	}
 
-	public static void setDefaultTransition(Transition transition) {
-		_defaultTransition = transition;
-	}
+//	public static void setDefaultTransition(Transition transition) {
+//		_defaultTransition = transition;
+//	}
 
 	@Override
 	public Widget getWidget() { // make getWidget() public
