@@ -34,7 +34,7 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
 	
 	private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
 
-	public enum ButtonFlavor { ButtonNormal, ButtonBack, ButtonNext};
+	public enum ButtonFlavor { ButtonNormal, ButtonRounded, ButtonBackward, ButtonForward};
 	public enum IconPosition { None, Left, Right, MiddleTop, MiddleBottom };
 	
 	private boolean enabled = true;
@@ -83,9 +83,9 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     	
     	String htmlButtonTemplate = "<div class=\"ButtonCaption\"><div class=\"ButtonCaption"+(isShowCaption()?"Visible":"Hidden")+"\">"+getCaption()+"</div>"+butIcon.toString()+"</div>";
     	String htmlFlavorTemplate = "<div class=\"Pointer\">&nbsp;</div>";
-    	if (this.buttonFlavor == ButtonFlavor.ButtonBack){
+    	if (this.buttonFlavor == ButtonFlavor.ButtonBackward){
     		super.setHTML(htmlFlavorTemplate + htmlButtonTemplate);
-    	} else if (this.buttonFlavor == ButtonFlavor.ButtonNext){
+    	} else if (this.buttonFlavor == ButtonFlavor.ButtonForward){
     		super.setHTML(htmlButtonTemplate + htmlFlavorTemplate);
     	} else {
     		super.setHTML(htmlButtonTemplate);
