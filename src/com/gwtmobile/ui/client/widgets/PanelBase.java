@@ -27,7 +27,10 @@ public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implement
 	    private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
 	    
 	    public PanelBase(){
-			if (Beans.isDesignTime()) {
+	        // this panel needs to be handled differently !! 
+	        // for scrollpanel, the designtime message cannot be added in this super class
+	    	// it will be handled by its own class
+			if (Beans.isDesignTime() && !this.getClass().getName().endsWith("ScrollPanel")) {
 				super.add(new DesignTimeMessagePanel(this));
 			}
 	    }
@@ -35,8 +38,7 @@ public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implement
 	    @Override
 	    public void add(Widget w) {
 			if (Beans.isDesignTime()) {
-				if (getWidgetCount() == 1 && 
-						getWidget(0) instanceof DesignTimeMessagePanel) {
+				if (getWidgetCount() == 1 && getWidget(0) instanceof DesignTimeMessagePanel) {
 					DesignTimeMessagePanel designTimePanel = (DesignTimeMessagePanel) getWidget(0);
 					if (!designTimePanel.hasError()) {
 						super.clear();

@@ -16,6 +16,7 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import java.beans.Beans;
 import java.util.Iterator;
 
 import com.google.gwt.dom.client.Style;
@@ -48,6 +49,11 @@ public class ScrollPanel extends PanelBase implements DragEventsHandler, SwipeEv
         setStyleName(Primary.ScrollPanel);
         setWithPadding(withPadding);
         this.initScrollbar();
+        // this panel needs to be handled differently !! 
+        // the designtime message needs to be addded to the inner panel
+		if (Beans.isDesignTime()) {
+			add(new DesignTimeMessagePanel(this));
+		}
     }
     
 	public boolean isWithPadding() {
@@ -316,8 +322,19 @@ public class ScrollPanel extends PanelBase implements DragEventsHandler, SwipeEv
 
 	@Override
 	public void add(Widget w) {
-		//assert _panel.getWidgetCount()  == 0 : "Can only add one widget to ScrollPanel.";
+		//assert getWidgetCount()  == 99 : "Can only add one widget to ScrollPanel. " +  w.getClass().getName();
+		
+		if (Beans.isDesignTime()) {
+			if (getWidgetCount() == 1 && getWidget(0) instanceof DesignTimeMessagePanel) {
+				DesignTimeMessagePanel designTimePanel = (DesignTimeMessagePanel) getWidget(0);
+				if (!designTimePanel.hasError()) {
+					intPanel.clear();
+				}
+			}
+		}
+		
 		intPanel.add(w);
+		
 		if (Utils.isIOS()) {
 			Utils.setTranslateY(w.getElement(), 0); //anti-flickering on iOS.
 		}
@@ -342,6 +359,7 @@ public class ScrollPanel extends PanelBase implements DragEventsHandler, SwipeEv
 	public Widget getIntPanel(){
 		return intPanel;
 	}
+
 	
 	@Override
 	public void clear() {
