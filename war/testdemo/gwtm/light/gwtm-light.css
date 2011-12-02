@@ -125,14 +125,14 @@ html {
 
 
 /* Back button flavor */
-.gwtm-Button.ButtonBack {
+.gwtm-Button.ButtonBackward {
 	margin-left: 1.5em;
 	border-left: 0;
 	-webkit-border-radius: 0.35em;
 	-webkit-box-shadow: none;
 }
 
-.gwtm-Button.ButtonBack > div.Pointer {
+.gwtm-Button.ButtonBackward > div.Pointer {
 	position: absolute;
 	display: block;
 	height: 1.8em;
@@ -150,14 +150,14 @@ html {
 	z-index: 0;
 }
 
-.gwtm-Button.ButtonMiddleTop.ButtonBack, .gwtm-Button.ButtonMiddleBottom.ButtonBack {
+.gwtm-Button.ButtonMiddleTop.ButtonBackward, .gwtm-Button.ButtonMiddleBottom.ButtonBackward {
 	margin-left: 2em;
 	border-left: 0;
 	-webkit-border-radius: 0.35em;
 	-webkit-box-shadow: none;
 }
 
-.gwtm-Button.ButtonMiddleTop.ButtonBack > div.Pointer, .gwtm-Button.ButtonMiddleBottom.ButtonBack > div.Pointer {
+.gwtm-Button.ButtonMiddleTop.ButtonBackward > div.Pointer, .gwtm-Button.ButtonMiddleBottom.ButtonBackward > div.Pointer {
 	position: absolute;
 	display: block;
 	height: 2.5em;
@@ -175,15 +175,22 @@ html {
 	z-index: 0;
 }
 
+/* Button rounded */
+
+.gwtm-Button.ButtonRounded {
+	-webkit-border-radius: 1.5em;
+	
+	}
+
 /* Next button flavor */
-.gwtm-Button.ButtonNext {
+.gwtm-Button.ButtonForward {
 	margin-right: 1.5em;
 	border-right: 0;
 	-webkit-border-radius: 0.35em;
 	-webkit-box-shadow: none;
 }
 
-.gwtm-Button.ButtonNext > div.Pointer {
+.gwtm-Button.ButtonForward > div.Pointer {
 	position: absolute;
 	display: block;
 	height: 1.8em;
@@ -201,14 +208,14 @@ html {
 	z-index: 0;
 }
 
-.gwtm-Button.ButtonMiddleTop.ButtonNext, .gwtm-Button.ButtonMiddleBottom.ButtonNext {
+.gwtm-Button.ButtonMiddleTop.ButtonForward, .gwtm-Button.ButtonMiddleBottom.ButtonForward {
 	margin-right: 2em;
 	border-right: 0;
 	-webkit-border-radius: 0.35em;
 	-webkit-box-shadow: none;
 }
 
-.gwtm-Button.ButtonMiddleTop.ButtonNext > div.Pointer, .gwtm-Button.ButtonMiddleBottom.ButtonNext > div.Pointer {
+.gwtm-Button.ButtonMiddleTop.ButtonForward > div.Pointer, .gwtm-Button.ButtonMiddleBottom.ButtonForward > div.Pointer {
 	position: absolute;
 	display: block;
 	height: 2.5em;
@@ -227,8 +234,8 @@ html {
 }
 
 .gwtm-Button.Pressed, .gwtm-Button.Pressed > div.Pointer,
-.gwtm-Button.ButtonMiddleTop.ButtonBack.Pressed > div.Pointer, .gwtm-Button.ButtonMiddleBottom.ButtonBack.Pressed > div.Pointer,
-.gwtm-Button.ButtonMiddleTop.ButtonNext.Pressed > div.Pointer, .gwtm-Button.ButtonMiddleBottom.ButtonNext.Pressed > div.Pointer {
+.gwtm-Button.ButtonMiddleTop.ButtonBackward.Pressed > div.Pointer, .gwtm-Button.ButtonMiddleBottom.ButtonBackward.Pressed > div.Pointer,
+.gwtm-Button.ButtonMiddleTop.ButtonForward.Pressed > div.Pointer, .gwtm-Button.ButtonMiddleBottom.ButtonForward.Pressed > div.Pointer {
 	text-shadow: #ccc 0 -0.1em 0.1em;
 	background: #bbb;
 }
