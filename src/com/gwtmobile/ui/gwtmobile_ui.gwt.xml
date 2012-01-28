@@ -45,5 +45,8 @@
 	<!-- Only compile WebKit permutation (for now) -->
 	<set-property name="user.agent" value="safari"/>
 	
+	<!-- Need this to work with ICS -->
+	<add-linker name="xsiframe" /> 
+	
 	
 </module>
