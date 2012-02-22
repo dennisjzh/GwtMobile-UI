@@ -22,6 +22,9 @@ public class TabContentPanel extends PanelBase {
     
     	if (w instanceof TabContent) {
         	contentArray.add((TabContent) w);
+        	if (contentArray.size() == 1) {	//display the first tab content.
+        		super.add(w);
+        	}
     	} else if (Beans.isDesignTime() && w instanceof Label) {
     		// allow Label during designtime
     	} else {
