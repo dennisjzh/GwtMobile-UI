@@ -1,5 +1,7 @@
 package com.gwtmobile.ui.client.page;
 
+import java.beans.Beans;
+
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.Timer;
@@ -86,7 +88,14 @@ public class Transition implements EventListener {
 		_parent = parent;
 		_reverse = reverse;
 		prepare();
-		start();
+		if (Beans.isDesignTime()) {
+    		_from.addStyleName(CSS.T.start());
+    		_to.addStyleName(CSS.T.start());
+    		onTransitionEnd();
+    	}
+		else {
+			start();
+		}
 	}
 	
 	protected void prepare() {
