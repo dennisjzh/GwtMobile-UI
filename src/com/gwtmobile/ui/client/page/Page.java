@@ -211,8 +211,4 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 		return $wnd.devicePixelRatio;
 	}-*/;
 
-	@Override
-	public void addToPanel(Widget w) {
-	}
-
 }

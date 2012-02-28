@@ -14,7 +14,6 @@ import com.gwtmobile.ui.client.widgets.IsGwtMobilePanel.TransitionDirection;
 
 public class Transition implements EventListener {
 	
-	String transitionId;
 	String _transitionStyleName;
 	Widget _from, _to;
 	boolean _reverse;
@@ -50,14 +49,8 @@ public class Transition implements EventListener {
 //	public static Transition CUBE = new CubeTransition();
 	
 	public Transition(String transitionStyleName) {
-//		this.transitionId = transId;
 		_transitionStyleName = transitionStyleName;
 	}
-	
-//	public Transition(TransitionFlavor transitionFlavor) {
-//		this(transitionFlavor.);
-//		_transitionStyleName = transitionStyleName;
-//	}
 	
 	// No transition
 	public static void start(final Widget from, final Widget to, final HasWidgets parent) {
@@ -65,12 +58,7 @@ public class Transition implements EventListener {
 			@Override
 			public void run() {
 				parent.remove(from);
-				if (parent instanceof IsGwtMobilePanel) {
-					((IsGwtMobilePanel) parent).addToPanel(to);
-				}
-				else {
-					parent.add(to);
-				}
+				parent.add(to);
 				if (from instanceof IsGwtMobilePanel) {
 					((IsGwtMobilePanel) from).onTransitionEnd(TransitionDirection.From);
 				}
@@ -105,12 +93,7 @@ public class Transition implements EventListener {
 			_from.addStyleName(CSS.T.reverse());
 			_to.addStyleName(CSS.T.reverse());
 		}
-		if (_parent instanceof IsGwtMobilePanel) {
-			((IsGwtMobilePanel) _parent).addToPanel(_to);
-		}
-		else {
-			_parent.add(_to);
-		}
+		_parent.add(_to);
 	}
 
 	protected void start() {
@@ -194,12 +177,7 @@ public class Transition implements EventListener {
 			removeTransitionStyles();
 			if (_phase == 0) {
 				_parent.remove(_from);
-				if (_parent instanceof IsGwtMobilePanel) {
-					((IsGwtMobilePanel) _parent).addToPanel(_to);
-				}
-				else {
-					_parent.add(_to);
-				}
+				_parent.add(_to);
 				_phase++;
 				_transitionStyleName = CSS.T.flip1();
 				prepare();
@@ -274,12 +252,7 @@ public class Transition implements EventListener {
 				_to.addStyleName(CSS.T.reverse());
 			}
 			if (_phase == 0) {
-				if (_parent instanceof IsGwtMobilePanel) {
-					((IsGwtMobilePanel) _parent).addToPanel(_to);
-				}
-				else {
-					_parent.add(_to);
-				}
+				_parent.add(_to);
 			}
 		}
 	}
