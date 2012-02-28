@@ -41,8 +41,6 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 
     public SlidePanel() {
         setStyleName(Primary.SlidePanel);
-        addDesignTimeMessage("Add Slides to the panel.");
-        addDesignTimeMessage("Set the 'currentSlide' property to switch slide.");
     }
 
     public void setSlideCount(int count) {
@@ -165,9 +163,8 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 		// we can't assert because gwtdesign adds a Label by default
 		if (Beans.isDesignTime()) {
 			if (!(w instanceof Slide)) {
-				addDesignTimeError("Can only add Slides to SlidePanel. Remove the " + 
-						Utils.getSimpleName(w.getClass()) + " widget.");
-				return;
+				//FIXME
+				assert (w instanceof Slide) : "Can only add Slide widgets to SlidePanel.";
 			}
 		}
 		slides.add(w);

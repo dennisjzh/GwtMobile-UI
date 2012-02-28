@@ -19,54 +19,12 @@ package com.gwtmobile.ui.client.widgets;
 import java.beans.Beans;
 
 import com.google.gwt.user.client.ui.Widget;
-
-
+import com.gwtmobile.ui.client.utils.Utils;
+import com.google.gwt.user.client.ui.Label;
 
 public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implements IsGwtMobilePanel {
 	    
 	    private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
-	    
-	    public PanelBase(){
-	        // this panel needs to be handled differently !! 
-	        // for scrollpanel, the designtime message cannot be added in this super class
-	    	// it will be handled by its own class
-			if (Beans.isDesignTime() && !this.getClass().getName().endsWith("ScrollPanel")) {
-				super.add(new DesignTimeMessagePanel(this));
-			}
-	    }
-	    
-	    @Override
-	    public void add(Widget w) {
-			if (Beans.isDesignTime()) {
-				if (getWidgetCount() == 1 && getWidget(0) instanceof DesignTimeMessagePanel) {
-					DesignTimeMessagePanel designTimePanel = (DesignTimeMessagePanel) getWidget(0);
-					if (!designTimePanel.hasError()) {
-						super.clear();
-					}
-				}
-			}
-			super.add(w);
-	    }
-	    
-	    public void addDesignTimeMessage(String message) {
-			if (Beans.isDesignTime()) {
-				if (getWidgetCount() == 1 && 
-						getWidget(0) instanceof DesignTimeMessagePanel) {
-					DesignTimeMessagePanel designTimePanel = (DesignTimeMessagePanel) getWidget(0);
-					designTimePanel.addMessage(message);
-				}
-			}
-	    }
-	    
-	    public void addDesignTimeError(String error) {
-			if (Beans.isDesignTime()) {
-				if (getWidgetCount() == 1 && 
-						getWidget(0) instanceof DesignTimeMessagePanel) {
-					DesignTimeMessagePanel designTimePanel = (DesignTimeMessagePanel) getWidget(0);
-					designTimePanel.addErrorMessage(error);
-				}
-			}
-	    }
 	    
 	    @Override
 	    public void onLoad() {
@@ -80,11 +38,6 @@ public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implement
 	    
 	    @Override
 		public void onTransitionEnd(TransitionDirection direction) {
-//	    	for (Widget widget : this.getChildren()) {
-//				if (widget instanceof IsGwtMobilePanel) {
-//					((IsGwtMobilePanel) widget).onTransitionEnd();
-//				}
-//			}
 	    }
 	    
 	    @Override
@@ -92,9 +45,18 @@ public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implement
 	    	widgetHelper.setSecondaryStyle(this, style);
 	    }
 
-		@Override
-		public void addToPanel(Widget w) {
-			super.add(w);
-		}
-
+	    @Override
+	    public void add(Widget w) {
+	    	if (isDesignTimeEmptyLabel(w)) {
+	    		Label label = (Label)w;
+	    		label.setText("Empty " + Utils.getSimpleName(this.getClass()));
+	    	}
+		    super.add(w);
+	    }
+	    
+	    public boolean isDesignTimeEmptyLabel(Widget w) {
+	    	return Beans.isDesignTime() && 
+	    			(w instanceof Label) && 
+	    			((Label)w).getText().equals("Empty FlowPanel");
+	    }
 }

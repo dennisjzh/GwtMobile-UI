@@ -49,35 +49,47 @@ public class TabPanel extends PanelBase
     @Override
     public void add(Widget w) {
     	
-    	if (w instanceof TabHeaderPanel && tabHeaderPanel == null) {
-    		tabHeaderPanel = (TabHeaderPanel)w;
-    		tabHeaderPanel.addDomHandler(this, ClickEvent.getType());
-    		super.add(tabHeaderPanel);
-    		return;
-    	} else if (w instanceof TabHeaderPanel && tabHeaderPanel == null) {
-    		assert false : "The TabPanel can only contain one TabHeaderPanel";
+    	if (w instanceof TabHeaderPanel) {
+    		if (tabHeaderPanel == null) {
+	    		tabHeaderPanel = (TabHeaderPanel)w;
+	    		tabHeaderPanel.addDomHandler(this, ClickEvent.getType());
+	    		super.add(tabHeaderPanel);
+	    		return;
+    		}
+    		else {
+        		assert false : "The TabPanel can only contain one TabHeaderPanel";
+    		}
     	}
     	
-    	if (w instanceof TabContentPanel && tabContentPanel == null) {
-    		tabContentPanel = (TabContentPanel)w;
-    		super.add(tabContentPanel);
-    		return;
-    	} else if (w instanceof TabHeaderPanel && tabHeaderPanel == null) {
-    		assert false : "The TabPanel can only contain one TabContentPanel";
+    	if (w instanceof TabContentPanel) {
+    		if (tabContentPanel == null) {
+        		tabContentPanel = (TabContentPanel)w;
+        		super.add(tabContentPanel);
+        		return;
+    		}
+    		else {
+    			assert false : "The TabPanel can only contain one TabContentPanel";
+    		}
     	}
     	
     	if (Beans.isDesignTime() && w instanceof Label) {
     		// bypass for designtime compliance
     		return;
     	}
-    	assert false : "The TabPanel can only contains one TabHeaderPAnel and one TabContentPanel. ("+w.getClass().getName()+")";
+    	assert false : "The TabPanel can only contains one TabHeaderPanel and one TabContentPanel. ("+w.getClass().getName()+")";
     	
     }
     
     @Override
 	public void onInitialLoad() {
     	if (tabHeaderPanel != null && tabHeaderPanel.getWidgetCount() > 0) {
-            selectTab(defaultTabIndex);
+    		// Use selectedTabIndex as design time tab selector.
+    		if (Beans.isDesignTime() && selectedTabIndex > -1) {
+                selectTab(selectedTabIndex);
+    		}
+    		else {
+                selectTab(defaultTabIndex);
+    		}
     	}
     }
     
@@ -90,13 +102,18 @@ public class TabPanel extends PanelBase
         	tabHeaderPanel.unSelectHeader(selectedTabIndex);
     	}
         tabHeaderPanel.selectHeader(index);
-        tabContentPanel.selectTab(selectedTabIndex, index);
+        //FIXME
+        if (tabContentPanel != null) tabContentPanel.selectTab(selectedTabIndex, index);
         selectedTabIndex = index;
         SelectionEvent.fire(this, selectedTabIndex);
     }
 
     public int getSelectedTabIndex() {
         return selectedTabIndex;
+    }
+
+    public void setSelectedTabIndex(int index) {
+        selectTab(index);
     }
 
     public TabHeader getSelectedTab() {
