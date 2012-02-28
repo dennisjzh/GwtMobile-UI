@@ -18,6 +18,7 @@ package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.widgets.ListPanel.Chevron;
 
 public class ListItem extends FlowPanel{
 
@@ -33,7 +34,7 @@ public class ListItem extends FlowPanel{
 		int last = getWidgetCount() - 1;
 		if (last >=0) {
 			Widget widget = getWidget(last);
-			if (widget.getClass().toString().endsWith(".Chevron")) {
+			if (widget instanceof Chevron) {
 				if (!show) {
 					remove(last);
 				}
