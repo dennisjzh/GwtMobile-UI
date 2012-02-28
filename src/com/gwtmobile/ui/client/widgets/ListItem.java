@@ -47,7 +47,7 @@ public class ListItem extends FlowPanel{
 		int last = getWidgetCount() - 1;
 		if (last >=0) {
 			Widget widget = getWidget(last);
-			if (widget.getClass() == Chevron.class) {
+			if (widget instanceof Chevron) {
 				if (!show) {
 					remove(last);
 				}

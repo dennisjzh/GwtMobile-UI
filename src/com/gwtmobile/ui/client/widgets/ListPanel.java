@@ -60,7 +60,7 @@ public class ListPanel extends PanelBase implements ClickHandler, DragEventsHand
 
     @Override
     public void add(Widget w) {
-    	if (w.getClass() == ListItem.class) {
+    	if (w instanceof ListItem) {
     		super.add(w);
     	}
     	else {
