@@ -35,6 +35,7 @@ public abstract class Page extends WidgetBase {
 	private Transition _transition;
 	private static Transition _defaultTransition = Transition.SLIDE;
 	protected String tokenStateInfo = CONSUMED_TOKEN;
+	protected static boolean inTransition = false; 
 
 	static {
 		if (!Utils.isDesktop() && !Utils.hasPhoneGap()) {
@@ -133,6 +134,7 @@ public abstract class Page extends WidgetBase {
 			};
 			timer.schedule(1);
 		}
+		inTransition = false;
 	}
 
 	protected void initNavigationIfRequired() {
@@ -149,6 +151,10 @@ public abstract class Page extends WidgetBase {
 	}
 
 	public void goTo(final Page toPage, final Transition transition) {
+		if (inTransition) {
+			return;//can't start a new page transition until last one is complete.
+		}
+		inTransition = true;
 		Element focus = Utils.getActiveElement();
 		focus.blur();
 		final Page fromPage = this;
@@ -161,6 +167,10 @@ public abstract class Page extends WidgetBase {
 	}
 
 	public void goBack(Object returnValue) {
+		if (inTransition) {
+			return;//can't start a new page transition until last one is complete.
+		}
+		inTransition = true;
 		PageHistory.Instance.goBack(this, returnValue);
 	}
 
