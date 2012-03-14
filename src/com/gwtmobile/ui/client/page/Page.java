@@ -36,6 +36,7 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 	final static private String CONSUMED_TOKEN = "#?#";
 	private Transition transition = Transition.SLIDE; // assume SLIDE as default transition
 	protected String tokenStateInfo = CONSUMED_TOKEN;
+	protected static boolean inTransition = false; 
 
 	static {
 		if (!Utils.isDesktop() && !Utils.hasPhoneGap()) {
@@ -136,6 +137,7 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 			};
 			timer.schedule(1);
 		}
+		inTransition = false;
 	}
 
 	protected void initNavigationIfRequired() {
@@ -164,10 +166,18 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 	}
 
 	public void goTo(final Page toPage, Object params, final Transition transition) {
+		if (inTransition) {
+			return;//can't start a new page transition until last one is complete.
+		}
+		inTransition = true;
 		PageHistory.Instance.goTo(toPage, params, transition);
 	}
 
 	public void goBack(Object returnValue) {
+		if (inTransition) {
+			return;//can't start a new page transition until last one is complete.
+		}
+		inTransition = true;
 		PageHistory.Instance.goBack(returnValue);
 	}
 
