@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
-import com.gwtmobile.ui.client.page.Transition;
 
 
 
@@ -51,5 +50,10 @@ public class TabContentPanel extends PanelBase {
     	else {
         	super.add(to);
     	}		
+    }
+    
+    @Override
+    protected String getDesignTimeMessage() {
+    	return "Add equal number of TabContent widgets as the TabHeader widgets in the TabHeaderPanel.";
     }
 }

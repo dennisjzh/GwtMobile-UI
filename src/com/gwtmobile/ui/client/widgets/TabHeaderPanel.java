@@ -1,11 +1,8 @@
 package com.gwtmobile.ui.client.widgets;
 
-import java.beans.Beans;
-
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
@@ -22,12 +19,12 @@ public class TabHeaderPanel extends PanelBase {
     @Override
     public void add(Widget w) {
     
-    	if (w instanceof TabHeader) {
+    	if (w instanceof TabHeader 
+    		|| isDesignTimeEmptyLabel(w)) {
     		super.add(w);
-    	} else if (Beans.isDesignTime() && w instanceof Label) {
-    		// allow Label during designtime
+    		return;
     	} else {
-    		assert false : "The TabHeaderPanel can only contain multiple TabHeader elements";
+    		assert false : "TabHeaderPanel can only contain TabHeader widgets.";
     	}
     	
     }
@@ -60,6 +57,11 @@ public class TabHeaderPanel extends PanelBase {
 	    	TabHeader header = (TabHeader) getWidget(index);
 	    	header.removeStyleName(Secondary.Selected);
     	}
+    }
+    
+    @Override
+    protected String getDesignTimeMessage() {
+    	return "Add TabHeader widgets.";
     }
 	
 }

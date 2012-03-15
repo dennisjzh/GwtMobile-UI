@@ -24,7 +24,6 @@ import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
@@ -72,11 +71,12 @@ public class TabPanel extends PanelBase
     		}
     	}
     	
-    	if (Beans.isDesignTime() && w instanceof Label) {
-    		// bypass for designtime compliance
+    	if (isDesignTimeEmptyLabel(w)) {
+    		super.add(w);
     		return;
     	}
-    	assert false : "The TabPanel can only contains one TabHeaderPanel and one TabContentPanel. ("+w.getClass().getName()+")";
+    	
+    	assert false : "TabPanel can only contains a TabHeaderPanel and a TabContentPanel. ("+w.getClass().getName()+")";
     	
     }
     
@@ -187,5 +187,10 @@ public class TabPanel extends PanelBase
 		else {
 			removeStyleName(Primary.TabBarPanel);
 		}
+	}
+	
+	@Override
+	protected String getDesignTimeMessage() {
+		return "Add a TabHeaderPanel and a TabContentPanel.";
 	}
 }

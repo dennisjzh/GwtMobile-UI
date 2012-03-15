@@ -49,7 +49,13 @@ public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implement
 	    public void add(Widget w) {
 	    	if (isDesignTimeEmptyLabel(w)) {
 	    		Label label = (Label)w;
-	    		label.setText("Empty " + Utils.getSimpleName(this.getClass()));
+	    		String designTimeMessage = getDesignTimeMessage();
+	    		if (designTimeMessage == null) {
+		    		label.setText("Empty " + Utils.getSimpleName(this.getClass()));
+	    		} else {
+		    		label.setText("Empty " + Utils.getSimpleName(this.getClass()) + 
+		    				". " + designTimeMessage);
+	    		}
 	    	}
 		    super.add(w);
 	    }
@@ -59,4 +65,6 @@ public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implement
 	    			(w instanceof Label) && 
 	    			((Label)w).getText().equals("Empty FlowPanel");
 	    }
+	    
+	    protected String getDesignTimeMessage() {return null;}; 
 }
