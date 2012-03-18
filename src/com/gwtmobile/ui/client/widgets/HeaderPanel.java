@@ -16,6 +16,8 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import java.beans.Beans;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -34,18 +36,34 @@ public class HeaderPanel extends PanelBase {
     	super.add(new FlowPanel());		//contents
     	super.add(new SimplePanel());	//right button placeholder
         setStyleName(Primary.HeaderPanel);
+        if (Beans.isDesignTime()) {
+            add(new Label("Empty HeaderPanel. " + getDesignTimeMessage()));
+        }
+    }
+    
+    @Override
+    protected String getDesignTimeMessage() {
+    	return "Set caption and left/right button properties.";
     }
     
     @Override
     public void add(Widget w) {
     	FlowPanel contents = (FlowPanel)getWidget(1);
+    	if (Beans.isDesignTime() && contents.getWidgetCount() > 0) {
+    		Widget widget = contents.getWidget(0);
+    		if (widget instanceof Label && ((Label)widget).getText().contains(getDesignTimeMessage())) {
+    			contents.clear();
+    		}
+    	}
     	contents.add(w);
     }
     
     public void setCaption(String caption) {
-    	FlowPanel contents = (FlowPanel)getWidget(1);
-    	contents.clear();
-    	contents.add(new HTML(caption));
+    	if (!caption.isEmpty()) {
+        	FlowPanel contents = (FlowPanel)getWidget(1);
+        	contents.clear();
+    		contents.add(new HTML(caption));
+    	}
     }
     
     public String getCaption() {
@@ -58,34 +76,38 @@ public class HeaderPanel extends PanelBase {
     }
     
     public void setLeftButton(String buttonName) {
-    	SimplePanel leftButton = (SimplePanel)getWidget(0);
-    	ClickHandler clickHandler = new ClickHandler() {				
-			@Override
-			public void onClick(ClickEvent event) {
-				onLeftButtonClick(event);
-			}
-		};
-    	if (buttonName.toUpperCase().equals("BACK")) {
-    		leftButton.setWidget(new BackButton(buttonName, clickHandler));
-    	}
-    	else {
-    		leftButton.setWidget(new Button(buttonName, clickHandler));
+    	if (!buttonName.isEmpty()) {
+        	SimplePanel leftButton = (SimplePanel)getWidget(0);
+        	ClickHandler clickHandler = new ClickHandler() {				
+    			@Override
+    			public void onClick(ClickEvent event) {
+    				onLeftButtonClick(event);
+    			}
+    		};
+        	if (buttonName.toUpperCase().equals("BACK")) {
+        		leftButton.setWidget(new BackButton(buttonName, clickHandler));
+        	}
+        	else {
+        		leftButton.setWidget(new Button(buttonName, clickHandler));
+        	}
     	}
     }
     
     public void setRightButton(String buttonName) {
-    	SimplePanel rightButton = (SimplePanel)getWidget(2);
-    	ClickHandler clickHandler = new ClickHandler() {				
-			@Override
-			public void onClick(ClickEvent event) {
-				onRightButtonClick(event);
-			}
-		};
-    	if (buttonName.toUpperCase().equals("NEXT")) {
-    		rightButton.setWidget(new NextButton(buttonName, clickHandler));
-    	}
-    	else {
-    		rightButton.setWidget(new Button(buttonName, clickHandler));
+    	if (!buttonName.isEmpty()) {
+        	SimplePanel rightButton = (SimplePanel)getWidget(2);
+        	ClickHandler clickHandler = new ClickHandler() {				
+    			@Override
+    			public void onClick(ClickEvent event) {
+    				onRightButtonClick(event);
+    			}
+    		};
+        	if (buttonName.toUpperCase().equals("NEXT")) {
+        		rightButton.setWidget(new NextButton(buttonName, clickHandler));
+        	}
+        	else {
+        		rightButton.setWidget(new Button(buttonName, clickHandler));
+        	}
     	}
     }
     
