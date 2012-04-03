@@ -16,27 +16,25 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.widgets.ListPanel.Chevron;
 
-public class ListItem extends FlowPanel{
+public class ListItem extends PanelBase {
 
 	public enum ShowArrow { InheritFromParent, Visible, Hidden };
-	private ShowArrow displayArrow = ShowArrow.InheritFromParent;
-	private boolean enabled = true;
+	protected ShowArrow displayArrow = ShowArrow.InheritFromParent;
+	protected boolean enabled = true;
 
 	public ListItem() {
 		// there is no named style role for list item. 
     	//setStyleName("gwtm-ListItem");
     }
-
-	// denis: Need this method to keep the setter consistent with ListPanel.
-	// joao: this method is causing infinit loop, commenting for now
-//	public void setDisplayArrow(boolean display) {
-//		setDisplayArrow(display ? ShowArrow.Visible : ShowArrow.Hidden);
-//	}
+	
+	@Override
+	protected String getDesignTimeMessage() {
+		return "Add widgets.";
+	}
 
 	public void setDisplayArrow(ShowArrow showA) {
 		this.displayArrow = showA;
@@ -77,7 +75,7 @@ public class ListItem extends FlowPanel{
 		return this.enabled;
 	}
 	
-	void setDisplayArrowFromParent(ListPanel.ShowArrow show) {
+	protected void setDisplayArrowFromParent(ListPanel.ShowArrow show) {
 		// Parent can only override if it has not been set.
 		if (this.displayArrow == ShowArrow.InheritFromParent) {
 			setDisplayArrow(ShowArrow.valueOf(show.toString()));

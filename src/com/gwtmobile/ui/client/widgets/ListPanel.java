@@ -42,6 +42,12 @@ public class ListPanel extends PanelBase implements ClickHandler, DragEventsHand
         addDomHandler(this, ClickEvent.getType());
         setStyleName(Primary.ListPanel);
     }
+    
+    @Override
+    protected String getDesignTimeMessage() {
+    	return "Add ListItems (recommended) or other widgets to the panel.";
+    }
+
 
     public HandlerRegistration addSelectionChangedHandler(SelectionChangedHandler handler) {
         return this.addHandler(handler, SelectionChangedEvent.TYPE);
@@ -60,14 +66,10 @@ public class ListPanel extends PanelBase implements ClickHandler, DragEventsHand
 
     @Override
     public void add(Widget w) {
-    	if (w instanceof ListItem) {
+    	if (w instanceof ListItem || isDesignTimeEmptyLabel(w)) {
     		super.add(w);
     	}
     	else {
-    		//TODO: check with joao if this is causing problem with gwt designer.
-    		// yes, this asserts are causing some issues, for instance, an empty panel on gwt designer
-    		// will have a child Label saying that the panel is empty. With this assert we cant use gwtd
-//    		assert false : "Only ListItem can be added to ListPanel.";
         	ListItem listItem = new ListItem();
         	super.add(listItem);    	
         	listItem.add(w);
