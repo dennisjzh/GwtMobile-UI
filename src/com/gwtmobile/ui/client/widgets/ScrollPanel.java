@@ -49,11 +49,9 @@ public class ScrollPanel extends PanelBase implements DragEventsHandler, SwipeEv
         setStyleName(Primary.ScrollPanel);
         setWithPadding(withPadding);
         this.initScrollbar();
-        // this panel needs to be handled differently !! 
-        // the designtime message needs to be addded to the inner panel
-		if (Beans.isDesignTime()) {
-			add(new DesignTimeMessagePanel(this));
-		}
+        if (Beans.isDesignTime()) {
+            intPanel.add(new Label("Empty ScrollPanel. " + getDesignTimeMessage()));
+        }
     }
     
 	public boolean isWithPadding() {
@@ -322,14 +320,9 @@ public class ScrollPanel extends PanelBase implements DragEventsHandler, SwipeEv
 
 	@Override
 	public void add(Widget w) {
-		//assert getWidgetCount()  == 99 : "Can only add one widget to ScrollPanel. " +  w.getClass().getName();
-		
 		if (Beans.isDesignTime()) {
-			if (getWidgetCount() == 1 && getWidget(0) instanceof DesignTimeMessagePanel) {
-				DesignTimeMessagePanel designTimePanel = (DesignTimeMessagePanel) getWidget(0);
-				if (!designTimePanel.hasError()) {
-					intPanel.clear();
-				}
+			if (getWidgetCount() == 1 && isDesignTimeEmptyLabel(getWidget(0))) {
+				clear();
 			}
 		}
 		

@@ -63,8 +63,10 @@ public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implement
 	    public boolean isDesignTimeEmptyLabel(Widget w) {
 	    	return Beans.isDesignTime() && 
 	    			(w instanceof Label) && 
-	    			((Label)w).getText().equals("Empty FlowPanel");
+	    			((Label)w).getText().startsWith("Empty ");
 	    }
 	    
-	    protected String getDesignTimeMessage() {return null;}; 
+	    protected String getDesignTimeMessage() {
+	    	return "Add widgets to the panel.";
+	    }; 
 }
