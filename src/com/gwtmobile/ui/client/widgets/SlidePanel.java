@@ -29,7 +29,6 @@ import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 import com.gwtmobile.ui.client.page.Transition;
-import com.gwtmobile.ui.client.utils.Utils;
 
 public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValueChangeHandlers<Boolean> {
 
@@ -43,6 +42,11 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
         setStyleName(Primary.SlidePanel);
     }
 
+    @Override
+    protected String getDesignTimeMessage() {
+    	return "Add Slide widgets to the panel.";
+    }
+    
     public void setSlideCount(int count) {
     	this.count = count;
     }
@@ -159,15 +163,15 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	
 	@Override
 	public void add(Widget w) {
-		//assert (w instanceof Slide) : "Can only add Slide widgets to SlidePanel.";
-		// we can't assert because gwtdesign adds a Label by default
-		if (Beans.isDesignTime()) {
-			if (!(w instanceof Slide)) {
-				//FIXME
-				assert (w instanceof Slide) : "Can only add Slide widgets to SlidePanel.";
-			}
+		if (w instanceof Slide) {
+			slides.add(w);
 		}
-		slides.add(w);
+		else if (isDesignTimeEmptyLabel(w)) {
+			super.add(w);			
+		}
+		else {
+			assert (w instanceof Slide) : "Can only add Slide widgets to SlidePanel.";
+		}
 	}
 
 	public void setRotate(boolean rotate)
