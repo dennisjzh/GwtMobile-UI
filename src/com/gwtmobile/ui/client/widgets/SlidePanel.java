@@ -33,10 +33,11 @@ import com.gwtmobile.ui.client.page.Transition;
 public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValueChangeHandlers<Boolean> {
 
     protected int count = 0;
-    private int currentSlide = 0;
+    private int currentSlideIndex = 0;
     protected SlideProvider slideProvider = null;
     protected ArrayList<Widget> slides = new ArrayList<Widget>();
     protected boolean rotate = false;
+    private int selectedSlideIndex = 0; //used for design time slide selection.
 
     public SlidePanel() {
         setStyleName(Primary.SlidePanel);
@@ -44,7 +45,7 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 
     @Override
     protected String getDesignTimeMessage() {
-    	return "Add Slide widgets to the panel.";
+    	return "Add Slide widgets to the panel. Use the 'selectedSlideIndex' property to switch slide at design time.";
     }
     
     public void setSlideCount(int count) {
@@ -66,7 +67,11 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	@Override
 	public void onInitialLoad() {
     	super.onInitialLoad();
-    	Slide slide = getSlide(currentSlide);
+		// Use currentSlide as design time slide selector.
+    	if (Beans.isDesignTime()) {
+    		currentSlideIndex = selectedSlideIndex;
+    	}
+    	Slide slide = getSlide(currentSlideIndex);
 		if (slide != null) {
 			super.add(slide);
 		}
@@ -110,55 +115,48 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	}
 	
 	public void next() {
-		if (currentSlide >= getSlideCount() - 1) {
+		if (currentSlideIndex >= getSlideCount() - 1) {
 			if (!rotate) {
 				return;
 			} else {
-				currentSlide = -1;
+				currentSlideIndex = -1;
 			}
 		}
-		currentSlide++;
-    	moveNext();
-	}
-
-	protected void moveNext() {
-		Slide to = getSlide(currentSlide);
-    	Slide from = (Slide) super.getWidget(0);
-    	Transition transition = Transition.SLIDE;
-    	ValueChangeEvent.fire(this, true);
-    	transition.start(from, to, this, false);
+		moveToSlide(currentSlideIndex + 1);
 	}
 
 	public void previous() {
-		if (currentSlide <= 0) {
+		if (currentSlideIndex <= 0) {
 			if (!rotate) {
 				return;
 			} else {
-				currentSlide = getSlideCount();
+				currentSlideIndex = getSlideCount();
 			}
 		}
-		currentSlide--;
-		movePrevious();
+		moveToSlide(currentSlideIndex - 1);
 	}
 
-	protected void movePrevious() {
-		Slide to = getSlide(currentSlide);
+	protected void moveToSlide(int slide) {
+		currentSlideIndex = slide;
+		Slide to = getSlide(currentSlideIndex);
     	Slide from = (Slide) super.getWidget(0);
     	Transition transition = Transition.SLIDE;
     	ValueChangeEvent.fire(this, false);
     	transition.start(from, to, this, true);
 	}
 
+	public void goTo(int to) {
+		if (to > 0 && to < getSlideCount()) {
+			moveToSlide(to);
+		}
+	}
+	
 	@Override
 	public void onTransitionEnd(TransitionDirection direction) {
 		super.onTransitionEnd(direction);
 		if (direction == TransitionDirection.To) {
 			super.remove(0);
 		}
-	}
-	
-	public int getCurrentSlideIndex() {
-		return currentSlide;
 	}
 	
 	@Override
@@ -184,14 +182,22 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	    return rotate;
 	}
 
-	public void setCurrentSlide(int currentSlide) {
-		this.currentSlide = currentSlide;
+	protected void setCurrentSlideIndex(int currentSlideIndex) {
+		this.currentSlideIndex = currentSlideIndex;
 	}
 
-	public int getCurrentSlide() {
-		return currentSlide;
+	public int getCurrentSlideIndex() {
+		return currentSlideIndex;
 	}
 
+	public void setSelectedSlideIndex(int selectedSlideIndex) {
+		this.selectedSlideIndex = selectedSlideIndex;
+	}
+
+	public int getSelectedSlideIndex() {
+		return selectedSlideIndex;
+	}
+	
 	/********************* interface SlideProvider *******************/
 
 	public interface SlideProvider {
@@ -203,4 +209,5 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 			ValueChangeHandler<Boolean> handler) {
 		return this.addHandler(handler, ValueChangeEvent.getType());
 	}
+
 }
