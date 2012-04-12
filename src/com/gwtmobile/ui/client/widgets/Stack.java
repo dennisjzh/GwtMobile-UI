@@ -16,6 +16,8 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import java.beans.Beans;
+
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Element;
@@ -28,47 +30,55 @@ public class Stack extends PanelBase {
     StackHeader header;
     StackContent content;
     
-    public enum StackInitialState {Collapsed, Expanded};
+    public enum StackInitialState {Default, Collapsed, Expanded};
     
-    private StackInitialState initialState = StackInitialState.Collapsed;
+    private StackInitialState initialState = StackInitialState.Default;
     private boolean freezeState = false;
+    
+    @Override
+    protected String getDesignTimeMessage() {
+    	return "Add a StackHeader widget and a StackConent widget.";
+    }
     
 	@Override
 	public void onInitialLoad() {
-		//addStyleName("gwtm-Stack");
-		if (initialState == StackInitialState.Collapsed){
-			collapse();
-		} else {
-			expand();
+		switch (initialState) {
+			case Collapsed:
+				collapse();
+				break;
+			case Expanded:
+				expand();
+				break;
+			default:
+				if (Beans.isDesignTime()) {
+					expand();
+				}
+				else {
+					collapse();
+				}
 		}
 	}
 	
     @Override
     public void add(Widget w) {
-    	
-//    	if (w instanceof com.google.gwt.user.client.ui.Label) return;
-    	
-//    	if ( !(w instanceof AccordionHeader) && !(w instanceof AccordionContent)) 
-//    		assert false : "Can only contain a header and a content. " + w.getClass().getName() + " - " + super.getWidgetCount();
-    	
-//    	//if (w instanceof Label){
-//    		// allow Label to temporary build on GWT designer
-//    	} else {
-//	        if (header == null) {
-//	            header = (AccordionHeader) w;
-//	        }
-//	        else if (content != null) {
-//	            assert false : "Can only contain a header and a content.";
-//	        }
-//	        else {
-//	            content = (AccordionContent) w;
-//	        }
-//    	}
         if (w instanceof StackHeader) {
-        	header = (StackHeader) w;
+        	if (header == null) {
+            	header = (StackHeader) w;
+        	}
+        	else {
+        		assert false: "Stack widget can only contain one StackHeader widget.";
+        	}
         }
         else if (w instanceof StackContent) {
-        	content = (StackContent) w;
+        	if (content == null) {
+            	content = (StackContent) w;
+        	}
+        	else {
+        		assert false: "Stack widget can only contain one StackContent widget.";
+        	}
+        }
+        else if (!isDesignTimeEmptyLabel(w)) {
+    		assert false: "Stack widget can only contain a StackHeader widget a StackContent widget.";
         }
         super.add(w);
     }

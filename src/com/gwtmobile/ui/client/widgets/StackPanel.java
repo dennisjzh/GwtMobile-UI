@@ -25,6 +25,12 @@ public class StackPanel extends PanelBase {
 	public StackPanel() {
 		setStyleName(Primary.StackPanel);
 	}
+	
+	@Override
+	protected String getDesignTimeMessage() {
+		return "Add Stack widgets to the panel.";
+	}
+	
 
 	public Stack getStack(int index) {
         return (Stack) this.getWidget(index);
