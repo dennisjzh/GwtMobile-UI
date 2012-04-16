@@ -216,7 +216,10 @@ public abstract class Page extends WidgetBase {
 			Document.get().getDocumentElement().setClassName("WVGA");
 		} else if (ratio == 0.75) {
 			Document.get().getDocumentElement().setClassName("QVGA");
-		} else {
+		} else if (ratio == 1 && Utils.isMobileChrome()) { //Chrome for Android bug?
+			Document.get().getDocumentElement().setClassName("WXGA");
+		}
+		else {
 			Document.get().getDocumentElement().setClassName("HVGA");
 		}
 	}

@@ -104,6 +104,11 @@ public class Utils {
     	return Window.Navigator.getUserAgent().contains("Android");
     }
     
+    public static boolean isMobileChrome() {
+    	return isAndroid() &&
+    		Window.Navigator.getUserAgent().contains("CrMo");
+    }
+    
     public static boolean isIOS() {
     	String ua = Window.Navigator.getUserAgent();
     	return ua.contains("iPhone") || 
