@@ -6,7 +6,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.gwtmobile</groupId>
   <artifactId>gwtmobile-ui</artifactId>
-  <version>0.0.1-20120410-1407</version>
+  <version>0.0.1-20120416-1753</version>
   <packaging>jar</packaging>
   <name>GWT Mobile UI</name>
   <description>GWT Mobile UI</description>
