@@ -24,8 +24,10 @@ import com.gwtmobile.ui.client.utils.Utils;
 
 public class DragControllerMobile extends DragController {
 
-    private boolean _touchMoving = false;
+    protected boolean _touchMoving = false;
 
+    static protected boolean _stopPropagation = true;
+    
     DragControllerMobile() {
     }
     
@@ -61,7 +63,7 @@ public class DragControllerMobile extends DragController {
                 preventDefault = false;
             }
         }
-        if (preventDefault) {
+        if (preventDefault && _stopPropagation) {
             e.preventDefault();   //prevent default action of selecting text            
             e.stopPropagation();
         }
@@ -70,15 +72,19 @@ public class DragControllerMobile extends DragController {
 	}
 
 	public void onTouchMove(TouchEvent e) {
-		e.preventDefault();
-		e.stopPropagation();
+	  if (_stopPropagation) {
+	    e.preventDefault();
+	    e.stopPropagation();
+	  }
         _touchMoving = true;
 		onMove(e, new Point(e.touches().get(0).getClientX(), e.touches().get(0).getClientY()));
 	}
 
 	public void onTouchEnd(TouchEvent e) {
-		e.preventDefault();
-		e.stopPropagation();
+    if (_stopPropagation) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
         if (!_touchMoving) {            
             Utils.Console("fireclick ");
             fireClick(e);
@@ -103,8 +109,21 @@ public class DragControllerMobile extends DragController {
 		    super.onBrowserEvent(e);
 		}
 	}
+
+	/**
+	 * Sets the stop propagation. For widgets such as pan and zoom maps.
+	 * 
+	 * @author Frank Mena
+	 */
+	public void setStopPropagation() {
+	  _stopPropagation = true;
+	}
 	
-	private native void fireClick(Event e) /*-{
+  public void setStartPropagation() {
+    _stopPropagation = false;
+  }
+  
+	protected native void fireClick(Event e) /*-{
        var x = e.changedTouches[0].pageX;
        var y = e.changedTouches[0].pageY;
 

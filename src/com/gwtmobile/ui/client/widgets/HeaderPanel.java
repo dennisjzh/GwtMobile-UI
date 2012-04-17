@@ -77,6 +77,18 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
     	}
     }
     
+    public void setBackButton(String buttonName) {
+     
+      SimplePanel leftButton = ((SimplePanel)((FlowPanel)getWidget()).getWidget(0));
+      ClickHandler clickHandler = new ClickHandler() {        
+        @Override
+        public void onClick(ClickEvent event) {
+          onLeftButtonClick(event);
+        }
+      };
+      leftButton.setWidget(new BackButton(buttonName, clickHandler));
+    }
+    
     public void setRightButton(String buttonName) {
     	SimplePanel rightButton = ((SimplePanel)((FlowPanel)getWidget()).getWidget(2));
     	ClickHandler clickHandler = new ClickHandler() {				
@@ -91,6 +103,18 @@ public class HeaderPanel extends WidgetBase implements HasWidgets {
     	else {
     		rightButton.setWidget(new Button(buttonName, clickHandler));
     	}
+    }
+    
+    public void setNextButton(String buttonName) {
+      
+      SimplePanel rightButton = ((SimplePanel)((FlowPanel)getWidget()).getWidget(2));
+      ClickHandler clickHandler = new ClickHandler() {        
+        @Override
+        public void onClick(ClickEvent event) {
+          onRightButtonClick(event);
+        }
+      };
+      rightButton.setWidget(new NextButton(buttonName, clickHandler));
     }
     
     public Button getLeftButton() {

@@ -20,6 +20,8 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Timer;
@@ -27,6 +29,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.utils.Utils;
+import com.gwtmobile.ui.client.widgets.HeaderPanel;
 import com.gwtmobile.ui.client.widgets.WidgetBase;
 
 //FIXME: extends PanelBase?
@@ -227,5 +230,80 @@ public abstract class Page extends WidgetBase {
 	public static native double getDevicePixelRatio() /*-{
 		return $wnd.devicePixelRatio;
 	}-*/;
+	
+	
+	
+  /**
+   * Adds a home button handler.  It assumes the right button in the header is
+   * the home button.
+   * </br> 
+   * By Frank Mena 2012-04-11
+   * 
+   * @param header the header
+   */
+  public void addHomeHandler(HeaderPanel header) {
+    
+    header.setRightButtonClickHandler(new ClickHandler()
+    {
 
+      @Override
+      public void onClick(ClickEvent event)
+      {
+      
+        goHome();
+      }
+
+    });
+    
+  }
+  
+  
+  
+  /**
+   * Go home. Only works if you are using {@link SerialPageHistory}.
+   * </br> 
+   * By Frank Mena 2012-04-11
+   */
+  public void goHome() {
+    
+    if (PageHistory.Instance instanceof SerialPageHistory) {
+      SerialPageHistory history = (SerialPageHistory) PageHistory.Instance;
+      history.goHome(this);
+    }
+    
+  }
+  
+  
+  
+  /**
+   * Push a page into the stack. Only works if you are using
+   * {@link SerialPageHistory}.
+   * 
+   * By Frank Mena 2012-04-11
+   *
+   * @param page the page to push
+   */
+  public static void push(Page page)
+  {
+    
+    if (PageHistory.Instance instanceof SerialPageHistory) {
+      SerialPageHistory history = (SerialPageHistory) PageHistory.Instance;
+      history.add(page);
+    }
+  }
+  
+  
+  
+  /**
+   * Exposes the onNavigate method of a page.  Useful when restoring from
+   * passivated state.
+   * 
+   * By Frank Mena 2012-04-11
+   */
+  public void doOnNavigateTo()
+  {
+
+    this.onNavigateTo();
+  }
+	
 }
