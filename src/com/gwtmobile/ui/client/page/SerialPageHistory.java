@@ -67,11 +67,11 @@ public class SerialPageHistory implements PageHistory {
     
 	@Override
 	public Page back() {
-        if (_history.isEmpty()) {
-            return null;
-        }
-        return _history.pop();
+    if (_history.isEmpty()) {
+        return null;
     }
+    return _history.pop();
+  }
 	
 	@Override
 	public void goBack(Page fromPage, Object returnValue) {
@@ -113,4 +113,70 @@ public class SerialPageHistory implements PageHistory {
         return _returnValue;
     }
 
+	
+	
+  /**
+   * Go home and clear the stack.  Just pass "this" from the calling page.
+   * </br> 
+   * By Frank Mena 2012-04-11
+   *
+   * @param fromPage the from page
+   */
+  public void goHome(Page fromPage) {
+    
+    if (false == _history.empty()) {
+      Page homePage = _history.firstElement();
+      _history.clear();
+     
+      Element focus = Utils.getActiveElement();
+      focus.blur();
+      final Transition transition = Transition.SLIDE;
+      transition.start(fromPage, homePage, RootLayoutPanel.get(), true);
+    }
+  }
+  
+  
+  
+  /**
+   * Gets the home page and clears the stack.
+   * </br> 
+   * By Frank Mena 2012-04-11
+   *
+   * @return the home page
+   */
+  public Page getHomePageAndClearStack() {
+    
+    if (false == _history.empty()) {
+      Page page = _history.firstElement();
+      _history.clear();
+      return page;
+      
+    }
+    else {
+      return null;
+    }
+  }
+  
+  
+  
+  /**
+   * Gets the home page.
+   * </br> 
+   * By Frank Mena 2012-04-11
+   *
+   * @return the home page
+   */
+  public Page getHomePage() {
+    
+    if (false == _history.empty()) {
+      Page page = _history.firstElement();
+      _history.clear();
+      return page;
+      
+    }
+    else {
+      return null;
+    }
+  }
+	
 }
