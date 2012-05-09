@@ -33,7 +33,6 @@ public class StackHeader extends PanelBase implements ClickHandler, DragEventsHa
 	private boolean enabled = true;
 	
 	public StackHeader() {
-		//addStyleName("gwtm-StackHeader");
 	    this.addDomHandler(this, ClickEvent.getType());    
         this.add(stackArrow);
 

@@ -161,7 +161,12 @@ public class Utils {
 	public static native int getWidth(Element ele) /*-{
 		return parseInt($doc.defaultView.getComputedStyle(ele, "").getPropertyValue("width"));
 	}-*/;
-	
+
+	public static native int getPaddingHeight(Element ele) /*-{
+		return parseInt($doc.defaultView.getComputedStyle(ele, "").getPropertyValue("padding-top")) + 
+			parseInt($doc.defaultView.getComputedStyle(ele, "").getPropertyValue("padding-bottom"));
+	}-*/;
+
     public static int getTargetItemIndex(Element parent, EventTarget target) {
         Element div = Element.as(target);
         if (div == parent) {
@@ -180,17 +185,6 @@ public class Utils {
         return index;
     }
     
-// this was before I knew the instanceof operator...    
-//    public static boolean isSubclassOf(Class<?> class1, Class<?> class2) {
-//    	while (class1 != null) {
-//    		if (class1 == class2) {
-//    			return true;
-//    		}
-//    		class1 = class1.getSuperclass();
-//    	}
-//    	return false;
-//    }
-
 	public static native void setHeight(Element ele, double value) /*-{
 		ele.style.height = value+"px";
 	}-*/;

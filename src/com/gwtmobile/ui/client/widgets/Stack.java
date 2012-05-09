@@ -39,7 +39,7 @@ public class Stack extends PanelBase {
     protected String getDesignTimeMessage() {
     	return "Add a StackHeader widget and a StackConent widget.";
     }
-    
+
 	@Override
 	public void onInitialLoad() {
 		switch (initialState) {
@@ -101,13 +101,12 @@ public class Stack extends PanelBase {
     	if (isExpended()) {
     		return;
     	}
-        this.addStyleName(Secondary.Expanded);
-        this.removeStyleName(Secondary.Collapsed);
+        Stack.this.addStyleName(Secondary.Expanded);
+        Stack.this.removeStyleName(Secondary.Collapsed);
 		Scheduler.get().scheduleDeferred(new ScheduledCommand() {			
 			@Override
 			public void execute() {
-				Utils.Console(content.getElement().getScrollHeight() - content.getElement().getOffsetHeight() + "px");
-		        content.setHeight(content.getElement().getScrollHeight() - content.getElement().getOffsetHeight()+ "px");
+		        content.setHeight(content.getElement().getScrollHeight() - Utils.getPaddingHeight(content.getElement()) + "px");
 			}
 		});
     }
