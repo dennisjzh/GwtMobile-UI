@@ -166,7 +166,12 @@ public class Utils {
 	public static native int getWidth(Element ele) /*-{
 		return parseInt($doc.defaultView.getComputedStyle(ele, "").getPropertyValue("width"));
 	}-*/;
-	
+
+	public static native int getPaddingHeight(Element ele) /*-{
+		return parseInt($doc.defaultView.getComputedStyle(ele, "").getPropertyValue("padding-top")) + 
+			parseInt($doc.defaultView.getComputedStyle(ele, "").getPropertyValue("padding-bottom"));
+	}-*/;
+
     public static int getTargetItemIndex(Element parent, EventTarget target) {
         Element div = Element.as(target);
         if (div == parent) {
@@ -202,5 +207,32 @@ public class Utils {
 	public static native boolean hasPhoneGap() /*-{
 		return $wnd.PhoneGap != null;
 	}-*/;
+	
+	public static native void setLinkHref(String linkElementId, String url) /*-{
+        var link = $doc.getElementById(linkElementId);
+        if (link != null && link != undefined) {
+            link.href = url;
+        }
+    }-*/;
+	
+	public static native void setCssHref(String url) /*-{
+	    var link = $doc.getElementsByTagName("link")[0];
+	    if (link != null && link != undefined) {
+	        link.href = url;
+	    }
+	}-*/;
+	
+	public static native String getCssHref() /*-{
+	    var link = $doc.getElementsByTagName("link")[0];
+	    if (link != null && link != undefined) {
+	        return link.href;
+	    }
+	    return null;
+	}-*/;
+	
+	//GWT does not support the getSimpleName() method.
+	public static String getSimpleName(Class<?> clazz) {
+		return clazz.getName().substring(clazz.getName().lastIndexOf('.') + 1);
+	}
 
 }
