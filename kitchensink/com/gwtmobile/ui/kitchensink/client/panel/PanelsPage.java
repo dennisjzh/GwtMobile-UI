@@ -43,7 +43,7 @@ public class PanelsPage extends Page {
     void onListSelectionChanged(SelectionChangedEvent e) {
     	switch (e.getSelection()) {
     	case 0:
-    		AccordionPanelPage accordionPanelPage = new AccordionPanelPage();
+    		StackPanelPage accordionPanelPage = new StackPanelPage();
     		goTo(accordionPanelPage);
     		break;
     	case 1:
