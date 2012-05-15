@@ -68,10 +68,6 @@ class TextBoxBase extends com.google.gwt.user.client.ui.TextBoxBase
 	}
 
 	@Override
-	public void onTransitionEnd() {
-	}
-
-	@Override
 	public void setSecondaryStyle(String style) {
 		_widgetHelper.setSecondaryStyle(this, style);
 	}

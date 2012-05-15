@@ -16,21 +16,32 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.widgets.ListPanel.Chevron;
 
-public class ListItem extends FlowPanel{
+public class ListItem extends PanelBase {
 
-	public enum ShowArrow { Default, True, False };
-	ShowArrow _showArrow = ShowArrow.Default;
-	boolean _disabled = false;
-	
-    public ListItem() { 
+	public enum ShowArrow { InheritFromParent, Visible, Hidden };
+	protected ShowArrow displayArrow = ShowArrow.InheritFromParent;
+	protected boolean enabled = true;
+
+	public ListItem() {
+		// there is no named style role for list item. 
+    	//setStyleName("gwtm-ListItem");
     }
+	
+	@Override
+	protected String getDesignTimeMessage() {
+		return "Add widgets.";
+	}
 
-	public void setShowArrow(boolean show) {
-		_showArrow = show ? ShowArrow.True : ShowArrow.False;
+	public void setDisplayArrow(ShowArrow showA) {
+		this.displayArrow = showA;
+		if (ShowArrow.InheritFromParent.compareTo(showA) != -1)
+			return;
+		boolean show = (ShowArrow.Visible.compareTo(showA)!=-1);
+		
 		int last = getWidgetCount() - 1;
 		if (last >=0) {
 			Widget widget = getWidget(last);
@@ -47,24 +58,27 @@ public class ListItem extends FlowPanel{
 		}		
 	}
 	
-	public void setDisabled(boolean disabled) {
-		_disabled = disabled;
-		if (_disabled) {
-			addStyleName("Disabled");
-		}
-		else {
-			removeStyleName("Disabled");
+	public ShowArrow getDisplayArrow() {
+		return this.displayArrow;
+	}
+	
+	public void setEnabled(boolean disabled) {
+		this.enabled = disabled;
+		if (!isEnabled()) {
+			addStyleName(Secondary.Disabled);
+		} else {
+			removeStyleName(Secondary.Disabled);
 		}
 	}
 	
-	public boolean getDisabled() {
-		return _disabled;
+	public boolean isEnabled() {
+		return this.enabled;
 	}
 	
-	void setShowArrowFromParent(boolean show) {
+	protected void setDisplayArrowFromParent(ListPanel.ShowArrow show) {
 		// Parent can only override if it has not been set.
-		if (_showArrow == ShowArrow.Default) {
-			setShowArrow(show);
+		if (this.displayArrow == ShowArrow.InheritFromParent) {
+			setDisplayArrow(ShowArrow.valueOf(show.toString()));
 		}
 	}
 

@@ -16,49 +16,23 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import java.util.Iterator;
-
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtmobile.ui.client.utils.Utils;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
-public class TabContent extends WidgetBase implements HasWidgets {
-
-	protected FlowPanel _panel = new FlowPanel();
+public class TabContent extends PanelBase {
 	
 	public TabContent() {
-		initWidget(_panel);
+		setStyleName(Primary.TabContent);
 	}
 	
+	//FIXME: why need to pass transition end event to children?
 	@Override
-	public void add(Widget w) {
-		_panel.add(w);
-	}
-
-	@Override
-	public void clear() {
-		_panel.clear();
-	}
-
-	@Override
-	public Iterator<Widget> iterator() {
-		return _panel.iterator();
-	}
-
-	@Override
-	public boolean remove(Widget w) {
-		return _panel.remove(w);
-	}
-	
-	@Override
-	public void onTransitionEnd() {
-		for (int i = 0; i < _panel.getWidgetCount(); i++) {
-			Widget w = _panel.getWidget(i);
-			if (Utils.isSubclassOf(w.getClass(), WidgetBase.class)) {
-				((WidgetBase) w).onTransitionEnd();
+	public void onTransitionEnd(TransitionDirection direction) {
+    	for (Widget widget : this.getChildren()) {
+			if (widget instanceof IsGwtMobilePanel) {
+				((IsGwtMobilePanel) widget).onTransitionEnd(direction);
 			}
-		}
+    	}
 	}
 
 }

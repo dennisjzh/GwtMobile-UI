@@ -16,69 +16,74 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import java.beans.Beans;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 import com.gwtmobile.ui.client.page.Transition;
 
-//FIXME: inherit from PanelBase
-public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHandler, HasValueChangeHandlers<Boolean> {
+public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValueChangeHandlers<Boolean> {
 
-    protected FlowPanel _panel = new FlowPanel();
-    protected int _count = 0;
-    protected int _current = 0;
-    protected SlideProvider _slideProvider = null;
-    protected ArrayList<Widget> _slides = new ArrayList<Widget>();
-    protected boolean _rotate = false;
+    protected int count = 0;
+    private int currentSlideIndex = 0;
+    protected SlideProvider slideProvider = null;
+    protected ArrayList<Widget> slides = new ArrayList<Widget>();
+    protected boolean rotate = false;
+    private int selectedSlideIndex = 0; //used for design time slide selection.
 
     public SlidePanel() {
-        initWidget(_panel);
-        setStyleName("SlidePanel");
+        setStyleName(Primary.SlidePanel);
     }
 
+    @Override
+    protected String getDesignTimeMessage() {
+    	return "Add Slide widgets to the panel. Use the 'selectedSlideIndex' property to switch slide at design time.";
+    }
+    
     public void setSlideCount(int count) {
-    	_count = count;
+    	this.count = count;
     }
     
     public int getSlideCount() {
-    	return _count > 0 ? _count : _slides.size();
+    	return count > 0 ? count : slides.size();
     }
     
     public void setSlideProvider(SlideProvider provider) {
-		_slideProvider = provider;
+		slideProvider = provider;
 	}
 
 	public SlideProvider getSlideProvider() {
-		return _slideProvider;
+		return slideProvider;
 	}
 
 	@Override
 	public void onInitialLoad() {
     	super.onInitialLoad();
-		_current = 0;
-    	Slide slide = getSlide(_current);
+		// Use currentSlide as design time slide selector.
+    	if (Beans.isDesignTime()) {
+    		currentSlideIndex = selectedSlideIndex;
+    	}
+    	Slide slide = getSlide(currentSlideIndex);
 		if (slide != null) {
-			_panel.add(slide);
+			super.add(slide);
 		}
     }
 
 	public Slide getSlide(int index) {
 		Slide slide = null;
-    	if (_slideProvider != null) {
-    		slide = _slideProvider.loadSlide(index);
+    	if (slideProvider != null) {
+    		slide = slideProvider.loadSlide(index);
     	}
-		if (slide == null && index < _slides.size() ) {
-			slide = (Slide) _slides.get(index);
+		if (slide == null && index < slides.size() ) {
+			slide = (Slide) slides.get(index);
 		}
 		return slide;
 	}
@@ -110,87 +115,88 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
 	}
 	
 	public void next() {
-		if (_current >= getSlideCount() - 1) {
-			if (!_rotate) {
+		if (currentSlideIndex >= getSlideCount() - 1) {
+			if (!rotate) {
 				return;
 			} else {
-				_current = -1;
+				currentSlideIndex = -1;
 			}
 		}
-		_current++;
-    	moveNext();
-	}
-
-	protected void moveNext() {
-		Slide to = getSlide(_current);
-    	Slide from = (Slide) _panel.getWidget(0);
-    	Transition transition = Transition.SLIDE;
-    	ValueChangeEvent.fire(this, true);
-    	transition.start(from, to, _panel, false);
+		moveToSlide(currentSlideIndex + 1);
 	}
 
 	public void previous() {
-		if (_current <= 0) {
-			if (!_rotate) {
+		if (currentSlideIndex <= 0) {
+			if (!rotate) {
 				return;
 			} else {
-				_current = getSlideCount();
+				currentSlideIndex = getSlideCount();
 			}
 		}
-		_current--;
-		movePrevious();
+		moveToSlide(currentSlideIndex - 1);
 	}
 
-	protected void movePrevious() {
-		Slide to = getSlide(_current);
-    	Slide from = (Slide) _panel.getWidget(0);
+	protected void moveToSlide(int slide) {
+		currentSlideIndex = slide;
+		Slide to = getSlide(currentSlideIndex);
+    	Slide from = (Slide) super.getWidget(0);
     	Transition transition = Transition.SLIDE;
     	ValueChangeEvent.fire(this, false);
-    	transition.start(from, to, _panel, true);
+    	transition.start(from, to, this, true);
 	}
 
-	@Override
-	public void onTransitionEnd() {
-		super.onTransitionEnd();
-		_panel.remove(0);
+	public void goTo(int to) {
+		if (to > 0 && to < getSlideCount()) {
+			moveToSlide(to);
+		}
 	}
 	
-	public int getCurrentSlideIndex() {
-		return _current;
+	@Override
+	public void onTransitionEnd(TransitionDirection direction) {
+		super.onTransitionEnd(direction);
+		if (direction == TransitionDirection.To) {
+			super.remove(0);
+		}
 	}
 	
 	@Override
 	public void add(Widget w) {
-		assert (w instanceof Slide) : "Can only add Slide widgets to SlidePanel.";
-		_slides.add(w);
+		if (w instanceof Slide) {
+			slides.add(w);
+		}
+		else if (isDesignTimeEmptyLabel(w)) {
+			super.add(w);			
+		}
+		else {
+			assert (w instanceof Slide) : "Can only add Slide widgets to SlidePanel.";
+		}
 	}
 
-	@Override
-	public void clear() {
-		_slides.clear();
-		
-	}
-
-	@Override
-	public Iterator<Widget> iterator() {
-		return _slides.iterator();
-	}
-
-	@Override
-	public boolean remove(Widget w) {
-		return _slides.remove(w);
-	}
-	
 	public void setRotate(boolean rotate)
 	{
-		_rotate = rotate;
+		this.rotate = rotate;
 	}
 	
 	public boolean isRotate()
 	{
-	    return _rotate;
+	    return rotate;
 	}
-	
+
+	protected void setCurrentSlideIndex(int currentSlideIndex) {
+		this.currentSlideIndex = currentSlideIndex;
+	}
+
+	public int getCurrentSlideIndex() {
+		return currentSlideIndex;
+	}
+
+	public void setSelectedSlideIndex(int selectedSlideIndex) {
+		this.selectedSlideIndex = selectedSlideIndex;
+	}
+
+	public int getSelectedSlideIndex() {
+		return selectedSlideIndex;
+	}
 	
 	/********************* interface SlideProvider *******************/
 
@@ -203,4 +209,5 @@ public class SlidePanel extends WidgetBase implements HasWidgets, SwipeEventsHan
 			ValueChangeHandler<Boolean> handler) {
 		return this.addHandler(handler, ValueChangeEvent.getType());
 	}
+
 }

@@ -16,27 +16,32 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import java.beans.Beans;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.utils.Utils;
 
 public class RadioButtonGroup extends CheckBoxGroup {
 
-    private String _name = null;
+    private String name = null;
     
     public RadioButtonGroup() {
     	super();
-    	setStyleName("RadioButtonGroup");
-    	addStyleName("Vertical");
+    	setStyleName(Primary.RadioButtonGroup);
+    	addStyleName(Secondary.Vertical);
     }
 
     @Override
     public void onInitialLoad() {
     	super.onInitialLoad();
-    	assert _name != null
-			: "Attribute 'name' must be set on RadioButtonGroup";
+// bypass assertions for gwtdesigner reasons
+//    	assert name != null
+//			: "Attribute 'name' must be set on RadioButtonGroup";
     }
     
     @Override
@@ -62,7 +67,7 @@ public class RadioButtonGroup extends CheckBoxGroup {
         }
         else if (targetTagName.equals("INPUT")) {
     		super.onClick(e);
-        	for (int i = 0; i < _panel.getWidgetCount(); i++) {
+        	for (int i = 0; i < getWidgetCount(); i++) {
 				RadioButton radio = (RadioButton) getWidget(i);
 				radio.setValue(radio.getValue());
 			}
@@ -70,8 +75,8 @@ public class RadioButtonGroup extends CheckBoxGroup {
     }
     
     public int getCheckedIndex() {
-        for (int i = 0; i < _panel.getWidgetCount(); i++) {
-            RadioButton radio = (RadioButton) _panel.getWidget(i);
+        for (int i = 0; i < getWidgetCount(); i++) {
+            RadioButton radio = (RadioButton) getWidget(i);
             if (radio.getValue()) {
             	return i;
             }
@@ -89,26 +94,30 @@ public class RadioButtonGroup extends CheckBoxGroup {
     
     @Override
     public void add(Widget w) {
-    	assert w instanceof RadioButton 
-    		: "Can only contain RadioButton widgets in RadioButtonGroup";
+// no assertions for gwtdesigner reasons
+//    	assert w instanceof RadioButton 
+//    		: "Can only contain RadioButton widgets in RadioButtonGroup";
+    	if (Beans.isDesignTime() && !(w instanceof RadioButton))
+    		return;
+    	
     	RadioButton radio = (RadioButton) w;
-    	if (_name != null) {
-    		radio.setName(_name);
+    	if (name != null) {
+    		radio.setName(name);
     	}
-        _panel.add(radio);
+        super.addWidgetToPanel(radio);
 		radio.addValueChangeHandler(this);
     }
     
     public void setName(String name) {
-    	_name = name;
-    	for (int i = 0; i < _panel.getWidgetCount(); i++) {
-    		RadioButton radio = (RadioButton) _panel.getWidget(i);
-    		radio.setName(_name);
+    	this.name = name;
+    	for (int i = 0; i < getWidgetCount(); i++) {
+    		RadioButton radio = (RadioButton) getWidget(i);
+    		radio.setName(name);
     	}
     }
     
     public String getName() {
-    	return _name;
+    	return name;
     }
     
 }

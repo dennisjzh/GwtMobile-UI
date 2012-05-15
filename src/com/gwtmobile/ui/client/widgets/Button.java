@@ -95,10 +95,6 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
 	}
 
 	@Override
-	public void onTransitionEnd() {
-	}
-
-	@Override
 	public void setSecondaryStyle(String style) {
 		_widgetHelper.setSecondaryStyle(this, style);
 	}

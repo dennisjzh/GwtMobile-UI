@@ -60,10 +60,6 @@ public class CheckBox extends com.google.gwt.user.client.ui.CheckBox
 	}
 
 	@Override
-	public void onTransitionEnd() {
-	}
-
-	@Override
 	public void setSecondaryStyle(String style) {
 		_widgetHelper.setSecondaryStyle(this, style);
 	}

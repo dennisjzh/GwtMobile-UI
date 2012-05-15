@@ -94,18 +94,6 @@ public class HeaderPanel extends PanelBase {
     	}
     }
     
-    public void setBackButton(String buttonName) {
-     
-      SimplePanel leftButton = (SimplePanel)getWidget(0);
-      ClickHandler clickHandler = new ClickHandler() {        
-        @Override
-        public void onClick(ClickEvent event) {
-          onLeftButtonClick(event);
-        }
-      };
-      leftButton.setWidget(new BackButton(buttonName, clickHandler));
-    }
-    
     public void setRightButton(String buttonName) {
     	if (!buttonName.isEmpty()) {
         	SimplePanel rightButton = (SimplePanel)getWidget(2);
@@ -122,18 +110,6 @@ public class HeaderPanel extends PanelBase {
         		rightButton.setWidget(new Button(buttonName, clickHandler));
         	}
     	}
-    }
-    
-    public void setNextButton(String buttonName) {
-      
-      SimplePanel rightButton = (SimplePanel)getWidget(2);
-      ClickHandler clickHandler = new ClickHandler() {        
-        @Override
-        public void onClick(ClickEvent event) {
-          onRightButtonClick(event);
-        }
-      };
-      rightButton.setWidget(new NextButton(buttonName, clickHandler));
     }
     
     public Button getLeftButton() {

@@ -19,7 +19,6 @@ package com.gwtmobile.ui.client.page;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ResizeEvent;
@@ -28,15 +27,17 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.page.PageHistory.NavigateInfo;
 import com.gwtmobile.ui.client.utils.Utils;
 import com.gwtmobile.ui.client.widgets.HeaderPanel;
+import com.gwtmobile.ui.client.widgets.IsGwtMobilePanel;
+import com.gwtmobile.ui.client.widgets.PagePanel;
 import com.gwtmobile.ui.client.widgets.WidgetBase;
 
-//FIXME: extends PanelBase?
-public abstract class Page extends WidgetBase {
+public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 	final static private String CONSUMED_TOKEN = "#?#";
-	private Transition _transition;
-	private static Transition _defaultTransition = Transition.SLIDE;
+	private Transition transition = Transition.SLIDE; // assume SLIDE as default transition
 	protected String tokenStateInfo = CONSUMED_TOKEN;
 	protected static boolean inTransition = false; 
 
@@ -56,7 +57,11 @@ public abstract class Page extends WidgetBase {
 	@Override
 	protected void initWidget(Widget widget) {
 		super.initWidget(widget);
-		setStyleName("Page");
+		setStyleName(Primary.PagePanel);
+		// we might need to assert that the given widget has to be a PagePanel
+		if (widget.getClass().getName().endsWith("PagePanel"))
+			setTransition(((PagePanel)widget).getTransitionFlavor().getTransition());
+
 		// TODO: use permutation instead?
 		if (Utils.isAndroid()) {
 			addStyleName("Android");
@@ -104,34 +109,32 @@ public abstract class Page extends WidgetBase {
 	}
 
 	@Override
-	public void onTransitionEnd() {
-		final Page to, from;
+	public void onTransitionEnd(TransitionDirection direction) {
+		if (direction != TransitionDirection.To) {
+			return;
+		}
+		final Page to;
 		final PageHistory pageHistory = PageHistory.Instance;
 		if (pageHistory.from() == null
 				|| pageHistory.from() != Page.this) { // goto
-			Utils.Console("goto");
-			from = pageHistory.current();
 			to = this;
-			pageHistory.add(to);
 			// TODO: change to use scheduler deferred command.
 			Timer timer = new Timer() {
 				@Override
 				public void run() {
-					to.onNavigateTo();
+					NavigateInfo info = pageHistory.getNavigateInfo();
+					to.onNavigateTo(info.getFromPage(), info.getValue());
 					to.initNavigationIfRequired();
 				}
 			};
 			timer.schedule(1);
 		} else { // goback
-			Utils.Console("goback");
-			from = pageHistory.current();
-			pageHistory.back();
 			to = pageHistory.current();
 			Timer timer = new Timer() {
 				@Override
 				public void run() {
-					to.onNavigateBack(from,
-							pageHistory.getReturnValue());
+					NavigateInfo info = pageHistory.getNavigateInfo();
+					to.onNavigateBack(info.getFromPage(), info.getValue());
 					to.initNavigationIfRequired();
 				}
 			};
@@ -147,26 +150,30 @@ public abstract class Page extends WidgetBase {
 		}
 	}
 
-	protected void onNavigateTo() {
+	protected void onNavigateTo(Page from, Object object) {
 	}
 
 	protected void onNavigateBack(Page from, Object object) {
 	}
 
+	public void goTo(final Page toPage) {
+		goTo(toPage, toPage.getTransition());
+	}
+
+	public void goTo(final Page toPage, Object params) {
+		goTo(toPage, params, toPage.getTransition());
+	}
+
 	public void goTo(final Page toPage, final Transition transition) {
+		goTo(toPage, null, transition);
+	}
+
+	public void goTo(final Page toPage, Object params, final Transition transition) {
 		if (inTransition) {
 			return;//can't start a new page transition until last one is complete.
 		}
 		inTransition = true;
-		Element focus = Utils.getActiveElement();
-		focus.blur();
-		final Page fromPage = this;
-		toPage.setTransition(transition);
-		if (transition != null) {
-			transition.start(fromPage, toPage, RootLayoutPanel.get(), false);
-		} else {
-			Transition.start(fromPage, toPage, RootLayoutPanel.get());
-		}
+		PageHistory.Instance.goTo(toPage, params, transition);
 	}
 
 	public void goBack(Object returnValue) {
@@ -174,30 +181,25 @@ public abstract class Page extends WidgetBase {
 			return;//can't start a new page transition until last one is complete.
 		}
 		inTransition = true;
-		PageHistory.Instance.goBack(this, returnValue);
+		PageHistory.Instance.goBack(returnValue);
 	}
 
-	void setTransition(Transition transition) {
-		_transition = transition;
+	public void setTransition(Transition transition) {
+		this.transition = transition;
 	}
 
-	Transition getTransition() {
-		return _transition;
+	public Transition getTransition() {
+		return transition;
 	}
 
 	public static void load(Page mainPage) {
 		setPageResolution();
-		RootLayoutPanel.get().add(mainPage);
-		PageHistory.Instance.add(mainPage);
+		PageHistory.Instance.startUp(mainPage);
 	}
 
-	public static void setDefaultTransition(Transition transition) {
-		_defaultTransition = transition;
-	}
-
-	public void goTo(final Page toPage) {
-		goTo(toPage, _defaultTransition);
-	}
+//	public static void setDefaultTransition(Transition transition) {
+//		_defaultTransition = transition;
+//	}
 
 	@Override
 	public Widget getWidget() { // make getWidget() public
@@ -241,6 +243,7 @@ public abstract class Page extends WidgetBase {
    * 
    * @param header the header
    */
+	//FIXME: remove "right button" assumption
   public void addHomeHandler(HeaderPanel header) {
     
     header.setRightButtonClickHandler(new ClickHandler()
@@ -303,7 +306,7 @@ public abstract class Page extends WidgetBase {
   public void doOnNavigateTo()
   {
 
-    this.onNavigateTo();
+    this.onNavigateTo(null, null);
   }
 	
 }

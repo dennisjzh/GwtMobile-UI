@@ -33,7 +33,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.utils.Point;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public class DragController implements EventListener {
+public abstract class DragController implements EventListener {
 
     private List<DragEventsHandler> _dragEventHandlers = new ArrayList<DragEventsHandler>();
     private List<SwipeEventsHandler> _swipeEventHandlers = new ArrayList<SwipeEventsHandler>();
@@ -53,7 +53,7 @@ public class DragController implements EventListener {
     protected JavaScriptObject _dragEndListener;
 
 	private static DragController INSTANCE = Beans.isDesignTime() ? 
-			new DragController() : 	(DragController)GWT.create(DragController.class);
+			new DragControllerDesktop() : 	(DragController)GWT.create(DragController.class);
 	
 	DragController() {
 	    Utils.Console("New DragController instance created");

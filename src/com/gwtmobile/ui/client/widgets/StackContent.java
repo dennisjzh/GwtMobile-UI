@@ -16,5 +16,10 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-public class AccordionContent extends PanelBase {
+
+
+public class StackContent extends PanelBase {
+	
+	public StackContent(){
+	}
 }
