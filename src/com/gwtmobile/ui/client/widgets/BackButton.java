@@ -18,6 +18,7 @@ package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 import com.gwtmobile.ui.client.page.PageHistory;
 
 public class BackButton extends Button implements ClickHandler {
@@ -25,20 +26,22 @@ public class BackButton extends Button implements ClickHandler {
     private Object _parameter;
     
     public BackButton() {
+    	//FIXME:internalization.
         setHTML("Back");
         this.addClickHandler(this);
-        setStyleName("BackButton");
+        setStyleName(Primary.BackButton);
     }
 
     public BackButton(String caption, ClickHandler handler) {
         setHTML(caption);
         this.addClickHandler(handler);
-        setStyleName("BackButton");
+        setStyleName(Primary.BackButton);
     }
 
     @Override
     public void setHTML(String html) {
-    	super.setHTML("<span class=\"Pointer\"></span>" + "<span class=\"Button\">" + html + "</span>");
+    	//FIXME: does mark-up belong in code?
+    	super.setHTML("<span class=\"Pointer\"></span>" + "<span class=\"" + Primary.Button + "\">" + html + "</span>");
     }
     
     public void setReturnParameter(Object parameter) {

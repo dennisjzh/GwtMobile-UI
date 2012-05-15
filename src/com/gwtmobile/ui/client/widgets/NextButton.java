@@ -17,23 +17,26 @@
 package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
 public class NextButton extends Button {
 
     public NextButton() {
+    	//FIXME: internalization
         setHTML("Next");
-        setStyleName("NextButton");
+        setStyleName(Primary.NextButton);
     }
 
     public NextButton(String caption, ClickHandler handler) {
         setHTML(caption);
         this.addClickHandler(handler);
-        setStyleName("NextButton");
+        setStyleName(Primary.NextButton);
     }
 
     @Override
     public void setHTML(String html) {
-    	super.setHTML("<span class=\"Button\">" + html + "</span>" + "<span class=\"Pointer\"></span>");
+    	//FIXME: does mark-up belong in code?
+    	super.setHTML("<span class=\"" + Primary.Button + "\">" + html + "</span>" + "<span class=\"Pointer\"></span>");
     }
     
 }
