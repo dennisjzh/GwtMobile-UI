@@ -177,11 +177,11 @@ public abstract class Page extends WidgetBase {
 		PageHistory.Instance.goBack(this, returnValue);
 	}
 
-	void setTransition(Transition transition) {
+	public void setTransition(Transition transition) {
 		_transition = transition;
 	}
 
-	Transition getTransition() {
+	public Transition getTransition() {
 		return _transition;
 	}
 

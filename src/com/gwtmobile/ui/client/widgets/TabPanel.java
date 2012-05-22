@@ -40,6 +40,7 @@ public class TabPanel extends WidgetBase implements HasWidgets, HasSelectionHand
     private FlowPanel _tabContentPanel = new FlowPanel();
     private int _selectedTabIndex = -1;
     private boolean _tabsOnBottom = false;
+    private int _defaultTab = 0;
     
     public TabPanel() {
         initWidget(_panel);
@@ -59,10 +60,17 @@ public class TabPanel extends WidgetBase implements HasWidgets, HasSelectionHand
     }
     
     @Override
-	public void onInitialLoad() {
-    	if (_tabHeaderPanel.getWidgetCount() > 0) {
-    		//FIXME:allow a different default tab to be set?
-            selectTab(0);
+    public void onInitialLoad() {
+      
+      // Added a default tab
+      // Frank Mena
+      int widgetCount = _tabHeaderPanel.getWidgetCount();
+      
+    	if (widgetCount > 0) {
+    	  if (_defaultTab < widgetCount)
+    	    selectTab(_defaultTab);
+    	  else
+          selectTab(0);
     	}
     }
     
@@ -171,5 +179,16 @@ public class TabPanel extends WidgetBase implements HasWidgets, HasSelectionHand
 		else {
 			removeStyleName("TabBarPanel");
 		}
+	}
+	
+	/**
+	 * Sets the default tab.
+	 *
+	 * @param defaultTab the new default tab
+	 * 
+	 * Frank Mena
+	 */
+	public void setDefaultTab(int defaultTab) {
+	  _defaultTab = defaultTab;
 	}
 }
