@@ -40,7 +40,7 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 	private Transition transition = Transition.SLIDE; // assume SLIDE as default transition
 	protected String tokenStateInfo = CONSUMED_TOKEN;
 	protected static boolean inTransition = false; 
-
+	
 	static {
 		if (!Utils.isDesktop() && !Utils.hasPhoneGap()) {
 			hideAddressBar();
@@ -53,6 +53,8 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 			}); 
 		} 
 	}
+
+	public static boolean isInTransition() {return inTransition;};
 	
 	@Override
 	protected void initWidget(Widget widget) {

@@ -30,6 +30,7 @@ import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.utils.Point;
 import com.gwtmobile.ui.client.utils.Utils;
 
@@ -94,7 +95,7 @@ public abstract class DragController implements EventListener {
 	}
 	
     private void onClick(Event e) {
-        if (_suppressNextClick) {
+        if (_suppressNextClick || Page.isInTransition()) {
             e.stopPropagation();
             _suppressNextClick = false;
             Utils.Console("click suppressed");
