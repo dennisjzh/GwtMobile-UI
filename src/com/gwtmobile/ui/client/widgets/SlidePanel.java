@@ -182,7 +182,7 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	    return rotate;
 	}
 
-	protected void setCurrentSlideIndex(int currentSlideIndex) {
+	public void setCurrentSlideIndex(int currentSlideIndex) {
 		this.currentSlideIndex = currentSlideIndex;
 	}
 
