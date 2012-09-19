@@ -18,6 +18,7 @@ package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
+import com.gwtmobile.ui.client.CSS.StyleNames;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
@@ -28,7 +29,7 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
 	private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
 	
     public Button() {
-        setStyleName("Button");
+        setStyleName(StyleNames.Primary.Button);
     }
     
     public Button(String caption, ClickHandler handler) {
@@ -52,7 +53,7 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     @Override
     public void onDragStart(DragEvent e) {
     	if (!_isDisabled) {
-            addStyleName("Pressed");
+            addStyleName(StyleNames.Secondary.Pressed);
     	}
         e.stopPropagation();
     }
@@ -60,7 +61,7 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     @Override
     public void onDragMove(DragEvent e) {
     	if (!_isDisabled) {
-    		removeStyleName("Pressed");       
+    		removeStyleName(StyleNames.Secondary.Pressed);       
     	}
         e.stopPropagation();
     }
@@ -68,7 +69,7 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     @Override
     public void onDragEnd(DragEvent e) {
     	if (!_isDisabled) {
-    		removeStyleName("Pressed");
+    		removeStyleName(StyleNames.Secondary.Pressed);
     	}
     	else {
     		DragController.get().suppressNextClick();
@@ -79,10 +80,10 @@ public class Button extends HTML implements DragEventsHandler, IsGwtMobileWidget
     public void setDisabled(boolean disabled) {
     	_isDisabled = disabled;
     	if (disabled) {
-    		addStyleName("Disabled");
+    		addStyleName(StyleNames.Secondary.Disabled);
     	}
     	else {
-    		removeStyleName("Disabled");
+    		removeStyleName(StyleNames.Secondary.Disabled);
     	}
     }
     
