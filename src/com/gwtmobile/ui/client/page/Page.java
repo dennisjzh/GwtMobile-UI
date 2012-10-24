@@ -209,26 +209,22 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 	}
 
 	private static void setPageResolution() {
-		double ratio = getDevicePixelRatio();
-		if (ratio == 2) { 
-			// iphone 4. screen size on iphone does not change
-			// despite the dp ratio.
-			if (Utils.isIOS()) {
-				Document.get().getDocumentElement().setClassName("HVGA");
-			}
-			else {
-				Document.get().getDocumentElement().setClassName("WXGA");
-			}
-		} else if (ratio == 1.5) {
-			Document.get().getDocumentElement().setClassName("WVGA");
-		} else if (ratio == 0.75) {
-			Document.get().getDocumentElement().setClassName("QVGA");
-		} else if (ratio == 1 && Utils.isMobileChrome()) { //Chrome for Android bug?
-			Document.get().getDocumentElement().setClassName("WXGA");
-		}
-		else {
+		int clientWidth = Window.getClientWidth();
+		if (Utils.isDesktop()) {
 			Document.get().getDocumentElement().setClassName("HVGA");
 		}
+		else if (clientWidth < 320) {
+			Document.get().getDocumentElement().setClassName("QVGA");
+		}
+		else if (clientWidth < 480) {
+			Document.get().getDocumentElement().setClassName("HVGA");
+		}
+		else if (clientWidth < 560) {
+			Document.get().getDocumentElement().setClassName("WVGA");
+		}
+		else {
+			Document.get().getDocumentElement().setClassName("WXGA");
+		}		
 	}
 
 	public static native double getDevicePixelRatio() /*-{
