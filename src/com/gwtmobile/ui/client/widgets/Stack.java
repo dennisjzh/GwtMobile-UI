@@ -28,12 +28,10 @@ import com.gwtmobile.ui.client.utils.Utils;
 public class Stack extends PanelBase {
 
     StackHeader _header;
-    StackContent _content;
-    
-    public enum StackInitialState {Default, Collapsed, Expanded};
-    
-    private StackInitialState initialState = StackInitialState.Default;
-    private boolean freezeState = false;
+    StackContent _content;    
+    public enum StackInitialState { Default, Collapsed, Expanded };
+    private StackInitialState _initialState = StackInitialState.Default;
+    private boolean _freezeState = false;
     
     @Override
     protected String getDesignTimeMessage() {
@@ -42,7 +40,7 @@ public class Stack extends PanelBase {
 
 	@Override
 	public void onInitialLoad() {
-		switch (initialState) {
+		switch (_initialState) {
 			case Collapsed:
 				collapse();
 				break;
@@ -133,19 +131,19 @@ public class Stack extends PanelBase {
     }
 
 	public StackInitialState getInitialState() {
-		return initialState;
+		return _initialState;
 	}
 
 	public void setInitialState(StackInitialState initialState) {
-		this.initialState = initialState;
+		this._initialState = initialState;
 	}
 
 	public boolean isFreezeState() {
-		return freezeState;
+		return _freezeState;
 	}
 
 	public void setFreezeState(boolean freezeState) {
-		this.freezeState = freezeState;
+		this._freezeState = freezeState;
 	}
 
     

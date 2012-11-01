@@ -9,7 +9,8 @@ import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
 public class TabContentPanel extends PanelBase {
 
-	ArrayList<TabContent> contentArray = new ArrayList<TabContent>();
+	ArrayList<TabContent> _contentArray = new ArrayList<TabContent>();
+	
 	public TabContentPanel(){
 		setStyleName(Primary.TabContentPanel);
 	}
@@ -18,7 +19,7 @@ public class TabContentPanel extends PanelBase {
     public void add(Widget w) {
     
     	if (w instanceof TabContent) {
-        	contentArray.add((TabContent) w);
+        	_contentArray.add((TabContent) w);
     	} 
     	else if (isDesignTimeEmptyLabel(w)) {
         	super.add(w);
@@ -35,10 +36,10 @@ public class TabContentPanel extends PanelBase {
     }
 
     public void selectTab(int fromIndex, int toIndex) {
-    	if (toIndex < 0 || contentArray.size() <= toIndex) {
+    	if (toIndex < 0 || _contentArray.size() <= toIndex) {
     		return;
     	}
-    	TabContent to = contentArray.get(toIndex);
+    	TabContent to = _contentArray.get(toIndex);
     	if (getWidgetCount() > 0 && fromIndex > -1) {
     		TabContent from = (TabContent) getWidget(0);
     		//FIXME: transition not working

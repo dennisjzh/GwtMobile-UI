@@ -32,27 +32,27 @@ public class TabPanel extends PanelBase
 	implements HasSelectionHandlers<Integer>, ClickHandler {
 
 
-	public enum TabPosition {Top, Bottom}; // todo: LeftTabs, RightTabs
-    private TabHeaderPanel tabHeaderPanel;
-    private TabContentPanel tabContentPanel;
-    private int selectedTabIndex = -1;
-    private int defaultTabIndex = 0;
-    private boolean fullHeight = false;
-    private TabPosition tabPosition = TabPosition.Top;
+	public enum TabPosition { Top, Bottom }; // todo: LeftTabs, RightTabs
+    private TabHeaderPanel _tabHeaderPanel;
+    private TabContentPanel _tabContentPanel;
+    private int _selectedTabIndex = -1;
+    private int _defaultTabIndex = 0;
+    private boolean _fullHeight = false;
+    private TabPosition _tabPosition = TabPosition.Top;
 
 	public TabPanel() {
         setStyleName(Primary.TabPanel);
-        addStyleName(tabPosition.toString());
+        addStyleName(_tabPosition.toString());
     }
     
     @Override
     public void add(Widget w) {
     	
     	if (w instanceof TabHeaderPanel) {
-    		if (tabHeaderPanel == null) {
-	    		tabHeaderPanel = (TabHeaderPanel)w;
-	    		tabHeaderPanel.addDomHandler(this, ClickEvent.getType());
-	    		super.add(tabHeaderPanel);
+    		if (_tabHeaderPanel == null) {
+	    		_tabHeaderPanel = (TabHeaderPanel)w;
+	    		_tabHeaderPanel.addDomHandler(this, ClickEvent.getType());
+	    		super.add(_tabHeaderPanel);
 	    		return;
     		}
     		else {
@@ -61,9 +61,9 @@ public class TabPanel extends PanelBase
     	}
     	
     	if (w instanceof TabContentPanel) {
-    		if (tabContentPanel == null) {
-        		tabContentPanel = (TabContentPanel)w;
-        		super.add(tabContentPanel);
+    		if (_tabContentPanel == null) {
+        		_tabContentPanel = (TabContentPanel)w;
+        		super.add(_tabContentPanel);
         		return;
     		}
     		else {
@@ -82,34 +82,34 @@ public class TabPanel extends PanelBase
     
     @Override
 	public void onInitialLoad() {
-    	if (tabHeaderPanel != null && tabHeaderPanel.getWidgetCount() > 0) {
+    	if (_tabHeaderPanel != null && _tabHeaderPanel.getWidgetCount() > 0) {
     		// Use selectedTabIndex as design time tab selector.
-    		if (Beans.isDesignTime() && selectedTabIndex > -1) {
-                selectTab(selectedTabIndex);
+    		if (Beans.isDesignTime() && _selectedTabIndex > -1) {
+                selectTab(_selectedTabIndex);
     		}
     		else {
-                selectTab(defaultTabIndex);
+                selectTab(_defaultTabIndex);
     		}
     	}
     }
     
     public void selectTab(int index) {
 
-    	if (selectedTabIndex == index) {
+    	if (_selectedTabIndex == index) {
         	return;
         }
-    	if (selectedTabIndex != -1) {
-        	tabHeaderPanel.unSelectHeader(selectedTabIndex);
+    	if (_selectedTabIndex != -1) {
+        	_tabHeaderPanel.unSelectHeader(_selectedTabIndex);
     	}
-        tabHeaderPanel.selectHeader(index);
+        _tabHeaderPanel.selectHeader(index);
         //FIXME
-        if (tabContentPanel != null) tabContentPanel.selectTab(selectedTabIndex, index);
-        selectedTabIndex = index;
-        SelectionEvent.fire(this, selectedTabIndex);
+        if (_tabContentPanel != null) _tabContentPanel.selectTab(_selectedTabIndex, index);
+        _selectedTabIndex = index;
+        SelectionEvent.fire(this, _selectedTabIndex);
     }
 
     public int getSelectedTabIndex() {
-        return selectedTabIndex;
+        return _selectedTabIndex;
     }
 
     public void setSelectedTabIndex(int index) {
@@ -117,16 +117,16 @@ public class TabPanel extends PanelBase
     }
 
     public TabHeader getSelectedTab() {
-    	return (TabHeader) tabHeaderPanel.getWidget(selectedTabIndex);
+    	return (TabHeader) _tabHeaderPanel.getWidget(_selectedTabIndex);
     }
     
     public TabContent getSelectedTabContent() {
-    	return tabContentPanel.getSelectedTabContent();
+    	return _tabContentPanel.getSelectedTabContent();
     }
     
 	@Override
 	public void onClick(ClickEvent event) {
-		int index = tabHeaderPanel.getClickedTabHeaderIndex(event);
+		int index = _tabHeaderPanel.getClickedTabHeaderIndex(event);
 		if (index != -1) {
             selectTab(index);
 		}
@@ -139,40 +139,40 @@ public class TabPanel extends PanelBase
 	}
 	
 	public TabPosition getTabPosition() {
-		return tabPosition;
+		return _tabPosition;
 	}
 
 	public void setTabPosition(TabPosition tabsPosition) {
-		this.tabPosition = tabsPosition;
-		if (tabsPosition == TabPosition.Bottom && getWidget(0) == tabHeaderPanel) {
+		this._tabPosition = tabsPosition;
+		if (tabsPosition == TabPosition.Bottom && getWidget(0) == _tabHeaderPanel) {
 			super.clear();
-			super.add(tabContentPanel);
-			super.add(tabHeaderPanel);
+			super.add(_tabContentPanel);
+			super.add(_tabHeaderPanel);
 			addStyleName(Secondary.Bottom);
 			removeStyleName(Secondary.Top);
-		} else if(tabsPosition == TabPosition.Top && getWidget(0) == tabContentPanel){
+		} else if(tabsPosition == TabPosition.Top && getWidget(0) == _tabContentPanel){
 			super.clear();
-			super.add(tabHeaderPanel);
-			super.add(tabContentPanel);
+			super.add(_tabHeaderPanel);
+			super.add(_tabContentPanel);
 			addStyleName(Secondary.Top);
 			removeStyleName(Secondary.Bottom);
 		}
 	}
 	
 	public int getDefaultTabIndex() {
-		return defaultTabIndex;
+		return _defaultTabIndex;
 	}
 
 	public void setDefaultTabIndex(int defaultTabIndex) {
-		this.defaultTabIndex = defaultTabIndex;
+		this._defaultTabIndex = defaultTabIndex;
 	}
 
 	public boolean isFullHeight() {
-		return fullHeight;
+		return _fullHeight;
 	}
 
 	public void setFullHeight(boolean fullHeight) {
-		this.fullHeight = fullHeight;
+		this._fullHeight = fullHeight;
 		if (fullHeight){
 			addStyleName(Secondary.FullHeight);
 		} else { 
