@@ -42,7 +42,7 @@ import com.gwtmobile.ui.client.utils.Utils;
 public class CheckBoxGroup extends PanelBase
 	implements HasWidgets, ClickHandler, DragEventsHandler, ValueChangeHandler<Boolean> {
 
-	private int pressed = -1;
+	private int _pressed = -1;
 
     public CheckBoxGroup() {
     	super();
@@ -165,19 +165,19 @@ public class CheckBoxGroup extends PanelBase
 
 	@Override
 	public void onDragStart(DragEvent e) {
-		pressed = Utils.getTargetItemIndex(getElement(), e.getNativeEvent().getEventTarget());
-    	if (pressed >= 0) {
-    		Widget item = getWidget(pressed);
+		_pressed = Utils.getTargetItemIndex(getElement(), e.getNativeEvent().getEventTarget());
+    	if (_pressed >= 0) {
+    		Widget item = getWidget(_pressed);
     		item.addStyleName(Secondary.Pressed);
     	}
 	}
 	
 	@Override
 	public void onDragMove(DragEvent e) {
-		if (pressed >= 0) {
-    		Widget item = getWidget(pressed);
+		if (_pressed >= 0) {
+    		Widget item = getWidget(_pressed);
     		item.removeStyleName(Secondary.Pressed);
-    		pressed = -1;
+    		_pressed = -1;
 		}
 	}
 

@@ -34,9 +34,9 @@ import com.gwtmobile.ui.client.utils.Utils;
 public class ListPanel extends PanelBase implements ClickHandler, DragEventsHandler{
 
 	public enum ShowArrow { Visible, Hidden };
-	private ShowArrow showArrow;
-	private int selected = -1;
-	private boolean selectable = true;
+	private ShowArrow _showArrow;
+	private int _selected = -1;
+	private boolean _selectable = true;
 	
     public ListPanel() { 
         addDomHandler(this, ClickEvent.getType());
@@ -73,7 +73,7 @@ public class ListPanel extends PanelBase implements ClickHandler, DragEventsHand
         	ListItem listItem = new ListItem();
         	super.add(listItem);    	
         	listItem.add(w);
-        	if (showArrow == ShowArrow.Visible) {
+        	if (_showArrow == ShowArrow.Visible) {
 	        	Chevron chevron = new Chevron();
 	        	listItem.add(chevron);
         	}
@@ -82,20 +82,20 @@ public class ListPanel extends PanelBase implements ClickHandler, DragEventsHand
 
     @Override
     public void onClick(ClickEvent e) {
-        if (selected >= 0) {
-    		ListItem item = (ListItem) getWidget(selected);
+        if (_selected >= 0) {
+    		ListItem item = (ListItem) getWidget(_selected);
     		if (item.isEnabled()) {
-	            SelectionChangedEvent selectionChangedEvent = new SelectionChangedEvent(selected, 
+	            SelectionChangedEvent selectionChangedEvent = new SelectionChangedEvent(_selected, 
 	            	e.getNativeEvent().getEventTarget());
 	            this.fireEvent(selectionChangedEvent);
 	        	item.removeStyleName(Secondary.Pressed);
     		}
-    		selected = -1;
+    		_selected = -1;
         }
     }
     
     public void setDisplayArrow(ShowArrow show) {
-    	showArrow = show;
+    	_showArrow = show;
     	for (int i = 0; i < getWidgetCount(); i++) {
     		ListItem listItem = (ListItem) getWidget(i);
 			listItem.setDisplayArrowFromParent(show);
@@ -103,33 +103,33 @@ public class ListPanel extends PanelBase implements ClickHandler, DragEventsHand
     }
     
     public ShowArrow getDisplayArrow() {
-    	return showArrow;
+    	return _showArrow;
     }
     
     public void isSelectable(boolean selectable) {
-    	this.selectable  = selectable;
+    	this._selectable  = selectable;
     }
     
     public void setSelectable(boolean selectable) {
-    	this.selectable  = selectable;
+    	this._selectable  = selectable;
     }
     
     public boolean getSelectable() {
-    	return selectable;
+    	return _selectable;
     }
     
     @Override
     public void onDragStart(DragEvent e) {
-    	if (selectable) {
-	    	selected = Utils.getTargetItemIndex(getElement(), e.getNativeEvent().getEventTarget());
-	    	if (selected >= 0) {
+    	if (_selectable) {
+	    	_selected = Utils.getTargetItemIndex(getElement(), e.getNativeEvent().getEventTarget());
+	    	if (_selected >= 0) {
 	    		new Timer() {
 					@Override
 					public void run() {
-				    	if (selected >= 0) {
-				    		ListItem item = (ListItem) getWidget(selected);
+				    	if (_selected >= 0) {
+				    		ListItem item = (ListItem) getWidget(_selected);
 				    		if (item.isEnabled()) {
-					        	getWidget(selected).addStyleName(Secondary.Pressed);
+					        	getWidget(_selected).addStyleName(Secondary.Pressed);
 				    		}
 				    	}
 					}
@@ -140,16 +140,16 @@ public class ListPanel extends PanelBase implements ClickHandler, DragEventsHand
 
     @Override
     public void onDragMove(DragEvent e) {
-    	if (selected >= 0) {
-        	getWidget(selected).removeStyleName(Secondary.Pressed);
-    		selected = -1;
+    	if (_selected >= 0) {
+        	getWidget(_selected).removeStyleName(Secondary.Pressed);
+    		_selected = -1;
     	}
     }
 
     @Override
     public void onDragEnd(DragEvent e) {
-    	if (selected >= 0) {
-        	getWidget(selected).removeStyleName(Secondary.Pressed);
+    	if (_selected >= 0) {
+        	getWidget(_selected).removeStyleName(Secondary.Pressed);
     		//_selected = -1; need to keep the selected value for click event.
     	}
     }

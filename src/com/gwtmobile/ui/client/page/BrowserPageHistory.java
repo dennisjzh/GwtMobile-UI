@@ -89,7 +89,7 @@ public class BrowserPageHistory extends SerialPageHistory implements ValueChange
 		if (page == null) // FIXME: Maybe throw an IllegalArgumentException?
 			Utils.Console("No page registered for history token:" + token);
 		else {
-			page.tokenStateInfo = tokenRef[1];
+			page._tokenStateInfo = tokenRef[1];
 			Page current = current();
 			if (current == null) {
 				Page.load(page);

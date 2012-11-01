@@ -4,9 +4,10 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 import com.gwtmobile.ui.client.page.Transition.TransitionFlavor;
 
+//FIXME: why pagepanel does not extends PanelBase?
 public class PagePanel extends HTMLPanel {
 
-	private TransitionFlavor transitionFlavor = TransitionFlavor.SLIDE;
+	private TransitionFlavor _transitionFlavor = TransitionFlavor.SLIDE;
 	
 	public PagePanel(String html) {
 		super(html);
@@ -14,10 +15,10 @@ public class PagePanel extends HTMLPanel {
 	}
 
 	public TransitionFlavor getTransitionFlavor() {
-		return transitionFlavor;
+		return _transitionFlavor;
 	}
 
 	public void setTransitionFlavor(TransitionFlavor transitionFlavor) {
-		this.transitionFlavor = transitionFlavor;
+		this._transitionFlavor = transitionFlavor;
 	}
 }

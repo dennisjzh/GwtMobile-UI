@@ -25,7 +25,7 @@ import com.gwtmobile.ui.client.utils.Utils;
 public class RadioButton extends com.google.gwt.user.client.ui.RadioButton 
 	implements IsGwtMobileWidget {
 
-    private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
+    private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
 	
 	public RadioButton() {
 		super(null);
@@ -39,7 +39,7 @@ public class RadioButton extends com.google.gwt.user.client.ui.RadioButton
 	@Override
 	protected void onLoad() {
 		super.onLoad();
-		widgetHelper.CheckInitialLoad(this);
+		_widgetHelper.CheckInitialLoad(this);
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class RadioButton extends com.google.gwt.user.client.ui.RadioButton
 
 	@Override
 	public void setSecondaryStyle(String style) {
-		widgetHelper.setSecondaryStyle(this, style);
+		_widgetHelper.setSecondaryStyle(this, style);
 	}
 
 }

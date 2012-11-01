@@ -28,41 +28,41 @@ import com.gwtmobile.ui.client.event.DragEventsHandler;
 
 public class StackHeader extends PanelBase implements ClickHandler, DragEventsHandler {
 
-	private StackArrow stackArrow = new StackArrow();
-	private boolean showArrow = true;
-	private boolean enabled = true;
+	private StackArrow _stackArrow = new StackArrow();
+	private boolean _showArrow = true;
+	private boolean _enabled = true;
 	
 	public StackHeader() {
 	    this.addDomHandler(this, ClickEvent.getType());    
-        this.add(stackArrow);
+        this.add(_stackArrow);
 
 	}
 	
 	public boolean isShowArrow() {
-		return showArrow;
+		return _showArrow;
 	}
 
 	public void setShowArrow(boolean showArrow) {
 		if (isShowArrow() != showArrow){
 			if (showArrow) {
-				this.add(stackArrow);
+				this.add(_stackArrow);
 			} else {
-				this.remove(stackArrow);
+				this.remove(_stackArrow);
 			}
-			this.showArrow = showArrow;
+			this._showArrow = showArrow;
 		}
 	}
 
 
 	public boolean isEnabled() {
-		return enabled;
+		return _enabled;
 	}
 
 	//TODO: fix me
 	public void setEnabled(boolean enabled) {
-		removeStyleName(""+this.enabled);
-		this.enabled = enabled;
-		addStyleName(""+this.enabled);
+		removeStyleName(""+this._enabled);
+		this._enabled = enabled;
+		addStyleName(""+this._enabled);
 	}
 	
 	@Override

@@ -28,7 +28,7 @@ import com.gwtmobile.ui.client.utils.Utils;
 
 public class RadioButtonGroup extends CheckBoxGroup {
 
-    private String name = null;
+    private String _name = null;
     
     public RadioButtonGroup() {
     	super();
@@ -101,15 +101,15 @@ public class RadioButtonGroup extends CheckBoxGroup {
     		return;
     	
     	RadioButton radio = (RadioButton) w;
-    	if (name != null) {
-    		radio.setName(name);
+    	if (_name != null) {
+    		radio.setName(_name);
     	}
         super.addWidgetToPanel(radio);
 		radio.addValueChangeHandler(this);
     }
     
     public void setName(String name) {
-    	this.name = name;
+    	this._name = name;
     	for (int i = 0; i < getWidgetCount(); i++) {
     		RadioButton radio = (RadioButton) getWidget(i);
     		radio.setName(name);
@@ -117,7 +117,7 @@ public class RadioButtonGroup extends CheckBoxGroup {
     }
     
     public String getName() {
-    	return name;
+    	return _name;
     }
     
 }

@@ -24,12 +24,12 @@ import com.google.gwt.user.client.ui.Label;
 
 public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implements IsGwtMobilePanel {
 	    
-	    private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
+	    private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
 	    
 	    @Override
 	    public void onLoad() {
 	    	super.onLoad();
-	    	widgetHelper.CheckInitialLoad(this);
+	    	_widgetHelper.CheckInitialLoad(this);
 	    }
 
 	    @Override
@@ -42,7 +42,7 @@ public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implement
 	    
 	    @Override
 		public void setSecondaryStyle(String style) {
-	    	widgetHelper.setSecondaryStyle(this, style);
+	    	_widgetHelper.setSecondaryStyle(this, style);
 	    }
 
 	    @Override

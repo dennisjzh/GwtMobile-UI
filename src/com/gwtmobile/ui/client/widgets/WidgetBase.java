@@ -20,12 +20,12 @@ import com.google.gwt.user.client.ui.Composite;
 
 public class WidgetBase extends Composite implements IsGwtMobileWidget {
 
-    private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
+    private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
     
     @Override
     public void onLoad() {
     	super.onLoad();
-    	widgetHelper.CheckInitialLoad(this);
+    	_widgetHelper.CheckInitialLoad(this);
     }
 
     @Override
@@ -34,6 +34,6 @@ public class WidgetBase extends Composite implements IsGwtMobileWidget {
     
     @Override
 	public void setSecondaryStyle(String style) {
-    	widgetHelper.setSecondaryStyle(this, style);
+    	_widgetHelper.setSecondaryStyle(this, style);
     }
 }

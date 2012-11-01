@@ -27,8 +27,8 @@ import com.gwtmobile.ui.client.utils.Utils;
 
 public class Stack extends PanelBase {
 
-    StackHeader header;
-    StackContent content;
+    StackHeader _header;
+    StackContent _content;
     
     public enum StackInitialState {Default, Collapsed, Expanded};
     
@@ -62,16 +62,16 @@ public class Stack extends PanelBase {
     @Override
     public void add(Widget w) {
         if (w instanceof StackHeader) {
-        	if (header == null) {
-            	header = (StackHeader) w;
+        	if (_header == null) {
+            	_header = (StackHeader) w;
         	}
         	else {
         		assert false: "Stack widget can only contain one StackHeader widget.";
         	}
         }
         else if (w instanceof StackContent) {
-        	if (content == null) {
-            	content = (StackContent) w;
+        	if (_content == null) {
+            	_content = (StackContent) w;
         	}
         	else {
         		assert false: "Stack widget can only contain one StackContent widget.";
@@ -91,8 +91,8 @@ public class Stack extends PanelBase {
 		Scheduler.get().scheduleDeferred(new ScheduledCommand() {			
 			@Override
 			public void execute() {
-				if (content != null) 
-					content.setHeight("0px");
+				if (_content != null) 
+					_content.setHeight("0px");
 			}
 		});
     }
@@ -106,7 +106,7 @@ public class Stack extends PanelBase {
 		Scheduler.get().scheduleDeferred(new ScheduledCommand() {			
 			@Override
 			public void execute() {
-		        content.setHeight(content.getElement().getScrollHeight() - Utils.getPaddingHeight(content.getElement()) + "px");
+		        _content.setHeight(_content.getElement().getScrollHeight() - Utils.getPaddingHeight(_content.getElement()) + "px");
 			}
 		});
     }
@@ -125,11 +125,11 @@ public class Stack extends PanelBase {
     }
     
     public StackHeader getHeader() {
-        return header;
+        return _header;
     }
     
     public StackContent getContent() {
-        return content;
+        return _content;
     }
 
 	public StackInitialState getInitialState() {

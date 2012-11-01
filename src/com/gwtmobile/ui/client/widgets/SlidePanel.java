@@ -32,12 +32,12 @@ import com.gwtmobile.ui.client.page.Transition;
 
 public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValueChangeHandlers<Boolean> {
 
-    protected int count = 0;
-    private int currentSlideIndex = 0;
-    protected SlideProvider slideProvider = null;
-    protected ArrayList<Widget> slides = new ArrayList<Widget>();
-    protected boolean rotate = false;
-    private int selectedSlideIndex = 0; //used for design time slide selection.
+    protected int _count = 0;
+    private int _currentSlideIndex = 0;
+    protected SlideProvider _slideProvider = null;
+    protected ArrayList<Widget> _slides = new ArrayList<Widget>();
+    protected boolean _rotate = false;
+    private int _selectedSlideIndex = 0; //used for design time slide selection.
 
     public SlidePanel() {
         setStyleName(Primary.SlidePanel);
@@ -49,19 +49,19 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
     }
     
     public void setSlideCount(int count) {
-    	this.count = count;
+    	this._count = count;
     }
     
     public int getSlideCount() {
-    	return count > 0 ? count : slides.size();
+    	return _count > 0 ? _count : _slides.size();
     }
     
     public void setSlideProvider(SlideProvider provider) {
-		slideProvider = provider;
+		_slideProvider = provider;
 	}
 
 	public SlideProvider getSlideProvider() {
-		return slideProvider;
+		return _slideProvider;
 	}
 
 	@Override
@@ -69,9 +69,9 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
     	super.onInitialLoad();
 		// Use currentSlide as design time slide selector.
     	if (Beans.isDesignTime()) {
-    		currentSlideIndex = selectedSlideIndex;
+    		_currentSlideIndex = _selectedSlideIndex;
     	}
-    	Slide slide = getSlide(currentSlideIndex);
+    	Slide slide = getSlide(_currentSlideIndex);
 		if (slide != null) {
 			super.add(slide);
 		}
@@ -79,11 +79,11 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 
 	public Slide getSlide(int index) {
 		Slide slide = null;
-    	if (slideProvider != null) {
-    		slide = slideProvider.loadSlide(index);
+    	if (_slideProvider != null) {
+    		slide = _slideProvider.loadSlide(index);
     	}
-		if (slide == null && index < slides.size() ) {
-			slide = (Slide) slides.get(index);
+		if (slide == null && index < _slides.size() ) {
+			slide = (Slide) _slides.get(index);
 		}
 		return slide;
 	}
@@ -115,30 +115,30 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	}
 	
 	public void next() {
-		if (currentSlideIndex >= getSlideCount() - 1) {
-			if (!rotate) {
+		if (_currentSlideIndex >= getSlideCount() - 1) {
+			if (!_rotate) {
 				return;
 			} else {
-				currentSlideIndex = -1;
+				_currentSlideIndex = -1;
 			}
 		}
-		moveToSlide(currentSlideIndex + 1);
+		moveToSlide(_currentSlideIndex + 1);
 	}
 
 	public void previous() {
-		if (currentSlideIndex <= 0) {
-			if (!rotate) {
+		if (_currentSlideIndex <= 0) {
+			if (!_rotate) {
 				return;
 			} else {
-				currentSlideIndex = getSlideCount();
+				_currentSlideIndex = getSlideCount();
 			}
 		}
-		moveToSlide(currentSlideIndex - 1);
+		moveToSlide(_currentSlideIndex - 1);
 	}
 
 	protected void moveToSlide(int slide) {
-		currentSlideIndex = slide;
-		Slide to = getSlide(currentSlideIndex);
+		_currentSlideIndex = slide;
+		Slide to = getSlide(_currentSlideIndex);
     	Slide from = (Slide) super.getWidget(0);
     	Transition transition = Transition.SLIDE;
     	ValueChangeEvent.fire(this, false);
@@ -162,7 +162,7 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	@Override
 	public void add(Widget w) {
 		if (w instanceof Slide) {
-			slides.add(w);
+			_slides.add(w);
 		}
 		else if (isDesignTimeEmptyLabel(w)) {
 			super.add(w);			
@@ -174,28 +174,28 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 
 	public void setRotate(boolean rotate)
 	{
-		this.rotate = rotate;
+		this._rotate = rotate;
 	}
 	
 	public boolean isRotate()
 	{
-	    return rotate;
+	    return _rotate;
 	}
 
 	public void setCurrentSlideIndex(int currentSlideIndex) {
-		this.currentSlideIndex = currentSlideIndex;
+		this._currentSlideIndex = currentSlideIndex;
 	}
 
 	public int getCurrentSlideIndex() {
-		return currentSlideIndex;
+		return _currentSlideIndex;
 	}
 
 	public void setSelectedSlideIndex(int selectedSlideIndex) {
-		this.selectedSlideIndex = selectedSlideIndex;
+		this._selectedSlideIndex = selectedSlideIndex;
 	}
 
 	public int getSelectedSlideIndex() {
-		return selectedSlideIndex;
+		return _selectedSlideIndex;
 	}
 	
 	/********************* interface SlideProvider *******************/

@@ -24,7 +24,7 @@ import com.gwtmobile.ui.client.utils.Utils;
 public class CheckBox extends com.google.gwt.user.client.ui.CheckBox 
 	implements IsGwtMobileWidget {
 
-    private IsGwtMobileWidgetHelper widgetHelper = new IsGwtMobileWidgetHelper();
+    private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
 
 	public CheckBox() {
 		super();
@@ -37,7 +37,7 @@ public class CheckBox extends com.google.gwt.user.client.ui.CheckBox
 	@Override
 	protected void onLoad() {
 		super.onLoad();
-		widgetHelper.CheckInitialLoad(this);
+		_widgetHelper.CheckInitialLoad(this);
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class CheckBox extends com.google.gwt.user.client.ui.CheckBox
 
 	@Override
 	public void setSecondaryStyle(String style) {
-		widgetHelper.setSecondaryStyle(this, style);
+		_widgetHelper.setSecondaryStyle(this, style);
 	}
 
 	static class CheckBoxIndicator extends HTML {

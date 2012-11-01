@@ -23,8 +23,8 @@ import com.gwtmobile.ui.client.widgets.ListPanel.Chevron;
 public class ListItem extends PanelBase {
 
 	public enum ShowArrow { InheritFromParent, Visible, Hidden };
-	protected ShowArrow displayArrow = ShowArrow.InheritFromParent;
-	protected boolean enabled = true;
+	protected ShowArrow _displayArrow = ShowArrow.InheritFromParent;
+	protected boolean _enabled = true;
 
 	public ListItem() {
 		// there is no named style role for list item. 
@@ -37,7 +37,7 @@ public class ListItem extends PanelBase {
 	}
 
 	public void setDisplayArrow(ShowArrow showA) {
-		this.displayArrow = showA;
+		this._displayArrow = showA;
 		if (ShowArrow.InheritFromParent.compareTo(showA) != -1)
 			return;
 		boolean show = (ShowArrow.Visible.compareTo(showA)!=-1);
@@ -59,11 +59,11 @@ public class ListItem extends PanelBase {
 	}
 	
 	public ShowArrow getDisplayArrow() {
-		return this.displayArrow;
+		return this._displayArrow;
 	}
 	
 	public void setEnabled(boolean disabled) {
-		this.enabled = disabled;
+		this._enabled = disabled;
 		if (!isEnabled()) {
 			addStyleName(Secondary.Disabled);
 		} else {
@@ -72,12 +72,12 @@ public class ListItem extends PanelBase {
 	}
 	
 	public boolean isEnabled() {
-		return this.enabled;
+		return this._enabled;
 	}
 	
 	protected void setDisplayArrowFromParent(ListPanel.ShowArrow show) {
 		// Parent can only override if it has not been set.
-		if (this.displayArrow == ShowArrow.InheritFromParent) {
+		if (this._displayArrow == ShowArrow.InheritFromParent) {
 			setDisplayArrow(ShowArrow.valueOf(show.toString()));
 		}
 	}

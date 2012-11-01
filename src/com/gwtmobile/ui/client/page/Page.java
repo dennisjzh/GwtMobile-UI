@@ -37,9 +37,9 @@ import com.gwtmobile.ui.client.widgets.WidgetBase;
 
 public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 	final static private String CONSUMED_TOKEN = "#?#";
-	private Transition transition = Transition.SLIDE; // assume SLIDE as default transition
-	protected String tokenStateInfo = CONSUMED_TOKEN;
-	protected static boolean inTransition = false; 
+	private Transition _transition = Transition.SLIDE; // assume SLIDE as default transition
+	protected String _tokenStateInfo = CONSUMED_TOKEN;
+	protected static boolean _inTransition = false; 
 	
 	static {
 		if (!Utils.isDesktop() && !Utils.hasPhoneGap()) {
@@ -54,7 +54,7 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 		} 
 	}
 
-	public static boolean isInTransition() {return inTransition;};
+	public static boolean isInTransition() {return _inTransition;};
 	
 	@Override
 	protected void initWidget(Widget widget) {
@@ -142,13 +142,13 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 			};
 			timer.schedule(1);
 		}
-		inTransition = false;
+		_inTransition = false;
 	}
 
 	protected void initNavigationIfRequired() {
-		if (!CONSUMED_TOKEN.equals(tokenStateInfo)) {
-			initNavigationalState(tokenStateInfo);
-			tokenStateInfo = CONSUMED_TOKEN;
+		if (!CONSUMED_TOKEN.equals(_tokenStateInfo)) {
+			initNavigationalState(_tokenStateInfo);
+			_tokenStateInfo = CONSUMED_TOKEN;
 		}
 	}
 
@@ -171,27 +171,27 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 	}
 
 	public void goTo(final Page toPage, Object params, final Transition transition) {
-		if (inTransition) {
+		if (_inTransition) {
 			return;//can't start a new page transition until last one is complete.
 		}
-		inTransition = true;
+		_inTransition = true;
 		PageHistory.Instance.goTo(toPage, params, transition);
 	}
 
 	public void goBack(Object returnValue) {
-		if (inTransition) {
+		if (_inTransition) {
 			return;//can't start a new page transition until last one is complete.
 		}
-		inTransition = true;
+		_inTransition = true;
 		PageHistory.Instance.goBack(returnValue);
 	}
 
 	public void setTransition(Transition transition) {
-		this.transition = transition;
+		this._transition = transition;
 	}
 
 	public Transition getTransition() {
-		return transition;
+		return _transition;
 	}
 
 	public static void load(Page mainPage) {
