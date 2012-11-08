@@ -18,11 +18,13 @@ package com.gwtmobile.ui.client.widgets;
 
 import java.beans.Beans;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 import com.gwtmobile.ui.client.event.DragController;
@@ -38,11 +40,38 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
     protected ArrayList<Widget> _slides = new ArrayList<Widget>();
     protected boolean _rotate = false;
     private int _selectedSlideIndex = 0; //used for design time slide selection.
+    HasWidgetsImpl _hasWidgetsImpl;
 
     public SlidePanel() {
         setStyleName(Primary.SlidePanel);
+        _hasWidgetsImpl = new HasWidgetsImpl();
     }
 
+    // expose parent HasWidgets logic for transition
+    private class HasWidgetsImpl implements HasWidgets {
+
+		@Override
+		public void add(Widget w) {
+			SlidePanel.super.add(w);
+		}
+
+		@Override
+		public void clear() {
+			SlidePanel.super.clear();
+		}
+
+		@Override
+		public Iterator<Widget> iterator() {
+			return SlidePanel.super.iterator();
+		}
+
+		@Override
+		public boolean remove(Widget w) {
+			return SlidePanel.super.remove(w);
+		}
+    	
+    }
+    
     @Override
     protected String getDesignTimeMessage() {
     	return "Add Slide widgets to the panel. Use the 'selectedSlideIndex' property to switch slide at design time.";
@@ -137,25 +166,18 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 	}
 
 	protected void moveToSlide(int slide) {
+		boolean reverse = _currentSlideIndex > slide; 
 		_currentSlideIndex = slide;
-		Slide to = getSlide(_currentSlideIndex);
+		Slide to = getSlide(slide);
     	Slide from = (Slide) super.getWidget(0);
     	Transition transition = Transition.SLIDE;
     	ValueChangeEvent.fire(this, false);
-    	transition.start(from, to, this, true);
+    	transition.start(from, to, _hasWidgetsImpl, reverse);
 	}
 
 	public void goTo(int to) {
 		if (to > 0 && to < getSlideCount()) {
 			moveToSlide(to);
-		}
-	}
-	
-	@Override
-	public void onTransitionEnd(TransitionDirection direction) {
-		super.onTransitionEnd(direction);
-		if (direction == TransitionDirection.To) {
-			super.remove(0);
 		}
 	}
 	
@@ -170,7 +192,7 @@ public class SlidePanel extends PanelBase implements SwipeEventsHandler, HasValu
 		else {
 			assert (w instanceof Slide) : "Can only add Slide widgets to SlidePanel.";
 		}
-	}
+	}	
 
 	public void setRotate(boolean rotate)
 	{
