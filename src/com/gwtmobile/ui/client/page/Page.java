@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2010 Zhihua (Dennis) Jiang
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -39,23 +39,23 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 	final static private String CONSUMED_TOKEN = "#?#";
 	private Transition _transition = Transition.SLIDE; // assume SLIDE as default transition
 	protected String _tokenStateInfo = CONSUMED_TOKEN;
-	protected static boolean _inTransition = false; 
-	
+	protected static boolean _inTransition = false;
+
 	static {
 		if (!Utils.isDesktop() && !Utils.hasPhoneGap()) {
 			hideAddressBar();
-			Window.addResizeHandler(new ResizeHandler() { 
-				@Override 
-				public void onResize(ResizeEvent event) { 
+			Window.addResizeHandler(new ResizeHandler() {
+				@Override
+				public void onResize(ResizeEvent event) {
 					hideAddressBar();
 					scrollToHideAddressBar();
-				} 
-			}); 
-		} 
+				}
+			});
+		}
 	}
 
 	public static boolean isInTransition() {return _inTransition;};
-	
+
 	@Override
 	protected void initWidget(Widget widget) {
 		super.initWidget(widget);
@@ -80,7 +80,7 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 			RootLayoutPanel.get().setHeight(Window.getClientHeight() + barHeight + "px");
 		}
 	}
-	
+
 	private static void scrollToHideAddressBar() {
 		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 			@Override
@@ -97,14 +97,14 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 			scrollToHideAddressBar();
 		}
 	}
-	
+
 	/**
 	 * Gives the page an opportunity to load state that was sent as part of the
 	 * history token prior to display.
-	 * 
+	 *
 	 * @see PageHistory#navigateTo(String, String)
 	 * @see BrowserPageHistory#onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)
-	 * 
+	 *
 	 * @param stateInfo
 	 */
 	protected void initNavigationalState(String stateInfo) {
@@ -117,14 +117,14 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 		}
 		final Page to;
 		final PageHistory pageHistory = PageHistory.Instance;
-		if (pageHistory.from() == null
-				|| pageHistory.from() != Page.this) { // goto
+		final NavigateInfo info = pageHistory.getNavigateInfo();
+
+		if (false == info.isGoBack()) { // goto
 			to = this;
 			// TODO: change to use scheduler deferred command.
 			Timer timer = new Timer() {
 				@Override
 				public void run() {
-					NavigateInfo info = pageHistory.getNavigateInfo();
 					to.onNavigateTo(info.getFromPage(), info.getValue());
 					to.initNavigationIfRequired();
 				}
@@ -135,7 +135,6 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 			Timer timer = new Timer() {
 				@Override
 				public void run() {
-					NavigateInfo info = pageHistory.getNavigateInfo();
 					to.onNavigateBack(info.getFromPage(), info.getValue());
 					to.initNavigationIfRequired();
 				}
@@ -224,81 +223,81 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 		}
 		else {
 			Document.get().getDocumentElement().setClassName("WXGA");
-		}		
+		}
 	}
 
 	public static native double getDevicePixelRatio() /*-{
 		return $wnd.devicePixelRatio;
 	}-*/;
-	
-	
-	
+
+
+
   /**
    * Adds a home button handler.  It assumes the right button in the header is
    * the home button.
-   * </br> 
+   * </br>
    * By Frank Mena 2012-04-11
-   * 
+   *
    * @param header the header
    */
 	//FIXME: remove "right button" assumption
   public void addHomeHandler(HeaderPanel header) {
-    
+
     header.setRightButtonClickHandler(new ClickHandler()
     {
 
       @Override
       public void onClick(ClickEvent event)
       {
-      
+
         goHome();
       }
 
     });
-    
+
   }
-  
-  
-  
+
+
+
   /**
    * Go home. Only works if you are using {@link SerialPageHistory}.
-   * </br> 
+   * </br>
    * By Frank Mena 2012-04-11
    */
   public void goHome() {
-    
+
     if (PageHistory.Instance instanceof SerialPageHistory) {
       SerialPageHistory history = (SerialPageHistory) PageHistory.Instance;
       history.goHome(this);
     }
-    
+
   }
-  
-  
-  
+
+
+
   /**
    * Push a page into the stack. Only works if you are using
    * {@link SerialPageHistory}.
-   * 
+   *
    * By Frank Mena 2012-04-11
    *
    * @param page the page to push
    */
   public static void push(Page page)
   {
-    
+
     if (PageHistory.Instance instanceof SerialPageHistory) {
       SerialPageHistory history = (SerialPageHistory) PageHistory.Instance;
       history.add(page);
     }
   }
-  
-  
-  
+
+
+
   /**
    * Exposes the onNavigate method of a page.  Useful when restoring from
    * passivated state.
-   * 
+   *
    * By Frank Mena 2012-04-11
    */
   public void doOnNavigateTo()
@@ -306,5 +305,5 @@ public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 
     this.onNavigateTo(null, null);
   }
-	
+
 }
