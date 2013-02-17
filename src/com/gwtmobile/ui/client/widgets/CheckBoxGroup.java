@@ -30,6 +30,8 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
@@ -37,7 +39,7 @@ import com.gwtmobile.ui.client.event.SelectionChangedEvent;
 import com.gwtmobile.ui.client.event.SelectionChangedHandler;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public class CheckBoxGroup extends PanelBase 
+public class CheckBoxGroup extends PanelBase
 	implements HasWidgets, ClickHandler, DragEventsHandler, ValueChangeHandler<Boolean> {
 
 	private int _pressed = -1;
@@ -45,8 +47,8 @@ public class CheckBoxGroup extends PanelBase
     public CheckBoxGroup() {
     	super();
         addDomHandler(this, ClickEvent.getType());
-        setStyleName("CheckBoxGroup");
-		addStyleName("Vertical");
+        setStyleName(Primary.CheckBoxGroup);
+		addStyleName(Secondary.Vertical);
     }
     
     @Override
@@ -86,7 +88,7 @@ public class CheckBoxGroup extends PanelBase
         }
         final int index = DOM.getChildIndex(this.getElement(), (com.google.gwt.user.client.Element)div);        
         com.google.gwt.user.client.ui.CheckBox checkbox = 
-        	(com.google.gwt.user.client.ui.CheckBox) _panel.getWidget(index);
+        	(com.google.gwt.user.client.ui.CheckBox) getWidget(index);
     	Utils.Console("onClick " + checkbox.getValue());
     	if (targetTagName.equals("INPUT")) {
         	Utils.Console("onClick value changed");
@@ -109,10 +111,10 @@ public class CheckBoxGroup extends PanelBase
     }
     
     public ArrayList<Integer> getCheckedIndices() {
-    	ArrayList<Integer> checkedList = new ArrayList<Integer>(_panel.getWidgetCount());
-        for (int i = 0; i < _panel.getWidgetCount(); i++) {
+    	ArrayList<Integer> checkedList = new ArrayList<Integer>(getWidgetCount());
+        for (int i = 0; i < getWidgetCount(); i++) {
         	com.google.gwt.user.client.ui.CheckBox radio = 
-        		(com.google.gwt.user.client.ui.CheckBox) _panel.getWidget(i);
+        		(com.google.gwt.user.client.ui.CheckBox) getWidget(i);
             if (radio.getValue()) {
             	checkedList.add(i);
             }
@@ -121,10 +123,10 @@ public class CheckBoxGroup extends PanelBase
     }
 
     public ArrayList<Widget> getCheckedWidgets() {
-    	ArrayList<Widget> checkedList = new ArrayList<Widget>(_panel.getWidgetCount());
-        for (int i = 0; i < _panel.getWidgetCount(); i++) {
+    	ArrayList<Widget> checkedList = new ArrayList<Widget>(getWidgetCount());
+        for (int i = 0; i < getWidgetCount(); i++) {
         	com.google.gwt.user.client.ui.CheckBox radio = 
-        		(com.google.gwt.user.client.ui.CheckBox) _panel.getWidget(i);
+        		(com.google.gwt.user.client.ui.CheckBox) getWidget(i);
             if (radio.getValue()) {
             	checkedList.add(radio);
             }
@@ -134,21 +136,25 @@ public class CheckBoxGroup extends PanelBase
     
     @Override
     public void add(Widget w) {
-    	assert w instanceof CheckBox 
+    	assert w instanceof CheckBox
     		: "Can only contain CheckBox widgets in CheckBoxGroup";
     	CheckBox checkbox = (CheckBox) w;
-        _panel.add(checkbox);
+        super.add(checkbox);
 		checkbox.addValueChangeHandler(this);
+    }
+    
+    public void addWidgetToPanel(Widget w) {
+        super.add(w);
     }
     
     public void setVertical(boolean vertical) {
     	if (vertical) {
-    		addStyleName("Vertical");
-    		removeStyleName("Horizontal");
+    		addStyleName(Secondary.Vertical);
+    		removeStyleName(Secondary.Horizontal);
     	}
     	else {
-    		addStyleName("Horizontal");
-    		removeStyleName("Vertical");
+    		addStyleName(Secondary.Horizontal);
+    		removeStyleName(Secondary.Vertical);
     	}
     }
     
@@ -162,7 +168,7 @@ public class CheckBoxGroup extends PanelBase
 		_pressed = Utils.getTargetItemIndex(getElement(), e.getNativeEvent().getEventTarget());
     	if (_pressed >= 0) {
     		Widget item = getWidget(_pressed);
-    		item.addStyleName("Pressed");
+    		item.addStyleName(Secondary.Pressed);
     	}
 	}
 	
@@ -170,7 +176,7 @@ public class CheckBoxGroup extends PanelBase
 	public void onDragMove(DragEvent e) {
 		if (_pressed >= 0) {
     		Widget item = getWidget(_pressed);
-    		item.removeStyleName("Pressed");
+    		item.removeStyleName(Secondary.Pressed);
     		_pressed = -1;
 		}
 	}

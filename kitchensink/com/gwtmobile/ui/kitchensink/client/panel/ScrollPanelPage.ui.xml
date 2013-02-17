@@ -4,12 +4,12 @@
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
 	<ui:style>
 	</ui:style>
-	<g:HTMLPanel>
+	<m:PagePanel>
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>Scroll Panel</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel>
-			<m:ListPanel ui:field="list" showArrow="false">
+			<m:ListPanel ui:field="list" displayArrow="Hidden">
 				<g:Label>Scroll Me 01</g:Label>
 				<g:Label>Scroll Me 02</g:Label>
 				<g:Label>Scroll Me 03</g:Label>
@@ -110,5 +110,5 @@
 				<g:Label>Scroll Me 99</g:Label>
 			</m:ListPanel>
 		</m:ScrollPanel>
-	</g:HTMLPanel>	
+	</m:PagePanel>	
 </ui:UiBinder> 

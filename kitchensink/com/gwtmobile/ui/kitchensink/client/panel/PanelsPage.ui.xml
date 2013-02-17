@@ -4,13 +4,13 @@
 	xmlns:m="urn:import:com.gwtmobile.ui.client.widgets">
 	<ui:style>
 	</ui:style>
-	<g:HTMLPanel>
+	<m:PagePanel>
 		<m:HeaderPanel leftButton="Back">
 			<g:Label>Panels</g:Label>			
 		</m:HeaderPanel>
 		<m:ScrollPanel>
-			<m:ListPanel ui:field="list" showArrow="true">
-				<g:Label>Accordion Panel</g:Label>
+			<m:ListPanel ui:field="list" displayArrow="Visible">
+				<g:Label>Stack Panel</g:Label>
 				<g:Label>Header Panel</g:Label>
 				<g:Label>List Panel</g:Label>
 				<g:Label>Scroll Panel</g:Label>
@@ -19,6 +19,5 @@
 				<g:Label>TabBar Panel</g:Label>
 			</m:ListPanel>
 		</m:ScrollPanel>
-		
-	</g:HTMLPanel>	
+	</m:PagePanel>	
 </ui:UiBinder> 

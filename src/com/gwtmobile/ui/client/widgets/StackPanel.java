@@ -16,13 +16,24 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-public class AccordionPanel extends PanelBase {
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
-	public AccordionPanel() {
-		addStyleName("Accordion");
+
+
+public class StackPanel extends PanelBase {
+
+	public StackPanel() {
+		setStyleName(Primary.StackPanel);
 	}
+	
+	@Override
+	protected String getDesignTimeMessage() {
+		return "Add Stack widgets to the panel.";
+	}
+	
 
-	public AccordionStack getStack(int index) {
-        return (AccordionStack) _panel.getWidget(index);
+	public Stack getStack(int index) {
+        return (Stack) this.getWidget(index);
     }
+
 }

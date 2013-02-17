@@ -23,107 +23,52 @@ import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
 
 class TextBoxBase extends com.google.gwt.user.client.ui.TextBoxBase 
-  implements FocusHandler, BlurHandler, IsGwtMobileWidget {
+	implements FocusHandler, BlurHandler, IsGwtMobileWidget {
 
     private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
 
-  TextBoxBase(String type) {
-      super(createNumberInputElement(type));
-    setStyleName("TextBox " + capitalize(type));
-    addFocusHandler(this);
-    addBlurHandler(this);
-  }
-  
-  @Override
-  protected void onLoad() {
-    super.onLoad();
-    _widgetHelper.CheckInitialLoad(this);
-    
-  }
-  
-  @Override
-  public void onFocus(FocusEvent event) {
-    this.addStyleName("Focus");
-  }
+	TextBoxBase(String type) {
+	    super(createNumberInputElement(type));
+		setStyleName("TextBox " + capitalize(type));
+		addFocusHandler(this);
+		addBlurHandler(this);
+	}
+	
+	@Override
+	protected void onLoad() {
+		super.onLoad();
+		_widgetHelper.CheckInitialLoad(this);
+		
+	}
+	
+	@Override
+	public void onFocus(FocusEvent event) {
+		this.addStyleName("Focus");
+	}
 
-  @Override
-  public void onBlur(BlurEvent event) {
-    this.removeStyleName("Focus");
-  }
+	@Override
+	public void onBlur(BlurEvent event) {
+		this.removeStyleName("Focus");
+	}
 
-  private static native InputElement createNumberInputElement(String type)  /*-{
-    var e = $doc.createElement("INPUT");
-    e.type = type;
-    return e;
-  }-*/;
-  
-  private String capitalize(String input) {
-    return input.substring(0, 1).toUpperCase() + 
-        input.substring(1).toLowerCase();
+	private static native InputElement createNumberInputElement(String type)  /*-{
+		var e = $doc.createElement("INPUT");
+		e.type = type;
+		return e;
+	}-*/;
+	
+	private String capitalize(String input) {
+		return input.substring(0, 1).toUpperCase() + 
+				input.substring(1).toLowerCase();
 
-  }
+	}
 
-  @Override
-  public void onInitialLoad() {
-  }
+	@Override
+	public void onInitialLoad() {
+	}
 
-  @Override
-  public void onTransitionEnd() {
-  }
-
-  @Override
-  public void setSecondaryStyle(String style) {
-    _widgetHelper.setSecondaryStyle(this, style);
-  }
-  
-  
-  /**
-   * Gets the maximum allowable length of the text box.
-   *
-   * @return the maximum length, in characters
-   */
-  public int getMaxLength() {
-    return getInputElement().getMaxLength();
-  }
-
-  /**
-   * Gets the number of visible characters in the text box.
-   *
-   * @return the number of visible characters
-   */
-  public int getVisibleLength() {
-    return getInputElement().getSize();
-  }
-
-  /**
-   * Sets the maximum allowable length of the text box.
-   *
-   * @param length the maximum length, in characters
-   */
-  public void setMaxLength(int length) {
-    getInputElement().setMaxLength(length);
-  }
-
-  /**
-   * Sets the number of visible characters in the text box.
-   *
-   * @param length the number of visible characters
-   */
-  public void setVisibleLength(int length) {
-    getInputElement().setSize(length);
-  }
-
-  /**
-   * Sets the placeholder.
-   *
-   * @param placeholder the new placeholder
-   */
-  public void setPlaceholder(String placeholder) {
-    getElement().setAttribute("placeholder", placeholder);
-  }
-  
-  private InputElement getInputElement() {
-    return getElement().cast();
-  }
-  
+	@Override
+	public void setSecondaryStyle(String style) {
+		_widgetHelper.setSecondaryStyle(this, style);
+	}
 }

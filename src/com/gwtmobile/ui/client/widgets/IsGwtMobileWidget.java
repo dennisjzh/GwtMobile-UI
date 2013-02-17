@@ -18,7 +18,6 @@ package com.gwtmobile.ui.client.widgets;
 
 
 public interface IsGwtMobileWidget {
-    void onInitialLoad();
-    void onTransitionEnd();
+	void onInitialLoad();
     void setSecondaryStyle(String style);
 }

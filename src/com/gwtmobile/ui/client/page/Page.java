@@ -19,7 +19,6 @@ package com.gwtmobile.ui.client.page;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ResizeEvent;
@@ -28,18 +27,20 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.page.PageHistory.NavigateInfo;
 import com.gwtmobile.ui.client.utils.Utils;
 import com.gwtmobile.ui.client.widgets.HeaderPanel;
+import com.gwtmobile.ui.client.widgets.IsGwtMobilePanel;
+import com.gwtmobile.ui.client.widgets.PagePanel;
 import com.gwtmobile.ui.client.widgets.WidgetBase;
 
-//FIXME: extends PanelBase?
-public abstract class Page extends WidgetBase {
+public abstract class Page extends WidgetBase implements IsGwtMobilePanel {
 	final static private String CONSUMED_TOKEN = "#?#";
-	private Transition _transition;
-	private static Transition _defaultTransition = Transition.SLIDE;
-	protected String tokenStateInfo = CONSUMED_TOKEN;
-	protected static boolean inTransition = false; 
-
+	private Transition _transition = Transition.SLIDE; // assume SLIDE as default transition
+	protected String _tokenStateInfo = CONSUMED_TOKEN;
+	protected static boolean _inTransition = false; 
+	
 	static {
 		if (!Utils.isDesktop() && !Utils.hasPhoneGap()) {
 			hideAddressBar();
@@ -52,11 +53,17 @@ public abstract class Page extends WidgetBase {
 			}); 
 		} 
 	}
+
+	public static boolean isInTransition() {return _inTransition;};
 	
 	@Override
 	protected void initWidget(Widget widget) {
 		super.initWidget(widget);
-		setStyleName("Page");
+		setStyleName(Primary.PagePanel);
+		// we might need to assert that the given widget has to be a PagePanel
+		if (widget.getClass().getName().endsWith("PagePanel"))
+			setTransition(((PagePanel)widget).getTransitionFlavor().getTransition());
+
 		// TODO: use permutation instead?
 		if (Utils.isAndroid()) {
 			addStyleName("Android");
@@ -104,81 +111,83 @@ public abstract class Page extends WidgetBase {
 	}
 
 	@Override
-	public void onTransitionEnd() {
-		final Page to, from;
+	public void onTransitionEnd(TransitionDirection direction) {
+		if (direction != TransitionDirection.To) {
+			return;
+		}
+		final Page to;
 		final PageHistory pageHistory = PageHistory.Instance;
 		if (pageHistory.from() == null
 				|| pageHistory.from() != Page.this) { // goto
-			Utils.Console("goto");
-			from = pageHistory.current();
 			to = this;
-			pageHistory.add(to);
 			// TODO: change to use scheduler deferred command.
 			Timer timer = new Timer() {
 				@Override
 				public void run() {
-					to.onNavigateTo();
+					NavigateInfo info = pageHistory.getNavigateInfo();
+					to.onNavigateTo(info.getFromPage(), info.getValue());
 					to.initNavigationIfRequired();
 				}
 			};
 			timer.schedule(1);
 		} else { // goback
-			Utils.Console("goback");
-			from = pageHistory.current();
-			pageHistory.back();
 			to = pageHistory.current();
 			Timer timer = new Timer() {
 				@Override
 				public void run() {
-					to.onNavigateBack(from,
-							pageHistory.getReturnValue());
+					NavigateInfo info = pageHistory.getNavigateInfo();
+					to.onNavigateBack(info.getFromPage(), info.getValue());
 					to.initNavigationIfRequired();
 				}
 			};
 			timer.schedule(1);
 		}
-		inTransition = false;
+		_inTransition = false;
 	}
 
 	protected void initNavigationIfRequired() {
-		if (!CONSUMED_TOKEN.equals(tokenStateInfo)) {
-			initNavigationalState(tokenStateInfo);
-			tokenStateInfo = CONSUMED_TOKEN;
+		if (!CONSUMED_TOKEN.equals(_tokenStateInfo)) {
+			initNavigationalState(_tokenStateInfo);
+			_tokenStateInfo = CONSUMED_TOKEN;
 		}
 	}
 
-	protected void onNavigateTo() {
+	protected void onNavigateTo(Page from, Object object) {
 	}
 
 	protected void onNavigateBack(Page from, Object object) {
 	}
 
+	public void goTo(final Page toPage) {
+		goTo(toPage, toPage.getTransition());
+	}
+
+	public void goTo(final Page toPage, Object params) {
+		goTo(toPage, params, toPage.getTransition());
+	}
+
 	public void goTo(final Page toPage, final Transition transition) {
-		if (inTransition) {
+		goTo(toPage, null, transition);
+	}
+
+	public void goTo(final Page toPage, Object params, final Transition transition) {
+		if (_inTransition) {
 			return;//can't start a new page transition until last one is complete.
 		}
-		inTransition = true;
-		Element focus = Utils.getActiveElement();
-		focus.blur();
-		final Page fromPage = this;
-		toPage.setTransition(transition);
-		if (transition != null) {
-			transition.start(fromPage, toPage, RootLayoutPanel.get(), false);
-		} else {
-			Transition.start(fromPage, toPage, RootLayoutPanel.get());
-		}
+		_inTransition = true;
+		PageHistory.Instance.goTo(toPage, params, transition);
 	}
 
 	public void goBack(Object returnValue) {
-		if (inTransition) {
+		if (_inTransition) {
 			return;//can't start a new page transition until last one is complete.
 		}
-		inTransition = true;
-		PageHistory.Instance.goBack(this, returnValue);
+		_inTransition = true;
+		PageHistory.Instance.goBack(returnValue);
 	}
 
 	public void setTransition(Transition transition) {
-		_transition = transition;
+		this._transition = transition;
 	}
 
 	public Transition getTransition() {
@@ -187,17 +196,12 @@ public abstract class Page extends WidgetBase {
 
 	public static void load(Page mainPage) {
 		setPageResolution();
-		RootLayoutPanel.get().add(mainPage);
-		PageHistory.Instance.add(mainPage);
+		PageHistory.Instance.startUp(mainPage);
 	}
 
-	public static void setDefaultTransition(Transition transition) {
-		_defaultTransition = transition;
-	}
-
-	public void goTo(final Page toPage) {
-		goTo(toPage, _defaultTransition);
-	}
+//	public static void setDefaultTransition(Transition transition) {
+//		_defaultTransition = transition;
+//	}
 
 	@Override
 	public Widget getWidget() { // make getWidget() public
@@ -205,23 +209,22 @@ public abstract class Page extends WidgetBase {
 	}
 
 	private static void setPageResolution() {
-		double ratio = getDevicePixelRatio();
-		if (ratio == 2) { 
-			// iphone 4. screen size on iphone does not change
-			// despite the dp ratio.
-			if (Utils.isIOS()) {
-				Document.get().getDocumentElement().setClassName("HVGA");
-			}
-			else {
-				Document.get().getDocumentElement().setClassName("WXGA");
-			}
-		} else if (ratio == 1.5) {
-			Document.get().getDocumentElement().setClassName("WVGA");
-		} else if (ratio == 0.75) {
-			Document.get().getDocumentElement().setClassName("QVGA");
-		} else {
+		int clientWidth = Window.getClientWidth();
+		if (Utils.isDesktop()) {
 			Document.get().getDocumentElement().setClassName("HVGA");
 		}
+		else if (clientWidth < 320) {
+			Document.get().getDocumentElement().setClassName("QVGA");
+		}
+		else if (clientWidth < 480) {
+			Document.get().getDocumentElement().setClassName("HVGA");
+		}
+		else if (clientWidth < 560) {
+			Document.get().getDocumentElement().setClassName("WVGA");
+		}
+		else {
+			Document.get().getDocumentElement().setClassName("WXGA");
+		}		
 	}
 
 	public static native double getDevicePixelRatio() /*-{
@@ -238,6 +241,7 @@ public abstract class Page extends WidgetBase {
    * 
    * @param header the header
    */
+	//FIXME: remove "right button" assumption
   public void addHomeHandler(HeaderPanel header) {
     
     header.setRightButtonClickHandler(new ClickHandler()
@@ -300,7 +304,7 @@ public abstract class Page extends WidgetBase {
   public void doOnNavigateTo()
   {
 
-    this.onNavigateTo();
+    this.onNavigateTo(null, null);
   }
 	
 }

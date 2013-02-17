@@ -31,9 +31,8 @@ import com.gwtmobile.ui.client.utils.Utils;
  */
 public class SerialPageHistory implements PageHistory {
 	private Stack<Page> _history = new Stack<Page>();
-	private Object _returnValue; 
-
-	@Override
+	private NavigateInfo _navigateInfo; 
+	
 	public void add(Page page) {
 		_history.push(page);
 	}
@@ -65,18 +64,33 @@ public class SerialPageHistory implements PageHistory {
 		return _history.elementAt(size - 2);
 	}
     
-	@Override
 	public Page back() {
-    if (_history.isEmpty()) {
-        return null;
+        if (_history.isEmpty()) {
+            return null;
+        }
+        return _history.pop();
     }
-    return _history.pop();
-  }
 	
 	@Override
-	public void goBack(Page fromPage, Object returnValue) {
-		setReturnValue(returnValue);
-		final Page toPage = from();
+	public void goTo(Page toPage, Object params, Transition transition) {
+		Element focus = Utils.getActiveElement();
+		focus.blur();
+		final Page fromPage = current();
+		setNavigateInfo(fromPage, params);
+		add(toPage);
+		toPage.setTransition(transition);
+		if (transition != null) {
+			transition.start(fromPage, toPage, RootLayoutPanel.get(), false);
+		} else {
+			Transition.start(fromPage, toPage, RootLayoutPanel.get());
+		}
+	}
+
+	@Override
+	public void goBack(Object returnValue) {
+		Page fromPage = back();
+		setNavigateInfo(fromPage, returnValue);
+		final Page toPage = current();
 		if (toPage == null) {
 			// exit app here.
 			return;
@@ -98,22 +112,27 @@ public class SerialPageHistory implements PageHistory {
 	}
 	
 	@Override
-	public void startUp(Object param) {
-		Page initial = (Page) param;
-		Page.load(initial);
+	public void startUp(Page startUpPage) {
+		RootLayoutPanel rootPanel = RootLayoutPanel.get();
+		rootPanel.clear();
+		rootPanel.add(startUpPage);
+		_history.clear();
+		_navigateInfo = null;
+		add(startUpPage);
 	}
 	
 	@Override
-	public void setReturnValue(Object returnValue) {
-        _returnValue = returnValue;
+	public NavigateInfo getNavigateInfo() {
+		NavigateInfo temp = _navigateInfo;
+        _navigateInfo = null;	//memory: release reference once retrieved.
+        return temp;
     }
-    
-	@Override
-	public Object getReturnValue() {
-        return _returnValue;
-    }
-
 	
+	private void setNavigateInfo(Page fromPage, Object value) {
+		_navigateInfo = new NavigateInfo();
+        _navigateInfo.setFromPage(fromPage);
+        _navigateInfo.setValue(value);
+	}
 	
   /**
    * Go home and clear the stack.  Just pass "this" from the calling page.

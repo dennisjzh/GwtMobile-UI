@@ -17,8 +17,9 @@
 package com.gwtmobile.ui.client.widgets;
 
 import com.google.gwt.user.client.ui.HTML;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.utils.Utils;
-
 
 public class CheckBox extends com.google.gwt.user.client.ui.CheckBox 
 	implements IsGwtMobileWidget {
@@ -48,19 +49,15 @@ public class CheckBox extends com.google.gwt.user.client.ui.CheckBox
 	public void setValue(Boolean checked, boolean fireEvents) {
 		super.setValue(checked, fireEvents);
 		if (checked) {
-			addStyleName("Selected");
+			addStyleName(Secondary.Selected);
 		}
 		else {
-			removeStyleName("Selected");       
+			removeStyleName(Secondary.Selected);       
 		}
 	}
 
 	@Override
 	public void onInitialLoad() {
-	}
-
-	@Override
-	public void onTransitionEnd() {
 	}
 
 	@Override
@@ -72,7 +69,7 @@ public class CheckBox extends com.google.gwt.user.client.ui.CheckBox
 		
 		public CheckBoxIndicator() {
 			super("<div><div></div></div><div></div><div></div><div></div>");
-			setStyleName("CheckBoxIndicator");
+			setStyleName(Primary.CheckBoxIndicator);
 		}
 	}
 

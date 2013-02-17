@@ -16,14 +16,20 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import java.beans.Beans;
+import java.util.Iterator;
+
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
-import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
@@ -31,22 +37,43 @@ import com.gwtmobile.ui.client.event.SwipeEvent;
 import com.gwtmobile.ui.client.event.SwipeEventsHandler;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public class ScrollPanel extends PanelBase 
-implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
+public class ScrollPanel extends PanelBase implements DragEventsHandler, SwipeEventsHandler {
 
+	private boolean _withPadding = true;
 	private boolean _hasTextBox = false;
+	private boolean _fullHeight = false;
 	private Element _scrollbar;
+	protected HTMLPanel _intPanel = new HTMLPanel("");
 	
     public ScrollPanel() {
-        setStyleName("ScrollPanel");
-    	this.initScrollbar();
+		super.add(_intPanel);
+        setStyleName(Primary.ScrollPanel);
+        setWithPadding(_withPadding);
+        this.initScrollbar();
+        if (Beans.isDesignTime()) {
+            _intPanel.add(new Label("Empty ScrollPanel. " + getDesignTimeMessage()));
+        }
     }
+    
+	public boolean isWithPadding() {
+		return _withPadding;
+	}
+
+	public void setWithPadding(boolean withPadding) {
+		this._withPadding = withPadding;
+		if (withPadding){
+			addStyleName(Secondary.WithPadding);
+		} else {
+			removeStyleName(Secondary.WithPadding);
+		}
+		
+	}
     
     private void initScrollbar(){
         _scrollbar=DOM.createDiv();
         _scrollbar.appendChild(DOM.createDiv());
-        _scrollbar.setClassName("Scrollbar");
-        this.getElement().appendChild(_scrollbar);
+        _scrollbar.setClassName(Primary.ScrollBar);
+        this.getElement().insertFirst(_scrollbar);
 		this.hideScrollBar();
     }
     
@@ -60,7 +87,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
     		this.hideScrollBar();
     		return;
     	}else{
-    		this.showScrollbar();    		
+    		this.showScrollBar();    		
     	}
 
     	double scrollbarPos=-scrollHeight*scrollPannerPos/scrollPannelHeight;
@@ -85,7 +112,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
     	Utils.setTranslateY(this._scrollbar.getFirstChildElement(),scrollbarPos);
     }
     
-    private void showScrollbar(){
+    private void showScrollBar(){
     	this._scrollbar.setAttribute("style", "opacity:1");
     }
     
@@ -94,13 +121,26 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
     }
     
     public void setHasTextBox(boolean hasTextBox) {    	
-		_hasTextBox = hasTextBox && Utils.isAndroid();
+		hasTextBox = hasTextBox && Utils.isAndroid();
 	}
 
 	public boolean getHasTextBox() {
 		return _hasTextBox;
 	}
 
+	public boolean isFullHeight() {
+		return _fullHeight;
+	}
+
+	public void setFullHeight(boolean fullHeight) {
+		this._fullHeight = fullHeight;
+		if (fullHeight){
+			addStyleName(Secondary.FullHeight);
+		} else { 
+			removeStyleName(Secondary.FullHeight);
+		}
+	}	
+	
     @Override
 	public void onLoad() {
         DragController.get().addDragEventsHandler(this);
@@ -113,9 +153,11 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
         DragController.get().removeSwipeEventHandler(this);
 	}
 	
-	@Override
+	
     public Widget getWidget() {
-    	return _panel.getWidget(0);
+    	//if (Beans.isDesignTime() an
+		return getIntPanel();
+    	//return super.getWidget(0);
     }
     
 	public void reset() {
@@ -149,8 +191,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 	public int getScrollPosition() {
 		if (_hasTextBox) {
 			return getStyleTop();
-		}
-		else {
+		} else {
 			Element element = getWidget().getElement();
 			return Utils.getTranslateY(element);
 		}
@@ -159,8 +200,7 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 	public int getScrollToPosition() {
 		if (_hasTextBox) {
 			return getStyleTop();
-		}
-		else {
+		} else {
 			Element element = getWidget().getElement();
 			return Utils.getMatrixY(element);
 		}
@@ -281,8 +321,14 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 
 	@Override
 	public void add(Widget w) {
-		assert _panel.getWidgetCount()  == 0 : "Can only add one widget to ScrollPanel.";
-		super.add(w);
+		if (Beans.isDesignTime()) {
+			if (getWidgetCount() == 1 && isDesignTimeEmptyLabel(getWidget(0))) {
+				clear();
+			}
+		}
+		
+		_intPanel.add(w);
+		
 		if (Utils.isIOS()) {
 			Utils.setTranslateY(w.getElement(), 0); //anti-flickering on iOS.
 		}
@@ -304,4 +350,34 @@ implements HasWidgets, DragEventsHandler, SwipeEventsHandler {
 		style.setTop(top, Unit.PX);
 	}
 	
+	public Widget getIntPanel(){
+		return _intPanel;
+	}
+
+	
+	@Override
+	public void clear() {
+		_intPanel.clear();
+	}
+
+	@Override
+	public Iterator<Widget> iterator() {
+		return _intPanel.iterator();
+	}
+
+	@Override
+	public boolean remove(Widget w) {
+		return _intPanel.remove(w);
+	}
+
+	@Override
+	public Widget getWidget(int index) {
+		return _intPanel.getWidget(index);
+	}
+	
+	@Override
+	public int getWidgetCount() {
+		return _intPanel.getWidgetCount();
+	}
+
 }

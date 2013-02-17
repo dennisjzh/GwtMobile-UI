@@ -25,8 +25,8 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.page.Page;
 import com.gwtmobile.ui.client.widgets.HeaderPanel;
-import com.gwtmobile.ui.client.widgets.SlidePanel;
 import com.gwtmobile.ui.client.widgets.Slide;
+import com.gwtmobile.ui.client.widgets.SlidePanel;
 import com.gwtmobile.ui.client.widgets.SlidePanel.SlideProvider;
 
 public class SlidePanelPage extends Page implements SlideProvider{
@@ -72,7 +72,6 @@ public class SlidePanelPage extends Page implements SlideProvider{
 			return null;
 		}
 		Slide slide = new Slide();
-		slide.addStyleName("Slide-Content");
 		slide.add(new HTML("Slide Me!"));
 		slide.add(new HTML("Dynamic Slide " + index));
 		return slide;		

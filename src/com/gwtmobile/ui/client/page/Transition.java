@@ -1,19 +1,43 @@
 package com.gwtmobile.ui.client.page;
 
+import java.beans.Beans;
+
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.Widget;
 import com.gwtmobile.ui.client.CSS.CSS;
 import com.gwtmobile.ui.client.utils.Utils;
-import com.gwtmobile.ui.client.widgets.WidgetBase;
+import com.gwtmobile.ui.client.widgets.IsGwtMobilePanel;
+import com.gwtmobile.ui.client.widgets.IsGwtMobilePanel.TransitionDirection;
 
 public class Transition implements EventListener {
 	
 	String _transitionStyleName;
-	WidgetBase _from, _to;
+	Widget _from, _to;
 	boolean _reverse;
 	HasWidgets _parent;
+	
+	public enum TransitionFlavor {
+			NONE(null),
+			SLIDE(new Transition(CSS.T.slide())), 
+			SLIDE_UP( new Transition(CSS.T.slideup())), 
+			SLIDE_DOWN(new Transition(CSS.T.slidedown())), 
+			FADE(new Transition(CSS.T.fade())), 
+			POP(new Transition(CSS.T.pop())), 
+			FLIP(new FlipTransition()), 
+			SWAP(new SwapTransition());
+	
+			private final Transition transition;
+			private TransitionFlavor(Transition transition){
+				this.transition = transition;
+			}
+			public Transition getTransition(){
+				return this.transition;
+			}
+		
+		};
 	
 	public static Transition SLIDE = new Transition(CSS.T.slide());
 	public static Transition SLIDEUP = new Transition(CSS.T.slideup());
@@ -29,25 +53,37 @@ public class Transition implements EventListener {
 	}
 	
 	// No transition
-	public static void start(final WidgetBase from, final WidgetBase to, final HasWidgets parent) {
+	public static void start(final Widget from, final Widget to, final HasWidgets parent) {
 		new Timer() {
 			@Override
 			public void run() {
 				parent.remove(from);
 				parent.add(to);
-				to.onTransitionEnd();
+				if (from instanceof IsGwtMobilePanel) {
+					((IsGwtMobilePanel) from).onTransitionEnd(TransitionDirection.From);
+				}
+				if (to instanceof IsGwtMobilePanel) {
+					((IsGwtMobilePanel) to).onTransitionEnd(TransitionDirection.To);
+				}
 			}
 			
 		}.schedule(1);
 	}
 	
-	public void start(WidgetBase from, WidgetBase to, HasWidgets parent, boolean reverse) {
+	public void start(Widget from, Widget to, HasWidgets parent, boolean reverse) {
 		_from = from;
 		_to = to;
 		_parent = parent;
 		_reverse = reverse;
 		prepare();
-		start();
+		if (Beans.isDesignTime()) {
+    		_from.addStyleName(CSS.T.start());
+    		_to.addStyleName(CSS.T.start());
+    		onTransitionEnd();
+    	}
+		else {
+			start();
+		}
 	}
 	
 	protected void prepare() {
@@ -95,7 +131,12 @@ public class Transition implements EventListener {
 		if (_from != null && _to != null) {
 			_parent.remove(_from);
 			removeTransitionStyles();
-			_to.onTransitionEnd();
+			if (_from instanceof IsGwtMobilePanel) {
+				((IsGwtMobilePanel) _from).onTransitionEnd(TransitionDirection.From);
+			}
+			if (_to instanceof IsGwtMobilePanel) {
+				((IsGwtMobilePanel) _to).onTransitionEnd(TransitionDirection.To);
+			}
 			_from = null;
 			_to = null;
 			_parent = null;
@@ -143,7 +184,12 @@ public class Transition implements EventListener {
 				start();
 			}
 			else {
-				_to.onTransitionEnd();
+				if (_from instanceof IsGwtMobilePanel) {
+					((IsGwtMobilePanel) _from).onTransitionEnd(TransitionDirection.From);
+				}
+				if (_to instanceof IsGwtMobilePanel) {
+					((IsGwtMobilePanel) _to).onTransitionEnd(TransitionDirection.To);
+				}
 				_from = null;
 				_to = null;
 				_phase = 0;
@@ -184,7 +230,12 @@ public class Transition implements EventListener {
 			}
 			else {
 				_parent.remove(_from);
-				_to.onTransitionEnd();
+				if (_from instanceof IsGwtMobilePanel) {
+					((IsGwtMobilePanel) _from).onTransitionEnd(TransitionDirection.From);
+				}
+				if (_to instanceof IsGwtMobilePanel) {
+					((IsGwtMobilePanel) _to).onTransitionEnd(TransitionDirection.To);
+				}
 				_from = null;
 				_to = null;
 				_phase = 0;

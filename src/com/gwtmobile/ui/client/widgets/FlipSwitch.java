@@ -16,6 +16,8 @@
 
 package com.gwtmobile.ui.client.widgets;
 
+import java.beans.Beans;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -24,31 +26,40 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HTML;
+import com.gwtmobile.ui.client.CSS.StyleNames;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
 import com.gwtmobile.ui.client.utils.Utils;
 
-public class FlipSwitch extends WidgetBase 
-	implements DragEventsHandler, ClickHandler, HasValueChangeHandlers<Boolean> {
+//FIXEME: extends WidgetBase?
+public class FlipSwitch extends HTML 
+	implements IsGwtMobileWidget, DragEventsHandler, ClickHandler, HasValueChangeHandlers<Boolean> {
 
-	protected boolean _enabled = true;
-	protected boolean _value = true;
-	protected HTML _html = new HTML();
-	
-    public FlipSwitch() {
-    	initWidget(_html);
-        setStyleName("FlipSwitch");
-        _html.addClickHandler(this);
-        _html.setHTML("<div></div><div></div><div><div><div>ON</div><div></div><div>OFF</div></div></div>");
+	private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
+
+	private final static String HTML_CONTENT = "<div></div><div></div><div><div><div>ON</div><div></div><div>OFF</div></div></div>";
+	protected boolean enabled = true;
+	protected boolean value = true;
+	protected boolean showText = true;
+
+	public FlipSwitch() {
+    	super(HTML_CONTENT);
+        addClickHandler(this);
+        setStyleName(StyleNames.Primary.FlipSwitch);
     }
     
     @Override
 	public void onInitialLoad() {
-    	super.onInitialLoad();
-    	if (!_value) {
+    	if (!value) {
         	updateFlipPosition(0);
     	}
+    }
+    
+    @Override
+    public String getHTML(){
+    	if (Beans.isDesignTime()) return "DO NOT EDIT";
+    	return super.getHTML();
     }
     
     @Override
@@ -64,7 +75,7 @@ public class FlipSwitch extends WidgetBase
     
     @Override
     public void onDragStart(DragEvent e) {
-    	if (!_enabled) {
+    	if (!enabled) {
     		return;
     	}
     	DragController.get().captureDragEvents(this);
@@ -73,7 +84,7 @@ public class FlipSwitch extends WidgetBase
 
     @Override
     public void onDragMove(DragEvent e) {
-    	if (!_enabled) {
+    	if (!enabled) {
     		return;
     	}
     	e.stopPropagation();
@@ -95,7 +106,7 @@ public class FlipSwitch extends WidgetBase
 
     @Override
     public void onDragEnd(DragEvent e) {
-    	if (!_enabled) {
+    	if (!enabled) {
     		return;
     	}
     	DragController.get().releaseDragCapture(this);
@@ -127,28 +138,28 @@ public class FlipSwitch extends WidgetBase
     }
     
     private void setValue(boolean value, boolean forceUpdateFlipPosition, int duration, boolean fireEvent) {
-    	if (_value != value) {
-        	_value = value;
+    	if (this.value != value) {
+        	this.value = value;
         	updateFlipPosition(duration);
         	if (fireEvent) {
-            	ValueChangeEvent.fire(this, _value);
+            	ValueChangeEvent.fire(this, value);
         	}
     	}
-    	else if (forceUpdateFlipPosition) {
+    	else if (forceUpdateFlipPosition || Beans.isDesignTime()) {
         	updateFlipPosition(duration);    	
     	}
     }
     
     public boolean getValue() {
-    	return _value;
+    	return value;
     }
 
     public boolean isEnabled() {
-    	return _enabled;
+    	return enabled;
     }
     
     public void setEnabled(boolean enabled) {
-    	if (enabled == _enabled) {
+    	if (this.enabled == enabled) {
     		return;
     	}
 		if (enabled) { 
@@ -157,24 +168,34 @@ public class FlipSwitch extends WidgetBase
 		else { 
 			addStyleName("Disabled");
 		}
-		_enabled = enabled;
+		this.enabled = enabled;
 	}
     
 	@Override
 	public void onClick(ClickEvent event) {
-		if (_enabled) {
-			setValue(!_value);
+		if (enabled) {
+			setValue(!value);
 		}
 	}
 	
 	private void updateFlipPosition(int duration) {
     	Utils.setTransitionDuration(getFilpElement(), duration);
 		Element flip = getFilpElement();
-		if (_value) {
-			Utils.setTranslateX(flip, getOnPosition());
-		}
-		else {
-			Utils.setTranslateX(flip, getOffPosition());
+
+		// make the value be visible during design time
+		if (Beans.isDesignTime()){
+			Element flipDiv = (Element)flip.getChild(1);
+			if (value) {
+				flipDiv.removeAttribute("style");
+			} else {
+				flipDiv.setAttribute("style", "position:absolute; left:0; height:2em; margin-left:.5px;");
+			}
+		} else {
+			if (value) {
+				Utils.setTranslateX(flip, getOnPosition());
+			} else {
+				Utils.setTranslateX(flip, getOffPosition());
+			}
 		}
 	}
 	
@@ -194,10 +215,29 @@ public class FlipSwitch extends WidgetBase
 		return parentWidth - flipWidth;
 	}
 
+    public boolean isShowText() {
+		return showText;
+	}
+
+	public void setShowText(boolean showText) {
+		
+		if (this.showText != showText){
+			setHTML(HTML_CONTENT.replaceAll("ON", "").replaceAll("OFF", ""));
+		}
+		
+		this.showText = showText;
+		
+	}
+	
 	@Override
 	public HandlerRegistration addValueChangeHandler(
 			ValueChangeHandler<Boolean> handler) {
 		return this.addHandler(handler, ValueChangeEvent.getType());
+	}
+
+	@Override
+	public void setSecondaryStyle(String style) {
+		_widgetHelper.setSecondaryStyle(this, style);
 	}
 
 }

@@ -16,55 +16,57 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import java.util.Iterator;
+import java.beans.Beans;
 
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.gwtmobile.ui.client.utils.Utils;
+import com.google.gwt.user.client.ui.Label;
 
-public class PanelBase extends WidgetBase implements HasWidgets {
+public class PanelBase extends com.google.gwt.user.client.ui.FlowPanel implements IsGwtMobilePanel {
+	    
+	    private IsGwtMobileWidgetHelper _widgetHelper = new IsGwtMobileWidgetHelper();
+	    
+	    @Override
+	    public void onLoad() {
+	    	super.onLoad();
+	    	_widgetHelper.CheckInitialLoad(this);
+	    }
 
-	protected FlowPanel _panel = new FlowPanel();
-	
-	public PanelBase() {
-		initWidget(_panel);
-	}
-	
-	@Override
-	public void add(Widget w) {
-		_panel.add(w);
-	}
+	    @Override
+		public void onInitialLoad() {
+	    }
+	    
+	    @Override
+		public void onTransitionEnd(TransitionDirection direction) {
+	    }
+	    
+	    @Override
+		public void setSecondaryStyle(String style) {
+	    	_widgetHelper.setSecondaryStyle(this, style);
+	    }
 
-	@Override
-	public void clear() {
-		_panel.clear();
-	}
-
-	@Override
-	public Iterator<Widget> iterator() {
-		return _panel.iterator();
-	}
-
-	@Override
-	public boolean remove(Widget w) {
-		return _panel.remove(w);
-	}
-
-	public Widget getWidget(int index) {
-		return _panel.getWidget(index);
-	}
-	
-	public int getWidgetCount() {
-		return _panel.getWidgetCount();
-	}
-	
-    public void insert(Widget w, int beforeIndex) {
-    	_panel.insert(w, beforeIndex);
-    }
-    
-    public void remove(int index) {
-    	_panel.remove(index);
-    }
-    
-
+	    @Override
+	    public void add(Widget w) {
+	    	if (isDesignTimeEmptyLabel(w)) {
+	    		Label label = (Label)w;
+	    		String designTimeMessage = getDesignTimeMessage();
+	    		if (designTimeMessage == null) {
+		    		label.setText("Empty " + Utils.getSimpleName(this.getClass()));
+	    		} else {
+		    		label.setText("Empty " + Utils.getSimpleName(this.getClass()) + 
+		    				". " + designTimeMessage);
+	    		}
+	    	}
+		    super.add(w);
+	    }
+	    
+	    public boolean isDesignTimeEmptyLabel(Widget w) {
+	    	return Beans.isDesignTime() && 
+	    			(w instanceof Label) && 
+	    			((Label)w).getText().startsWith("Empty ");
+	    }
+	    
+	    protected String getDesignTimeMessage() {
+	    	return "Add widgets to the panel.";
+	    }; 
 }

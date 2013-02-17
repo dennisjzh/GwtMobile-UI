@@ -8,7 +8,7 @@
 			-webkit-box-align: start !important;		
 		}
 	</ui:style>
-	<g:HTMLPanel>
+	<m:PagePanel>
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>Check Box</g:Label>			
 		</m:HeaderPanel>
@@ -34,5 +34,5 @@
 				</m:ListItem>
 			</m:ListPanel>			
 		</m:ScrollPanel>
-	</g:HTMLPanel>	
+	</m:PagePanel>	
 </ui:UiBinder> 

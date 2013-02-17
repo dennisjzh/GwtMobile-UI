@@ -19,16 +19,50 @@ package com.gwtmobile.ui.client.widgets;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
+import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
+import com.gwtmobile.ui.client.CSS.StyleNames.Secondary;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
 
 
-public class AccordionHeader extends PanelBase implements ClickHandler, DragEventsHandler {
+public class StackHeader extends PanelBase implements ClickHandler, DragEventsHandler {
 
-	public AccordionHeader() {
+	private StackArrow _stackArrow = new StackArrow();
+	private boolean _showArrow = true;
+	private boolean _enabled = true;
+	
+	public StackHeader() {
 	    this.addDomHandler(this, ClickEvent.getType());    
-        this.add(new AccordionArrow());
+        this.add(_stackArrow);
+
+	}
+	
+	public boolean isShowArrow() {
+		return _showArrow;
+	}
+
+	public void setShowArrow(boolean showArrow) {
+		if (isShowArrow() != showArrow){
+			if (showArrow) {
+				this.add(_stackArrow);
+			} else {
+				this.remove(_stackArrow);
+			}
+			this._showArrow = showArrow;
+		}
+	}
+
+
+	public boolean isEnabled() {
+		return _enabled;
+	}
+
+	//TODO: fix me
+	public void setEnabled(boolean enabled) {
+		removeStyleName(""+this._enabled);
+		this._enabled = enabled;
+		addStyleName(""+this._enabled);
 	}
 	
 	@Override
@@ -45,30 +79,31 @@ public class AccordionHeader extends PanelBase implements ClickHandler, DragEven
 	
     @Override
     public void onClick(ClickEvent event) {
-        AccordionStack parent = (AccordionStack) this.getParent().getParent();
-        parent.toggle();
+    	if (isEnabled()) {
+    		Stack parent = (Stack) this.getParent();
+    		parent.toggle();
+    	}
     }
     
 	@Override
 	public void onDragEnd(DragEvent e) {
-		removeStyleName("Pressed");
+		if (isEnabled()) removeStyleName(Secondary.Pressed);
 	}
 
 	@Override
 	public void onDragMove(DragEvent e) {
-		removeStyleName("Pressed");
+		if (isEnabled()) removeStyleName(Secondary.Pressed);
 	}
 
 	@Override
 	public void onDragStart(DragEvent e) {
-		addStyleName("Pressed");		
+		if (isEnabled()) addStyleName(Secondary.Pressed);		
 	}
 
 	
-    static class AccordionArrow extends HTML {    	
-    	public AccordionArrow() {
-    		//super("<div/>");
-    		setStyleName("AccordionArrow");
+    static class StackArrow extends HTML {    	
+    	public StackArrow() {
+    		setStyleName(Primary.StackArrow);
     	}
     }
 

@@ -25,8 +25,8 @@ import com.gwtmobile.ui.client.utils.Utils;
 public class DragControllerMobile extends DragController {
 
     protected boolean _touchMoving = false;
-
     static protected boolean _stopPropagation = true;
+    protected Element _touchTarget = null;
     
     DragControllerMobile() {
     }
@@ -62,6 +62,10 @@ public class DragControllerMobile extends DragController {
                 ele.focus();
                 preventDefault = false;
             }
+            _touchTarget = ele;
+        }
+        else {
+        	_touchTarget = null;
         }
         if (preventDefault && _stopPropagation) {
             e.preventDefault();   //prevent default action of selecting text            
@@ -87,7 +91,9 @@ public class DragControllerMobile extends DragController {
     }
         if (!_touchMoving) {            
             Utils.Console("fireclick ");
-            fireClick(e);
+            if (_touchTarget != null) {
+            	fireClick(_touchTarget);
+            }
         }
         _touchMoving = false;
 		onEnd(e, new Point(e.changedTouches().get(0).getClientX(), e.changedTouches().get(0).getClientY()));
@@ -123,16 +129,12 @@ public class DragControllerMobile extends DragController {
     _stopPropagation = false;
   }
   
-	protected native void fireClick(Event e) /*-{
-       var x = e.changedTouches[0].pageX;
-       var y = e.changedTouches[0].pageY;
-
-       var theTarget = $doc.elementFromPoint(x, y);
-       if (theTarget.nodeType == 3) theTarget = theTarget.parentNode;
-
-       var theEvent = $doc.createEvent('MouseEvents');
-       theEvent.initEvent('click', true, true);
-       theTarget.dispatchEvent(theEvent);
-   }-*/;
+	protected native void fireClick(Element theTarget) /*-{
+	    if (theTarget.nodeType == 3) theTarget = theTarget.parentNode;
+	
+	    var theEvent = $doc.createEvent('MouseEvents');
+	    theEvent.initEvent('click', true, true);
+	    theTarget.dispatchEvent(theEvent);
+	}-*/;
 
 }

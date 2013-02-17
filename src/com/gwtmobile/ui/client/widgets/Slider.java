@@ -24,24 +24,23 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
+import com.gwtmobile.ui.client.CSS.StyleNames;
 import com.gwtmobile.ui.client.event.DragController;
 import com.gwtmobile.ui.client.event.DragEvent;
 import com.gwtmobile.ui.client.event.DragEventsHandler;
 
-public class Slider extends WidgetBase 
+//FIXME: correct base class
+public class Slider extends FlowPanel 
 	implements DragEventsHandler, HasValueChangeHandlers<Integer> {
 
 	protected int _value = 0;
-	protected FlowPanel _panel = new FlowPanel();	
 	protected HTML _label = new HTML(_value + "");	
 	protected HTML _slider = new HTML();	
 	
     public Slider() {
-    	_panel.add(_label);
         _slider.setHTML("<div></div><div></div><div></div>");
-    	_panel.add(_slider);
-    	initWidget(_panel);
-        setStyleName("Slider");
+    	add(_slider);
+        setStyleName(StyleNames.Primary.Slider);
     }
     
     @Override

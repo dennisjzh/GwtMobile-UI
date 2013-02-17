@@ -8,7 +8,7 @@
 			margin: 0 .5em 0 .5em;
 		}
 	</ui:style>
-	<g:HTMLPanel>
+	<m:PagePanel>
 		<m:HeaderPanel ui:field="header" leftButton="Back">
 			<g:Label>Button</g:Label>			
 		</m:HeaderPanel>
@@ -26,9 +26,7 @@
 					<m:Button ui:field="no3">No</m:Button>
 					<m:Button ui:field="cancel3">Cancel</m:Button>
 				</m:ListItem>
-				<m:ListItem>
-				</m:ListItem>
 			</m:ListPanel>			
 		</m:ScrollPanel>
-	</g:HTMLPanel>	
+	</m:PagePanel>	
 </ui:UiBinder> 

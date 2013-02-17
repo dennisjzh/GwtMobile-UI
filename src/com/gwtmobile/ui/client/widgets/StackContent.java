@@ -16,23 +16,10 @@
 
 package com.gwtmobile.ui.client.widgets;
 
-import com.google.gwt.user.client.ui.Widget;
-import com.gwtmobile.ui.client.CSS.StyleNames.Primary;
 
-public class TabContent extends PanelBase {
-	
-	public TabContent() {
-		setStyleName(Primary.TabContent);
-	}
-	
-	//FIXME: why need to pass transition end event to children?
-	@Override
-	public void onTransitionEnd(TransitionDirection direction) {
-    	for (Widget widget : this.getChildren()) {
-			if (widget instanceof IsGwtMobilePanel) {
-				((IsGwtMobilePanel) widget).onTransitionEnd(direction);
-			}
-    	}
-	}
 
+public class StackContent extends PanelBase {
+	
+	public StackContent(){
+	}
 }

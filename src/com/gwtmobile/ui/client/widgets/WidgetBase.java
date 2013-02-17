@@ -32,11 +32,6 @@ public class WidgetBase extends Composite implements IsGwtMobileWidget {
 	public void onInitialLoad() {
     }
     
-    //FIXME: shouldn't this method be on PageBase/PanelBase?
-    @Override
-	public void onTransitionEnd() {    	
-    }
-    
     @Override
 	public void setSecondaryStyle(String style) {
     	_widgetHelper.setSecondaryStyle(this, style);
