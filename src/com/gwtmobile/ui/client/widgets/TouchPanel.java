@@ -28,7 +28,6 @@ import com.gwtmobile.ui.client.event.DragControllerMobile;
  * @author Frank Mena
  *
  */
-//TODO: evaluate the need of this widget.
 public class TouchPanel extends PanelBase {
 
     @Override
