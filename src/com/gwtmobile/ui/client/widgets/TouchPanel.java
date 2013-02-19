@@ -28,22 +28,37 @@ import com.gwtmobile.ui.client.event.DragControllerMobile;
  * @author Frank Mena
  *
  */
-//TODO: evaluate the need of this widget.
 public class TouchPanel extends PanelBase {
 
     @Override
     public void onLoad() {
         super.onLoad();
-        DragController drag = DragController.get();
-        if (drag instanceof DragControllerMobile)
-            ((DragControllerMobile) drag).setStartPropagation();
+        startTouch();
     }
   
-  @Override
+    @Override
     public void onUnload() {
-        DragController drag = DragController.get();
-        if (drag instanceof DragControllerMobile)
-            ((DragControllerMobile) drag).setStopPropagation();
+      stopTouch();
     }
+ 
   
+    /**
+     * Start touch. Useful when you have more than one touch target on 
+     * different tabs of the same page.
+     */
+    public void startTouch() {
+      DragController drag = DragController.get();
+      if (drag instanceof DragControllerMobile)
+          ((DragControllerMobile) drag).setStartPropagation();
+    }
+    
+    /**
+     * Stop touch.
+     */
+    public void stopTouch() {
+      DragController drag = DragController.get();
+      if (drag instanceof DragControllerMobile)
+          ((DragControllerMobile) drag).setStopPropagation();
+    }
+    
 }
