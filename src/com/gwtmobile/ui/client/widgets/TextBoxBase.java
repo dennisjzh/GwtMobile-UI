@@ -73,6 +73,17 @@ class TextBoxBase extends com.google.gwt.user.client.ui.TextBoxBase
   }
 
   /**
+   * Sets the type and displays the corresponding keyboard.
+   * Possible HTML5 types are:<br/>
+   * date, datetime, datetime-local, email, number, range, search, tel
+   *
+   * @param type the new type
+   */
+  public void setType(String type) {
+    setElement(createNumberInputElement(type));
+  }
+
+  /**
    * Gets the maximum allowable length of the text box.
    *
    * @return the maximum length, in characters

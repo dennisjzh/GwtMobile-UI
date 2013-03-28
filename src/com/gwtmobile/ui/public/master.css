@@ -962,3 +962,9 @@ html {
 	-webkit-box-orient: vertical;
 }
 
+/* Fix for chrome browsers with <input type="number" */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
