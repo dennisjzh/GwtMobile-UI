@@ -30,7 +30,7 @@ public class YesNoFlipSwitch extends FlipSwitch {
   public YesNoFlipSwitch() {
     
     super();
-    _html.setHTML("<div></div><div></div><div><div><div>YES</div><div></div><div>NO</div></div></div>");
+    setHTML("<div></div><div></div><div><div><div>YES</div><div></div><div>NO</div></div></div>");
   }
   
 }
