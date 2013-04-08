@@ -130,6 +130,17 @@ public class DragControllerMobile extends DragController {
   }
   
 	protected native void fireClick(Element theTarget) /*-{
+		
+		// http://stackoverflow.com/questions/7184573/pick-up-the-android-version-in-the-browser-by-javascript
+		var ua = $wnd.navigator.userAgent;
+		if( ua.indexOf("Android") >= 0 ) {
+  			var androidversion = parseFloat(ua.slice(ua.indexOf("Android")+8));
+  			if (androidversion >= 4.1) {
+  				// http://code.google.com/p/android/issues/detail?id=38808
+  				return;
+  			}
+		}
+		
 	    if (theTarget.nodeType == 3) theTarget = theTarget.parentNode;
 	
 	    var theEvent = $doc.createEvent('MouseEvents');
