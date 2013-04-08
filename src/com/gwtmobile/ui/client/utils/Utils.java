@@ -117,7 +117,7 @@ public class Utils {
     }
     
     public static boolean isDesktop() {
-    	return !Window.Navigator.getUserAgent().toLowerCase().contains("mobile");
+    	return !isAndroid() && !isIOS();
     }
     
     public static boolean isWVGA() {
