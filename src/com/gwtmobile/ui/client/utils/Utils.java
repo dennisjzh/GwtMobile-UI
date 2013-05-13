@@ -117,10 +117,19 @@ public class Utils {
     }
     
     public static boolean isDesktop() {
-    	return !isAndroid() && !isIOS();
+    	return !isAndroid() && !isIOS() && !isBlackBerry();
     }
     
-    public static boolean isWVGA() {
+    private static boolean isBlackBerry() {
+        //BlackBerry 6 and BlackBerry 7     Mozilla/5.0 (BlackBerry; U; BlackBerry AAAA; en-US) AppleWebKit/534.11+ (KHTML, like Gecko) Version/X.X.X.X Mobile Safari/534.11+
+        //BlackBerry Tablet OS              Mozilla/5.0 (PlayBook; U; RIM Tablet OS 2.0.0; en-US) AppleWebKit/535.8+ (KHTML, like Gecko) Version/7.2.0.0 Safari/535.8+
+        //BlackBerry 10                     Mozilla/5.0 (BB10; <Device Type>) AppleWebKit/537.10+ (KHTML, like Gecko) Version/<BB Version #> Mobile Safari/537.10+
+        return Window.Navigator.getUserAgent().toLowerCase().contains("blackberry") || 
+        Window.Navigator.getUserAgent().toLowerCase().contains("bb10") || 
+        Window.Navigator.getUserAgent().toLowerCase().contains("playbook");
+    }
+
+	public static boolean isWVGA() {
 		return Document.get().getDocumentElement().getClassName().contains("WVGA");
     }
     
